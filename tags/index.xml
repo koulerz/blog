@@ -6,9 +6,37 @@
     <description>Recent content in Tags on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Thu, 16 Jan 2020 17:39:55 +0800</lastBuildDate>
     
 	<atom:link href="http://kouler.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>command-line</title>
+      <link>http://kouler.com/tags/command-line/</link>
+      <pubDate>Thu, 16 Jan 2020 17:39:55 +0800</pubDate>
+      
+      <guid>http://kouler.com/tags/command-line/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>http://kouler.com/tags/hugo/</link>
+      <pubDate>Thu, 16 Jan 2020 17:39:55 +0800</pubDate>
+      
+      <guid>http://kouler.com/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>theme</title>
+      <link>http://kouler.com/tags/theme/</link>
+      <pubDate>Thu, 16 Jan 2020 17:39:55 +0800</pubDate>
+      
+      <guid>http://kouler.com/tags/theme/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

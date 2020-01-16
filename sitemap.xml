@@ -3,11 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://kouler.com/posts/tech/abc/</loc>
+    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kouler.com/tags/command-line/</loc>
+    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kouler.com/tags/hugo/</loc>
+    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://kouler.com/</loc>
+    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kouler.com/posts/my-first-post/</loc>
+    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kouler.com/posts/</loc>
+    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://kouler.com/tags/</loc>
+    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://kouler.com/tags/theme/</loc>
+    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
   </url>
   
 </urlset>
