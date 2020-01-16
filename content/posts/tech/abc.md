@@ -1,7 +1,7 @@
 ---
 title: "abc"
 date: 2020-01-16T17:39:55+08:00
-draft: true
+draft: false
 tags: ["hugo", "theme", "command-line"]
 ---
 this is my first post.
