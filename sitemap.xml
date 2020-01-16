@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kouler.com/</loc>
+    <lastmod>2020-01-17T03:02:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/posts/</loc>
+    <lastmod>2020-01-17T03:02:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/</loc>
+    <lastmod>2020-01-17T03:02:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/posts/test/</loc>
+    <lastmod>2020-01-17T03:02:39+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/test/</loc>
+    <lastmod>2020-01-17T03:02:39+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kouler.com/posts/tech/abc/</loc>
     <lastmod>2020-01-16T17:39:55+08:00</lastmod>
   </url>
@@ -18,22 +43,7 @@
   </url>
   
   <url>
-    <loc>https://kouler.com/</loc>
-    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kouler.com/posts/my-first-post/</loc>
-    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kouler.com/posts/</loc>
-    <lastmod>2020-01-16T17:39:55+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kouler.com/tags/</loc>
     <lastmod>2020-01-16T17:39:55+08:00</lastmod>
   </url>
   
