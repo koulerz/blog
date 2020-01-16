@@ -2,7 +2,7 @@
 title: "Test"
 date: 2020-01-17T03:02:39+08:00
 tags: ["test"]
-draft: true
+draft: false
 ---
 # Usage
 Usage:
