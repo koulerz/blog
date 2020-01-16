@@ -1,5 +1,5 @@
-baseURL = "http://kouler.com/"
-languageCode = "en-us"
+baseURL = "https://kouler.com/"
+languageCode = "zh-cn"
 title = "Kouler"
 theme = "minimal-bootstrap-hugo-theme"
 
@@ -10,7 +10,7 @@ theme = "minimal-bootstrap-hugo-theme"
   post = "/:filename/"
 
 [params]
-  description = "Some description"
+  description = "this is description"
   contentBackgroundColor = "#fff"
   contentTextColor = "#212529"
   contentLinkColor = "#336699"
