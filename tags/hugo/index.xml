@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Kouler</title>
+    <link>https://kouler.com/tags/hugo/</link>
+    <description>Recent content in hugo on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Jan 2020 22:42:14 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 Hugo</title>
+      <link>https://kouler.com/posts/use-hugo/</link>
+      <pubDate>Fri, 17 Jan 2020 22:42:14 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/use-hugo/</guid>
+      <description>Hugo 安装和配置  Hugo Documentation minimal-bootstrap-hugo-theme  Hugo 常用命令 1$ hugo help // 帮助命令 2$ hugo version // 打印版本号 3$ hugo new site sitename // 创建新站点 4$ hugo new posts/new-post.md // 创建新文章 5$ hugo // 生成静态页面 6$ hugo server // 启动 Hugo Web Server 在 Github 托管 Hugo  Host on GitHub  Github Pages site 配置个人域名  在发布项目根目录添加 CNAME 文件，内容为个人域名 配置个人域名 DNS，添加 CNAME 记录，将 www 子域指向个人 Github Pages site 地址，yourname.</description>
+    </item>
+    
+  </channel>
+</rss>

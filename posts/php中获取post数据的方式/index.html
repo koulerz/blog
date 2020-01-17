@@ -119,7 +119,7 @@ a:focus {
 
 
 .container {
-  max-width: 800px;
+  max-width: 1024px;
 }
 
 
@@ -225,23 +225,21 @@ blockquote,
 </tr>
 </tbody>
 </table>
-<h3 id="_post-方式">$_POST 方式</h3>
-<hr>
+<h2 id="_post-方式">$_POST 方式</h2>
 <p>通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。</p>
 <p>Coentent-Type 仅在取值为 application/x-www-data-urlencoded 或 multipart/form-data 两种情况下，PHP才会将 HTTP 请求数据包中相应的数据填入全局变量 $_POST。</p>
-<h3 id="globalshttp_raw_post_data-方式">$GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;] 方式</h3>
-<hr>
+<h2 id="globalshttp_raw_post_data-方式">$GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;] 方式</h2>
 <p>此变量仅在碰到未识别 MIME 类型的数据时产生。</p>
 <p>PHP 默认识别的数据类型是 application/x-www.form-urlencoded 标准的数据类型。如果 POST 过来的数据不是 PHP 能够识别的，比如 text/xml 或者 soap 等可以用 $GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;]方式来接收。</p>
 <p>不过，访问原始 POST 数据的更好方法是 php://input。</p>
-<h3 id="phpinput-方式">php://input 方式</h3>
-<hr>
+<h2 id="phpinput-方式">php://input 方式</h2>
 <p>php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。</p>
 <p>php://input 不能用于 enctype=&quot;multipart/form-data&rdquo;。</p>
-<h3 id="参考--扩展阅读">参考 &amp; 扩展阅读</h3>
-<hr>
-<p><a href="http://blog.csdn.net/china_skag/article/details/7284227">$GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;] 和$_POST的区别</a>
-<a href="http://www.nowamagic.net/academy/detail/12220520">深入剖析PHP输入流 php://input 与 POST/GET 的区别</a></p>
+<h2 id="参考--扩展阅读">参考 &amp; 扩展阅读</h2>
+<ul>
+<li><a href="http://blog.csdn.net/china_skag/article/details/7284227">$GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;] 和$_POST的区别</a></li>
+<li><a href="http://www.nowamagic.net/academy/detail/12220520">深入剖析PHP输入流 php://input 与 POST/GET 的区别</a></li>
+</ul>
 
     </article>
   </div>

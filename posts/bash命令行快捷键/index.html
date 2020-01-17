@@ -119,7 +119,7 @@ a:focus {
 
 
 .container {
-  max-width: 800px;
+  max-width: 1024px;
 }
 
 
@@ -192,32 +192,32 @@ blockquote,
 <small><code><a href="https://kouler.com/tags/command">#command</a></code></small>
 
     <br><br>
-<h3 id="编辑命令">编辑命令</h3>
-<hr>
-<p>Ctrl + a ：移到命令行首 <br>
-Ctrl + e ：移到命令行尾 <br>
-Ctrl + f ：按字符前移（右向） <br>
-Ctrl + b ：按字符后移（左向） <br>
-Ctrl + xx：在命令行首和光标之间移动 <br>
-Ctrl + u ：从光标处删除至命令行首 <br>
-Ctrl + k ：从光标处删除至命令行尾 <br>
-Ctrl + d ：删除光标后的字符 <br>
-Ctrl + h ：删除光标前的字符</p>
-<h3 id="bang--命令">Bang (!) 命令</h3>
-<hr>
-<p>!!：     执行上一条命令 <br>
-!blah：  执行最近的以 blah 开头的命令，如 !ls <br>
-!blah:p：仅打印输出，而不执行 <br>
-!$：     上一条命令的最后一个参数，与 Alt + . 相同 <br>
-!$:p：   打印输出 !$ 的内容 <br>
-!<em>：     上一条命令的所有参数 <br>
-!</em>:p：   打印输出 !* 的内容</p>
-<p>^blah：  删除上一条命令中的 blah <br>
-^blah^foo：  将上一条命令中的 blah 替换为 foo <br>
-^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo</p>
-<h3 id="参考--扩展阅读">参考 &amp; 扩展阅读</h3>
-<hr>
-<p><a href="https://linuxtoy.org/archives/bash-shortcuts.html">让你提升命令行效率的 Bash 快捷键</a></p>
+<h2 id="编辑命令">编辑命令</h2>
+<pre><code>Ctrl + a ：移到命令行首    
+Ctrl + e ：移到命令行尾    
+Ctrl + f ：按字符前移（右向）    
+Ctrl + b ：按字符后移（左向）    
+Ctrl + xx：在命令行首和光标之间移动    
+Ctrl + u ：从光标处删除至命令行首    
+Ctrl + k ：从光标处删除至命令行尾    
+Ctrl + d ：删除光标后的字符    
+Ctrl + h ：删除光标前的字符    
+</code></pre><h2 id="bang--命令">Bang (!) 命令</h2>
+<pre><code>!!：     执行上一条命令    
+!blah：  执行最近的以 blah 开头的命令，如 !ls    
+!blah:p：仅打印输出，而不执行    
+!$：     上一条命令的最后一个参数，与 Alt + . 相同    
+!$:p：   打印输出 !$ 的内容    
+!*：     上一条命令的所有参数    
+!*:p：   打印输出 !* 的内容   
+
+^blah：  删除上一条命令中的 blah    
+^blah^foo：  将上一条命令中的 blah 替换为 foo    
+^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo    
+</code></pre><h2 id="参考--扩展阅读">参考 &amp; 扩展阅读</h2>
+<ul>
+<li><a href="https://linuxtoy.org/archives/bash-shortcuts.html">让你提升命令行效率的 Bash 快捷键</a></li>
+</ul>
 
     </article>
   </div>

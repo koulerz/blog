@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 17 Feb 2017 19:22:38 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jan 2020 22:42:14 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用 Hugo</title>
+      <link>https://kouler.com/posts/use-hugo/</link>
+      <pubDate>Fri, 17 Jan 2020 22:42:14 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/use-hugo/</guid>
+      <description>Hugo 安装和配置  Hugo Documentation minimal-bootstrap-hugo-theme  Hugo 常用命令 1$ hugo help // 帮助命令 2$ hugo version // 打印版本号 3$ hugo new site sitename // 创建新站点 4$ hugo new posts/new-post.md // 创建新文章 5$ hugo // 生成静态页面 6$ hugo server // 启动 Hugo Web Server 在 Github 托管 Hugo  Host on GitHub  Github Pages site 配置个人域名  在发布项目根目录添加 CNAME 文件，内容为个人域名 配置个人域名 DNS，添加 CNAME 记录，将 www 子域指向个人 Github Pages site 地址，yourname.</description>
+    </item>
     
     <item>
       <title>复杂请求的跨域解决方法</title>
@@ -20,8 +29,8 @@
       <description>简单请求遇到跨域问题时，只需要在服务器端设置响应头中加入允许跨域的头部信息即可。
 当遇到复杂请求时，浏览器为了防止跨域请求无端对服务器数据造成损坏会先发送一个 Options 的预检请求。服务器应该对其进行处理，决定是否允许当前客户端进一步发起跨域请求。随后浏览器会根据 Options 请求的响应信息来决定是否进行下一步真实的请求。
 服务器在此次 Options 请求的返回内容中还可以指示浏览器，是否在下次请求携带相关的 Cookie 或者 Http Authentication 数据过来。
-什么是简单请求   仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。  什么是复杂请求  不满足简单请求条件的都属于复杂请求。
-解决复杂请求下的跨域问题  1class CORSMiddleware 2{ 3 public function handle($request, Closure $next) 4 { 5 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 6 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 7 8 $allow_origin = array( 9 &amp;#39;http://localhost:8888&amp;#39;, 10 &amp;#39;http://test.</description>
+什么是简单请求  仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。  什么是复杂请求 不满足简单请求条件的都属于复杂请求。
+解决复杂请求下的跨域问题 1&amp;lt;?php 2 3class CORSMiddleware 4{ 5 public function handle($request, Closure $next) 6 { 7 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 8 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 9 10 $allow_origin = array( 11 &amp;#39;http://localhost:8888&amp;#39;, 12 &amp;#39;http://test.com&amp;#39;, 13 &amp;#39;https://test.</description>
     </item>
     
     <item>
@@ -31,13 +40,13 @@
       
       <guid>https://kouler.com/posts/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8B%A6%E6%88%AA%E7%AC%AC%E4%B8%89%E6%96%B9cookies%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
       <description>高版本的 Safari 浏览器为了保护用户隐私会默认阻止第三方的 Cookies。Web 开发中，使用第三方资源非常常见，大多数情况下，这并不会带来问题。然而当我们希望能读写第三方域下的 Cookies 时，就会遇到 Cookies 被拦截的情况从而导致各种问题。
-第三方指的是谁  当用户请求某一域名下的页面时，如果页面中引用了另一个域名下的资源，则另一个域名被算作第三方。
-解决第三方 Cookies 被拦截的方法  方法一： 客户端手动修改设置。例如 Safari 可以通过偏好设置中的隐私栏修改 Cookies 的安全策略。
-方法二： 将需要请求的第三方资源放在本域下。
+第三方指的是谁 当用户请求某一域名下的页面时，如果页面中引用了另一个域名下的资源，则另一个域名被算作第三方。
+解决第三方 Cookies 被拦截的方法 方法一: 客户端手动修改设置。例如 Safari 可以通过偏好设置中的隐私栏修改 Cookies 的安全策略。
+方法二: 将需要请求的第三方资源放在本域下。
 前两种方法有各自的限制，如果无法解决问题，则需要考虑更复杂的解决方法。
-方法三： Safari 会在第三方域下完全没有 Cookies 时阻止第三方 Cookies，而第三方域下只要有过任意一个 Cookie，即可顺利读写。 据此，我们可以考虑当第三方域下没有 Cookies 时，首先将页面先跳到这个域，写入任意 Cookies，再跳回来。或者弹出一个新窗口，写入 Cookies，再关闭弹窗。
-方法四： Safari 只阻止了第三方 Cookies，并没有阻止第三方 LocalStorage，于是，我们便可以使用更为激进的方案，即放弃第三方 Cookies，使用 LocalStorage 来代替。
-参考 &amp;amp; 扩展阅读  当浏览器默认禁用第三方cookie</description>
+方法三: Safari 会在第三方域下完全没有 Cookies 时阻止第三方 Cookies，而第三方域下只要有过任意一个 Cookie，即可顺利读写。 据此，我们可以考虑当第三方域下没有 Cookies 时，首先将页面先跳到这个域，写入任意 Cookies，再跳回来。或者弹出一个新窗口，写入 Cookies，再关闭弹窗。
+方法四: Safari 只阻止了第三方 Cookies，并没有阻止第三方 LocalStorage，于是，我们便可以使用更为激进的方案，即放弃第三方 Cookies，使用 LocalStorage 来代替。
+参考 &amp;amp; 扩展阅读  当浏览器默认禁用第三方cookie  </description>
     </item>
     
     <item>
@@ -46,12 +55,12 @@
       <pubDate>Tue, 13 Sep 2016 18:42:34 +0800</pubDate>
       
       <guid>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</guid>
-      <description>form-data x-www-form-urlencoded raw     $_POST 推荐 推荐 无效   $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效   php://input 无效 有效 推荐    $_POST 方式  通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
+      <description>form-data x-www-form-urlencoded raw     $_POST 推荐 推荐 无效   $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效   php://input 无效 有效 推荐    $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
 Coentent-Type 仅在取值为 application/x-www-data-urlencoded 或 multipart/form-data 两种情况下，PHP才会将 HTTP 请求数据包中相应的数据填入全局变量 $_POST。
-$GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 方式  此变量仅在碰到未识别 MIME 类型的数据时产生。
+$GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 方式 此变量仅在碰到未识别 MIME 类型的数据时产生。
 PHP 默认识别的数据类型是 application/x-www.form-urlencoded 标准的数据类型。如果 POST 过来的数据不是 PHP 能够识别的，比如 text/xml 或者 soap 等可以用 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;]方式来接收。
 不过，访问原始 POST 数据的更好方法是 php://input。
-php://input 方式  php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.</description>
+php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.</description>
     </item>
     
     <item>
@@ -60,20 +69,20 @@ php://input 方式  php://input 允许读取 POST 的原始数据。和 $HTTP_RA
       <pubDate>Tue, 21 Jun 2016 00:38:50 +0800</pubDate>
       
       <guid>https://kouler.com/posts/phpstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>文本编辑     快捷键 描述     Command + Alt + I 对当前文件进行格式化排版   Control + G 顺序选中相同的文本   Shift + Enter 在当前行下方插入新行   Command + Alt + Enter 在当前行上方插入新行   Command + / 单行注释   Command + Shift + / 块代码注释   Command + D 复制当前行   Command + P 查看当前函数参数   Command + Shift + Enter 补全代码（if）   Alt + / 自动完成   Alt + Click 插入多个光标（鼠标单击）   Alt Alt + Up 向上插入多个光标（双击 Alt 并按住）   Alt Alt + Down 向下插入多个光标（双击 Alt 并按住）   Alt + Double Click 选中多个文本（鼠标双击）   Alt + Mouse 选中多个文本（鼠标拖动）   Ctrl + Mouse 复制选中文本（鼠标拖动）   Command + Mouse 移动选中文本（鼠标拖动）   Command + J 活动代码提示   Command + Alt + T 插入环绕代码   Command + .</description>
+      <description>文本编辑    快捷键 描述     Command + Alt + I 对当前文件进行格式化排版   Control + G 顺序选中相同的文本   Shift + Enter 在当前行下方插入新行   Command + Alt + Enter 在当前行上方插入新行   Command + / 单行注释   Command + Shift + / 块代码注释   Command + D 复制当前行   Command + P 查看当前函数参数   Command + Shift + Enter 补全代码（if）   Alt + / 自动完成   Alt + Click 插入多个光标（鼠标单击）   Alt Alt + Up 向上插入多个光标（双击 Alt 并按住）   Alt Alt + Down 向下插入多个光标（双击 Alt 并按住）   Alt + Double Click 选中多个文本（鼠标双击）   Alt + Mouse 选中多个文本（鼠标拖动）   Ctrl + Mouse 复制选中文本（鼠标拖动）   Command + Mouse 移动选中文本（鼠标拖动）   Command + J 活动代码提示   Command + Alt + T 插入环绕代码   Command + .</description>
     </item>
     
     <item>
-      <title>WebServer和CGI以及PHPFPM之间的关系</title>
+      <title>WebServer 和 CGI 以及 PHPFPM 之间的关系</title>
       <link>https://kouler.com/posts/webserver%E5%92%8Ccgi%E4%BB%A5%E5%8F%8Aphpfpm%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</link>
       <pubDate>Wed, 15 Jun 2016 23:28:36 +0800</pubDate>
       
       <guid>https://kouler.com/posts/webserver%E5%92%8Ccgi%E4%BB%A5%E5%8F%8Aphpfpm%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</guid>
-      <description>WebServer  最早的 Web服务器简单地响应浏览器发来的 HTTP 请求，并将存储在服务器上的 HTML 文件返回给浏览器，也就是静态HTML。
+      <description>WebServer 最早的 Web服务器简单地响应浏览器发来的 HTTP 请求，并将存储在服务器上的 HTML 文件返回给浏览器，也就是静态HTML。
 但事物总是不断发展的，网站也逐渐变得复杂，所以出现动态技术。但是 Web服务器并不能直接运行 php，asp 这样的文件，当浏览器请求 index.php?a=1&amp;amp;b=2 时，Web服务器就不知道该如何处理了，它不能理解 “php”、“?”、“&amp;amp;”、“a”、“b” 各是什么意思，这时它就需要调用相应的脚本解释程序（如PHP-CGI）来处理这样的请求。
-CGI  Web服务器不知道如何处理动态页面请求，需要移交其他程序来处理，这时需要与该程序做个约定，我给你什么，然后你给我什么，就是我把请求参数（如 a=1，b=2）发送给你，然后我接收你的处理结果给客户端。那这个约定就是 Common Gateway Interface，简称 CGI。这个协议可以用 VB，C，PHP，Python 等语言来实现。
+CGI Web服务器不知道如何处理动态页面请求，需要移交其他程序来处理，这时需要与该程序做个约定，我给你什么，然后你给我什么，就是我把请求参数（如 a=1，b=2）发送给你，然后我接收你的处理结果给客户端。那这个约定就是 Common Gateway Interface，简称 CGI。这个协议可以用 VB，C，PHP，Python 等语言来实现。
 CGI 只是接口协议，根本不是什么语言。
-WEB服务器与 CGI 程序的交互  Web服务器将根据 CGI程序的类型决定数据向 CGI程序的传送方式，通常是通过标准输入/输出流和环境变量来传递。
+WebServer 与 CGI 程序的交互 Web服务器将根据 CGI程序的类型决定数据向 CGI程序的传送方式，通常是通过标准输入/输出流和环境变量来传递。
 CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入输出。此外 CGI程序还通过环境变量来得到输入。
 操作系统提供了许多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。
 Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程序传递一些重要的参数。
@@ -91,12 +100,9 @@ Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程
 引导启动过程中会用到的内核文件说明 boot / bootsect.s : 该程序是磁盘引导块程序，编译后会驻留在磁盘的第一个扇区中（即引导扇区中，0 磁道（柱面），0 磁头，第一个扇区）。计算机机加电 ROM BIOS 自检后，将被 BIOS 加载到内存 0x7C00 处执行。
 boot / setup.s : 该程序主要用于读取机器的硬件配置参数，并把内核模块 system 移动到适当的内存位置处。
 boot / head.s : 该程序会被编译连接在 system 模块的最前部分，主要进行硬件设备的探测设置和内存管理页面的初始化设置工作。
-引导启动过程中文件运行顺序图 BIOS 程序执行流程   计算机加电，80x86 结构的 CPU 自动进入实模式，并从地址 0xFFFF0 开始自动执行代码。这个地址也就是 ROM-BIOS 中的地址。
-  BIOS 执行系统检测，并在物理地址 0 处初始化中断向量。
-  BIOS 将可启动设备的第一个扇区（磁盘引导扇区，512字节）读入内存绝对地址 0x7C00 处并跳转到这个地方。
-  接下来将由操作系统文件接管启动流程。
+引导启动过程中文件运行顺序图 BIOS 程序执行流程  计算机加电，80x86 结构的 CPU 自动进入实模式，并从地址 0xFFFF0 开始自动执行代码。这个地址也就是 ROM-BIOS 中的地址。 BIOS 执行系统检测，并在物理地址 0 处初始化中断向量。 BIOS 将可启动设备的第一个扇区（磁盘引导扇区，512字节）读入内存绝对地址 0x7C00 处并跳转到这个地方。  接下来将由操作系统文件接管启动流程。
 操作系统程序执行流程 Linux 的最最前面部分是用 8086 汇编语言编写的（bootsect.s）。它由 BIOS 读入到内存绝对地址 0x7C00（31KB）处。
-  bootsect.</description>
+ bootsect.s 执行时会把自己移动到内存绝对地址 0x90000（576KB）处。 bootsect.s 将启动设备中后 2KB 字节代码（setup.</description>
     </item>
     
     <item>
@@ -105,9 +111,7 @@ boot / head.s : 该程序会被编译连接在 system 模块的最前部分，�
       <pubDate>Mon, 23 May 2016 22:45:49 +0800</pubDate>
       
       <guid>https://kouler.com/posts/bash%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>编辑命令  Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符
-Bang (!) 命令  !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !： 上一条命令的所有参数 !:p： 打印输出 !* 的内容
-^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo</description>
+      <description>编辑命令 Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符 Bang (!) 命令 !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !*： 上一条命令的所有参数 !*:p： 打印输出 !* 的内容 ^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo 参考 &amp;amp; 扩展阅读  让你提升命令行效率的 Bash 快捷键  </description>
     </item>
     
     <item>
@@ -117,9 +121,9 @@ Bang (!) 命令  !!： 执行上一条命令 !blah： 执行最近的以 blah �
       
       <guid>https://kouler.com/posts/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
       <description>本文通过设置 Access-Control-Allow-Origin 来实现跨域。 例如：客户端的域名是 client.com，而请求的域名是 server.com。 如果直接使用 ajax 访问，会有以下错误：
-XMLHttpRequest cannot load http://server.com/server.php. No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. Origin &#39;http://client.com&#39; is therefore not allowed access. 1. 允许单个域名访问  指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
-header(&#39;Access-Control-Allow-Origin: http://client.com&#39;); 2. 允许多个域名访问  指定多个域名（ http://client1.com, http://client2.com 等 ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
-$origin = isset($_SERVER[&#39;HTTP_ORIGIN&#39;])? $_SERVER[&#39;HTTP_ORIGIN&#39;] : &#39;&#39;; $allow_origin = array( &#39;http://client1.com&#39;, &#39;http://client2.com&#39; ); if(in_array($origin, $allow_origin)){ header(&#39;Access-Control-Allow-Origin: &#39;.$origin); } 3. 允许所有域名访问  允许所有域名访问则只需在 http://server.</description>
+XMLHttpRequest cannot load http://server.com/server.php. No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. Origin &#39;http://client.com&#39; is therefore not allowed access. 允许单个域名访问 指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
+1&amp;lt;?php 2 3header(&amp;#39;Access-Control-Allow-Origin: http://client.com&amp;#39;); 允许多个域名访问 指定多个域名（ http://client1.com, http://client2.com 等 ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
+1&amp;lt;?php 2 3$origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;])? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 4 5$allow_origin = array( 6 &amp;#39;http://client1.com&amp;#39;, 7 &amp;#39;http://client2.com&amp;#39; 8); 9 10if(in_array($origin, $allow_origin)){ 11 header(&amp;#39;Access-Control-Allow-Origin: &amp;#39;.$origin); 12} 允许所有域名访问 允许所有域名访问则只需在 http://server.</description>
     </item>
     
     <item>
@@ -128,12 +132,11 @@ $origin = isset($_SERVER[&#39;HTTP_ORIGIN&#39;])? $_SERVER[&#39;HTTP_ORIGIN&#39;
       <pubDate>Sat, 14 May 2016 21:47:46 +0800</pubDate>
       
       <guid>https://kouler.com/posts/php%E4%B8%AD%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/</guid>
-      <description>二进制安全是什么  先看一段代码：
-&amp;lt;?php $string1 = &amp;quot;Hello&amp;quot;; $string2 = &amp;quot;Hello\0Hello&amp;quot;; // 返回0, 由于是非二进制安全，误判为相等 echo strcoll($string1, $string2); // 返回&amp;lt;0,不相等 echo strcmp($string1, $string2); ?&amp;gt; 这是为什么呢？PHP 是基于 C 实现的，PHP 代码都会被 Zend引擎编译成 opcode，最终作为 C语言去执行。而对于 C语言中 &amp;ldquo;\0&amp;rdquo; 是字符串的结束符，它读到 &amp;ldquo;\0&amp;rdquo; 就会默认字符读取已经结束，从而抛掉后面的字符串。
-main(){ char ab[] = &amp;quot;Hello&amp;quot;; char ac[] = &amp;quot;Hello\0Hello&amp;quot;; // 返回0, 由于是非二进制安全，误判为相等 strcmp(ab, ac); } 有一个二进制安全的定义:
+      <description>二进制安全是什么 先看一段代码：
+1&amp;lt;?php 2 3$string1 = &amp;#34;Hello&amp;#34;; 4$string2 = &amp;#34;Hello\0Hello&amp;#34;; 5 6// 返回0, 由于是非二进制安全，误判为相等 7echo strcoll($string1, $string2); 8 9// 返回&amp;lt;0,不相等 10echo strcmp($string1, $string2); 这是为什么呢？PHP 是基于 C 实现的，PHP 代码都会被 Zend引擎编译成 opcode，最终作为 C语言去执行。而对于 C语言中 &amp;ldquo;\0&amp;rdquo; 是字符串的结束符，它读到 &amp;ldquo;\0&amp;rdquo; 就会默认字符读取已经结束，从而抛掉后面的字符串。
+1main(){ 2 char ab[] = &amp;#34;Hello&amp;#34;; 3 char ac[] = &amp;#34;Hello\0Hello&amp;#34;; 4 5 // 返回0, 由于是非二进制安全，误判为相等 6 strcmp(ab, ac); 7} 有一个二进制安全的定义:
  程序不会对其中的数据做任何限制、过滤、或者假设 —— 数据在写入时是什么样的，它被读取时就是什么样。
- PHP是如何实现二进制安全的  既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的
-struct{ char *val; int len; } str; val 是指向字符串内存的指针，len 表示该字符串的长度，无论是否遇到 &amp;ldquo;\0&amp;rdquo; 字符，C 都按照 len 长度读取该字符串。</description>
+ PHP是如何实现二进制安全的 既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的</description>
     </item>
     
     <item>
@@ -143,14 +146,13 @@ struct{ char *val; int len; } str; val 是指向字符串内存的指针，len �
       
       <guid>https://kouler.com/posts/php%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/</guid>
       <description>PHP 中 try catch 可以帮助我们捕获程序代码的异常以便使我们很好的处理一些不必要的错误。
-Try 语句  try 是用来定义检测异常的代码块。 需要进行异常处理的代码都必须放入 try 代码块内，以便捕获可能存在的异常。 每一个 try 至少要有一个与之对应的 catch 。
-try { // 需要进行异常处理的代码 } try 代码块有可能运行到最后一行，也有可能抛出异常，如果抛出了异常，代码的剩余部分就会被跳过，程序会跳到 Catch 语句块中执行。
-Catch 语句  定义处理发生异常时执行的代码块。使用多个 catch 可以捕获不同的类所产生的异常。
+Try 语句 try 是用来定义检测异常的代码块。 需要进行异常处理的代码都必须放入 try 代码块内，以便捕获可能存在的异常。 每一个 try 至少要有一个与之对应的 catch 。
+1&amp;lt;?php 2 3try { 4 // 需要进行异常处理的代码 5} try 代码块有可能运行到最后一行，也有可能抛出异常，如果抛出了异常，代码的剩余部分就会被跳过，程序会跳到 Catch 语句块中执行。
+Catch 语句 定义处理发生异常时执行的代码块。使用多个 catch 可以捕获不同的类所产生的异常。
 当 try 代码块不再抛出异常或者找不到 catch 能匹配所抛出的异常时，PHP 代码就会在跳转到最后一个 catch 的后面继续执行。 PHP允许在 catch 代码块内再次抛出（throw）异常。
 当一个异常被抛出时，其后（指抛出异常时所在的代码块）的代码将不会继续执行，而 PHP 就会尝试查找第一个能与之匹配的 catch。
 如果一个异常没有被捕获，而且又没用使用 set_exception_handler() 作相应的处理的话，那么 PHP 将会产生一个严重的错误，并且输出 Uncaught Exception ... （未捕获异常）的提示信息。
-catch(Exception $e) { echo $e; } 上面代码中，$e 是 Exception 类的一个实例。
-Exception 是所有类型异常的祖先，所以捕捉 Exception 类会捕捉到任何类型的异常。</description>
+1&amp;lt;?php 2 3catch(Exception $e) { 4 echo $e; 5} 上面代码中，$e 是 Exception 类的一个实例。</description>
     </item>
     
     <item>
@@ -159,22 +161,22 @@ Exception 是所有类型异常的祖先，所以捕捉 Exception 类会捕捉�
       <pubDate>Tue, 19 Apr 2016 21:42:10 +0800</pubDate>
       
       <guid>https://kouler.com/posts/linux%E7%9A%84%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E5%92%8C%E4%BF%A1%E5%8F%B7/</guid>
-      <description>中断  中断是指CPU对系统发生的某个事件作出的一种反应，让CPU暂时停止当前程序的执行转而执行处理新情况的程序和执行过程。即在程序运行过程中，系统出现了一个必须由CPU立即处理的情况，此时，CPU暂时中止程序的执行转而处理这个新的情况的过程就叫做中断。
-**中断向量：**每个中断和异常是由0~255之间的一个数来标识。Intel把这个8位的无符号整数叫做一个向量。
-**IRQ：**每个能够发出中断请求的硬件设备控制器都有一条名为IRQ的输出线。所有现有的IRQ线都与一个名为可编程中断控制器的硬件电路的输入引脚相连。
-**PIC：**可编程中断控制器
-**IDT：**中断描述符表，中断描述符表是一个系统表，它与每一个中断或异常向量相联系，每一个向量在表中有相应的中断和异常处理程序的入口地址。表中的每一项对应一个中断或异常向量，每个向量由8个字节组成。因此，最多需要256*8=2048字节来存放IDT。
+      <description>中断 中断是指CPU对系统发生的某个事件作出的一种反应，让CPU暂时停止当前程序的执行转而执行处理新情况的程序和执行过程。即在程序运行过程中，系统出现了一个必须由CPU立即处理的情况，此时，CPU暂时中止程序的执行转而处理这个新的情况的过程就叫做中断。
+中断向量: 每个中断和异常是由0~255之间的一个数来标识。Intel把这个8位的无符号整数叫做一个向量。
+IRQ: 每个能够发出中断请求的硬件设备控制器都有一条名为IRQ的输出线。所有现有的IRQ线都与一个名为可编程中断控制器的硬件电路的输入引脚相连。
+PIC: 可编程中断控制器
+IDT: 中断描述符表，中断描述符表是一个系统表，它与每一个中断或异常向量相联系，每一个向量在表中有相应的中断和异常处理程序的入口地址。表中的每一项对应一个中断或异常向量，每个向量由8个字节组成。因此，最多需要256*8=2048字节来存放IDT。
 广义的中断包含异步中断和同步中断。
-异步中断  异步中断(外部中断/硬件中断)通常被直接称为中断(interrupt):
+异步中断 异步中断(外部中断/硬件中断)通常被直接称为中断(interrupt)
 CPU对其的响应完全是被动的，但是可以屏蔽掉。
 异步中断可分为可屏蔽中断（Maskable interrupt）和非屏蔽中断（Nomaskable interrupt）。
 所谓的异步指的是发生的中断不是随正在执行的指令同步发生的，是由其他硬件设备依照 CPU 时钟信号随机产生的，是不可预知的，例如用户随时在键盘上按下一个键。
-同步中断  同步中断(内部中断/软件中断)通常被称为异常(exception):
+同步中断 同步中断(内部中断/软件中断)通常被称为异常(exception)
 在Intel的手册中，同步中断被称之为异常。
 异常可分为故障(fault)、陷阱(trap)、**终止(abort)**三类。
-   类型 原因 异步/同步 返回行为 例子     陷阱 有意的异常 同步 总是返回到下一条指令 系统调用、信号机制 ( 通过软中断实现 )   故障 潜在可恢复的错误 同步 返回到当前指令 缺页异常、除 0 错误、段错误   终止 不可恢复的错误 同步 不会返回 硬件错误    软中断和硬中断：  软中断是通信进程之间用来模拟硬中断的一种信号通信方式。是属于一种编程手段，也有称之为软中断通信机制。
+   类型 原因 异步/同步 返回行为 例子     陷阱 有意的异常 同步 总是返回到下一条指令 系统调用、信号机制 ( 通过软中断实现 )   故障 潜在可恢复的错误 同步 返回到当前指令 缺页异常、除 0 错误、段错误   终止 不可恢复的错误 同步 不会返回 硬件错误    软中断和硬中断 软中断是通信进程之间用来模拟硬中断的一种信号通信方式。是属于一种编程手段，也有称之为软中断通信机制。
 硬中断一般就是指的硬件中断，也就是常说的中断，由硬件触发。
-区别：     类型 产生的位置 发生的时刻 时序     中断 CPU外部 随机 异步   异常 CPU内部 一条指令终止后 同步    信号机制  信号是异步的进程间的通讯机制，是在软件层次上对中断机制的一种模拟，在原理上，一个进程收到一个信号与处理器收到一个中断请求可以说是一样的。</description>
+区别    类型 产生的位置 发生的时刻 时序     中断 CPU外部 随机 异步   异常 CPU内部 一条指令终止后 同步    信号机制 信号是异步的进程间的通讯机制，是在软件层次上对中断机制的一种模拟，在原理上，一个进程收到一个信号与处理器收到一个中断请求可以说是一样的。</description>
     </item>
     
     <item>
@@ -192,7 +194,7 @@ CPU对其的响应完全是被动的，但是可以屏蔽掉。
       <pubDate>Sun, 03 Apr 2016 12:21:24 +0800</pubDate>
       
       <guid>https://kouler.com/posts/postgresql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-      <description>常用控制台命令  \password 设置密码。 \q 退出。 \h 查看SQL命令的解释，比如\h select。 \? 查看psql命令列表。 \l 列出所有数据库。 \c [database_name] 连接其他数据库。 \d 列出当前数据库的所有表格。 \d [table_name] 列出某一张表格的结构。 \du 列出所有用户。 \e 打开文本编辑器。 \conninfo 列出当前数据库和连接的信息。 常用SQL语句  # 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); # 插入数据 INSERT INTO user_tbl(name, signup_date) VALUES(&#39;张三&#39;, &#39;2013-12-22&#39;); # 查询记录 SELECT * FROM user_tbl; # 更新数据 UPDATE user_tbl set name = &#39;李四&#39; WHERE name = &#39;张三&#39;; # 删除记录 DELETE FROM user_tbl WHERE name = &#39;李四&#39; ; # 添加字段 ALTER TABLE user_tbl ADD email VARCHAR(40); ALTER TABLE user_tbl ADD COLUMN images jsonb DEFAULT &#39;{}&#39;; # 更改字段类型 ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL; # 更改字段类型长度 ALTER TABLE user_tbl ALTER COLUMN password TYPE varchar(32); # 为字段添加索引 CREATE INDEX index_name ON user_tbl (name); # 设置字段默认值（注意字符串使用单引号） ALTER TABLE user_tbl ALTER COLUMN email SET DEFAULT &#39;example@example.</description>
+      <description>常用控制台命令 \password 设置密码。 \q 退出。 \h 查看SQL命令的解释，比如\h select。 \? 查看psql命令列表。 \l 列出所有数据库。 \c [database_name] 连接其他数据库。 \d 列出当前数据库的所有表格。 \d [table_name] 列出某一张表格的结构。 \du 列出所有用户。 \e 打开文本编辑器。 \conninfo 列出当前数据库和连接的信息。 常用SQL语句 1# 创建新表 2CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); 3 4# 插入数据 5INSERT INTO user_tbl(name, signup_date) VALUES(&amp;#39;张三&amp;#39;, &amp;#39;2013-12-22&amp;#39;); 6 7# 查询记录 8SELECT * FROM user_tbl; 9 10# 更新数据 11UPDATE user_tbl set name = &amp;#39;李四&amp;#39; WHERE name = &amp;#39;张三&amp;#39;; 12 13# 删除记录 14DELETE FROM user_tbl WHERE name = &amp;#39;李四&amp;#39; ; 15 16# 添加字段 17ALTER TABLE user_tbl ADD email VARCHAR(40); 18ALTER TABLE user_tbl ADD COLUMN images jsonb DEFAULT &amp;#39;{}&amp;#39;; 19 20# 更改字段类型 21ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL; 22 23# 更改字段类型长度 24ALTER TABLE user_tbl ALTER COLUMN password TYPE varchar(32); 25 26# 为字段添加索引 27CREATE INDEX index_name ON user_tbl (name); 28 29# 设置字段默认值（注意字符串使用单引号） 30ALTER TABLE user_tbl ALTER COLUMN email SET DEFAULT &amp;#39;example@example.</description>
     </item>
     
     <item>
@@ -203,9 +205,9 @@ CPU对其的响应完全是被动的，但是可以屏蔽掉。
       <guid>https://kouler.com/posts/postgresql%E4%B8%ADjson%E5%92%8Cjsonb%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
       <description>Postgres 中的 Json 和 Jsonb 数据类型都是用于储存 JSON ( JavaScript Object Notation ) 格式数据。虽然 Text 数据类型也可以用来储存 JSON 数据， 但 JSON 数据类型的优势在于它会根据 JSON 规则来强制要求每个被储存的值都是合法的 JSON 数据。
 一般情况下， 除非有特别的要求（比如针对对象键排列顺序的遗留假设，legacy assumption）， 否则的话， 大多数应用程序都应该优先使用 jsonb 类型来储存 JSON 数据。
- Json 数据类型： json 数据类型储存输入文本的精确拷贝，处理函数在每次执行的时候，都必须对这些文本重新进行分析。
+Json 数据类型 json 数据类型储存输入文本的精确拷贝，处理函数在每次执行的时候，都必须对这些文本重新进行分析。
 json 数据类型会保留文本中与 Json 语义完全无关的空白字符，各个键在 Json 对象内的排列顺序以及具有相同键的值。
-Jsonb 数据类型： Jsonb 数据类型以无压缩（decomposed）二进制格式来储存数据，因为格式转换带来的花销，这种类型在处理输入的时候速度会稍微慢一些，但是因为这种类型的数据并不需要重新进行分析，所以这种数据的处理速度会明显地快很多。
+Jsonb 数据类型 Jsonb 数据类型以无压缩（decomposed）二进制格式来储存数据，因为格式转换带来的花销，这种类型在处理输入的时候速度会稍微慢一些，但是因为这种类型的数据并不需要重新进行分析，所以这种数据的处理速度会明显地快很多。
 jsonb 支持索引特性，这是一个明显的优点。
 jsonb 不会保留任何无关的空白，不会保留对象键的排列顺序，也不会保留任何重复的对象键。如果输入里面指定了重复的键，那么只有最后一个值会被保留。
 jsonb 类型可以检测一个 jsonb 值是否包含了另一个 jsonb 值，而 json 类型并不具备这样的特性。
@@ -218,11 +220,7 @@ jsonb 会拒绝那些超出 PostgreSQL 数字类型范围的数字，而 json �
       <pubDate>Fri, 01 Apr 2016 10:11:57 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E5%AE%89%E8%A3%85hexo/</guid>
-      <description>  安装 Node.js
-  安装 Hexo
-  sudo npm install -g hexo-cli 初始化 Hexo  hexo init &amp;lt;folder&amp;gt; cd &amp;lt;folder&amp;gt; npm install 生成静态页面  hexo generate  在 Github 新建项目
-  填写网站及Git配置信息 _config.yml
-  deploy: type: git repo: https://github.com/koulerz/kouler.git 安装 hexo-deployer-git  $ npm install hexo-deployer-git --save 部署项目到 Github  hexo deploy </description>
+      <description> 安装 Node.js 安装 Hexo  1$ sudo npm install -g hexo-cli 初始化 Hexo  1$ hexo init &amp;lt;folder&amp;gt; 2$ cd &amp;lt;folder&amp;gt; 3$ npm install 生成静态页面  1$ hexo generate 在 Github 新建项目 填写网站及Git配置信息 _config.yml  1deploy: 2 type: git 3 repo: https://github.com/koulerz/kouler.git 安装 hexo-deployer-git  1$ npm install hexo-deployer-git --save 部署项目到 Github  1$ hexo deploy </description>
     </item>
     
   </channel>

@@ -119,7 +119,7 @@ a:focus {
 
 
 .container {
-  max-width: 800px;
+  max-width: 1024px;
 }
 
 
@@ -195,54 +195,54 @@ blockquote,
 <p>简单请求遇到跨域问题时，只需要在服务器端设置响应头中加入允许跨域的头部信息即可。</p>
 <p>当遇到复杂请求时，浏览器为了防止跨域请求无端对服务器数据造成损坏会先发送一个 Options 的预检请求。服务器应该对其进行处理，决定是否允许当前客户端进一步发起跨域请求。随后浏览器会根据 Options 请求的响应信息来决定是否进行下一步真实的请求。</p>
 <p>服务器在此次 Options 请求的返回内容中还可以指示浏览器，是否在下次请求携带相关的 Cookie 或者 Http Authentication 数据过来。</p>
-<h3 id="什么是简单请求">什么是简单请求</h3>
-<hr>
+<h2 id="什么是简单请求">什么是简单请求</h2>
 <ol>
 <li>仅使用 Get 方法的请求。</li>
 <li>仅使用 Head 方法的请求。</li>
 <li>仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。</li>
 </ol>
-<h3 id="什么是复杂请求">什么是复杂请求</h3>
-<hr>
+<h2 id="什么是复杂请求">什么是复杂请求</h2>
 <p>不满足简单请求条件的都属于复杂请求。</p>
-<h3 id="解决复杂请求下的跨域问题">解决复杂请求下的跨域问题</h3>
-<hr>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>class CORSMiddleware
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>{
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    public function handle($request, Closure $next)
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    {
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>        // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>        $origin = isset($_SERVER[&#39;HTTP_ORIGIN&#39;]) ? $_SERVER[&#39;HTTP_ORIGIN&#39;] : &#39;&#39;;
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>        $allow_origin = array(
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>            &#39;http://localhost:8888&#39;,
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>            &#39;http://test.com&#39;,
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>            &#39;https://test.com&#39;,
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>        );
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>        // 如果请求方法为 options, 加入允许跨域响应头并直接发送响应信息
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>        if ($request-&gt;isMethod(&#39;options&#39;) &amp;&amp; in_array($origin, $allow_origin)) {
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>            header(&#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&#34;);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>            header(&#34;Access-Control-Allow-Origin:&#34;.$origin);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>            header(&#34;Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin&#34;);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>            header(&#34;Access-Control-Allow-Credentials: true&#34;);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span>            return response(&#39;OK&#39;, &#39;200&#39;);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span>        }
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span>        if (in_array($origin, $allow_origin)) {
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span>            header(&#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&#34;);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>            header(&#34;Access-Control-Allow-Origin:&#34;.$origin);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span>            header(&#34;Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin&#34;);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span>            header(&#34;Access-Control-Allow-Credentials: true&#34;);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span>        }
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span>        return $next($request);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span>    }
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span>}
-</code></pre></div><h3 id="参考--扩展阅读">参考 &amp; 扩展阅读</h3>
-<hr>
-<p><a href="http://materliu.github.io/all/web/2014/11/01/preflight-options.html">CORS简单请求和复杂请求</a></p>
+<h2 id="解决复杂请求下的跨域问题">解决复杂请求下的跨域问题</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00f">class</span> <span style="color:#007575">CORSMiddleware</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    <span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">handle</span>($request, Closure $next)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>        <span style="color:#f00;font-style:italic">// 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#f00;font-style:italic"></span>        $origin = isset($_SERVER[<span style="color:#009c00">&#39;HTTP_ORIGIN&#39;</span>]) ? $_SERVER[<span style="color:#009c00">&#39;HTTP_ORIGIN&#39;</span>] : <span style="color:#009c00">&#39;&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>        $allow_origin = <span style="color:#00f">array</span>(
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>            <span style="color:#009c00">&#39;http://localhost:8888&#39;</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>            <span style="color:#009c00">&#39;http://test.com&#39;</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>            <span style="color:#009c00">&#39;https://test.com&#39;</span>,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>        );
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>        <span style="color:#f00;font-style:italic">// 如果请求方法为 options, 加入允许跨域响应头并直接发送响应信息
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span style="color:#f00;font-style:italic"></span>        <span style="color:#00f">if</span> ($request-&gt;isMethod(<span style="color:#009c00">&#39;options&#39;</span>) &amp;&amp; in_array($origin, $allow_origin)) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>            header(<span style="color:#009c00">&#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&#34;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>            header(<span style="color:#009c00">&#34;Access-Control-Allow-Origin:&#34;</span>.$origin);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>            header(<span style="color:#009c00">&#34;Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin&#34;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span>            header(<span style="color:#009c00">&#34;Access-Control-Allow-Credentials: true&#34;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span>            <span style="color:#00f">return</span> response(<span style="color:#009c00">&#39;OK&#39;</span>, <span style="color:#009c00">&#39;200&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span>        }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>        <span style="color:#00f">if</span> (in_array($origin, $allow_origin)) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span>            header(<span style="color:#009c00">&#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&#34;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span>            header(<span style="color:#009c00">&#34;Access-Control-Allow-Origin:&#34;</span>.$origin);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span>            header(<span style="color:#009c00">&#34;Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin&#34;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span>            header(<span style="color:#009c00">&#34;Access-Control-Allow-Credentials: true&#34;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span>        }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span>        <span style="color:#00f">return</span> $next($request);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span>}
+</code></pre></div><h2 id="参考--扩展阅读">参考 &amp; 扩展阅读</h2>
+<ul>
+<li><a href="http://materliu.github.io/all/web/2014/11/01/preflight-options.html">CORS简单请求和复杂请求</a></li>
+</ul>
 
     </article>
   </div>
