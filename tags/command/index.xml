@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>command on Kouler</title>
+    <link>https://kouler.com/tags/command/</link>
+    <description>Recent content in command on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 21 Jun 2016 00:38:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PhpStorm 常用快捷键</title>
+      <link>https://kouler.com/posts/phpstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Tue, 21 Jun 2016 00:38:50 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/phpstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>文本编辑     快捷键 描述     Command + Alt + I 对当前文件进行格式化排版   Control + G 顺序选中相同的文本   Shift + Enter 在当前行下方插入新行   Command + Alt + Enter 在当前行上方插入新行   Command + / 单行注释   Command + Shift + / 块代码注释   Command + D 复制当前行   Command + P 查看当前函数参数   Command + Shift + Enter 补全代码（if）   Alt + / 自动完成   Alt + Click 插入多个光标（鼠标单击）   Alt Alt + Up 向上插入多个光标（双击 Alt 并按住）   Alt Alt + Down 向下插入多个光标（双击 Alt 并按住）   Alt + Double Click 选中多个文本（鼠标双击）   Alt + Mouse 选中多个文本（鼠标拖动）   Ctrl + Mouse 复制选中文本（鼠标拖动）   Command + Mouse 移动选中文本（鼠标拖动）   Command + J 活动代码提示   Command + Alt + T 插入环绕代码   Command + .</description>
+    </item>
+    
+    <item>
+      <title>Bash 命令行快捷键</title>
+      <link>https://kouler.com/posts/bash%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Mon, 23 May 2016 22:45:49 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/bash%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>编辑命令  Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符
+Bang (!) 命令  !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !： 上一条命令的所有参数 !:p： 打印输出 !* 的内容
+^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL 常用操作</title>
+      <link>https://kouler.com/posts/postgresql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sun, 03 Apr 2016 12:21:24 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/postgresql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>常用控制台命令  \password 设置密码。 \q 退出。 \h 查看SQL命令的解释，比如\h select。 \? 查看psql命令列表。 \l 列出所有数据库。 \c [database_name] 连接其他数据库。 \d 列出当前数据库的所有表格。 \d [table_name] 列出某一张表格的结构。 \du 列出所有用户。 \e 打开文本编辑器。 \conninfo 列出当前数据库和连接的信息。 常用SQL语句  # 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); # 插入数据 INSERT INTO user_tbl(name, signup_date) VALUES(&#39;张三&#39;, &#39;2013-12-22&#39;); # 查询记录 SELECT * FROM user_tbl; # 更新数据 UPDATE user_tbl set name = &#39;李四&#39; WHERE name = &#39;张三&#39;; # 删除记录 DELETE FROM user_tbl WHERE name = &#39;李四&#39; ; # 添加字段 ALTER TABLE user_tbl ADD email VARCHAR(40); ALTER TABLE user_tbl ADD COLUMN images jsonb DEFAULT &#39;{}&#39;; # 更改字段类型 ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL; # 更改字段类型长度 ALTER TABLE user_tbl ALTER COLUMN password TYPE varchar(32); # 为字段添加索引 CREATE INDEX index_name ON user_tbl (name); # 设置字段默认值（注意字符串使用单引号） ALTER TABLE user_tbl ALTER COLUMN email SET DEFAULT &#39;example@example.</description>
+    </item>
+    
+  </channel>
+</rss>

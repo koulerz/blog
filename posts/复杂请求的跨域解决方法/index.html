@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>复杂请求的跨域解决方法 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">复杂请求的跨域解决方法</h1>
+    
+    
+    <small class="text-secondary">Feb 17, 2017</small>
+    
+
+<small><code><a href="https://kouler.com/tags/web">#web</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/cors">#cors</a></code></small>
+
+    <br><br>
+<p>简单请求遇到跨域问题时，只需要在服务器端设置响应头中加入允许跨域的头部信息即可。</p>
+<p>当遇到复杂请求时，浏览器为了防止跨域请求无端对服务器数据造成损坏会先发送一个 Options 的预检请求。服务器应该对其进行处理，决定是否允许当前客户端进一步发起跨域请求。随后浏览器会根据 Options 请求的响应信息来决定是否进行下一步真实的请求。</p>
+<p>服务器在此次 Options 请求的返回内容中还可以指示浏览器，是否在下次请求携带相关的 Cookie 或者 Http Authentication 数据过来。</p>
+<h3 id="什么是简单请求">什么是简单请求</h3>
+<hr>
+<ol>
+<li>仅使用 Get 方法的请求。</li>
+<li>仅使用 Head 方法的请求。</li>
+<li>仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。</li>
+</ol>
+<h3 id="什么是复杂请求">什么是复杂请求</h3>
+<hr>
+<p>不满足简单请求条件的都属于复杂请求。</p>
+<h3 id="解决复杂请求下的跨域问题">解决复杂请求下的跨域问题</h3>
+<hr>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>class CORSMiddleware
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    public function handle($request, Closure $next)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>        // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>        $origin = isset($_SERVER[&#39;HTTP_ORIGIN&#39;]) ? $_SERVER[&#39;HTTP_ORIGIN&#39;] : &#39;&#39;;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>        $allow_origin = array(
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>            &#39;http://localhost:8888&#39;,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>            &#39;http://test.com&#39;,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>            &#39;https://test.com&#39;,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>        );
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>        // 如果请求方法为 options, 加入允许跨域响应头并直接发送响应信息
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>        if ($request-&gt;isMethod(&#39;options&#39;) &amp;&amp; in_array($origin, $allow_origin)) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>            header(&#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&#34;);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>            header(&#34;Access-Control-Allow-Origin:&#34;.$origin);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>            header(&#34;Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin&#34;);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>            header(&#34;Access-Control-Allow-Credentials: true&#34;);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span>            return response(&#39;OK&#39;, &#39;200&#39;);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span>        }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span>        if (in_array($origin, $allow_origin)) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span>            header(&#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&#34;);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>            header(&#34;Access-Control-Allow-Origin:&#34;.$origin);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span>            header(&#34;Access-Control-Allow-Headers: Content-Type, X-Auth-Token, Origin&#34;);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span>            header(&#34;Access-Control-Allow-Credentials: true&#34;);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span>        }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span>        return $next($request);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span>}
+</code></pre></div><h3 id="参考--扩展阅读">参考 &amp; 扩展阅读</h3>
+<hr>
+<p><a href="http://materliu.github.io/all/web/2014/11/01/preflight-options.html">CORS简单请求和复杂请求</a></p>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>PostgreSQL 常用操作 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 800px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">PostgreSQL 常用操作</h1>
+    
+    
+    <small class="text-secondary">Apr 3, 2016</small>
+    
+
+<small><code><a href="https://kouler.com/tags/postgresql">#postgresql</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/database">#database</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/command">#command</a></code></small>
+
+    <br><br>
+<h2 id="常用控制台命令">常用控制台命令</h2>
+<hr>
+<pre><code>\password           设置密码。
+\q                  退出。
+\h                  查看SQL命令的解释，比如\h select。
+\?                  查看psql命令列表。
+\l                  列出所有数据库。
+\c [database_name]  连接其他数据库。
+\d                  列出当前数据库的所有表格。
+\d [table_name]     列出某一张表格的结构。
+\du                 列出所有用户。
+\e                  打开文本编辑器。
+\conninfo           列出当前数据库和连接的信息。
+</code></pre><h2 id="常用sql语句">常用SQL语句</h2>
+<hr>
+<pre><code># 创建新表
+CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);
+
+# 插入数据
+INSERT INTO user_tbl(name, signup_date) VALUES('张三', '2013-12-22');
+
+# 查询记录
+SELECT * FROM user_tbl;
+
+# 更新数据
+UPDATE user_tbl set name = '李四' WHERE name = '张三';
+
+# 删除记录
+DELETE FROM user_tbl WHERE name = '李四' ;
+
+# 添加字段
+ALTER TABLE user_tbl ADD email VARCHAR(40);
+ALTER TABLE user_tbl ADD COLUMN images jsonb DEFAULT '{}';
+
+# 更改字段类型
+ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL;
+
+# 更改字段类型长度
+ALTER TABLE user_tbl ALTER COLUMN password TYPE varchar(32);
+
+# 为字段添加索引
+CREATE INDEX index_name ON user_tbl (name);
+
+# 设置字段默认值（注意字符串使用单引号）
+ALTER TABLE user_tbl ALTER COLUMN email SET DEFAULT 'example@example.com';
+
+# 设置字段默认值为指定序列（通常用于主键字段）
+ALTER TABLE user_tbl ALTER COLUMN id SET DEFAULT nextval('user_id_seq');
+
+# 去除字段默认值
+ALTER TABLE user_tbl ALTER email DROP DEFAULT;
+
+# 去除字段不为空限制
+ALTER TABLE user_tbl ALTER email DROP NOT NULL;
+
+# 重命名字段
+ALTER TABLE user_tbl RENAME COLUMN signup_date TO signup;
+
+# 删除字段
+ALTER TABLE user_tbl DROP COLUMN email;
+
+# 表重命名
+ALTER TABLE user_tbl RENAME TO backup_tbl;
+
+# 删除表
+DROP TABLE IF EXISTS backup_tbl;
+
+# 删除库
+DROP DATABASE IF EXISTS hello;
+
+# 查看当前序列的值
+SELECT currval('user_id_seq');
+
+# 设置序列的初始值为 100
+select setval('user_id_seq',100);
+
+# 递增序列的值
+select nextval('user_id_seq');
+
+</code></pre><h2 id="创建数据表例子">创建数据表例子</h2>
+<hr>
+<pre><code>CREATE TABLE lm_user(
+    id SERIAL PRIMARY KEY NOT NULL, -- 'ID'
+    openid VARCHAR(20) DEFAULT NULL UNIQUE, -- 'OPENID'
+    email VARCHAR(50) NOT NULL UNIQUE, -- 'email'
+    mobilephone CHAR(15) DEFAULT NULL UNIQUE, -- '手机号码'
+    password VARCHAR(60) NOT NULL, -- '登录密码'
+    name VARCHAR(20) DEFAULT NULL, -- '姓名'
+    num INT NOT NULL DEFAULT '0', -- ''
+    status SMALLINT NOT NULL DEFAULT '1' -- '状态'
+);
+</code></pre><h2 id="备份和恢复">备份和恢复</h2>
+<hr>
+<pre><code>pg_dump 备份
+pg_dumpall 备份所有数据库
+pg_restore 恢复
+psql exampledb &lt; exampledb.sql 导入数据
+</code></pre><h2 id="参考--扩展阅读">参考 &amp; 扩展阅读</h2>
+<hr>
+<p><a href="http://bbs.csdn.net/topics/340077504">Sequence 和主键有什么区别</a>
+<a href="http://www.cnblogs.com/mchina/archive/2013/04/10/3012493.html">PostgreSQL 序列（SEQUENCE）</a></p>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

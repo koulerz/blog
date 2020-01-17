@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>Tags | Kouler</title>
+  <title>跨域问题解决方法 | Kouler</title>
   
 
   <style>
@@ -180,36 +180,48 @@ blockquote,
   
   <div class="container">
     <article>
-      
-  <p><a href="/tags/bash/"><code>bash</code></a> 1</p>
+      <h1 style="margin:0 0 5px 0">跨域问题解决方法</h1>
+    
+    
+    <small class="text-secondary">May 23, 2016</small>
+    
 
-  <p><a href="/tags/command/"><code>command</code></a> 3</p>
+<small><code><a href="https://kouler.com/tags/web">#web</a></code></small>
 
-  <p><a href="/tags/cors/"><code>cors</code></a> 2</p>
 
-  <p><a href="/tags/database/"><code>database</code></a> 3</p>
+<small><code><a href="https://kouler.com/tags/cors">#cors</a></code></small>
 
-  <p><a href="/tags/hexo/"><code>hexo</code></a> 1</p>
-
-  <p><a href="/tags/http/"><code>http</code></a> 2</p>
-
-  <p><a href="/tags/json/"><code>json</code></a> 1</p>
-
-  <p><a href="/tags/linux/"><code>linux</code></a> 2</p>
-
-  <p><a href="/tags/os/"><code>os</code></a> 2</p>
-
-  <p><a href="/tags/php/"><code>php</code></a> 4</p>
-
-  <p><a href="/tags/phpstorm/"><code>phpstorm</code></a> 1</p>
-
-  <p><a href="/tags/postgresql/"><code>postgresql</code></a> 3</p>
-
-  <p><a href="/tags/tool/"><code>tool</code></a> 2</p>
-
-  <p><a href="/tags/web/"><code>web</code></a> 5</p>
-
-  <p><a href="/tags/webserver/"><code>webserver</code></a> 1</p>
+    <br><br>
+<p>本文通过设置 Access-Control-Allow-Origin 来实现跨域。 <br>
+例如：客户端的域名是 client.com，而请求的域名是 server.com。 <br>
+如果直接使用 ajax 访问，会有以下错误：</p>
+<pre><code>XMLHttpRequest cannot load http://server.com/server.php. 
+No 'Access-Control-Allow-Origin' header is present on the requested resource.
+Origin 'http://client.com' is therefore not allowed access.
+</code></pre><h3 id="1-允许单个域名访问">1. 允许单个域名访问</h3>
+<hr>
+<p>指定某域名（ <a href="http://client.com">http://client.com</a> ）跨域访问，则只需在 <a href="http://server.com/server.php">http://server.com/server.php</a> 文件头部添加如下代码：</p>
+<pre><code>header('Access-Control-Allow-Origin: http://client.com');
+</code></pre><h3 id="2-允许多个域名访问">2. 允许多个域名访问</h3>
+<hr>
+<p>指定多个域名（ <a href="http://client1.com,">http://client1.com,</a> <a href="http://client2.com">http://client2.com</a> 等 ）跨域访问，则只需在 <a href="http://server.com/server.php">http://server.com/server.php</a> 文件头部添加如下代码：</p>
+<pre><code>$origin = isset($_SERVER['HTTP_ORIGIN'])? $_SERVER['HTTP_ORIGIN'] : '';  
+  
+$allow_origin = array(  
+    'http://client1.com',  
+    'http://client2.com'  
+);  
+  
+if(in_array($origin, $allow_origin)){  
+    header('Access-Control-Allow-Origin: '.$origin);       
+} 
+</code></pre><h3 id="3-允许所有域名访问">3. 允许所有域名访问</h3>
+<hr>
+<p>允许所有域名访问则只需在 <a href="http://server.com/server.php">http://server.com/server.php</a> 文件头部添加如下代码：</p>
+<pre><code>header('Access-Control-Allow-Origin: *'); 
+</code></pre><h3 id="参考--扩展阅读">参考 &amp; 扩展阅读</h3>
+<hr>
+<p><a href="http://www.runoob.com/w3cnote/php-ajax-cross-border.html">PHP Ajax 跨域问题最佳解决方案</a></p>
 
     </article>
   </div>

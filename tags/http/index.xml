@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>http on Kouler</title>
+    <link>https://kouler.com/tags/http/</link>
+    <description>Recent content in http on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 13 Oct 2016 12:09:37 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/http/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>浏览器拦截第三方 Cookies 解决方法</title>
+      <link>https://kouler.com/posts/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8B%A6%E6%88%AA%E7%AC%AC%E4%B8%89%E6%96%B9cookies%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Thu, 13 Oct 2016 12:09:37 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8B%A6%E6%88%AA%E7%AC%AC%E4%B8%89%E6%96%B9cookies%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <description>高版本的 Safari 浏览器为了保护用户隐私会默认阻止第三方的 Cookies。Web 开发中，使用第三方资源非常常见，大多数情况下，这并不会带来问题。然而当我们希望能读写第三方域下的 Cookies 时，就会遇到 Cookies 被拦截的情况从而导致各种问题。
+第三方指的是谁  当用户请求某一域名下的页面时，如果页面中引用了另一个域名下的资源，则另一个域名被算作第三方。
+解决第三方 Cookies 被拦截的方法  方法一： 客户端手动修改设置。例如 Safari 可以通过偏好设置中的隐私栏修改 Cookies 的安全策略。
+方法二： 将需要请求的第三方资源放在本域下。
+前两种方法有各自的限制，如果无法解决问题，则需要考虑更复杂的解决方法。
+方法三： Safari 会在第三方域下完全没有 Cookies 时阻止第三方 Cookies，而第三方域下只要有过任意一个 Cookie，即可顺利读写。 据此，我们可以考虑当第三方域下没有 Cookies 时，首先将页面先跳到这个域，写入任意 Cookies，再跳回来。或者弹出一个新窗口，写入 Cookies，再关闭弹窗。
+方法四： Safari 只阻止了第三方 Cookies，并没有阻止第三方 LocalStorage，于是，我们便可以使用更为激进的方案，即放弃第三方 Cookies，使用 LocalStorage 来代替。
+参考 &amp;amp; 扩展阅读  当浏览器默认禁用第三方cookie</description>
+    </item>
+    
+    <item>
+      <title>PHP 中获取 POST 数据的方式</title>
+      <link>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Tue, 13 Sep 2016 18:42:34 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</guid>
+      <description>form-data x-www-form-urlencoded raw     $_POST 推荐 推荐 无效   $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效   php://input 无效 有效 推荐    $_POST 方式  通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
+Coentent-Type 仅在取值为 application/x-www-data-urlencoded 或 multipart/form-data 两种情况下，PHP才会将 HTTP 请求数据包中相应的数据填入全局变量 $_POST。
+$GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 方式  此变量仅在碰到未识别 MIME 类型的数据时产生。
+PHP 默认识别的数据类型是 application/x-www.form-urlencoded 标准的数据类型。如果 POST 过来的数据不是 PHP 能够识别的，比如 text/xml 或者 soap 等可以用 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;]方式来接收。
+不过，访问原始 POST 数据的更好方法是 php://input。
+php://input 方式  php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.</description>
+    </item>
+    
+  </channel>
+</rss>

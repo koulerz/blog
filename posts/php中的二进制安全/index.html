@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>Tags | Kouler</title>
+  <title>PHP 中的二进制安全 | Kouler</title>
   
 
   <style>
@@ -180,36 +180,51 @@ blockquote,
   
   <div class="container">
     <article>
-      
-  <p><a href="/tags/bash/"><code>bash</code></a> 1</p>
+      <h1 style="margin:0 0 5px 0">PHP 中的二进制安全</h1>
+    
+    
+    <small class="text-secondary">May 14, 2016</small>
+    
 
-  <p><a href="/tags/command/"><code>command</code></a> 3</p>
+<small><code><a href="https://kouler.com/tags/php">#php</a></code></small>
 
-  <p><a href="/tags/cors/"><code>cors</code></a> 2</p>
+    <br><br>
+<h3 id="二进制安全是什么">二进制安全是什么</h3>
+<hr>
+<p>先看一段代码：</p>
+<pre><code>&lt;?php
+$string1 = &quot;Hello&quot;; 
+$string2 = &quot;Hello\0Hello&quot;;
 
-  <p><a href="/tags/database/"><code>database</code></a> 3</p>
+// 返回0, 由于是非二进制安全，误判为相等
+echo strcoll($string1, $string2);
 
-  <p><a href="/tags/hexo/"><code>hexo</code></a> 1</p>
-
-  <p><a href="/tags/http/"><code>http</code></a> 2</p>
-
-  <p><a href="/tags/json/"><code>json</code></a> 1</p>
-
-  <p><a href="/tags/linux/"><code>linux</code></a> 2</p>
-
-  <p><a href="/tags/os/"><code>os</code></a> 2</p>
-
-  <p><a href="/tags/php/"><code>php</code></a> 4</p>
-
-  <p><a href="/tags/phpstorm/"><code>phpstorm</code></a> 1</p>
-
-  <p><a href="/tags/postgresql/"><code>postgresql</code></a> 3</p>
-
-  <p><a href="/tags/tool/"><code>tool</code></a> 2</p>
-
-  <p><a href="/tags/web/"><code>web</code></a> 5</p>
-
-  <p><a href="/tags/webserver/"><code>webserver</code></a> 1</p>
+// 返回&lt;0,不相等
+echo strcmp($string1, $string2);  
+?&gt;
+</code></pre><p>这是为什么呢？PHP 是基于 C 实现的，PHP 代码都会被 Zend引擎编译成 opcode，最终作为 C语言去执行。而对于 C语言中 &ldquo;\0&rdquo; 是字符串的结束符，它读到 &ldquo;\0&rdquo; 就会默认字符读取已经结束，从而抛掉后面的字符串。</p>
+<pre><code>main(){  
+    char ab[] = &quot;Hello&quot;;  
+    char ac[] = &quot;Hello\0Hello&quot;;
+    
+    // 返回0, 由于是非二进制安全，误判为相等
+    strcmp(ab, ac); 
+}
+</code></pre><p>有一个二进制安全的定义:</p>
+<blockquote>
+<p>程序不会对其中的数据做任何限制、过滤、或者假设 —— 数据在写入时是什么样的，它被读取时就是什么样。</p>
+</blockquote>
+<h3 id="php是如何实现二进制安全的">PHP是如何实现二进制安全的</h3>
+<hr>
+<p>既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的</p>
+<pre><code>struct{
+    char *val;
+    int len;
+} str;
+</code></pre><p><code>val</code> 是指向字符串内存的指针，<code>len</code> 表示该字符串的长度，无论是否遇到 &ldquo;\0&rdquo; 字符，C 都按照 <code>len</code> 长度读取该字符串。</p>
+<h3 id="参考--扩展阅读">参考 &amp; 扩展阅读</h3>
+<hr>
+<p><a href="http://wuxinjie.github.io/php-02/">PHP有趣的细节：二进制安全</a></p>
 
     </article>
   </div>

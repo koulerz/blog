@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on Kouler</title>
+    <link>https://kouler.com/tags/php/</link>
+    <description>Recent content in php on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 13 Sep 2016 18:42:34 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PHP 中获取 POST 数据的方式</title>
+      <link>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Tue, 13 Sep 2016 18:42:34 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</guid>
+      <description>form-data x-www-form-urlencoded raw     $_POST 推荐 推荐 无效   $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效   php://input 无效 有效 推荐    $_POST 方式  通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
+Coentent-Type 仅在取值为 application/x-www-data-urlencoded 或 multipart/form-data 两种情况下，PHP才会将 HTTP 请求数据包中相应的数据填入全局变量 $_POST。
+$GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 方式  此变量仅在碰到未识别 MIME 类型的数据时产生。
+PHP 默认识别的数据类型是 application/x-www.form-urlencoded 标准的数据类型。如果 POST 过来的数据不是 PHP 能够识别的，比如 text/xml 或者 soap 等可以用 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;]方式来接收。
+不过，访问原始 POST 数据的更好方法是 php://input。
+php://input 方式  php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.</description>
+    </item>
+    
+    <item>
+      <title>WebServer和CGI以及PHPFPM之间的关系</title>
+      <link>https://kouler.com/posts/webserver%E5%92%8Ccgi%E4%BB%A5%E5%8F%8Aphpfpm%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Wed, 15 Jun 2016 23:28:36 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/webserver%E5%92%8Ccgi%E4%BB%A5%E5%8F%8Aphpfpm%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</guid>
+      <description>WebServer  最早的 Web服务器简单地响应浏览器发来的 HTTP 请求，并将存储在服务器上的 HTML 文件返回给浏览器，也就是静态HTML。
+但事物总是不断发展的，网站也逐渐变得复杂，所以出现动态技术。但是 Web服务器并不能直接运行 php，asp 这样的文件，当浏览器请求 index.php?a=1&amp;amp;b=2 时，Web服务器就不知道该如何处理了，它不能理解 “php”、“?”、“&amp;amp;”、“a”、“b” 各是什么意思，这时它就需要调用相应的脚本解释程序（如PHP-CGI）来处理这样的请求。
+CGI  Web服务器不知道如何处理动态页面请求，需要移交其他程序来处理，这时需要与该程序做个约定，我给你什么，然后你给我什么，就是我把请求参数（如 a=1，b=2）发送给你，然后我接收你的处理结果给客户端。那这个约定就是 Common Gateway Interface，简称 CGI。这个协议可以用 VB，C，PHP，Python 等语言来实现。
+CGI 只是接口协议，根本不是什么语言。
+WEB服务器与 CGI 程序的交互  Web服务器将根据 CGI程序的类型决定数据向 CGI程序的传送方式，通常是通过标准输入/输出流和环境变量来传递。
+CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入输出。此外 CGI程序还通过环境变量来得到输入。
+操作系统提供了许多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。
+Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程序传递一些重要的参数。
+下面是一些常用的 CGI 环境变量：
+   变量名 描述     CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型   CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用   HTTP_COOKIE 客户机内的 COOKIE 内容   HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息   PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现   QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔   REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机   REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量   REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
+    </item>
+    
+    <item>
+      <title>PHP 中的二进制安全</title>
+      <link>https://kouler.com/posts/php%E4%B8%AD%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/</link>
+      <pubDate>Sat, 14 May 2016 21:47:46 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/php%E4%B8%AD%E7%9A%84%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/</guid>
+      <description>二进制安全是什么  先看一段代码：
+&amp;lt;?php $string1 = &amp;quot;Hello&amp;quot;; $string2 = &amp;quot;Hello\0Hello&amp;quot;; // 返回0, 由于是非二进制安全，误判为相等 echo strcoll($string1, $string2); // 返回&amp;lt;0,不相等 echo strcmp($string1, $string2); ?&amp;gt; 这是为什么呢？PHP 是基于 C 实现的，PHP 代码都会被 Zend引擎编译成 opcode，最终作为 C语言去执行。而对于 C语言中 &amp;ldquo;\0&amp;rdquo; 是字符串的结束符，它读到 &amp;ldquo;\0&amp;rdquo; 就会默认字符读取已经结束，从而抛掉后面的字符串。
+main(){ char ab[] = &amp;quot;Hello&amp;quot;; char ac[] = &amp;quot;Hello\0Hello&amp;quot;; // 返回0, 由于是非二进制安全，误判为相等 strcmp(ab, ac); } 有一个二进制安全的定义:
+ 程序不会对其中的数据做任何限制、过滤、或者假设 —— 数据在写入时是什么样的，它被读取时就是什么样。
+ PHP是如何实现二进制安全的  既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的
+struct{ char *val; int len; } str; val 是指向字符串内存的指针，len 表示该字符串的长度，无论是否遇到 &amp;ldquo;\0&amp;rdquo; 字符，C 都按照 len 长度读取该字符串。</description>
+    </item>
+    
+    <item>
+      <title>PHP 中的异常捕获</title>
+      <link>https://kouler.com/posts/php%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/</link>
+      <pubDate>Thu, 12 May 2016 19:17:55 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/php%E4%B8%AD%E7%9A%84%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/</guid>
+      <description>PHP 中 try catch 可以帮助我们捕获程序代码的异常以便使我们很好的处理一些不必要的错误。
+Try 语句  try 是用来定义检测异常的代码块。 需要进行异常处理的代码都必须放入 try 代码块内，以便捕获可能存在的异常。 每一个 try 至少要有一个与之对应的 catch 。
+try { // 需要进行异常处理的代码 } try 代码块有可能运行到最后一行，也有可能抛出异常，如果抛出了异常，代码的剩余部分就会被跳过，程序会跳到 Catch 语句块中执行。
+Catch 语句  定义处理发生异常时执行的代码块。使用多个 catch 可以捕获不同的类所产生的异常。
+当 try 代码块不再抛出异常或者找不到 catch 能匹配所抛出的异常时，PHP 代码就会在跳转到最后一个 catch 的后面继续执行。 PHP允许在 catch 代码块内再次抛出（throw）异常。
+当一个异常被抛出时，其后（指抛出异常时所在的代码块）的代码将不会继续执行，而 PHP 就会尝试查找第一个能与之匹配的 catch。
+如果一个异常没有被捕获，而且又没用使用 set_exception_handler() 作相应的处理的话，那么 PHP 将会产生一个严重的错误，并且输出 Uncaught Exception ... （未捕获异常）的提示信息。
+catch(Exception $e) { echo $e; } 上面代码中，$e 是 Exception 类的一个实例。
+Exception 是所有类型异常的祖先，所以捕捉 Exception 类会捕捉到任何类型的异常。</description>
+    </item>
+    
+  </channel>
+</rss>

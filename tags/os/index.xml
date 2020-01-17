@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>os on Kouler</title>
+    <link>https://kouler.com/tags/os/</link>
+    <description>Recent content in os on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 10 Jun 2016 22:36:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/os/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Linux0.11 内核引导启动流程</title>
+      <link>https://kouler.com/posts/linux011%E5%86%85%E6%A0%B8%E5%BC%95%E5%AF%BC%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</link>
+      <pubDate>Fri, 10 Jun 2016 22:36:02 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/linux011%E5%86%85%E6%A0%B8%E5%BC%95%E5%AF%BC%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</guid>
+      <description>计算机加电后，最开始 BIOS 中的程序会先开始执行，BIOS 程序执行结束后，将由操作系统接管。
+引导启动过程中会用到的内核文件说明 boot / bootsect.s : 该程序是磁盘引导块程序，编译后会驻留在磁盘的第一个扇区中（即引导扇区中，0 磁道（柱面），0 磁头，第一个扇区）。计算机机加电 ROM BIOS 自检后，将被 BIOS 加载到内存 0x7C00 处执行。
+boot / setup.s : 该程序主要用于读取机器的硬件配置参数，并把内核模块 system 移动到适当的内存位置处。
+boot / head.s : 该程序会被编译连接在 system 模块的最前部分，主要进行硬件设备的探测设置和内存管理页面的初始化设置工作。
+引导启动过程中文件运行顺序图 BIOS 程序执行流程   计算机加电，80x86 结构的 CPU 自动进入实模式，并从地址 0xFFFF0 开始自动执行代码。这个地址也就是 ROM-BIOS 中的地址。
+  BIOS 执行系统检测，并在物理地址 0 处初始化中断向量。
+  BIOS 将可启动设备的第一个扇区（磁盘引导扇区，512字节）读入内存绝对地址 0x7C00 处并跳转到这个地方。
+  接下来将由操作系统文件接管启动流程。
+操作系统程序执行流程 Linux 的最最前面部分是用 8086 汇编语言编写的（bootsect.s）。它由 BIOS 读入到内存绝对地址 0x7C00（31KB）处。
+  bootsect.</description>
+    </item>
+    
+    <item>
+      <title>Linux 的中断异常和信号</title>
+      <link>https://kouler.com/posts/linux%E7%9A%84%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E5%92%8C%E4%BF%A1%E5%8F%B7/</link>
+      <pubDate>Tue, 19 Apr 2016 21:42:10 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/linux%E7%9A%84%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E5%92%8C%E4%BF%A1%E5%8F%B7/</guid>
+      <description>中断  中断是指CPU对系统发生的某个事件作出的一种反应，让CPU暂时停止当前程序的执行转而执行处理新情况的程序和执行过程。即在程序运行过程中，系统出现了一个必须由CPU立即处理的情况，此时，CPU暂时中止程序的执行转而处理这个新的情况的过程就叫做中断。
+**中断向量：**每个中断和异常是由0~255之间的一个数来标识。Intel把这个8位的无符号整数叫做一个向量。
+**IRQ：**每个能够发出中断请求的硬件设备控制器都有一条名为IRQ的输出线。所有现有的IRQ线都与一个名为可编程中断控制器的硬件电路的输入引脚相连。
+**PIC：**可编程中断控制器
+**IDT：**中断描述符表，中断描述符表是一个系统表，它与每一个中断或异常向量相联系，每一个向量在表中有相应的中断和异常处理程序的入口地址。表中的每一项对应一个中断或异常向量，每个向量由8个字节组成。因此，最多需要256*8=2048字节来存放IDT。
+广义的中断包含异步中断和同步中断。
+异步中断  异步中断(外部中断/硬件中断)通常被直接称为中断(interrupt):
+CPU对其的响应完全是被动的，但是可以屏蔽掉。
+异步中断可分为可屏蔽中断（Maskable interrupt）和非屏蔽中断（Nomaskable interrupt）。
+所谓的异步指的是发生的中断不是随正在执行的指令同步发生的，是由其他硬件设备依照 CPU 时钟信号随机产生的，是不可预知的，例如用户随时在键盘上按下一个键。
+同步中断  同步中断(内部中断/软件中断)通常被称为异常(exception):
+在Intel的手册中，同步中断被称之为异常。
+异常可分为故障(fault)、陷阱(trap)、**终止(abort)**三类。
+   类型 原因 异步/同步 返回行为 例子     陷阱 有意的异常 同步 总是返回到下一条指令 系统调用、信号机制 ( 通过软中断实现 )   故障 潜在可恢复的错误 同步 返回到当前指令 缺页异常、除 0 错误、段错误   终止 不可恢复的错误 同步 不会返回 硬件错误    软中断和硬中断：  软中断是通信进程之间用来模拟硬中断的一种信号通信方式。是属于一种编程手段，也有称之为软中断通信机制。
+硬中断一般就是指的硬件中断，也就是常说的中断，由硬件触发。
+区别：     类型 产生的位置 发生的时刻 时序     中断 CPU外部 随机 异步   异常 CPU内部 一条指令终止后 同步    信号机制  信号是异步的进程间的通讯机制，是在软件层次上对中断机制的一种模拟，在原理上，一个进程收到一个信号与处理器收到一个中断请求可以说是一样的。</description>
+    </item>
+    
+  </channel>
+</rss>

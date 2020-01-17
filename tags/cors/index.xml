@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cors on Kouler</title>
+    <link>https://kouler.com/tags/cors/</link>
+    <description>Recent content in cors on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 17 Feb 2017 19:22:38 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/cors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>复杂请求的跨域解决方法</title>
+      <link>https://kouler.com/posts/%E5%A4%8D%E6%9D%82%E8%AF%B7%E6%B1%82%E7%9A%84%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Fri, 17 Feb 2017 19:22:38 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E5%A4%8D%E6%9D%82%E8%AF%B7%E6%B1%82%E7%9A%84%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <description>简单请求遇到跨域问题时，只需要在服务器端设置响应头中加入允许跨域的头部信息即可。
+当遇到复杂请求时，浏览器为了防止跨域请求无端对服务器数据造成损坏会先发送一个 Options 的预检请求。服务器应该对其进行处理，决定是否允许当前客户端进一步发起跨域请求。随后浏览器会根据 Options 请求的响应信息来决定是否进行下一步真实的请求。
+服务器在此次 Options 请求的返回内容中还可以指示浏览器，是否在下次请求携带相关的 Cookie 或者 Http Authentication 数据过来。
+什么是简单请求   仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。  什么是复杂请求  不满足简单请求条件的都属于复杂请求。
+解决复杂请求下的跨域问题  1class CORSMiddleware 2{ 3 public function handle($request, Closure $next) 4 { 5 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 6 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 7 8 $allow_origin = array( 9 &amp;#39;http://localhost:8888&amp;#39;, 10 &amp;#39;http://test.</description>
+    </item>
+    
+    <item>
+      <title>跨域问题解决方法</title>
+      <link>https://kouler.com/posts/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Mon, 23 May 2016 17:35:00 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <description>本文通过设置 Access-Control-Allow-Origin 来实现跨域。 例如：客户端的域名是 client.com，而请求的域名是 server.com。 如果直接使用 ajax 访问，会有以下错误：
+XMLHttpRequest cannot load http://server.com/server.php. No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. Origin &#39;http://client.com&#39; is therefore not allowed access. 1. 允许单个域名访问  指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
+header(&#39;Access-Control-Allow-Origin: http://client.com&#39;); 2. 允许多个域名访问  指定多个域名（ http://client1.com, http://client2.com 等 ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
+$origin = isset($_SERVER[&#39;HTTP_ORIGIN&#39;])? $_SERVER[&#39;HTTP_ORIGIN&#39;] : &#39;&#39;; $allow_origin = array( &#39;http://client1.com&#39;, &#39;http://client2.com&#39; ); if(in_array($origin, $allow_origin)){ header(&#39;Access-Control-Allow-Origin: &#39;.$origin); } 3. 允许所有域名访问  允许所有域名访问则只需在 http://server.</description>
+    </item>
+    
+  </channel>
+</rss>

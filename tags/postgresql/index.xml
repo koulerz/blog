@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>postgresql on Kouler</title>
+    <link>https://kouler.com/tags/postgresql/</link>
+    <description>Recent content in postgresql on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 03 Apr 2016 12:46:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PostgreSQL JSON 数据类型参考</title>
+      <link>https://kouler.com/posts/postgresql-json%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%82%E8%80%83/</link>
+      <pubDate>Sun, 03 Apr 2016 12:46:56 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/postgresql-json%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%82%E8%80%83/</guid>
+      <description> JSON 类型 JSON Functions and Operators PostgreSQL 9.4 中使用 jsonb  </description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL 常用操作</title>
+      <link>https://kouler.com/posts/postgresql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Sun, 03 Apr 2016 12:21:24 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/postgresql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>常用控制台命令  \password 设置密码。 \q 退出。 \h 查看SQL命令的解释，比如\h select。 \? 查看psql命令列表。 \l 列出所有数据库。 \c [database_name] 连接其他数据库。 \d 列出当前数据库的所有表格。 \d [table_name] 列出某一张表格的结构。 \du 列出所有用户。 \e 打开文本编辑器。 \conninfo 列出当前数据库和连接的信息。 常用SQL语句  # 创建新表 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); # 插入数据 INSERT INTO user_tbl(name, signup_date) VALUES(&#39;张三&#39;, &#39;2013-12-22&#39;); # 查询记录 SELECT * FROM user_tbl; # 更新数据 UPDATE user_tbl set name = &#39;李四&#39; WHERE name = &#39;张三&#39;; # 删除记录 DELETE FROM user_tbl WHERE name = &#39;李四&#39; ; # 添加字段 ALTER TABLE user_tbl ADD email VARCHAR(40); ALTER TABLE user_tbl ADD COLUMN images jsonb DEFAULT &#39;{}&#39;; # 更改字段类型 ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL; # 更改字段类型长度 ALTER TABLE user_tbl ALTER COLUMN password TYPE varchar(32); # 为字段添加索引 CREATE INDEX index_name ON user_tbl (name); # 设置字段默认值（注意字符串使用单引号） ALTER TABLE user_tbl ALTER COLUMN email SET DEFAULT &#39;example@example.</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL 中 Json 和 Jsonb 的区别</title>
+      <link>https://kouler.com/posts/postgresql%E4%B8%ADjson%E5%92%8Cjsonb%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Sat, 02 Apr 2016 15:47:06 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/postgresql%E4%B8%ADjson%E5%92%8Cjsonb%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>Postgres 中的 Json 和 Jsonb 数据类型都是用于储存 JSON ( JavaScript Object Notation ) 格式数据。虽然 Text 数据类型也可以用来储存 JSON 数据， 但 JSON 数据类型的优势在于它会根据 JSON 规则来强制要求每个被储存的值都是合法的 JSON 数据。
+一般情况下， 除非有特别的要求（比如针对对象键排列顺序的遗留假设，legacy assumption）， 否则的话， 大多数应用程序都应该优先使用 jsonb 类型来储存 JSON 数据。
+ Json 数据类型： json 数据类型储存输入文本的精确拷贝，处理函数在每次执行的时候，都必须对这些文本重新进行分析。
+json 数据类型会保留文本中与 Json 语义完全无关的空白字符，各个键在 Json 对象内的排列顺序以及具有相同键的值。
+Jsonb 数据类型： Jsonb 数据类型以无压缩（decomposed）二进制格式来储存数据，因为格式转换带来的花销，这种类型在处理输入的时候速度会稍微慢一些，但是因为这种类型的数据并不需要重新进行分析，所以这种数据的处理速度会明显地快很多。
+jsonb 支持索引特性，这是一个明显的优点。
+jsonb 不会保留任何无关的空白，不会保留对象键的排列顺序，也不会保留任何重复的对象键。如果输入里面指定了重复的键，那么只有最后一个值会被保留。
+jsonb 类型可以检测一个 jsonb 值是否包含了另一个 jsonb 值，而 json 类型并不具备这样的特性。
+jsonb 会拒绝那些超出 PostgreSQL 数字类型范围的数字，而 json 则不会这样做。</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hexo on Kouler</title>
+    <link>https://kouler.com/tags/hexo/</link>
+    <description>Recent content in hexo on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 01 Apr 2016 10:11:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>安装 Hexo</title>
+      <link>https://kouler.com/posts/%E5%AE%89%E8%A3%85hexo/</link>
+      <pubDate>Fri, 01 Apr 2016 10:11:57 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E5%AE%89%E8%A3%85hexo/</guid>
+      <description>  安装 Node.js
+  安装 Hexo
+  sudo npm install -g hexo-cli 初始化 Hexo  hexo init &amp;lt;folder&amp;gt; cd &amp;lt;folder&amp;gt; npm install 生成静态页面  hexo generate  在 Github 新建项目
+  填写网站及Git配置信息 _config.yml
+  deploy: type: git repo: https://github.com/koulerz/kouler.git 安装 hexo-deployer-git  $ npm install hexo-deployer-git --save 部署项目到 Github  hexo deploy </description>
+    </item>
+    
+  </channel>
+</rss>

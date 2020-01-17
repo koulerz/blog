@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>Tags | Kouler</title>
+  <title>安装 Hexo | Kouler</title>
   
 
   <style>
@@ -180,37 +180,57 @@ blockquote,
   
   <div class="container">
     <article>
-      
-  <p><a href="/tags/bash/"><code>bash</code></a> 1</p>
+      <h1 style="margin:0 0 5px 0">安装 Hexo</h1>
+    
+    
+    <small class="text-secondary">Apr 1, 2016</small>
+    
 
-  <p><a href="/tags/command/"><code>command</code></a> 3</p>
+<small><code><a href="https://kouler.com/tags/hexo">#hexo</a></code></small>
 
-  <p><a href="/tags/cors/"><code>cors</code></a> 2</p>
 
-  <p><a href="/tags/database/"><code>database</code></a> 3</p>
+<small><code><a href="https://kouler.com/tags/tool">#tool</a></code></small>
 
-  <p><a href="/tags/hexo/"><code>hexo</code></a> 1</p>
-
-  <p><a href="/tags/http/"><code>http</code></a> 2</p>
-
-  <p><a href="/tags/json/"><code>json</code></a> 1</p>
-
-  <p><a href="/tags/linux/"><code>linux</code></a> 2</p>
-
-  <p><a href="/tags/os/"><code>os</code></a> 2</p>
-
-  <p><a href="/tags/php/"><code>php</code></a> 4</p>
-
-  <p><a href="/tags/phpstorm/"><code>phpstorm</code></a> 1</p>
-
-  <p><a href="/tags/postgresql/"><code>postgresql</code></a> 3</p>
-
-  <p><a href="/tags/tool/"><code>tool</code></a> 2</p>
-
-  <p><a href="/tags/web/"><code>web</code></a> 5</p>
-
-  <p><a href="/tags/webserver/"><code>webserver</code></a> 1</p>
-
+    <br><br>
+<ol>
+<li>
+<p>安装 <a href="https://nodejs.org">Node.js</a></p>
+</li>
+<li>
+<p>安装 <a href="https://hexo.io/zh-cn/">Hexo</a></p>
+</li>
+</ol>
+<pre><code>sudo npm install -g hexo-cli
+</code></pre><ol start="3">
+<li>初始化 Hexo</li>
+</ol>
+<pre><code>hexo init &lt;folder&gt;
+cd &lt;folder&gt;
+npm install
+</code></pre><ol start="4">
+<li>生成静态页面</li>
+</ol>
+<pre><code>hexo generate
+</code></pre><ol start="5">
+<li>
+<p>在 Github 新建项目</p>
+</li>
+<li>
+<p>填写网站及Git配置信息 _config.yml</p>
+</li>
+</ol>
+<pre><code>deploy:
+    type: git
+    repo: https://github.com/koulerz/kouler.git
+</code></pre><ol start="7">
+<li>安装 hexo-deployer-git</li>
+</ol>
+<pre><code>$ npm install hexo-deployer-git --save
+</code></pre><ol start="8">
+<li>部署项目到 Github</li>
+</ol>
+<pre><code>hexo deploy
+</code></pre>
     </article>
   </div>
 

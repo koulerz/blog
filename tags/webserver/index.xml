@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>webserver on Kouler</title>
+    <link>https://kouler.com/tags/webserver/</link>
+    <description>Recent content in webserver on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 15 Jun 2016 23:28:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/webserver/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>WebServer和CGI以及PHPFPM之间的关系</title>
+      <link>https://kouler.com/posts/webserver%E5%92%8Ccgi%E4%BB%A5%E5%8F%8Aphpfpm%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</link>
+      <pubDate>Wed, 15 Jun 2016 23:28:36 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/webserver%E5%92%8Ccgi%E4%BB%A5%E5%8F%8Aphpfpm%E4%B9%8B%E9%97%B4%E7%9A%84%E5%85%B3%E7%B3%BB/</guid>
+      <description>WebServer  最早的 Web服务器简单地响应浏览器发来的 HTTP 请求，并将存储在服务器上的 HTML 文件返回给浏览器，也就是静态HTML。
+但事物总是不断发展的，网站也逐渐变得复杂，所以出现动态技术。但是 Web服务器并不能直接运行 php，asp 这样的文件，当浏览器请求 index.php?a=1&amp;amp;b=2 时，Web服务器就不知道该如何处理了，它不能理解 “php”、“?”、“&amp;amp;”、“a”、“b” 各是什么意思，这时它就需要调用相应的脚本解释程序（如PHP-CGI）来处理这样的请求。
+CGI  Web服务器不知道如何处理动态页面请求，需要移交其他程序来处理，这时需要与该程序做个约定，我给你什么，然后你给我什么，就是我把请求参数（如 a=1，b=2）发送给你，然后我接收你的处理结果给客户端。那这个约定就是 Common Gateway Interface，简称 CGI。这个协议可以用 VB，C，PHP，Python 等语言来实现。
+CGI 只是接口协议，根本不是什么语言。
+WEB服务器与 CGI 程序的交互  Web服务器将根据 CGI程序的类型决定数据向 CGI程序的传送方式，通常是通过标准输入/输出流和环境变量来传递。
+CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入输出。此外 CGI程序还通过环境变量来得到输入。
+操作系统提供了许多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。
+Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程序传递一些重要的参数。
+下面是一些常用的 CGI 环境变量：
+   变量名 描述     CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型   CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用   HTTP_COOKIE 客户机内的 COOKIE 内容   HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息   PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现   QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔   REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机   REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量   REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tool on Kouler</title>
+    <link>https://kouler.com/tags/tool/</link>
+    <description>Recent content in tool on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 21 Jun 2016 00:38:50 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/tool/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PhpStorm 常用快捷键</title>
+      <link>https://kouler.com/posts/phpstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Tue, 21 Jun 2016 00:38:50 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/phpstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>文本编辑     快捷键 描述     Command + Alt + I 对当前文件进行格式化排版   Control + G 顺序选中相同的文本   Shift + Enter 在当前行下方插入新行   Command + Alt + Enter 在当前行上方插入新行   Command + / 单行注释   Command + Shift + / 块代码注释   Command + D 复制当前行   Command + P 查看当前函数参数   Command + Shift + Enter 补全代码（if）   Alt + / 自动完成   Alt + Click 插入多个光标（鼠标单击）   Alt Alt + Up 向上插入多个光标（双击 Alt 并按住）   Alt Alt + Down 向下插入多个光标（双击 Alt 并按住）   Alt + Double Click 选中多个文本（鼠标双击）   Alt + Mouse 选中多个文本（鼠标拖动）   Ctrl + Mouse 复制选中文本（鼠标拖动）   Command + Mouse 移动选中文本（鼠标拖动）   Command + J 活动代码提示   Command + Alt + T 插入环绕代码   Command + .</description>
+    </item>
+    
+    <item>
+      <title>安装 Hexo</title>
+      <link>https://kouler.com/posts/%E5%AE%89%E8%A3%85hexo/</link>
+      <pubDate>Fri, 01 Apr 2016 10:11:57 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E5%AE%89%E8%A3%85hexo/</guid>
+      <description>  安装 Node.js
+  安装 Hexo
+  sudo npm install -g hexo-cli 初始化 Hexo  hexo init &amp;lt;folder&amp;gt; cd &amp;lt;folder&amp;gt; npm install 生成静态页面  hexo generate  在 Github 新建项目
+  填写网站及Git配置信息 _config.yml
+  deploy: type: git repo: https://github.com/koulerz/kouler.git 安装 hexo-deployer-git  $ npm install hexo-deployer-git --save 部署项目到 Github  hexo deploy </description>
+    </item>
+    
+  </channel>
+</rss>

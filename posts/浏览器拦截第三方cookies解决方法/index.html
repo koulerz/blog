@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>Tags | Kouler</title>
+  <title>浏览器拦截第三方 Cookies 解决方法 | Kouler</title>
   
 
   <style>
@@ -180,36 +180,37 @@ blockquote,
   
   <div class="container">
     <article>
-      
-  <p><a href="/tags/bash/"><code>bash</code></a> 1</p>
+      <h1 style="margin:0 0 5px 0">浏览器拦截第三方 Cookies 解决方法</h1>
+    
+    
+    <small class="text-secondary">Oct 13, 2016</small>
+    
 
-  <p><a href="/tags/command/"><code>command</code></a> 3</p>
+<small><code><a href="https://kouler.com/tags/web">#web</a></code></small>
 
-  <p><a href="/tags/cors/"><code>cors</code></a> 2</p>
 
-  <p><a href="/tags/database/"><code>database</code></a> 3</p>
+<small><code><a href="https://kouler.com/tags/http">#http</a></code></small>
 
-  <p><a href="/tags/hexo/"><code>hexo</code></a> 1</p>
-
-  <p><a href="/tags/http/"><code>http</code></a> 2</p>
-
-  <p><a href="/tags/json/"><code>json</code></a> 1</p>
-
-  <p><a href="/tags/linux/"><code>linux</code></a> 2</p>
-
-  <p><a href="/tags/os/"><code>os</code></a> 2</p>
-
-  <p><a href="/tags/php/"><code>php</code></a> 4</p>
-
-  <p><a href="/tags/phpstorm/"><code>phpstorm</code></a> 1</p>
-
-  <p><a href="/tags/postgresql/"><code>postgresql</code></a> 3</p>
-
-  <p><a href="/tags/tool/"><code>tool</code></a> 2</p>
-
-  <p><a href="/tags/web/"><code>web</code></a> 5</p>
-
-  <p><a href="/tags/webserver/"><code>webserver</code></a> 1</p>
+    <br><br>
+<p>高版本的 Safari 浏览器为了保护用户隐私会默认阻止第三方的 Cookies。Web 开发中，使用第三方资源非常常见，大多数情况下，这并不会带来问题。然而当我们希望能读写第三方域下的 Cookies 时，就会遇到 Cookies 被拦截的情况从而导致各种问题。</p>
+<h3 id="第三方指的是谁">第三方指的是谁</h3>
+<hr>
+<p>当用户请求某一域名下的页面时，如果页面中引用了另一个域名下的资源，则另一个域名被算作第三方。</p>
+<h3 id="解决第三方-cookies-被拦截的方法">解决第三方 Cookies 被拦截的方法</h3>
+<hr>
+<p><strong>方法一：</strong>
+客户端手动修改设置。例如 Safari 可以通过偏好设置中的隐私栏修改 Cookies 的安全策略。</p>
+<p><strong>方法二：</strong>
+将需要请求的第三方资源放在本域下。</p>
+<p>前两种方法有各自的限制，如果无法解决问题，则需要考虑更复杂的解决方法。</p>
+<p><strong>方法三：</strong>
+Safari 会在第三方域下完全没有 Cookies 时阻止第三方 Cookies，而第三方域下只要有过任意一个 Cookie，即可顺利读写。
+据此，我们可以考虑当第三方域下没有 Cookies 时，首先将页面先跳到这个域，写入任意 Cookies，再跳回来。或者弹出一个新窗口，写入 Cookies，再关闭弹窗。</p>
+<p><strong>方法四：</strong>
+Safari 只阻止了第三方 Cookies，并没有阻止第三方 LocalStorage，于是，我们便可以使用更为激进的方案，即放弃第三方 Cookies，使用 LocalStorage 来代替。</p>
+<h3 id="参考--扩展阅读">参考 &amp; 扩展阅读</h3>
+<hr>
+<p><a href="http://oldj.net/article/third-party-cookie/">当浏览器默认禁用第三方cookie</a></p>
 
     </article>
   </div>
