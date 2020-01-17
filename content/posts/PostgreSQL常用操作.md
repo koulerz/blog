@@ -7,8 +7,6 @@ draft: false
 tags: ["postgresql", "database", "command"]
 ---
 ## 常用控制台命令
----
-
 ```
 \password           设置密码。
 \q                  退出。
@@ -24,9 +22,7 @@ tags: ["postgresql", "database", "command"]
 ```
 
 ## 常用SQL语句
----
-
-```
+```sql
 # 创建新表
 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);
 
@@ -90,12 +86,10 @@ select setval('user_id_seq',100);
 
 # 递增序列的值
 select nextval('user_id_seq');
-
 ```
 
 ## 创建数据表例子
----
-```
+```sql
 CREATE TABLE lm_user(
     id SERIAL PRIMARY KEY NOT NULL, -- 'ID'
     openid VARCHAR(20) DEFAULT NULL UNIQUE, -- 'OPENID'
@@ -109,16 +103,13 @@ CREATE TABLE lm_user(
 ```
 
 ## 备份和恢复
----
-
 ```
-pg_dump 备份
-pg_dumpall 备份所有数据库
-pg_restore 恢复
+pg_dump     备份
+pg_dumpall  备份所有数据库
+pg_restore  恢复
 psql exampledb < exampledb.sql 导入数据
 ```
 
 ## 参考 & 扩展阅读
----
-[Sequence 和主键有什么区别](http://bbs.csdn.net/topics/340077504)
-[PostgreSQL 序列（SEQUENCE）](http://www.cnblogs.com/mchina/archive/2013/04/10/3012493.html)
+- [Sequence 和主键有什么区别](http://bbs.csdn.net/topics/340077504)
+- [PostgreSQL 序列（SEQUENCE）](http://www.cnblogs.com/mchina/archive/2013/04/10/3012493.html)

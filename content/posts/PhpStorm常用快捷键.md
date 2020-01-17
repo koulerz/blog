@@ -6,8 +6,7 @@ lastmod: 2020-01-17
 draft: false
 tags: ["phpstorm", "command", "tool"]
 ---
-### 文本编辑
----
+## 文本编辑
 |快捷键|描述|
 |:--|:--|
 |`Command` + `Alt` + `I`|对当前文件进行格式化排版|
@@ -47,8 +46,7 @@ tags: ["phpstorm", "command", "tool"]
 |`Ctrl` + `O`|复写基类方法|
 |`Command` + `Shift` + `C`|复制当前文件所在路径|
 
-### 搜索
----
+## 搜索
 |快捷键|描述|
 |:--|:--|
 |`Shift` + `shift`|搜索|
@@ -63,8 +61,7 @@ tags: ["phpstorm", "command", "tool"]
 |`Command` + `Shift` + `R`|高级替换|
 |`Command` + `Shift` + `A`|查找设置|
 
-### 文件和标签页操作
----
+## 文件和标签页操作
 |快捷键|描述|
 |:--|:--|
 |`Command` + `W`|关闭当前标签页|
@@ -78,8 +75,7 @@ tags: ["phpstorm", "command", "tool"]
 |`Fn` + `F6`|移动当前文件到某一位置|
 |`Command` + `Click`|列出文件路径（文件标签页，鼠标单击）|
 
-### 帮助和定位
----
+## 帮助和定位
 |快捷键|描述|
 |:--|:--|
 |`Ctrl` + `Fn` + `F12`|弹出成员方法列表窗口|
@@ -99,8 +95,7 @@ tags: ["phpstorm", "command", "tool"]
 |`Alt` + `Enter`|猜测想要执行的操作|
 
 
-### 显示或隐藏面板
----
+## 显示或隐藏面板
 |快捷键|描述|
 |:--|:--|
 |`Command` + `1`|显示或隐藏项目面板|
@@ -109,7 +104,6 @@ tags: ["phpstorm", "command", "tool"]
 |`Command` + `8`|显示或隐藏类继承面板|
 |`Ctrl` + `H`|打开类继承面板|
 
-### 参考 & 扩展阅读
----
-[Meet PhpStorm](https://www.jetbrains.com/help/phpstorm/2016.1/meet-phpstorm.html)
-[Keyboard Shortcuts and Mouse Reference](https://www.jetbrains.com/help/phpstorm/2016.1/keyboard-shortcuts-and-mouse-reference.html)
+## 参考 & 扩展阅读
+- [Meet PhpStorm](https://www.jetbrains.com/help/phpstorm/2016.1/meet-phpstorm.html)
+- [Keyboard Shortcuts and Mouse Reference](https://www.jetbrains.com/help/phpstorm/2016.1/keyboard-shortcuts-and-mouse-reference.html)

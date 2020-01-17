@@ -8,13 +8,14 @@ tags: ["php"]
 ---
 PHP 中 `try` `catch` 可以帮助我们捕获程序代码的异常以便使我们很好的处理一些不必要的错误。
 
-### Try 语句
----
+## Try 语句
 `try` 是用来定义检测异常的代码块。    
 需要进行异常处理的代码都必须放入 `try` 代码块内，以便捕获可能存在的异常。    
 每一个 `try` 至少要有一个与之对应的 `catch` 。
 
-```
+```php
+<?php
+
 try {
     // 需要进行异常处理的代码
 }
@@ -22,8 +23,7 @@ try {
 
 `try` 代码块有可能运行到最后一行，也有可能抛出异常，如果抛出了异常，代码的剩余部分就会被跳过，程序会跳到 `Catch` 语句块中执行。
 
-### Catch 语句
----
+## Catch 语句
 定义处理发生异常时执行的代码块。使用多个 `catch` 可以捕获不同的类所产生的异常。
 
 当 `try` 代码块不再抛出异常或者找不到 `catch` 能匹配所抛出的异常时，PHP 代码就会在跳转到最后一个 `catch` 的后面继续执行。    
@@ -33,7 +33,9 @@ PHP允许在 `catch` 代码块内再次抛出（throw）异常。
 
 如果一个异常没有被捕获，而且又没用使用 `set_exception_handler()` 作相应的处理的话，那么 PHP 将会产生一个严重的错误，并且输出 `Uncaught Exception ...` （未捕获异常）的提示信息。
 
-```
+```php
+<?php
+
 catch(Exception $e) {
     echo $e;
 }
@@ -45,11 +47,12 @@ catch(Exception $e) {
 
 为了处理不同类型的异常，也许会定义多个 `catch` 块，应该先定义最特定的类型，这是因为 `catch` 块是按照顺序来解析的。
 
-### Throw 语句
----
+## Throw 语句
 `throw` 语句是用来触发并抛出异常的，并且会中断发生在这一点上的执行过程。必须给 `throw` 语句传递一个 `Exception` 类的实例。
 
-```
+```php
+<?php
+
 $a = new Exception('Err Msg');
 throw $a;
 
@@ -58,11 +61,12 @@ throw $a;
 throw new Exception('Err Msg');
 ```
 
-### Finally 语句
----
+## Finally 语句
 无论是否检测到异常，程序都会执行 Finally 语句，可在代码块中插入出错后继续执行的代码,如关闭数据库连接，关闭已打开的文件或返回给客户端错误信息等。
 
-```
+```php
+<?php
+
 try {  
      // 需要进行异常处理的代码 
 } catch (Exception $e) {  
@@ -74,14 +78,15 @@ try {
 }  
 ```
 
-### Exception 类
----
+## Exception 类
 `Exception` 类是所有异常类的基类，其构造函数可以接受一条错误信息或者错误代码作为参数。
 
 构造好异常的实例，就会获得几个关键信息。    
 如：构造异常的代码所处位置，在构造时执行的代码，错误信息和错误代码。
 
-```
+```php
+<?php
+
 getMessage()  // 返回异常信息    
 getCode()     // 返回错误代码    
 getFile()     // 返回发生错误所在的源文件    
@@ -97,29 +102,30 @@ getTrace()    // 返回包含场景回溯的一个数组
 
 `__toString()` 返回用字符串表达的整个异常信息。
 
+```php
+<?php
 
-```
 function connectToDatabase()
 {
-    if(! $conn = pg_connect(..)) {
-        throw new Exception('Couldn't connect to database!');
+    if(!$conn = pg_connect(..)) {
+        throw new Exception('Could not connect to database!');
     }
 }
     
-try{
+try {
     connectDatabase();
-} catch( Exception $e ) {
+} catch(Exception $e) {
     $e->getMessage();
 }
 ```
 
-### 扩展异常
----
+## 扩展异常
 `mysql_error()` 是提示mysql错误的函数,下面的这段代码就记录了`mysql_error()` 函数输出的错误信息。
 
-```
-class databaseException extends Exception{
+```php
+<?php
 
+class databaseException extends Exception{
     public $databaseErrorMessage;
     
     public function __construct(
@@ -134,15 +140,15 @@ class databaseException extends Exception{
     {
         return $this->databaseErrorMessage;
     }
-    
 }
 ```
 
-### PHP 中 Try Catch 捕获异常实例详解
----
+## PHP 中 Try Catch 捕获异常实例详解
 PHP内置异常类的基本属性和方法
 
-```
+```php
+<?php
+
 try{
     // 需要进行异常处理的代码
 } catch() {
@@ -152,21 +158,20 @@ try{
 }
 ```
 
-为了进一步处理异常，我们需要使用 PHP中 `try{}` `catch{}`----包括 Try 语句和至少一个的 Catch 语句。
+为了进一步处理异常，我们需要使用 PHP 中 `try{}` `catch{}`----包括 Try 语句和至少一个的 Catch 语句。
 
 任何调用可能抛出异常的方法的代码都应该使用 Try 语句。 Catch 语句用来处理可能抛出的异常。
 
 以下显示了我们处理 `getCommandObject()` 抛出的异常的方法。
 
-```
-try {
+```php
+<?php
 
+try {
     $mgr = new CommandManager();
     $cmd = $mgr->getCommandObject("realcommand");
     $cmd->execute();
-    
 } catch (Exception $e) {
-
     print $e->getMessage();
     exit();
 }
@@ -180,10 +185,12 @@ try {
 
 例子如下：包含文件错误抛出异常
 
-```
+```php
+<?php
+
 // 错误的演示
 try {
-    require ('test_try_catch.php');
+    require('test_try_catch.php');
 } catch (Exception $e) {
     echo $e->getMessage();
 }
@@ -191,7 +198,7 @@ try {
 // 正确的抛出异常
 try {
     if (file_exists('test_try_catch.php')) {
-        require ('test_try_catch.php');
+        require('test_try_catch.php');
     } else {
         throw new Exception('file is not exists');
     }
@@ -210,10 +217,10 @@ PHP将查询一个匹配的 Catch 代码块。如果有多个 Catch代码块，�
 
 多个异常的捕获的示例如下
 
-```
+```php
+<?php
 class MyException extends Exception {
-
-   /* 重定义构造器使第一个参数 message 变为必须被指定的属性 */
+   // 重定义构造器使第一个参数 message 变为必须被指定的属性
    public function __construct($message, $code=0)
    {
        // 可以在这里定义一些自己的代码
@@ -221,24 +228,21 @@ class MyException extends Exception {
        parent::__construct($message, $code);
    }
    
-   /* 重写父类中继承过来的方法，自定义字符串输出的样式 */
+   // 重写父类中继承过来的方法，自定义字符串输出的样式
    public function __toString()
    {
        return __CLASS__.":[".$this->code."]:".$this->message."<br>";
    }
    
-   /* 为这个异常自定义一个处理方法 */
+   // 为这个异常自定义一个处理方法
    public function customFunction()
    {
        echo "按自定义的方法处理出现的这个类型的异常";
    }
-   
 }
 
-
-// 创建一个用于测试自定义扩展的异常类MyException
+// 创建一个用于测试自定义扩展的异常类 MyException
 class TestException {
-
     // 用来判断对象是否创建成功的成员属性
     public $var;
     
@@ -263,11 +267,9 @@ class TestException {
                 $this->var=$value;break;          
         }
     }
-    
 }
 
-/* 示例1，在没有异常时，程序正常执行，try中的代码全部执行并不会执行任何catch区块 */
-
+// 示例1，在没有异常时，程序正常执行，try中的代码全部执行并不会执行任何catch区块
 try {
     $testObj =new TestException();      //使用默认参数创建异常的擦拭类对象
     echo "********<br>";                //没有抛出异常这条语句就会正常执行
@@ -278,11 +280,10 @@ try {
     echo "捕获默认的异常：".$e->getMessage()."<br>";       //输出异常消息
 }
 
-//判断对象是否创建成功，如果没有任何异常，则创建成功
+// 判断对象是否创建成功，如果没有任何异常，则创建成功
 var_dump($testObj);        
  
-/* 示例2，抛出自定义的异常，并通过自定义的异常处理类捕获这个异常并处理 */
-
+// 示例2，抛出自定义的异常，并通过自定义的异常处理类捕获这个异常并处理
 try {
     $testObj1 =new TestException(1);   //传1时，抛出自定义异常
     echo "********<br>";               //这个语句不会被执行
@@ -293,11 +294,10 @@ try {
     echo "捕获默认的异常：".$e->getMessage()."<br>";       
 }
 
-//有异常产生，这个对象没有创建成功
+// 有异常产生，这个对象没有创建成功
 var_dump($testObj1);        
  
-/* 示例3，抛出自内置的异常，并通过自定义的异常处理类捕获这个异常并处理 */
-
+// 示例3，抛出自内置的异常，并通过自定义的异常处理类捕获这个异常并处理
 try {
     $testObj2 =new TestException(2);   //传入2时，抛出内置异常
     echo "********<br>";               //这个语句不会被执行
@@ -308,7 +308,7 @@ try {
     echo "捕获默认的异常：".$e->getMessage()."<br>";       
 }
 
-//有异常产生，这个对象没有创建成功
+// 有异常产生，这个对象没有创建成功
 var_dump($testObj2);        
 ```
 
@@ -318,9 +318,8 @@ var_dump($testObj2);
 
 分别在 Try 区块中创建测试类 `TestException` 的对象，并根据构造方法中提供的不同数字参数，抛出自定义异常类对象、内置的异常类对象和不抛出任何异常的情况，跳转到对应的 Catch 区块中执行。如果没有异常发生，则不会进入任何一个 Catch 块中执行，测试类 `TestException` 的对象创建成功。
 
-### 参考 & 扩展阅读
----
-[php中try catch捕获异常实例详解](http://www.jb51.net/article/57688.htm)
-[调试PHP OOP应用中的异常：try, catch和throw语句和Exception类组成的处理机制](http://www.yunxiu.org/blog/article/5416.htm)
-[更好的PHP错误处理：常规错误处理介绍](http://feiyang.me/2014/05/handle-php-error-better-introduce-errors/)
-[PHP 异常处理](http://www.w3school.com.cn/php/php_exception.asp)
+## 参考 & 扩展阅读
+- [php中try catch捕获异常实例详解](http://www.jb51.net/article/57688.htm)
+- [调试PHP OOP应用中的异常：try, catch和throw语句和Exception类组成的处理机制](http://www.yunxiu.org/blog/article/5416.htm)
+- [更好的PHP错误处理：常规错误处理介绍](http://feiyang.me/2014/05/handle-php-error-better-introduce-errors/)
+- [PHP 异常处理](http://www.w3school.com.cn/php/php_exception.asp)

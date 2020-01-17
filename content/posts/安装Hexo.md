@@ -7,39 +7,37 @@ draft: false
 tags: ["hexo", "tool"]
 ---
 1. 安装 [Node.js](https://nodejs.org)
-
 2. 安装 [Hexo](https://hexo.io/zh-cn/) 
-```
-sudo npm install -g hexo-cli
+```shell
+$ sudo npm install -g hexo-cli
 ```
 
 3. 初始化 Hexo
-```
-hexo init <folder>
-cd <folder>
-npm install
+```shell
+$ hexo init <folder>
+$ cd <folder>
+$ npm install
 ```
 
 4. 生成静态页面 
-```
-hexo generate
+```shell
+$ hexo generate
 ```
 
 5. 在 Github 新建项目
-
 6. 填写网站及Git配置信息 _config.yml
-```
+```yml
 deploy:
     type: git
     repo: https://github.com/koulerz/kouler.git
 ```
 
 7. 安装 hexo-deployer-git 
-```
+```shell
 $ npm install hexo-deployer-git --save
 ```
 
 8. 部署项目到 Github 
-```
-hexo deploy
+```shell
+$ hexo deploy
 ```
