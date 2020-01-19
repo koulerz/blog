@@ -30,7 +30,7 @@
     </item>
     
     <item>
-      <title>PostgreSQL 中 Json 和 Jsonb 的区别</title>
+      <title>PostgreSQL 中 JSON 和 JSONB 的区别</title>
       <link>https://kouler.com/posts/postgresql%E4%B8%ADjson%E5%92%8Cjsonb%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
       <pubDate>Sat, 02 Apr 2016 15:47:06 +0800</pubDate>
       
