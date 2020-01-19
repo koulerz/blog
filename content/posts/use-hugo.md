@@ -11,7 +11,7 @@ tags: ["hugo", "command", "tool"]
 - [minimal-bootstrap-hugo-theme](https://github.com/zwbetz-gh/minimal-bootstrap-hugo-theme)
 
 ## Hugo 常用命令
-```shell
+```bash
 $ hugo help                  // 帮助命令
 $ hugo version               // 打印版本号
 $ hugo new site sitename     // 创建新站点

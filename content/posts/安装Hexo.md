@@ -8,19 +8,19 @@ tags: ["hexo", "tool"]
 ---
 1. 安装 [Node.js](https://nodejs.org)
 2. 安装 [Hexo](https://hexo.io/zh-cn/) 
-```shell
+```bash
 $ sudo npm install -g hexo-cli
 ```
 
 3. 初始化 Hexo
-```shell
+```bash
 $ hexo init <folder>
 $ cd <folder>
 $ npm install
 ```
 
 4. 生成静态页面 
-```shell
+```bash
 $ hexo generate
 ```
 
@@ -33,11 +33,11 @@ deploy:
 ```
 
 7. 安装 hexo-deployer-git 
-```shell
+```bash
 $ npm install hexo-deployer-git --save
 ```
 
 8. 部署项目到 Github 
-```shell
+```bash
 $ hexo deploy
 ```
