@@ -18,7 +18,7 @@
       
       <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3composer%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%BA%93%E9%97%AE%E9%A2%98/</guid>
       <description>可以尝试为 composer 设置国内镜像，代码如下
-1$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/参考&amp;amp;扩展  Composer 中文镜像  </description>
+1$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/ 参考&amp;amp;扩展  Composer 中文镜像  </description>
     </item>
     
   </channel>

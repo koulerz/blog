@@ -17,7 +17,7 @@
       <pubDate>Tue, 06 Nov 2018 19:01:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/php%E4%BB%A3%E7%A0%81%E4%B8%B4%E6%97%B6%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE/</guid>
-      <description>1&amp;lt;?php23// 修改程序最大执行时间 为 300s4ini_set(&amp;#34;max_execution_time&amp;#34;, 300);56// 修改程序内存限制为 128M7ini_set(&amp;#34;memory_limit&amp;#34;, &amp;#34;128M&amp;#34;);</description>
+      <description>1&amp;lt;?php 2 3// 修改程序最大执行时间 为 300s 4ini_set(&amp;#34;max_execution_time&amp;#34;, 300); 5 6// 修改程序内存限制为 128M 7ini_set(&amp;#34;memory_limit&amp;#34;, &amp;#34;128M&amp;#34;); </description>
     </item>
     
     <item>

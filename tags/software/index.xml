@@ -27,7 +27,7 @@ Person 这个接口该不该定义，关键看具体应用中的使用情况。�
 但是，如果程序中的 Women 和 Man 两个类基本没有共同代码，而且有一个 PersonHandle 类需要实例化他们，并且不希望知道他们是男是女，而只需把他们当作人看待，并实现多态，那么定义成接口就有必要了。
 总而言之，接口与抽象类的区别主要在于使用的动机，而不在于其本身。而一个东西该定义成抽象类还是接口，要根据具体环境的上下文决定。
 面向接口编程的代码优化示例 我们要实现老师教儿童背古诗的功能，代码如下：
-1// 老师 2class Teacher {3 public void teach(Children children){} // 教儿童背古诗4}56// 儿童7class Children {8 public void listen(){} // 听课 9 public void recite(){} // 背诵 10}1112/* 这是标准的面向对象编程，描述了对象间的关联 */随着老师能力的提升，准备扩展服务对象，增加在校学生，代码如下：</description>
+1// 老师 2class Teacher { 3 public void teach(Children children){} // 教儿童背古诗 4} 5 6// 儿童 7class Children { 8 public void listen(){} // 听课 9 public void recite(){} // 背诵 10} 11 12/* 这是标准的面向对象编程，描述了对象间的关联 */ 随着老师能力的提升，准备扩展服务对象，增加在校学生，代码如下：</description>
     </item>
     
     <item>

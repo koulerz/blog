@@ -30,7 +30,7 @@
 解决方法  用户目录下创建 .zshrc 文件 将以下命令写入文件 source ~/.bash_profile  重启终端后可解决
 终端用户名配置未生效 .bash_profile 中的终端用户名配置（PS1）仍未生效 export PS1=&#39;\[\033[01;36m\]\w \[\033[00m\]\$ &#39;
 解决方法 解决 zsh 环境变量失效的问题后，在 .bash_profile 文件中修改 PS1 的值
-## 修改前export PS1=&#39;\[\033[01;36m\]\w \[\033[00m\]\$ &#39; # for bash## 修改后export PS1=&#39;%~ %(!.#.$) &#39; # for zsh参考  环境变量怎么配置都不起作用？已经解决！一切源于 zsh zsh prompt expansion  </description>
+## 修改前 export PS1=&#39;\[\033[01;36m\]\w \[\033[00m\]\$ &#39; # for bash ## 修改后 export PS1=&#39;%~ %(!.#.$) &#39; # for zsh 参考  环境变量怎么配置都不起作用？已经解决！一切源于 zsh zsh prompt expansion  </description>
     </item>
     
     <item>
@@ -40,8 +40,8 @@
       
       <guid>https://kouler.com/posts/macos%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</guid>
       <description>默认路径  /Library/Desktop Pictures /System/Library/Desktop Pictures  查看当前桌面壁纸路径 输入以下命令后会在桌面显示当前桌面壁纸所在路径
-1$ defaults write com.apple.dock desktop-picture-show-debug-text -bool TRUE2$ killall Dock输入以下命令后不再显示当前壁纸路径
-1$ defaults delete com.apple.dock desktop-picture-show-debug-text2$ killall Dock参考  找不到当前壁纸文件的路径  </description>
+1$ defaults write com.apple.dock desktop-picture-show-debug-text -bool TRUE 2$ killall Dock 输入以下命令后不再显示当前壁纸路径
+1$ defaults delete com.apple.dock desktop-picture-show-debug-text 2$ killall Dock 参考  找不到当前壁纸文件的路径  </description>
     </item>
     
     <item>
@@ -51,7 +51,7 @@
       
       <guid>https://kouler.com/posts/%E5%85%B3%E9%97%AD-macos-catalina-read-only-volume/</guid>
       <description>运行以下命令即可关闭 Read-only Volume，系统重启后命令会失效
-1$ sudo mount -uw /23# killall Finder参考  macOS Catalina Read-only file system with SIP disabled  </description>
+1$ sudo mount -uw / 2 3# killall Finder 参考  macOS Catalina Read-only file system with SIP disabled  </description>
     </item>
     
     <item>
@@ -60,8 +60,8 @@
       <pubDate>Wed, 07 Aug 2019 17:43:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/tmux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>Tmux 命令 # 开启一个 Tmux Session$ tmux new -s name # 断开当前会话，会话在后台运行，等同于 `Ctrl + B` + `D`$ tmux detach# 查看当前 Tmux 中有哪些 Session$ tmux ls # 回到 Tmux Session 中$ tmux a -t name（or at，or attach） # 关闭demo会话tmux kill-session -t demo # 关闭服务器，所有的会话都将关闭tmux kill-server Tmux 快捷键 Tmux Session 中的命令需要先按下 Tmux 前缀键（默认是 Ctrl + B）
-# 会话（Session） 指令? # 快捷键帮助列表d # detach，退出 Tmux Session，回到父级 Shellr # 强制重载当前会话: # 进入命令行模式，此时可直接输入ls等命令s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换$ # 为当前 Session 命名# 窗口（window）指令c # 新建 Window&amp;amp; # 关闭当前窗口p # 切换到上一窗口n # 切换到下一窗口0~9 # 切换到指定 Windoww # 打开窗口列表，用于且切换窗口, # 为当前 Window 命名.</description>
+      <description>Tmux 命令 # 开启一个 Tmux Session $ tmux new -s name # 断开当前会话，会话在后台运行，等同于 `Ctrl + B` + `D` $ tmux detach # 查看当前 Tmux 中有哪些 Session $ tmux ls # 回到 Tmux Session 中 $ tmux a -t name（or at，or attach） # 关闭demo会话 tmux kill-session -t demo # 关闭服务器，所有的会话都将关闭 tmux kill-server Tmux 快捷键 Tmux Session 中的命令需要先按下 Tmux 前缀键（默认是 Ctrl + B）
+# 会话（Session） 指令 ? # 快捷键帮助列表 d # detach，退出 Tmux Session，回到父级 Shell r # 强制重载当前会话 : # 进入命令行模式，此时可直接输入ls等命令 s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换 $ # 为当前 Session 命名 # 窗口（window）指令 c # 新建 Window &amp;amp; # 关闭当前窗口 p # 切换到上一窗口 n # 切换到下一窗口 0~9 # 切换到指定 Window w # 打开窗口列表，用于且切换窗口 , # 为当前 Window 命名 .</description>
     </item>
     
     <item>
@@ -72,7 +72,7 @@
       <guid>https://kouler.com/posts/centos7%E6%9E%B6%E8%AE%BEftp%E6%9C%8D%E5%8A%A1/</guid>
       <description>大概操作流程 之前已经安装了 vsftpd 服务，并修改了配置
 目前的状况是浏览器端可以登录，但无法显示文件列表
- 开机并启动 vsfptd # 启动服务service vsftpd start# 停止服务service vsftpd stop# 重启服务service vsftpd restart# 查看状态service vsftpd status Docker 中安装了 ftp 命令行工具，登录时提示错误 vsftpd: refusing to run with writable root inside chroot() 更改挂载目录的拥有者，仍然提示错误 挂载硬盘出错 mount /dev/sdb is write-protected mounting read-only mount: unknown filesystem type &#39;(null)&#39; 硬盘格式为 ntfs，格式化为linux支持的格式可以解决该问题，但硬盘中有数据，放弃了该方法 安装 ntfs-3g，使用该工具挂载硬盘 命令行登录ftp，提示错误 500 Illegal PORT command 将 vsftpd 设置为被动模式，增加 vsftpd 配置项 # 开启被动模式pasv_enable=YES # 被动模式最低端口pasv_min_port=30000 # 被动模式最高端口pasv_max_port=31000  仍然看不到文件列表 下载 ftp 客户端，使用 filezilla 登录 ftp 发现将 ntfs 挂载之后目录权限均为 root，使用 chown 更改所属用户没有效果，后来通过 ntfs-3g 挂载时设置用户和用户组为 vsftpd 用户 SELinux 在访问 ftp 时收到警告 设置 SELinux 对 ftp 的控制，允许访问目录 # 查看 SELinux 中 ftp 权限getsebool -a | grep ftp# 允许 ftp 访问目录setsebool -P tftp_home_dir 1setsebool -P allow_ftpd_full_access 1 解决错误 vsftpd: refusing to run with writable root inside chroot()，在 vsftpd 配置文件中添加 allow_writeable_chroot=YES ftp 仍然无法显示挂载硬盘的目录列表，原因是设置 ftp 为被动模式，防火墙阻止了之前设置的用于传输数据的被动模式端口 30000-31000 批量开放防火墙端口 firewall-cmd --permanent --zone=public --add-port=30000-31000/tcpfirewall-cmd --reload 设置开机启动 vsftpd 服务 chkconfig vsftpd on 设置开机自动挂载 NTFS 硬盘 # 编辑 /etc/fstab 文件UUID=831df52d-baad-4902-bcce-6128cec95411 /home/vsftpd/ftp ntfs-3g defaults 0 0  参考  vsftpd：500 OOPS: vsftpd: refusing to run with  如何更改linux文件的拥有者及用户组(chown和chgrp) vsftpd 服务器报错：500 OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd配置文件详解 Centos/Linux 挂载移动ntfs硬盘 Centos 7 挂载 NTFS 分区 500 Illegal PORT command的问题（FTP主被动模式） CentOS下vsftp设置、匿名用户&amp;amp;本地用户设置、PORT、PASV模式设置 CentOS 6和CentOS 7防火墙的关闭 linux中ftp查看不到文件列表的问题 如何更改linux文件的拥有者及用户组(chown和chgrp) Linux查看用户所属的组 Linux 系统的 NTFS-3G 权限 查看 SELinux状态及关闭SELinux CentOS7 搭建vsftpd详细教程 vsftpd设置后无法登陆，解决OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd不能显示文件目录的解决方法 Centos防火墙设置与端口开放的方法 CentOS 7 开放防火墙端口命令 CentOS7下firewall批量开放端口 CentOs 设置开机启动vsftpd服务 CentOS设置设备开机自动挂载 centos7.</description>
+ 开机并启动 vsfptd # 启动服务 service vsftpd start # 停止服务 service vsftpd stop # 重启服务 service vsftpd restart # 查看状态 service vsftpd status  Docker 中安装了 ftp 命令行工具，登录时提示错误 vsftpd: refusing to run with writable root inside chroot() 更改挂载目录的拥有者，仍然提示错误 挂载硬盘出错 mount /dev/sdb is write-protected mounting read-only mount: unknown filesystem type &#39;(null)&#39; 硬盘格式为 ntfs，格式化为linux支持的格式可以解决该问题，但硬盘中有数据，放弃了该方法 安装 ntfs-3g，使用该工具挂载硬盘 命令行登录ftp，提示错误 500 Illegal PORT command 将 vsftpd 设置为被动模式，增加 vsftpd 配置项 # 开启被动模式 pasv_enable=YES # 被动模式最低端口 pasv_min_port=30000 # 被动模式最高端口 pasv_max_port=31000  仍然看不到文件列表 下载 ftp 客户端，使用 filezilla 登录 ftp 发现将 ntfs 挂载之后目录权限均为 root，使用 chown 更改所属用户没有效果，后来通过 ntfs-3g 挂载时设置用户和用户组为 vsftpd 用户 SELinux 在访问 ftp 时收到警告 设置 SELinux 对 ftp 的控制，允许访问目录 # 查看 SELinux 中 ftp 权限 getsebool -a | grep ftp # 允许 ftp 访问目录 setsebool -P tftp_home_dir 1 setsebool -P allow_ftpd_full_access 1  解决错误 vsftpd: refusing to run with writable root inside chroot()，在 vsftpd 配置文件中添加 allow_writeable_chroot=YES ftp 仍然无法显示挂载硬盘的目录列表，原因是设置 ftp 为被动模式，防火墙阻止了之前设置的用于传输数据的被动模式端口 30000-31000 批量开放防火墙端口 firewall-cmd --permanent --zone=public --add-port=30000-31000/tcp firewall-cmd --reload  设置开机启动 vsftpd 服务 chkconfig vsftpd on 设置开机自动挂载 NTFS 硬盘 # 编辑 /etc/fstab 文件 UUID=831df52d-baad-4902-bcce-6128cec95411 /home/vsftpd/ftp ntfs-3g defaults 0 0   参考  vsftpd：500 OOPS: vsftpd: refusing to run with  如何更改linux文件的拥有者及用户组(chown和chgrp) vsftpd 服务器报错：500 OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd配置文件详解 Centos/Linux 挂载移动ntfs硬盘 Centos 7 挂载 NTFS 分区 500 Illegal PORT command的问题（FTP主被动模式） CentOS下vsftp设置、匿名用户&amp;amp;本地用户设置、PORT、PASV模式设置 CentOS 6和CentOS 7防火墙的关闭 linux中ftp查看不到文件列表的问题 如何更改linux文件的拥有者及用户组(chown和chgrp) Linux查看用户所属的组 Linux 系统的 NTFS-3G 权限 查看 SELinux状态及关闭SELinux CentOS7 搭建vsftpd详细教程 vsftpd设置后无法登陆，解决OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd不能显示文件目录的解决方法 Centos防火墙设置与端口开放的方法 CentOS 7 开放防火墙端口命令 CentOS7下firewall批量开放端口 CentOs 设置开机启动vsftpd服务 CentOS设置设备开机自动挂载 centos7.</description>
     </item>
     
     <item>
@@ -82,8 +82,8 @@
       
       <guid>https://kouler.com/posts/centos7%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%85%B3%E9%97%AD%E5%90%88%E7%9B%96%E7%9D%A1%E7%9C%A0/</guid>
       <description>具体流程  修改配置文件/etc/systemd/logind.conf，去掉HandleLidSwitch行的注释，并将其值由suspend改为ignore 执行systemctl restart systemd-logind命令，使刚才的修改生效  修改后的文件内容如下：
-[Login]#NAutoVTs=6#ReserveVT=6#KillUserProcesses=no#KillOnlyUsers=#KillExcludeUsers=root#InhibitDelayMaxSec=5#HandlePowerKey=poweroff#HandleSuspendKey=suspend#HandleHibernateKey=hibernateHandleLidSwitch=ignore#HandleLidSwitchDocked=ignore#PowerKeyIgnoreInhibited=no#SuspendKeyIgnoreInhibited=no#HibernateKeyIgnoreInhibited=no#LidSwitchIgnoreInhibited=yes#IdleAction=ignore#IdleActionSec=30min#RuntimeDirectorySize=10%#RemoveIPC=no#UserTasksMax=如需再次进入待机状态，可执行systemctl suspend命令。
-通过修改配置文件自定义电源管理 # /etc/systemd动作:HandlePowerKey # 按下电源键后的动作HandleSleepKey # 按下挂起键后的动作HandleHibernateKey # 按下休眠键后的动作HandleLidSwitch # 合上笔记本盖后待机动作允许的值:ignore # 不执行任何操作poweroff # 关机reboot # 重新启动halt # 关机suspend # 待机挂起hibernate # 休眠参考  CentOS 7.0 笔记本关闭合盖睡眠  </description>
+[Login] #NAutoVTs=6 #ReserveVT=6 #KillUserProcesses=no #KillOnlyUsers= #KillExcludeUsers=root #InhibitDelayMaxSec=5 #HandlePowerKey=poweroff #HandleSuspendKey=suspend #HandleHibernateKey=hibernate HandleLidSwitch=ignore #HandleLidSwitchDocked=ignore #PowerKeyIgnoreInhibited=no #SuspendKeyIgnoreInhibited=no #HibernateKeyIgnoreInhibited=no #LidSwitchIgnoreInhibited=yes #IdleAction=ignore #IdleActionSec=30min #RuntimeDirectorySize=10% #RemoveIPC=no #UserTasksMax= 如需再次进入待机状态，可执行systemctl suspend命令。
+通过修改配置文件自定义电源管理 # /etc/systemd 动作: HandlePowerKey # 按下电源键后的动作 HandleSleepKey # 按下挂起键后的动作 HandleHibernateKey # 按下休眠键后的动作 HandleLidSwitch # 合上笔记本盖后待机 动作允许的值: ignore # 不执行任何操作 poweroff # 关机 reboot # 重新启动 halt # 关机 suspend # 待机挂起 hibernate # 休眠 参考  CentOS 7.0 笔记本关闭合盖睡眠  </description>
     </item>
     
     <item>
@@ -93,7 +93,7 @@
       
       <guid>https://kouler.com/posts/screen%E5%91%BD%E4%BB%A4%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
       <description>配置文件 该配置在screen底部状态栏显示窗口列表的名称，更易于管理会话和窗口
-## ~/.screenrc## 屏幕缓冲区4096行defscrollback 4096## 下标签设置hardstatus onhardstatus alwayslastlinehardstatus string &amp;quot;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&amp;quot;termcapinfo rxvt &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39;termcapinfo xterm ti@:te@termcapinfo xterm &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39;常用操作 1screen -S name # 创建名称为 name 的会话2screen -t name # 创建名称为 name 的窗口3screen -ls # 显示存在的会话4screen -r name # 唤起一个被放入后台的会话Ctrl + a, ? # 显示所有按键绑定信息Ctrl + a, w # 显示所有窗口列表Ctrl + a, Ctrl + a # 切换到之前的窗口Ctrl + a, d # 暂离当前会话，将当前会话放入后台Ctrl + a, c # 在当前会话中创建一个新窗口Ctrl + a, A # 为当前窗口设置名称Ctrl + a, p # 上一个窗口Ctrl + a, n # 下一个窗口Ctrl + a, 0-9 # 切换到 0-9 窗口Ctrl + a, k # 杀掉当前窗口Ctrl + a, [ # 拷贝模式</description>
+## ~/.screenrc ## 屏幕缓冲区4096行 defscrollback 4096 ## 下标签设置 hardstatus on hardstatus alwayslastline hardstatus string &amp;quot;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&amp;quot; termcapinfo rxvt &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39; termcapinfo xterm ti@:te@ termcapinfo xterm &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39; 常用操作 1screen -S name # 创建名称为 name 的会话 2screen -t name # 创建名称为 name 的窗口 3screen -ls # 显示存在的会话 4screen -r name # 唤起一个被放入后台的会话 Ctrl + a, ? # 显示所有按键绑定信息 Ctrl + a, w # 显示所有窗口列表 Ctrl + a, Ctrl + a # 切换到之前的窗口 Ctrl + a, d # 暂离当前会话，将当前会话放入后台 Ctrl + a, c # 在当前会话中创建一个新窗口 Ctrl + a, A # 为当前窗口设置名称 Ctrl + a, p # 上一个窗口 Ctrl + a, n # 下一个窗口 Ctrl + a, 0-9 # 切换到 0-9 窗口 Ctrl + a, k # 杀掉当前窗口 Ctrl + a, [ # 拷贝模式 </description>
     </item>
     
     <item>
@@ -103,7 +103,7 @@
       
       <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3composer%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%BA%93%E9%97%AE%E9%A2%98/</guid>
       <description>可以尝试为 composer 设置国内镜像，代码如下
-1$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/参考&amp;amp;扩展  Composer 中文镜像  </description>
+1$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/ 参考&amp;amp;扩展  Composer 中文镜像  </description>
     </item>
     
     <item>
@@ -114,11 +114,11 @@
       <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3vscode%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85golang%E6%89%A9%E5%B1%95%E9%97%AE%E9%A2%98/</guid>
       <description>SS 方法 1 从 SS 复制 HTTP Proxy Shell Export Line
 2 设置 Shell 代理
-1export http_proxy=http://127.0.0.1:1087;2export https_proxy=http://127.0.0.1:1087;3 使用 go get 方式安装
+1export http_proxy=http://127.0.0.1:1087; 2export https_proxy=http://127.0.0.1:1087; 3 使用 go get 方式安装
 Goproxy 环境变量方法 go 1.11 版本开始新增了 goproxy 环境变量，用于下载源码时设置代理地址
-1export GOPROXY=https://goproxy.io该方法依赖 go module 功能
+1export GOPROXY=https://goproxy.io 该方法依赖 go module 功能
 Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换为其他能够访问的包路径，比如 github 下的包路径
-1module hello23require (4 golang.org/x/text v0.3.05)67# 将限制访问的 golang.org 下的地址替换为能够访问的 github 地址8replace (9 golang.org/x/text =&amp;gt; github.com/golang/text v0.3.010)由于包依赖通常比较多和杂，所以不推荐使用该方法</description>
+1module hello 2 3require ( 4 golang.org/x/text v0.3.0 5) 6 7# 将限制访问的 golang.org 下的地址替换为能够访问的 github 地址 8replace ( 9 golang.org/x/text =&amp;gt; github.com/golang/text v0.3.0 10) 由于包依赖通常比较多和杂，所以不推荐使用该方法</description>
     </item>
     
     <item>
@@ -127,7 +127,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
       <pubDate>Wed, 07 Nov 2018 19:22:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/postgresql%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/</guid>
-      <description>1# 查看当前序列的值：2SELECT currval(&amp;#39;user_aticle_aid_seq&amp;#39;);34# 设置序列的初始值：5select setval(&amp;#39;user_aticle_aid_seq&amp;#39;,100);67# 递增序列的值：8select nextval(&amp;#39;user_aticle_aid_seq&amp;#39;);</description>
+      <description>1# 查看当前序列的值： 2SELECT currval(&amp;#39;user_aticle_aid_seq&amp;#39;); 3 4# 设置序列的初始值： 5select setval(&amp;#39;user_aticle_aid_seq&amp;#39;,100); 6 7# 递增序列的值： 8select nextval(&amp;#39;user_aticle_aid_seq&amp;#39;); </description>
     </item>
     
     <item>
@@ -136,7 +136,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
       <pubDate>Wed, 07 Nov 2018 09:27:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/mac%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</guid>
-      <description>1# 在登录屏隐藏 PostgreSQL 账户2$ sudo dscl . create /Users/postgres IsHidden 134# 在登录屏隐藏 hiddenuser 账户5$ sudo dscl . create /Users/hiddenuser IsHidden 167# 在登录屏隐藏通过 other... 登录8$ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE9参考 &amp;amp; 扩展  Hide PostgreSQL user in OSX Yosemite Hide a user account in macOS Remove “Other…” from Login screen  </description>
+      <description>1# 在登录屏隐藏 PostgreSQL 账户 2$ sudo dscl . create /Users/postgres IsHidden 1 3 4# 在登录屏隐藏 hiddenuser 账户 5$ sudo dscl . create /Users/hiddenuser IsHidden 1 6 7# 在登录屏隐藏通过 other... 登录 8$ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE 9 参考 &amp;amp; 扩展  Hide PostgreSQL user in OSX Yosemite Hide a user account in macOS Remove “Other…” from Login screen  </description>
     </item>
     
     <item>
@@ -145,7 +145,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
       <pubDate>Tue, 06 Nov 2018 19:01:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/php%E4%BB%A3%E7%A0%81%E4%B8%B4%E6%97%B6%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE/</guid>
-      <description>1&amp;lt;?php23// 修改程序最大执行时间 为 300s4ini_set(&amp;#34;max_execution_time&amp;#34;, 300);56// 修改程序内存限制为 128M7ini_set(&amp;#34;memory_limit&amp;#34;, &amp;#34;128M&amp;#34;);</description>
+      <description>1&amp;lt;?php 2 3// 修改程序最大执行时间 为 300s 4ini_set(&amp;#34;max_execution_time&amp;#34;, 300); 5 6// 修改程序内存限制为 128M 7ini_set(&amp;#34;memory_limit&amp;#34;, &amp;#34;128M&amp;#34;); </description>
     </item>
     
     <item>
@@ -155,7 +155,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
       
       <guid>https://kouler.com/posts/lumen%E5%8A%A0%E8%BD%BD%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
       <description>Lumen 版本: 5.3
- 在根目录创建 config 目录 在 config 目录中新建配置文件 在 bootstrap/app.php 中加载配置文件  1&amp;lt;?php23// bootstrap/app.php4$app-&amp;gt;configure(&amp;#39;fileName&amp;#39;);56// Example: $app-&amp;gt;configure(&amp;#39;mail&amp;#39;);参考&amp;amp;扩展  Lumen 加载根目录配置文件  </description>
+ 在根目录创建 config 目录 在 config 目录中新建配置文件 在 bootstrap/app.php 中加载配置文件  1&amp;lt;?php 2 3// bootstrap/app.php 4$app-&amp;gt;configure(&amp;#39;fileName&amp;#39;); 5 6// Example: $app-&amp;gt;configure(&amp;#39;mail&amp;#39;); 参考&amp;amp;扩展  Lumen 加载根目录配置文件  </description>
     </item>
     
     <item>
@@ -174,7 +174,7 @@ Person 这个接口该不该定义，关键看具体应用中的使用情况。�
 但是，如果程序中的 Women 和 Man 两个类基本没有共同代码，而且有一个 PersonHandle 类需要实例化他们，并且不希望知道他们是男是女，而只需把他们当作人看待，并实现多态，那么定义成接口就有必要了。
 总而言之，接口与抽象类的区别主要在于使用的动机，而不在于其本身。而一个东西该定义成抽象类还是接口，要根据具体环境的上下文决定。
 面向接口编程的代码优化示例 我们要实现老师教儿童背古诗的功能，代码如下：
-1// 老师 2class Teacher {3 public void teach(Children children){} // 教儿童背古诗4}56// 儿童7class Children {8 public void listen(){} // 听课 9 public void recite(){} // 背诵 10}1112/* 这是标准的面向对象编程，描述了对象间的关联 */随着老师能力的提升，准备扩展服务对象，增加在校学生，代码如下：</description>
+1// 老师 2class Teacher { 3 public void teach(Children children){} // 教儿童背古诗 4} 5 6// 儿童 7class Children { 8 public void listen(){} // 听课 9 public void recite(){} // 背诵 10} 11 12/* 这是标准的面向对象编程，描述了对象间的关联 */ 随着老师能力的提升，准备扩展服务对象，增加在校学生，代码如下：</description>
     </item>
     
     <item>
@@ -209,7 +209,7 @@ UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响�
       
       <guid>https://kouler.com/posts/golang-wasm-demo/</guid>
       <description>Golang 1.11 加入了对 WebAssembly 的支持，以下会测试并运行一个简单的 Demo。
- MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit)   编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码  编译测试代码 1// 测试代码 main.go2package main34import &amp;#34;fmt&amp;#34;56func main() {7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;)8}1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go编写 WebServer 代码 1// server.</description>
+ MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit)   编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码  编译测试代码 1// 测试代码 main.go 2package main 3 4import &amp;#34;fmt&amp;#34; 5 6func main() { 7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;) 8} 1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载 2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go 编写 WebServer 代码 1// server.</description>
     </item>
     
     <item>
@@ -219,14 +219,14 @@ UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响�
       
       <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3cron%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%B0%83%E7%94%A8laravel%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/</guid>
       <description>在 Cron 文件中添加了以下 Laravel 任务调度命令后，发现没有正常执行，而直接在终端执行该命令是正常的
-1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /dev/null 2&amp;gt;&amp;amp;1在 Cron 文件中添加以下输出测试命令，也可以正常执行
-1* * * * * echo 111 &amp;gt;&amp;gt; /path/test安装 Rsyslog 后查看 Cron 日志，并没有发现任何异常，日志正常输出每一次的调度命令
+1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /dev/null 2&amp;gt;&amp;amp;1 在 Cron 文件中添加以下输出测试命令，也可以正常执行
+1* * * * * echo 111 &amp;gt;&amp;gt; /path/test 安装 Rsyslog 后查看 Cron 日志，并没有发现任何异常，日志正常输出每一次的调度命令
 然后尝试将 Laravel 任务调度命令执行结果输出到文件，修改 Cron 文件后并没有在输出文件中发现任何内容
-1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /path/log查看关于 Linux 中重定向相关内容后怀疑可能于此有关
+1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /path/log 查看关于 Linux 中重定向相关内容后怀疑可能于此有关
  &amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
 2&amp;gt;&amp;gt; 将一个标准错误输出重定向到一个文件或设备 追加到原来的文件
  随即修改 Cron 文件，将标准错误重定向到文件
-1* * * * * php /path/artisan schedule:run 2&amp;gt;&amp;gt; /path/log文件中打印出了错误信息</description>
+1* * * * * php /path/artisan schedule:run 2&amp;gt;&amp;gt; /path/log 文件中打印出了错误信息</description>
     </item>
     
     <item>
@@ -365,11 +365,11 @@ SSH 隧道的搭建 首先需要有一台支持 SSH 的墙外服务器，此服�
 显示器分辨率：2560 * 1440 2K
 MacOS系统获取系统权限方法 MacOS系统下，某些系统文件夹只有系统有权限读写，称为System Integrity Protection（SIP），需要提前关闭。
 创建相应文件夹和文件 首先在终端获取显示器的 DisplayVendorID 和 DisplayProductID。
-1# 获取显示器 DisplayVendorID2ioreg -l | grep &amp;#34;DisplayVendorID&amp;#34;34# 获取显示器 DisplayProductID5ioreg -l | grep &amp;#34;DisplayProductID&amp;#34;在桌面新建一个文件夹，名称格式为 DisplayVendorID-xxxx，其中 xxxx 为显示器 DisplayVendorID 的16进制小写
+1# 获取显示器 DisplayVendorID 2ioreg -l | grep &amp;#34;DisplayVendorID&amp;#34; 3 4# 获取显示器 DisplayProductID 5ioreg -l | grep &amp;#34;DisplayProductID&amp;#34; 在桌面新建一个文件夹，名称格式为 DisplayVendorID-xxxx，其中 xxxx 为显示器 DisplayVendorID 的16进制小写
 在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的16进制小写
 以上步骤可使用脚本 patch-edid.rb 自动生成。
 生成步骤：
- 下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）  编辑新建的文件 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.</description>
+ 下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）  编辑新建的文件 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt; &amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.</description>
     </item>
     
     <item>

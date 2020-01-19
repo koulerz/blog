@@ -19,11 +19,11 @@
       <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3vscode%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85golang%E6%89%A9%E5%B1%95%E9%97%AE%E9%A2%98/</guid>
       <description>SS 方法 1 从 SS 复制 HTTP Proxy Shell Export Line
 2 设置 Shell 代理
-1export http_proxy=http://127.0.0.1:1087;2export https_proxy=http://127.0.0.1:1087;3 使用 go get 方式安装
+1export http_proxy=http://127.0.0.1:1087; 2export https_proxy=http://127.0.0.1:1087; 3 使用 go get 方式安装
 Goproxy 环境变量方法 go 1.11 版本开始新增了 goproxy 环境变量，用于下载源码时设置代理地址
-1export GOPROXY=https://goproxy.io该方法依赖 go module 功能
+1export GOPROXY=https://goproxy.io 该方法依赖 go module 功能
 Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换为其他能够访问的包路径，比如 github 下的包路径
-1module hello23require (4 golang.org/x/text v0.3.05)67# 将限制访问的 golang.org 下的地址替换为能够访问的 github 地址8replace (9 golang.org/x/text =&amp;gt; github.com/golang/text v0.3.010)由于包依赖通常比较多和杂，所以不推荐使用该方法</description>
+1module hello 2 3require ( 4 golang.org/x/text v0.3.0 5) 6 7# 将限制访问的 golang.org 下的地址替换为能够访问的 github 地址 8replace ( 9 golang.org/x/text =&amp;gt; github.com/golang/text v0.3.0 10) 由于包依赖通常比较多和杂，所以不推荐使用该方法</description>
     </item>
     
     <item>
@@ -33,7 +33,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
       
       <guid>https://kouler.com/posts/golang-wasm-demo/</guid>
       <description>Golang 1.11 加入了对 WebAssembly 的支持，以下会测试并运行一个简单的 Demo。
- MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit)   编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码  编译测试代码 1// 测试代码 main.go2package main34import &amp;#34;fmt&amp;#34;56func main() {7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;)8}1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go编写 WebServer 代码 1// server.</description>
+ MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit)   编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码  编译测试代码 1// 测试代码 main.go 2package main 3 4import &amp;#34;fmt&amp;#34; 5 6func main() { 7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;) 8} 1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载 2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go 编写 WebServer 代码 1// server.</description>
     </item>
     
     <item>

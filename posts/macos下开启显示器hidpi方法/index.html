@@ -241,35 +241,35 @@ blockquote,
 &lt;/plist&gt;
 </code></pre><p>该文件是XML格式的，在Mac中被称为plist（Property List）文件，即属性列表文件。可以使用工具 PlistPro 来编辑。</p>
 <p>文件中共有 8 个 data 标签，其中每两个为一组，即（1，2）、（3，4）、（5，6）、（7，8），每一个 data 标签表示一个分辨率。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic"># data 标签解码后</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span><span style="color:#009c00"></span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#009c00"></span><span style="color:#009c00">00000A00 000005A0 00000001 00200000 </span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#009c00"></span><span style="color:#009c00">00001400 00000B40 00000001 00200000 </span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#009c00"></span><span style="color:#009c00">00000780 00000438 00000001 00200000 </span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#009c00"></span><span style="color:#009c00">00000F00 00000870 00000001 00200000 </span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#009c00"></span><span style="color:#009c00">00000640 00000384 00000001 00200000 </span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#009c00"></span><span style="color:#009c00">00000C80 00000708 00000001 00200000 </span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#009c00"></span><span style="color:#009c00">00000500 000002D0 00000001 00200000 </span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#009c00"></span><span style="color:#009c00">00000A00 000005A0 00000001 00200000 </span><span style="color:#009c00">
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic"># data 标签解码后</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#009c00"></span><span style="color:#009c00">00000A00 000005A0 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#009c00"></span><span style="color:#009c00">00001400 00000B40 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#009c00"></span><span style="color:#009c00">00000780 00000438 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#009c00"></span><span style="color:#009c00">00000F00 00000870 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#009c00"></span><span style="color:#009c00">00000640 00000384 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#009c00"></span><span style="color:#009c00">00000C80 00000708 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#009c00"></span><span style="color:#009c00">00000500 000002D0 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#009c00"></span><span style="color:#009c00">00000A00 000005A0 00000001 00200000 </span><span style="color:#009c00">
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"># 转为十进制</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"># 转为十进制</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span><span style="color:#009c00"></span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#009c00"></span><span style="color:#009c00">2560 1440 1 2097152</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span style="color:#009c00"></span><span style="color:#009c00">5120 2880 1 2097152</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#009c00"></span><span style="color:#009c00">1920 1080 1 2097152</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span style="color:#009c00"></span><span style="color:#009c00">3840 2160 1 2097152</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span style="color:#009c00"></span><span style="color:#009c00">1600 900  1 2097152</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span style="color:#009c00"></span><span style="color:#009c00">3200 1800 1 2097152</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#009c00"></span><span style="color:#009c00">1280 720  1 2097152</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span style="color:#009c00"></span><span style="color:#009c00">2560 1440 1 2097152</span><span style="color:#009c00">
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#009c00"></span><span style="color:#009c00">2560 1440 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span style="color:#009c00"></span><span style="color:#009c00">5120 2880 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#009c00"></span><span style="color:#009c00">1920 1080 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span style="color:#009c00"></span><span style="color:#009c00">3840 2160 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span style="color:#009c00"></span><span style="color:#009c00">1600 900  1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span style="color:#009c00"></span><span style="color:#009c00">3200 1800 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#009c00"></span><span style="color:#009c00">1280 720  1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span style="color:#009c00"></span><span style="color:#009c00">2560 1440 1 2097152</span><span style="color:#009c00">
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span>
 </code></pre></div><p>可见每组 data 标签中，第一个 data 标签为我们需要HiDPI的分辨率，第二个 data 标签是第一个标签分辨率的两倍。</p>
 <p>可以根据自己的显示器随意填多个 data 标签组，编辑文件时需要填十六进制</p>
