@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>ZSH 环境变量失效问题 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">ZSH 环境变量失效问题</h1>
+    
+    
+    <small class="text-secondary">Nov 6, 2019</small>
+    
+
+<small><code><a href="https://kouler.com/tags/terminal">#terminal</a></code></small>
+
+    <br><br>
+<h2 id="环境变量失效">环境变量失效</h2>
+<p>默认 shell 修改为 zsh 后，<code>.bash_profile</code> 中的环境变量全部失效</p>
+<h3 id="解决方法">解决方法</h3>
+<ol>
+<li>用户目录下创建 .zshrc 文件</li>
+<li>将以下命令写入文件 <code>source ~/.bash_profile</code></li>
+</ol>
+<p>重启终端后可解决</p>
+<h2 id="终端用户名配置未生效">终端用户名配置未生效</h2>
+<p>.bash_profile 中的终端用户名配置（PS1）仍未生效 <code>export PS1='\[\033[01;36m\]\w \[\033[00m\]\$ '</code></p>
+<h3 id="解决方法-1">解决方法</h3>
+<p>解决 zsh 环境变量失效的问题后，在 <code>.bash_profile</code> 文件中修改 <code>PS1</code> 的值</p>
+<pre><code>## 修改前
+export PS1='\[\033[01;36m\]\w \[\033[00m\]\$ ' # for bash
+
+## 修改后
+export PS1='%~ %(!.#.$) ' # for zsh
+</code></pre><h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://learnku.com/laravel/t/1308/how-does-the-configuration-of-environment-variable-do-not-work-already-solved-everything-from-zsh">环境变量怎么配置都不起作用？已经解决！一切源于 zsh</a></li>
+<li><a href="http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html">zsh prompt expansion</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

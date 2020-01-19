@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>CentOS7 笔记本关闭合盖睡眠 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">CentOS7 笔记本关闭合盖睡眠</h1>
+    
+    
+    <small class="text-secondary">Jul 11, 2019</small>
+    
+
+<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/centos">#centos</a></code></small>
+
+    <br><br>
+<h2 id="具体流程">具体流程</h2>
+<ol>
+<li>修改配置文件<code>/etc/systemd/logind.conf</code>，去掉<code>HandleLidSwitch</code>行的注释，并将其值由<code>suspend</code>改为<code>ignore</code></li>
+<li>执行<code>systemctl restart systemd-logind</code>命令，使刚才的修改生效</li>
+</ol>
+<p>修改后的文件内容如下：</p>
+<pre><code>[Login]
+#NAutoVTs=6
+#ReserveVT=6
+#KillUserProcesses=no
+#KillOnlyUsers=
+#KillExcludeUsers=root
+#InhibitDelayMaxSec=5
+#HandlePowerKey=poweroff
+#HandleSuspendKey=suspend
+#HandleHibernateKey=hibernate
+HandleLidSwitch=ignore
+#HandleLidSwitchDocked=ignore
+#PowerKeyIgnoreInhibited=no
+#SuspendKeyIgnoreInhibited=no
+#HibernateKeyIgnoreInhibited=no
+#LidSwitchIgnoreInhibited=yes
+#IdleAction=ignore
+#IdleActionSec=30min
+#RuntimeDirectorySize=10%
+#RemoveIPC=no
+#UserTasksMax=
+</code></pre><p>如需再次进入待机状态，可执行<code>systemctl suspend</code>命令。</p>
+<h2 id="通过修改配置文件自定义电源管理">通过修改配置文件自定义电源管理</h2>
+<pre><code># /etc/systemd
+
+动作:
+HandlePowerKey       # 按下电源键后的动作
+HandleSleepKey       # 按下挂起键后的动作
+HandleHibernateKey   # 按下休眠键后的动作
+HandleLidSwitch      # 合上笔记本盖后待机
+
+动作允许的值:
+ignore      # 不执行任何操作
+poweroff    # 关机
+reboot      # 重新启动
+halt        # 关机
+suspend     # 待机挂起
+hibernate   # 休眠
+</code></pre><h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://blog.csdn.net/qq_34911465/article/details/70246193">CentOS 7.0 笔记本关闭合盖睡眠</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

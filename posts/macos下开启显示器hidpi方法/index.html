@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>MacOS 下开启显示器 HiDPI 方法 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">MacOS 下开启显示器 HiDPI 方法</h1>
+    
+    
+    <small class="text-secondary">Nov 23, 2016</small>
+    
+
+<small><code><a href="https://kouler.com/tags/mac">#mac</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
+
+    <br><br>
+<h2 id="备份文件">备份文件</h2>
+<p>In Google Cloud</p>
+<h2 id="系统环境">系统环境</h2>
+<p>操作系统：MacOS</p>
+<p>显示器型号：DELL2515H</p>
+<p>显示器分辨率：2560 * 1440 2K</p>
+<h2 id="macos系统获取系统权限方法">MacOS系统获取系统权限方法</h2>
+<p>MacOS系统下，某些系统文件夹只有系统有权限读写，称为System Integrity Protection（SIP），需要提前关闭。</p>
+<h2 id="创建相应文件夹和文件">创建相应文件夹和文件</h2>
+<p>首先在终端获取显示器的 DisplayVendorID 和 DisplayProductID。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 获取显示器 DisplayVendorID</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>ioreg -l | grep <span style="color:#009c00">&#34;DisplayVendorID&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 获取显示器 DisplayProductID</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>ioreg -l | grep <span style="color:#009c00">&#34;DisplayProductID&#34;</span>
+</code></pre></div><p>在桌面新建一个文件夹，名称格式为 DisplayVendorID-xxxx，其中 xxxx 为显示器 DisplayVendorID 的16进制小写</p>
+<p>在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的16进制小写</p>
+<p>以上步骤可使用脚本 patch-edid.rb 自动生成。</p>
+<p>生成步骤：</p>
+<ol>
+<li>下载或手动创建文件 patch-edid.rb 到桌面目录</li>
+<li>打开终端进入桌面目录</li>
+<li>执行命令 <code>ruby patch-edid.rb</code></li>
+<li>脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）</li>
+</ol>
+<h2 id="编辑新建的文件">编辑新建的文件</h2>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
+&lt;plist version=&quot;1.0&quot;&gt;
+&lt;dict&gt;
+    &lt;key&gt;DisplayProductID&lt;/key&gt;
+    &lt;integer&gt;53358&lt;/integer&gt;
+    &lt;key&gt;DisplayVendorID&lt;/key&gt;
+    &lt;integer&gt;4268&lt;/integer&gt;
+    &lt;key&gt;scale-resolutions&lt;/key&gt;
+    &lt;array&gt;
+        &lt;data&gt;AAAKAAAABXgAAAABACAAAA==&lt;/data&gt;
+        &lt;data&gt;AAAUAAAACvAAAAABACAAAA==&lt;/data&gt;
+        &lt;data&gt;AAAHgAAABDgAAAABACAAAA==&lt;/data&gt;
+        &lt;data&gt;AAAPAAAACHAAAAABACAAAA==&lt;/data&gt;
+        &lt;data&gt;AAAGQAAAA4QAAAABACAAAA==&lt;/data&gt;
+        &lt;data&gt;AAAMgAAABwgAAAABACAAAA==&lt;/data&gt;
+        &lt;data&gt;AAAFAAAAAtAAAAABACAAAA==&lt;/data&gt;
+        &lt;data&gt;AAAKAAAABaAAAAABACAAAA==&lt;/data&gt;
+    &lt;/array&gt;
+&lt;/dict&gt;
+&lt;/plist&gt;
+</code></pre><p>该文件是XML格式的，在Mac中被称为plist（Property List）文件，即属性列表文件。可以使用工具 PlistPro 来编辑。</p>
+<p>文件中共有 8 个 data 标签，其中每两个为一组，即（1，2）、（3，4）、（5，6）、（7，8），每一个 data 标签表示一个分辨率。</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic"># data 标签解码后</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#009c00"></span><span style="color:#009c00">00000A00 000005A0 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#009c00"></span><span style="color:#009c00">00001400 00000B40 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#009c00"></span><span style="color:#009c00">00000780 00000438 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#009c00"></span><span style="color:#009c00">00000F00 00000870 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#009c00"></span><span style="color:#009c00">00000640 00000384 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#009c00"></span><span style="color:#009c00">00000C80 00000708 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#009c00"></span><span style="color:#009c00">00000500 000002D0 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#009c00"></span><span style="color:#009c00">00000A00 000005A0 00000001 00200000 </span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"># 转为十进制</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#009c00"></span><span style="color:#009c00">2560 1440 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span style="color:#009c00"></span><span style="color:#009c00">5120 2880 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#009c00"></span><span style="color:#009c00">1920 1080 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span style="color:#009c00"></span><span style="color:#009c00">3840 2160 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span style="color:#009c00"></span><span style="color:#009c00">1600 900  1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span style="color:#009c00"></span><span style="color:#009c00">3200 1800 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span style="color:#009c00"></span><span style="color:#009c00"></span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#009c00"></span><span style="color:#009c00">1280 720  1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span style="color:#009c00"></span><span style="color:#009c00">2560 1440 1 2097152</span><span style="color:#009c00">
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#009c00"></span><span style="color:#009c00">&#39;&#39;&#39;</span>
+</code></pre></div><p>可见每组 data 标签中，第一个 data 标签为我们需要HiDPI的分辨率，第二个 data 标签是第一个标签分辨率的两倍。</p>
+<p>可以根据自己的显示器随意填多个 data 标签组，编辑文件时需要填十六进制</p>
+<h2 id="使用新建的hidpi分辨率">使用新建的HiDPI分辨率</h2>
+<p>将新建的文件夹整个拷贝到目录 /System/Library/Displays/Contents/Resources/Overrides/ 中，如果有重复的文件夹，建议先把原来的文件夹备份。重启之后就可以生效了。</p>
+<p>可以使用工具 SwitchResX 或 RDM（RetinaDisplayMenu） 来切换不同分辨率。</p>
+<h2 id="参考--扩展">参考 &amp; 扩展</h2>
+<ul>
+<li><a href="http://bbs.feng.com/read-htm-tid-9948814.html">Mac OS X 10.11 开启任意显示器 开启HiDPI方法</a></li>
+<li><a href="http://bbs.feng.com/read-htm-tid-8937471.html">Mac 2k 屏原生分辨率完美支持教程</a></li>
+<li><a href="http://note.youdao.com/noteshare?id=741857f7c6dccdc2b8adc5d42e33a160">MacOS无法获得权限问题</a></li>
+<li><a href="https://gist.github.com/adaugherity/7435890">patch-edid.rb</a></li>
+<li><a href="https://github.com/avibrazil/RDM">RDM（RetinaDisplayMenu）</a></li>
+<li><a href="http://download.cnet.com/SwitchResX/3000-2094_4-10558576.html">SwitchResX</a></li>
+<li><a href="https://github.com/syscl/Enable-HiDPI-OSX">Enable-HiDPI-OSX</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

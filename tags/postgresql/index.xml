@@ -6,10 +6,19 @@
     <description>Recent content in postgresql on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 03 Apr 2016 12:46:56 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 07 Nov 2018 19:22:42 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PostgreSQL 序列操作</title>
+      <link>https://kouler.com/posts/postgresql%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 07 Nov 2018 19:22:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/postgresql%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/</guid>
+      <description>1# 查看当前序列的值：2SELECT currval(&amp;#39;user_aticle_aid_seq&amp;#39;);34# 设置序列的初始值：5select setval(&amp;#39;user_aticle_aid_seq&amp;#39;,100);67# 递增序列的值：8select nextval(&amp;#39;user_aticle_aid_seq&amp;#39;);</description>
+    </item>
     
     <item>
       <title>PostgreSQL JSON 数据类型参考</title>

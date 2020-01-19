@@ -6,10 +6,20 @@
     <description>Recent content in lumen on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Oct 2016 11:42:41 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 11 Oct 2018 22:57:42 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/tags/lumen/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Lumen 加载根目录配置文件</title>
+      <link>https://kouler.com/posts/lumen%E5%8A%A0%E8%BD%BD%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Thu, 11 Oct 2018 22:57:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/lumen%E5%8A%A0%E8%BD%BD%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+      <description>Lumen 版本: 5.3
+ 在根目录创建 config 目录 在 config 目录中新建配置文件 在 bootstrap/app.php 中加载配置文件  1&amp;lt;?php23// bootstrap/app.php4$app-&amp;gt;configure(&amp;#39;fileName&amp;#39;);56// Example: $app-&amp;gt;configure(&amp;#39;mail&amp;#39;);参考&amp;amp;扩展  Lumen 加载根目录配置文件  </description>
+    </item>
     
     <item>
       <title>Lumen 问题汇总</title>

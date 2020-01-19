@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>Golang 交叉编译 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">Golang 交叉编译</h1>
+    
+    
+    <small class="text-secondary">Mar 5, 2018</small>
+    
+
+<small><code><a href="https://kouler.com/tags/golang">#golang</a></code></small>
+
+    <br><br>
+<h2 id="什么是跨平台交叉编译">什么是跨平台交叉编译</h2>
+<h3 id="交叉编译">交叉编译</h3>
+<p>通俗地讲就是在一种平台上编译出能运行在体系结构不同的另一种平台上的程序，比如在 PC 平台（X86 CPU）上编译出能运行在以 ARM 为内核的 CPU 平台上的程序，编译得到的程序在 X86 CPU 平台上是不能运行的，必须放到ARM CPU 平台上才能运行，虽然两个平台用的都是 Linux 系统。</p>
+<p>交叉编译这种方法在异平台移植和嵌入式开发时非常有用。</p>
+<h3 id="本地编译">本地编译</h3>
+<p>相对与交叉编译，平常做的编译叫本地编译，也就是在当前平台编译，编译得到的程序也是在本地执行。</p>
+<p>用来编译跨平台程序的编译器就叫交叉编译器，相对来说，用来做本地编译的工具就叫本地编译器。</p>
+<p>所以要生成在目标机上运行的程序，必须要用交叉编译工具链来完成。在裁减和定制 Linux 内核用于嵌入式系统之前，由于一般嵌入式开发系统存储大小有限，通常都要在性能优越的 PC 上建立一个用于目标机的交叉编译工具链，用该交叉编译工具链在 PC 上编译目标机上要运行的程序。</p>
+<p>交叉编译工具链是一个由编译器、连接器和解释器组成的综合开发环境，交叉编译工具链主要由 binutils、gcc 和 glibc 3个部分组成。</p>
+<p>有时出于减小 libc 库大小的考虑，也可以用别的 c 库来代替 glibc，例如 uClibc、dietlibc 和 newlib。</p>
+<h2 id="golang-的跨平台交叉编译">Golang 的跨平台交叉编译</h2>
+<p>Go 语言是编译型语言，可以将程序编译后在将其拿到其它操作系统中运行，此过程只需要在编译时增加对其它系统的支持。</p>
+<h3 id="交叉编译依赖下面几个环境变量">交叉编译依赖下面几个环境变量</h3>
+<ul>
+<li>$GOARCH 目标平台（编译后的目标平台）的处理器架构（386、amd64、arm）</li>
+<li>$GOOS 目标平台（编译后的目标平台）的操作系统（darwin、freebsd、linux、windows）</li>
+</ul>
+<h3 id="各平台的-goos-和-goarch-参考">各平台的 GOOS 和 GOARCH 参考</h3>
+<table>
+<thead>
+<tr>
+<th align="center">OS</th>
+<th align="center">ARCH</th>
+<th align="center">OS version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">linux</td>
+<td align="center">386 / amd64 / arm</td>
+<td align="center">&gt;= Linux 2.6</td>
+</tr>
+<tr>
+<td align="center">darwin</td>
+<td align="center">386 / amd64</td>
+<td align="center">OS X (Snow Leopard + Lion)</td>
+</tr>
+<tr>
+<td align="center">freebsd</td>
+<td align="center">386 / amd64</td>
+<td align="center">&gt;= FreeBSD 7</td>
+</tr>
+<tr>
+<td align="center">windows</td>
+<td align="center">386 / amd64</td>
+<td align="center">&gt;= Windows 2000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="执行编译">执行编译</h3>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic"># 如果你想在Windows 32位系统下运行</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>$ GOOS=windows GOARCH=386 go build test.go
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"># 如果你想在Windows 64位系统下运行</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>$ GOOS=windows GOARCH=amd64 go build test.go
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#f00;font-style:italic"># 如果你想在Linux 32位系统下运行</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>$ GOOS=linux GOARCH=386 go build test.go
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"># 如果你想在Linux 64位系统下运行</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>$ GOOS=linux GOARCH=amd64 go build test.go
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#f00;font-style:italic"># 编译为 WEB 端 WASM 二进制代码</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>$ GOOS=js GOARCH=wasm go build test.go
+</code></pre></div><p>命令中可以设置 CGO_ENABLED = 0 表示设置CGO工具不可用；</p>
+<p>GOOS 表示程序构建环境的目标操作系统(Linux、Windows)；</p>
+<p>GOARCH 表示程序构建环境的目标计算架构(32位、64位)；</p>
+<p>现在你可以在相关目标操作系统上运行编译后的程序了。</p>
+<p><strong>注意：该方式暂时不支持 CGO</strong></p>
+<h2 id="参考--扩展">参考 &amp; 扩展</h2>
+<ul>
+<li><a href="http://aurthurxlc.github.io/Aurthur-2015/Cross-platform-cross-compiler-with-go.html">关于于 Go 的跨平台交叉编译浅析</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

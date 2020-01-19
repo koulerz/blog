@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>面向接口编程 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">面向接口编程</h1>
+    
+    
+    <small class="text-secondary">Sep 26, 2018</small>
+    
+
+<small><code><a href="https://kouler.com/tags/software">#software</a></code></small>
+
+    <br><br>
+<h2 id="面向接口编程和面向对象编程的关系">面向接口编程和面向对象编程的关系</h2>
+<p>面向接口编程和面向对象编程并不是平级的，面向接口编程并不是比面向对象编程更先进的一种独立的编程思想，而是附属于面向对象思想体系，属于其中的一部分。或者说，它是面向对象编程体系中的思想精髓之一。</p>
+<h2 id="面向接口编程综述">面向接口编程综述</h2>
+<p>面向接口编程是在系统分析和架构设计中，分清层次和依赖关系，每个层级不直接向其上层提供服务（即不是直接实例化在上层中），而是通过定义一组接口，仅向上层暴露其接口功能，上层对于下层仅仅是接口依赖，而不依赖具体类。</p>
+<p>这样做的好处是显而易见的，首先对系统灵活性大有好处。当下层需要改变时，只要接口及接口功能不变，则上层不用做任何修改。甚至可以在不改动上层代码时将下层整个替换掉。比如我们将一个 WD 的 60G 硬盘换成一个希捷的 160G 的硬盘，计算机其他地方不用做任何改动，只需要将原硬盘拔下来，新硬盘插上就行了，因为计算机其他部分不依赖具体硬盘，而只依赖一个 IDE 接口，只要硬盘实现了这个接口，就可以替换上去。从这里看，程序中的接口和现实中的接口极为相似。</p>
+<p>使用接口的另一个好处就是不同部件或层次的开发人员可以并行开工，就像造硬盘的不用等造 CPU 的，也不用等造显示器的，只要接口一致，设计合理，完全可以并行进行开发，从而提高效率。</p>
+<h2 id="关于抽象类和接口">关于抽象类和接口</h2>
+<p>如果从具体代码来看，对这两个概念很容易模糊。而单从具体功能来看，甚至觉得接口就是多余的，因为除多重继承外，抽象类似乎能完全取代接口。</p>
+<p>但接口的存在当然不只是为了实现多重继承。抽象类和接口的区别在于使用动机。使用抽象类是为了代码的复用，而使用接口的动机是为了实现多态性。</p>
+<p>Person 这个接口该不该定义，关键看具体应用中的使用情况。如果程序中有 Women 和 Man，都继承 Person，而且 Women 和 Man 绝大多数方法都相同，只有一个方法 ToWC() 不同，那么定义一个 AbstractPerson 抽象类比较合理，因为它可以把其他所有方法都包含进去，子类只定义 ToWC()，大大减少了重复代码量。</p>
+<p>但是，如果程序中的 Women 和 Man 两个类基本没有共同代码，而且有一个 PersonHandle 类需要实例化他们，并且不希望知道他们是男是女，而只需把他们当作人看待，并实现多态，那么定义成接口就有必要了。</p>
+<p>总而言之，接口与抽象类的区别主要在于使用的动机，而不在于其本身。而一个东西该定义成抽象类还是接口，要根据具体环境的上下文决定。</p>
+<h2 id="面向接口编程的代码优化示例">面向接口编程的代码优化示例</h2>
+<p>我们要实现老师教儿童背古诗的功能，代码如下：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Teacher</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(Children children){} <span style="color:#f00;font-style:italic">// 教儿童背古诗
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#f00;font-style:italic">// 儿童
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Children</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 背诵 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#f00;font-style:italic">/* 这是标准的面向对象编程，描述了对象间的关联 */</span>
+</code></pre></div><p>随着老师能力的提升，准备扩展服务对象，增加在校学生，代码如下：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Teacher</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(Children children){} <span style="color:#f00;font-style:italic">// 教儿童背古诗
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(Students students){} <span style="color:#f00;font-style:italic">// 教学生背古诗
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#f00;font-style:italic">// 儿童
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Children</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 背诵 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#f00;font-style:italic">// 学生
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Students</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#f00;font-style:italic">/* 这同样是标准的面向对象编程，但不具备扩展性 */</span>
+</code></pre></div><p>继续扩展服务对象，增加外国人，这下老师又要研究新的业务？不如一步到位，提前掌握更宽泛的技能，代码如下：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Teacher</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(Person person){} <span style="color:#f00;font-style:italic">// 教人背古诗
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#f00;font-style:italic">// 抽象类 人
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">abstract</span> <span style="color:#00f">class</span> <span style="color:#007575">Person</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    <span style="color:#00f">public</span> <span style="color:#00f">abstract</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(); <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">abstract</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(); <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#f00;font-style:italic">// 儿童
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Children</span> <span style="color:#00f">extends</span> Person {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 背诵 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#f00;font-style:italic">// 学生
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Students</span> <span style="color:#00f">extends</span> Person {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span style="color:#f00;font-style:italic">// 外国人
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Foreigner</span> <span style="color:#00f">extends</span> Person {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#f00;font-style:italic">/* 这对面向对象编程进行了更深入的应用，具备了一定的扩展性，称为面向基类编程，通常基类会被声明为抽象类，所以又称面向抽象类编程 */</span>
+</code></pre></div><p>按照之前的经验，估计业务又要扩展了，不过即使再出现新的服务对象类型，只要是人，老师都可以应付。</p>
+<p>但是这次新的服务对象是鹦鹉，现有的技能不匹配了。如果继续加宽服务对象范围为动物，很多动物又没办法服务，那怎么称呼这些服务对象呢？算了，不管这些对象是什么，我只需要考虑他们能干什么就好了。于是代码变成了这样：</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Teacher</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(ListenAndReciteAble lar){} <span style="color:#f00;font-style:italic">// 教背古诗
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#f00;font-style:italic">// 接口 能听会读的
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">public</span> <span style="color:#00f">interface</span> <span style="color:#007575">ListenAndReciteAble</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(); <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(); <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#f00;font-style:italic">// 抽象类 人
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">abstract</span> <span style="color:#00f">class</span> <span style="color:#007575">Person</span> <span style="color:#00f">implements</span> ListenAndReciteAble {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>    <span style="color:#00f">public</span> <span style="color:#00f">abstract</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(); <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">abstract</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(); <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#f00;font-style:italic">// 儿童
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Children</span> <span style="color:#00f">extends</span> Person {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 背诵 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span style="color:#f00;font-style:italic">// 学生
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Students</span> <span style="color:#00f">extends</span> Person {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#f00;font-style:italic">// 外国人
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Foreigner</span> <span style="color:#00f">extends</span> Person {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span style="color:#f00;font-style:italic">// 鹦鹉
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Parrot</span> <span style="color:#00f">implements</span> ListenAndReciteAble {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">listen</span>(){} <span style="color:#f00;font-style:italic">// 听课
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">recite</span>(){} <span style="color:#f00;font-style:italic">// 朗读
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span style="color:#f00;font-style:italic"></span>}
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span style="color:#f00;font-style:italic">/* 要让一个依赖方达到最大的兼容性或扩展性，就要让依赖的对象类型尽量宽泛，当然 Object 是最宽泛的，但是这就不明确了，而且不能保证依赖方的需要。这时就要跳出一些定式，我们需要的是种类？还是他们会的功能？这就变成了面向接口编程 */</span>
+</code></pre></div><h2 id="参考--扩展">参考 &amp; 扩展</h2>
+<ul>
+<li><a href="http://www.cnblogs.com/leoo2sk/archive/2008/04/10/1146447.html">面向接口编程思想基础</a></li>
+<li><a href="http://www.imooc.com/article/details/id/20829">轻松理解面向接口编程</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cron on Kouler</title>
+    <link>https://kouler.com/tags/cron/</link>
+    <description>Recent content in cron on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 14 Aug 2018 11:13:42 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/cron/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>解决 Cron 不能正常执行 Laravel 计划任务</title>
+      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3cron%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%B0%83%E7%94%A8laravel%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Tue, 14 Aug 2018 11:13:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3cron%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%B0%83%E7%94%A8laravel%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/</guid>
+      <description>在 Cron 文件中添加了以下 Laravel 任务调度命令后，发现没有正常执行，而直接在终端执行该命令是正常的
+1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /dev/null 2&amp;gt;&amp;amp;1在 Cron 文件中添加以下输出测试命令，也可以正常执行
+1* * * * * echo 111 &amp;gt;&amp;gt; /path/test安装 Rsyslog 后查看 Cron 日志，并没有发现任何异常，日志正常输出每一次的调度命令
+然后尝试将 Laravel 任务调度命令执行结果输出到文件，修改 Cron 文件后并没有在输出文件中发现任何内容
+1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /path/log查看关于 Linux 中重定向相关内容后怀疑可能于此有关
+ &amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
+2&amp;gt;&amp;gt; 将一个标准错误输出重定向到一个文件或设备 追加到原来的文件
+ 随即修改 Cron 文件，将标准错误重定向到文件
+1* * * * * php /path/artisan schedule:run 2&amp;gt;&amp;gt; /path/log文件中打印出了错误信息</description>
+    </item>
+    
+  </channel>
+</rss>

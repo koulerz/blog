@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>CentOS7 架设 FTP 服务 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">CentOS7 架设 FTP 服务</h1>
+    
+    
+    <small class="text-secondary">Aug 4, 2019</small>
+    
+
+<small><code><a href="https://kouler.com/tags/centos">#centos</a></code></small>
+
+    <br><br>
+<h2 id="大概操作流程">大概操作流程</h2>
+<p>之前已经安装了 vsftpd 服务，并修改了配置</p>
+<p>目前的状况是浏览器端可以登录，但无法显示文件列表</p>
+<ol>
+<li>开机并启动 vsfptd
+<pre><code># 启动服务
+service vsftpd start
+   
+# 停止服务
+service vsftpd stop
+   
+# 重启服务
+service vsftpd restart
+   
+# 查看状态
+service vsftpd status
+</code></pre></li>
+<li>Docker 中安装了 ftp 命令行工具，登录时提示错误 <code>vsftpd: refusing to run with writable root inside chroot()</code></li>
+<li>更改挂载目录的拥有者，仍然提示错误</li>
+<li>挂载硬盘出错 <code>mount /dev/sdb is write-protected mounting read-only</code> <code>mount: unknown filesystem type '(null)'</code></li>
+<li>硬盘格式为 ntfs，格式化为linux支持的格式可以解决该问题，但硬盘中有数据，放弃了该方法</li>
+<li>安装 <code>ntfs-3g</code>，使用该工具挂载硬盘</li>
+<li>命令行登录ftp，提示错误 <code>500 Illegal PORT command</code></li>
+<li>将 vsftpd 设置为被动模式，增加 vsftpd 配置项
+<pre><code># 开启被动模式
+pasv_enable=YES 
+   
+# 被动模式最低端口
+pasv_min_port=30000 
+   
+# 被动模式最高端口
+pasv_max_port=31000 
+</code></pre></li>
+<li>仍然看不到文件列表</li>
+<li>下载 ftp 客户端，使用 filezilla 登录 ftp</li>
+<li>发现将 ntfs 挂载之后目录权限均为 root，使用 chown 更改所属用户没有效果，后来通过 ntfs-3g 挂载时设置用户和用户组为 vsftpd 用户</li>
+<li>SELinux 在访问 ftp 时收到警告</li>
+<li>设置 SELinux 对 ftp 的控制，允许访问目录
+<pre><code># 查看 SELinux 中 ftp 权限
+getsebool -a | grep ftp
+    
+# 允许 ftp 访问目录
+setsebool -P tftp_home_dir 1
+setsebool -P allow_ftpd_full_access 1
+</code></pre></li>
+<li>解决错误 <code>vsftpd: refusing to run with writable root inside chroot()</code>，在 vsftpd 配置文件中添加 <code>allow_writeable_chroot=YES</code></li>
+<li>ftp 仍然无法显示挂载硬盘的目录列表，原因是设置 ftp 为被动模式，防火墙阻止了之前设置的用于传输数据的被动模式端口 30000-31000</li>
+<li>批量开放防火墙端口
+<pre><code>firewall-cmd --permanent --zone=public --add-port=30000-31000/tcp
+firewall-cmd --reload
+</code></pre></li>
+<li>设置开机启动 vsftpd 服务 <code>chkconfig vsftpd on</code></li>
+<li>设置开机自动挂载 NTFS 硬盘
+<pre><code># 编辑 /etc/fstab 文件
+UUID=831df52d-baad-4902-bcce-6128cec95411 /home/vsftpd/ftp ntfs-3g defaults 0 0
+</code></pre></li>
+</ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="http://linux.it.net.cn/e/server/ftp/2015/0227/13554.html">vsftpd：500 OOPS: vsftpd: refusing to run with </a></li>
+<li><a href="https://blog.csdn.net/hudashi/article/details/7797393">如何更改linux文件的拥有者及用户组(chown和chgrp)</a></li>
+<li><a href="https://blog.51cto.com/kisuntech/1308314">vsftpd 服务器报错：500 OOPS: vsftpd: refusing to run with writable root inside chroot()</a></li>
+<li><a href="https://blog.51cto.com/yuanbin/108262">vsftpd配置文件详解</a></li>
+<li><a href="https://jingyan.baidu.com/article/fcb5aff76b59ededab4a7177.html">Centos/Linux 挂载移动ntfs硬盘</a></li>
+<li><a href="https://blog.huihut.com/2017/03/29/Centos7NTFS/">Centos 7 挂载 NTFS 分区</a></li>
+<li><a href="https://blog.csdn.net/enweitech/article/details/51330664">500 Illegal PORT command的问题（FTP主被动模式）</a></li>
+<li><a href="https://desert3.iteye.com/blog/1685734">CentOS下vsftp设置、匿名用户&amp;本地用户设置、PORT、PASV模式设置</a></li>
+<li><a href="https://www.linuxidc.com/Linux/2016-12/138979.htm">CentOS 6和CentOS 7防火墙的关闭</a></li>
+<li><a href="https://blog.csdn.net/qq_32786873/article/details/78873416">linux中ftp查看不到文件列表的问题</a></li>
+<li><a href="https://blog.csdn.net/hudashi/article/details/7797393">如何更改linux文件的拥有者及用户组(chown和chgrp)</a></li>
+<li><a href="https://blog.csdn.net/yasi_xi/article/details/8493574">Linux查看用户所属的组</a></li>
+<li><a href="https://havee.me/linux/2015-12/ntfs3g-permissions-on-linux.html">Linux 系统的 NTFS-3G 权限</a></li>
+<li><a href="https://blog.51cto.com/bguncle/957315?source=drt">查看 SELinux状态及关闭SELinux</a></li>
+<li><a href="https://www.linuxidc.com/Linux/2017-12/149909.htm">CentOS7 搭建vsftpd详细教程</a></li>
+<li><a href="https://www.jianshu.com/p/763fdb8cc3f9">vsftpd设置后无法登陆，解决OOPS: vsftpd: refusing to run with writable root inside chroot()</a></li>
+<li><a href="https://blog.csdn.net/imyyx125/article/details/77988841">vsftpd不能显示文件目录的解决方法</a></li>
+<li><a href="https://www.jianshu.com/p/3930b998ac2e">Centos防火墙设置与端口开放的方法</a></li>
+<li><a href="https://blog.csdn.net/achang21/article/details/52538049">CentOS 7 开放防火墙端口命令</a></li>
+<li><a href="https://blog.csdn.net/github_37128837/article/details/73356170">CentOS7下firewall批量开放端口</a></li>
+<li><a href="https://blog.csdn.net/itsmduan/article/details/80196948">CentOs 设置开机启动vsftpd服务</a></li>
+<li><a href="https://blog.csdn.net/u011563666/article/details/79191719">CentOS设置设备开机自动挂载</a></li>
+<li><a href="https://blog.csdn.net/Hu_wen/article/details/74805149">centos7.2挂载NTFS格式移动硬盘</a></li>
+<li><a href="https://blog.csdn.net/zhang1990_2017/article/details/69857043">通过UUID挂载磁盘</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

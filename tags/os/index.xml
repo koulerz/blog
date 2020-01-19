@@ -6,10 +6,31 @@
     <description>Recent content in os on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 16 Jun 2018 03:37:24 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Oct 2019 20:20:42 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/tags/os/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>关闭 macOS Catalina Read-only Volume</title>
+      <link>https://kouler.com/posts/%E5%85%B3%E9%97%AD-macos-catalina-read-only-volume/</link>
+      <pubDate>Tue, 08 Oct 2019 20:20:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E5%85%B3%E9%97%AD-macos-catalina-read-only-volume/</guid>
+      <description>运行以下命令即可关闭 Read-only Volume，系统重启后命令会失效
+1$ sudo mount -uw /23# killall Finder参考  macOS Catalina Read-only file system with SIP disabled  </description>
+    </item>
+    
+    <item>
+      <title>CentOS7 笔记本关闭合盖睡眠</title>
+      <link>https://kouler.com/posts/centos7%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%85%B3%E9%97%AD%E5%90%88%E7%9B%96%E7%9D%A1%E7%9C%A0/</link>
+      <pubDate>Thu, 11 Jul 2019 12:14:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/centos7%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%85%B3%E9%97%AD%E5%90%88%E7%9B%96%E7%9D%A1%E7%9C%A0/</guid>
+      <description>具体流程  修改配置文件/etc/systemd/logind.conf，去掉HandleLidSwitch行的注释，并将其值由suspend改为ignore 执行systemctl restart systemd-logind命令，使刚才的修改生效  修改后的文件内容如下：
+[Login]#NAutoVTs=6#ReserveVT=6#KillUserProcesses=no#KillOnlyUsers=#KillExcludeUsers=root#InhibitDelayMaxSec=5#HandlePowerKey=poweroff#HandleSuspendKey=suspend#HandleHibernateKey=hibernateHandleLidSwitch=ignore#HandleLidSwitchDocked=ignore#PowerKeyIgnoreInhibited=no#SuspendKeyIgnoreInhibited=no#HibernateKeyIgnoreInhibited=no#LidSwitchIgnoreInhibited=yes#IdleAction=ignore#IdleActionSec=30min#RuntimeDirectorySize=10%#RemoveIPC=no#UserTasksMax=如需再次进入待机状态，可执行systemctl suspend命令。
+通过修改配置文件自定义电源管理 # /etc/systemd动作:HandlePowerKey # 按下电源键后的动作HandleSleepKey # 按下挂起键后的动作HandleHibernateKey # 按下休眠键后的动作HandleLidSwitch # 合上笔记本盖后待机动作允许的值:ignore # 不执行任何操作poweroff # 关机reboot # 重新启动halt # 关机suspend # 待机挂起hibernate # 休眠参考  CentOS 7.0 笔记本关闭合盖睡眠  </description>
+    </item>
     
     <item>
       <title>Debian Ubuntu 更新内核并开启 TCP BBR 功能</title>
@@ -32,6 +53,25 @@
       
       <guid>https://kouler.com/posts/%E6%97%A9%E6%9C%9Fios%E8%AE%BE%E5%A4%87%E5%BC%BA%E5%88%B6%E6%81%A2%E5%A4%8D%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%B3%95/</guid>
       <description>关机后按住返回键 与电脑连接数据线 打开 iTunes 后自动弹出恢复,期间必须按住返回键  有误的官方做法</description>
+    </item>
+    
+    <item>
+      <title>MacOS 下开启显示器 HiDPI 方法</title>
+      <link>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 23 Nov 2016 10:21:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</guid>
+      <description>备份文件 In Google Cloud
+系统环境 操作系统：MacOS
+显示器型号：DELL2515H
+显示器分辨率：2560 * 1440 2K
+MacOS系统获取系统权限方法 MacOS系统下，某些系统文件夹只有系统有权限读写，称为System Integrity Protection（SIP），需要提前关闭。
+创建相应文件夹和文件 首先在终端获取显示器的 DisplayVendorID 和 DisplayProductID。
+1# 获取显示器 DisplayVendorID2ioreg -l | grep &amp;#34;DisplayVendorID&amp;#34;34# 获取显示器 DisplayProductID5ioreg -l | grep &amp;#34;DisplayProductID&amp;#34;在桌面新建一个文件夹，名称格式为 DisplayVendorID-xxxx，其中 xxxx 为显示器 DisplayVendorID 的16进制小写
+在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的16进制小写
+以上步骤可使用脚本 patch-edid.rb 自动生成。
+生成步骤：
+ 下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）  编辑新建的文件 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.</description>
     </item>
     
     <item>

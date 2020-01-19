@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>解决 Cron 不能正常执行 Laravel 计划任务 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">解决 Cron 不能正常执行 Laravel 计划任务</h1>
+    
+    
+    <small class="text-secondary">Aug 14, 2018</small>
+    
+
+<small><code><a href="https://kouler.com/tags/laravel">#laravel</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/cron">#cron</a></code></small>
+
+    <br><br>
+<p>在 Cron 文件中添加了以下 Laravel 任务调度命令后，发现没有正常执行，而直接在终端执行该命令是正常的</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>* * * * * php /path/artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre></div><p>在 Cron 文件中添加以下输出测试命令，也可以正常执行</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>* * * * * echo 111 &gt;&gt; /path/test
+</code></pre></div><p>安装 Rsyslog 后查看 Cron 日志，并没有发现任何异常，日志正常输出每一次的调度命令</p>
+<p>然后尝试将 Laravel 任务调度命令执行结果输出到文件，修改 Cron 文件后并没有在输出文件中发现任何内容</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>* * * * * php /path/artisan schedule:run &gt;&gt; /path/log
+</code></pre></div><p>查看关于 Linux 中重定向相关内容后怀疑可能于此有关</p>
+<blockquote>
+<p><code>&gt;&gt;</code> 输出重定向到一个文件或设备 追加原来的文件</p>
+<p><code>2&gt;&gt;</code> 将一个标准错误输出重定向到一个文件或设备 追加到原来的文件</p>
+</blockquote>
+<p>随即修改 Cron 文件，将标准错误重定向到文件</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>* * * * * php /path/artisan schedule:run 2&gt;&gt; /path/log
+</code></pre></div><p>文件中打印出了错误信息</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>/bin/sh: 1: php: not found
+</code></pre></div><p>修改 Cron 文件后，计划任务正确执行</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>* * * * * /usr/local/bin/php /path/artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+</code></pre></div><h2 id="重定向符号">重定向符号</h2>
+<blockquote>
+<p><code>stdout</code> 是标准输出流，它显示来自命令的输出。它的文件描述符为 1。</p>
+<p><code>stderr</code> 是标准错误流，它显示来自命令的错误输出。它的文件描述符为 2。</p>
+<p><code>stdin</code> 是标准输入流，它为命令提供输入。它的文件描述符为 0。</p>
+<p><code>/dev/null</code> 完全忽略标准输出或标准错误，将选择的流重定向到空文件</p>
+<h5 id="标准输出重定向">标准输出重定向</h5>
+<p><code>&gt;</code> 输出重定向到一个文件或设备 覆盖原来的文件</p>
+<p><code>&gt;!</code> 输出重定向到一个文件或设备 强制覆盖原来的文件</p>
+<p><code>&gt;&gt;</code> 输出重定向到一个文件或设备 追加原来的文件</p>
+<p><code>&lt;</code> 输入重定向到一个程序</p>
+<h5 id="标准错误重定向">标准错误重定向</h5>
+<p><code>2&gt;</code> 将一个标准错误输出重定向到一个文件或设备 覆盖原来的文件  b-shell</p>
+<p><code>2&gt;&gt;</code> 将一个标准错误输出重定向到一个文件或设备 追加到原来的文件</p>
+<p><code>2&gt;&amp;1</code> 将一个标准错误输出重定向到标准输出 注释:1 可能就是代表 标准输出</p>
+<p><code>&gt;&amp;</code> 将一个标准错误输出重定向到一个文件或设备 覆盖原来的文件  c-shell</p>
+<h5 id="示例">示例</h5>
+<p><code>1 &gt; list.txt   2 &gt; list.err</code> 将标准输出重定向到 list.txt，标准错误重定向到 list.err</p>
+<p><code>1 &gt; list.txt 2 &gt; &amp;1</code> 将标准输出和标准错误均重定向到 list.txt</p>
+<p><code>1 &gt; list.txt 2 &gt; /dev/null</code> 将标准输出重定向到 list.txt 标准错误重定向到空文件予以丢弃</p>
+</blockquote>
+<h2 id="参考--扩展">参考 &amp; 扩展</h2>
+<ul>
+<li><a href="https://stackoverflow.com/questions/42483935/laravel-crontab-not-working">Laravel + Crontab not working</a></li>
+<li><a href="https://superuser.com/questions/445347/why-is-my-crontab-not-running">Why is my crontab not running</a></li>
+<li><a href="https://blog.csdn.net/hellozpc/article/details/46721811">Linux中重定向及管道命令</a></li>
+<li><a href="https://www.ibm.com/developerworks/cn/linux/l-lpic1-v3-103-4/index.html">流、管道和重定向</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

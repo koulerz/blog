@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>centos on Kouler</title>
+    <link>https://kouler.com/tags/centos/</link>
+    <description>Recent content in centos on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 04 Aug 2019 18:59:42 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/centos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CentOS7 架设 FTP 服务</title>
+      <link>https://kouler.com/posts/centos7%E6%9E%B6%E8%AE%BEftp%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Sun, 04 Aug 2019 18:59:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/centos7%E6%9E%B6%E8%AE%BEftp%E6%9C%8D%E5%8A%A1/</guid>
+      <description>大概操作流程 之前已经安装了 vsftpd 服务，并修改了配置
+目前的状况是浏览器端可以登录，但无法显示文件列表
+ 开机并启动 vsfptd # 启动服务service vsftpd start# 停止服务service vsftpd stop# 重启服务service vsftpd restart# 查看状态service vsftpd status Docker 中安装了 ftp 命令行工具，登录时提示错误 vsftpd: refusing to run with writable root inside chroot() 更改挂载目录的拥有者，仍然提示错误 挂载硬盘出错 mount /dev/sdb is write-protected mounting read-only mount: unknown filesystem type &#39;(null)&#39; 硬盘格式为 ntfs，格式化为linux支持的格式可以解决该问题，但硬盘中有数据，放弃了该方法 安装 ntfs-3g，使用该工具挂载硬盘 命令行登录ftp，提示错误 500 Illegal PORT command 将 vsftpd 设置为被动模式，增加 vsftpd 配置项 # 开启被动模式pasv_enable=YES # 被动模式最低端口pasv_min_port=30000 # 被动模式最高端口pasv_max_port=31000  仍然看不到文件列表 下载 ftp 客户端，使用 filezilla 登录 ftp 发现将 ntfs 挂载之后目录权限均为 root，使用 chown 更改所属用户没有效果，后来通过 ntfs-3g 挂载时设置用户和用户组为 vsftpd 用户 SELinux 在访问 ftp 时收到警告 设置 SELinux 对 ftp 的控制，允许访问目录 # 查看 SELinux 中 ftp 权限getsebool -a | grep ftp# 允许 ftp 访问目录setsebool -P tftp_home_dir 1setsebool -P allow_ftpd_full_access 1 解决错误 vsftpd: refusing to run with writable root inside chroot()，在 vsftpd 配置文件中添加 allow_writeable_chroot=YES ftp 仍然无法显示挂载硬盘的目录列表，原因是设置 ftp 为被动模式，防火墙阻止了之前设置的用于传输数据的被动模式端口 30000-31000 批量开放防火墙端口 firewall-cmd --permanent --zone=public --add-port=30000-31000/tcpfirewall-cmd --reload 设置开机启动 vsftpd 服务 chkconfig vsftpd on 设置开机自动挂载 NTFS 硬盘 # 编辑 /etc/fstab 文件UUID=831df52d-baad-4902-bcce-6128cec95411 /home/vsftpd/ftp ntfs-3g defaults 0 0  参考  vsftpd：500 OOPS: vsftpd: refusing to run with  如何更改linux文件的拥有者及用户组(chown和chgrp) vsftpd 服务器报错：500 OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd配置文件详解 Centos/Linux 挂载移动ntfs硬盘 Centos 7 挂载 NTFS 分区 500 Illegal PORT command的问题（FTP主被动模式） CentOS下vsftp设置、匿名用户&amp;amp;本地用户设置、PORT、PASV模式设置 CentOS 6和CentOS 7防火墙的关闭 linux中ftp查看不到文件列表的问题 如何更改linux文件的拥有者及用户组(chown和chgrp) Linux查看用户所属的组 Linux 系统的 NTFS-3G 权限 查看 SELinux状态及关闭SELinux CentOS7 搭建vsftpd详细教程 vsftpd设置后无法登陆，解决OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd不能显示文件目录的解决方法 Centos防火墙设置与端口开放的方法 CentOS 7 开放防火墙端口命令 CentOS7下firewall批量开放端口 CentOs 设置开机启动vsftpd服务 CentOS设置设备开机自动挂载 centos7.</description>
+    </item>
+    
+    <item>
+      <title>CentOS7 笔记本关闭合盖睡眠</title>
+      <link>https://kouler.com/posts/centos7%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%85%B3%E9%97%AD%E5%90%88%E7%9B%96%E7%9D%A1%E7%9C%A0/</link>
+      <pubDate>Thu, 11 Jul 2019 12:14:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/centos7%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%85%B3%E9%97%AD%E5%90%88%E7%9B%96%E7%9D%A1%E7%9C%A0/</guid>
+      <description>具体流程  修改配置文件/etc/systemd/logind.conf，去掉HandleLidSwitch行的注释，并将其值由suspend改为ignore 执行systemctl restart systemd-logind命令，使刚才的修改生效  修改后的文件内容如下：
+[Login]#NAutoVTs=6#ReserveVT=6#KillUserProcesses=no#KillOnlyUsers=#KillExcludeUsers=root#InhibitDelayMaxSec=5#HandlePowerKey=poweroff#HandleSuspendKey=suspend#HandleHibernateKey=hibernateHandleLidSwitch=ignore#HandleLidSwitchDocked=ignore#PowerKeyIgnoreInhibited=no#SuspendKeyIgnoreInhibited=no#HibernateKeyIgnoreInhibited=no#LidSwitchIgnoreInhibited=yes#IdleAction=ignore#IdleActionSec=30min#RuntimeDirectorySize=10%#RemoveIPC=no#UserTasksMax=如需再次进入待机状态，可执行systemctl suspend命令。
+通过修改配置文件自定义电源管理 # /etc/systemd动作:HandlePowerKey # 按下电源键后的动作HandleSleepKey # 按下挂起键后的动作HandleHibernateKey # 按下休眠键后的动作HandleLidSwitch # 合上笔记本盖后待机动作允许的值:ignore # 不执行任何操作poweroff # 关机reboot # 重新启动halt # 关机suspend # 待机挂起hibernate # 休眠参考  CentOS 7.0 笔记本关闭合盖睡眠  </description>
+    </item>
+    
+  </channel>
+</rss>

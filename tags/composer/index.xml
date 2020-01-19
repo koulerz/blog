@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>composer on Kouler</title>
+    <link>https://kouler.com/tags/composer/</link>
+    <description>Recent content in composer on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 13 May 2019 19:20:42 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/composer/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>解决 Composer 无法下载代码库问题</title>
+      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3composer%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%BA%93%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 13 May 2019 19:20:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3composer%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%BA%93%E9%97%AE%E9%A2%98/</guid>
+      <description>可以尝试为 composer 设置国内镜像，代码如下
+1$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/参考&amp;amp;扩展  Composer 中文镜像  </description>
+    </item>
+    
+  </channel>
+</rss>

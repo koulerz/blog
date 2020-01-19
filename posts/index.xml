@@ -21,6 +21,215 @@
     </item>
     
     <item>
+      <title>ZSH 环境变量失效问题</title>
+      <link>https://kouler.com/posts/zsh%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Wed, 06 Nov 2019 13:52:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/zsh%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</guid>
+      <description>环境变量失效 默认 shell 修改为 zsh 后，.bash_profile 中的环境变量全部失效
+解决方法  用户目录下创建 .zshrc 文件 将以下命令写入文件 source ~/.bash_profile  重启终端后可解决
+终端用户名配置未生效 .bash_profile 中的终端用户名配置（PS1）仍未生效 export PS1=&#39;\[\033[01;36m\]\w \[\033[00m\]\$ &#39;
+解决方法 解决 zsh 环境变量失效的问题后，在 .bash_profile 文件中修改 PS1 的值
+## 修改前export PS1=&#39;\[\033[01;36m\]\w \[\033[00m\]\$ &#39; # for bash## 修改后export PS1=&#39;%~ %(!.#.$) &#39; # for zsh参考  环境变量怎么配置都不起作用？已经解决！一切源于 zsh zsh prompt expansion  </description>
+    </item>
+    
+    <item>
+      <title>macOS 桌面壁纸路径</title>
+      <link>https://kouler.com/posts/macos%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</link>
+      <pubDate>Tue, 08 Oct 2019 22:33:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/macos%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</guid>
+      <description>默认路径  /Library/Desktop Pictures /System/Library/Desktop Pictures  查看当前桌面壁纸路径 输入以下命令后会在桌面显示当前桌面壁纸所在路径
+1$ defaults write com.apple.dock desktop-picture-show-debug-text -bool TRUE2$ killall Dock输入以下命令后不再显示当前壁纸路径
+1$ defaults delete com.apple.dock desktop-picture-show-debug-text2$ killall Dock参考  找不到当前壁纸文件的路径  </description>
+    </item>
+    
+    <item>
+      <title>关闭 macOS Catalina Read-only Volume</title>
+      <link>https://kouler.com/posts/%E5%85%B3%E9%97%AD-macos-catalina-read-only-volume/</link>
+      <pubDate>Tue, 08 Oct 2019 20:20:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E5%85%B3%E9%97%AD-macos-catalina-read-only-volume/</guid>
+      <description>运行以下命令即可关闭 Read-only Volume，系统重启后命令会失效
+1$ sudo mount -uw /23# killall Finder参考  macOS Catalina Read-only file system with SIP disabled  </description>
+    </item>
+    
+    <item>
+      <title>Tmux 常用命令和快捷键</title>
+      <link>https://kouler.com/posts/tmux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Wed, 07 Aug 2019 17:43:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/tmux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>Tmux 命令 # 开启一个 Tmux Session$ tmux new -s name # 断开当前会话，会话在后台运行，等同于 `Ctrl + B` + `D`$ tmux detach# 查看当前 Tmux 中有哪些 Session$ tmux ls # 回到 Tmux Session 中$ tmux a -t name（or at，or attach） # 关闭demo会话tmux kill-session -t demo # 关闭服务器，所有的会话都将关闭tmux kill-server Tmux 快捷键 Tmux Session 中的命令需要先按下 Tmux 前缀键（默认是 Ctrl + B）
+# 会话（Session） 指令? # 快捷键帮助列表d # detach，退出 Tmux Session，回到父级 Shellr # 强制重载当前会话: # 进入命令行模式，此时可直接输入ls等命令s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换$ # 为当前 Session 命名# 窗口（window）指令c # 新建 Window&amp;amp; # 关闭当前窗口p # 切换到上一窗口n # 切换到下一窗口0~9 # 切换到指定 Windoww # 打开窗口列表，用于且切换窗口, # 为当前 Window 命名.</description>
+    </item>
+    
+    <item>
+      <title>CentOS7 架设 FTP 服务</title>
+      <link>https://kouler.com/posts/centos7%E6%9E%B6%E8%AE%BEftp%E6%9C%8D%E5%8A%A1/</link>
+      <pubDate>Sun, 04 Aug 2019 18:59:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/centos7%E6%9E%B6%E8%AE%BEftp%E6%9C%8D%E5%8A%A1/</guid>
+      <description>大概操作流程 之前已经安装了 vsftpd 服务，并修改了配置
+目前的状况是浏览器端可以登录，但无法显示文件列表
+ 开机并启动 vsfptd # 启动服务service vsftpd start# 停止服务service vsftpd stop# 重启服务service vsftpd restart# 查看状态service vsftpd status Docker 中安装了 ftp 命令行工具，登录时提示错误 vsftpd: refusing to run with writable root inside chroot() 更改挂载目录的拥有者，仍然提示错误 挂载硬盘出错 mount /dev/sdb is write-protected mounting read-only mount: unknown filesystem type &#39;(null)&#39; 硬盘格式为 ntfs，格式化为linux支持的格式可以解决该问题，但硬盘中有数据，放弃了该方法 安装 ntfs-3g，使用该工具挂载硬盘 命令行登录ftp，提示错误 500 Illegal PORT command 将 vsftpd 设置为被动模式，增加 vsftpd 配置项 # 开启被动模式pasv_enable=YES # 被动模式最低端口pasv_min_port=30000 # 被动模式最高端口pasv_max_port=31000  仍然看不到文件列表 下载 ftp 客户端，使用 filezilla 登录 ftp 发现将 ntfs 挂载之后目录权限均为 root，使用 chown 更改所属用户没有效果，后来通过 ntfs-3g 挂载时设置用户和用户组为 vsftpd 用户 SELinux 在访问 ftp 时收到警告 设置 SELinux 对 ftp 的控制，允许访问目录 # 查看 SELinux 中 ftp 权限getsebool -a | grep ftp# 允许 ftp 访问目录setsebool -P tftp_home_dir 1setsebool -P allow_ftpd_full_access 1 解决错误 vsftpd: refusing to run with writable root inside chroot()，在 vsftpd 配置文件中添加 allow_writeable_chroot=YES ftp 仍然无法显示挂载硬盘的目录列表，原因是设置 ftp 为被动模式，防火墙阻止了之前设置的用于传输数据的被动模式端口 30000-31000 批量开放防火墙端口 firewall-cmd --permanent --zone=public --add-port=30000-31000/tcpfirewall-cmd --reload 设置开机启动 vsftpd 服务 chkconfig vsftpd on 设置开机自动挂载 NTFS 硬盘 # 编辑 /etc/fstab 文件UUID=831df52d-baad-4902-bcce-6128cec95411 /home/vsftpd/ftp ntfs-3g defaults 0 0  参考  vsftpd：500 OOPS: vsftpd: refusing to run with  如何更改linux文件的拥有者及用户组(chown和chgrp) vsftpd 服务器报错：500 OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd配置文件详解 Centos/Linux 挂载移动ntfs硬盘 Centos 7 挂载 NTFS 分区 500 Illegal PORT command的问题（FTP主被动模式） CentOS下vsftp设置、匿名用户&amp;amp;本地用户设置、PORT、PASV模式设置 CentOS 6和CentOS 7防火墙的关闭 linux中ftp查看不到文件列表的问题 如何更改linux文件的拥有者及用户组(chown和chgrp) Linux查看用户所属的组 Linux 系统的 NTFS-3G 权限 查看 SELinux状态及关闭SELinux CentOS7 搭建vsftpd详细教程 vsftpd设置后无法登陆，解决OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd不能显示文件目录的解决方法 Centos防火墙设置与端口开放的方法 CentOS 7 开放防火墙端口命令 CentOS7下firewall批量开放端口 CentOs 设置开机启动vsftpd服务 CentOS设置设备开机自动挂载 centos7.</description>
+    </item>
+    
+    <item>
+      <title>CentOS7 笔记本关闭合盖睡眠</title>
+      <link>https://kouler.com/posts/centos7%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%85%B3%E9%97%AD%E5%90%88%E7%9B%96%E7%9D%A1%E7%9C%A0/</link>
+      <pubDate>Thu, 11 Jul 2019 12:14:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/centos7%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%85%B3%E9%97%AD%E5%90%88%E7%9B%96%E7%9D%A1%E7%9C%A0/</guid>
+      <description>具体流程  修改配置文件/etc/systemd/logind.conf，去掉HandleLidSwitch行的注释，并将其值由suspend改为ignore 执行systemctl restart systemd-logind命令，使刚才的修改生效  修改后的文件内容如下：
+[Login]#NAutoVTs=6#ReserveVT=6#KillUserProcesses=no#KillOnlyUsers=#KillExcludeUsers=root#InhibitDelayMaxSec=5#HandlePowerKey=poweroff#HandleSuspendKey=suspend#HandleHibernateKey=hibernateHandleLidSwitch=ignore#HandleLidSwitchDocked=ignore#PowerKeyIgnoreInhibited=no#SuspendKeyIgnoreInhibited=no#HibernateKeyIgnoreInhibited=no#LidSwitchIgnoreInhibited=yes#IdleAction=ignore#IdleActionSec=30min#RuntimeDirectorySize=10%#RemoveIPC=no#UserTasksMax=如需再次进入待机状态，可执行systemctl suspend命令。
+通过修改配置文件自定义电源管理 # /etc/systemd动作:HandlePowerKey # 按下电源键后的动作HandleSleepKey # 按下挂起键后的动作HandleHibernateKey # 按下休眠键后的动作HandleLidSwitch # 合上笔记本盖后待机动作允许的值:ignore # 不执行任何操作poweroff # 关机reboot # 重新启动halt # 关机suspend # 待机挂起hibernate # 休眠参考  CentOS 7.0 笔记本关闭合盖睡眠  </description>
+    </item>
+    
+    <item>
+      <title>Screen 命令配置和常用操作</title>
+      <link>https://kouler.com/posts/screen%E5%91%BD%E4%BB%A4%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 10 Jul 2019 20:48:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/screen%E5%91%BD%E4%BB%A4%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
+      <description>配置文件 该配置在screen底部状态栏显示窗口列表的名称，更易于管理会话和窗口
+## ~/.screenrc## 屏幕缓冲区4096行defscrollback 4096## 下标签设置hardstatus onhardstatus alwayslastlinehardstatus string &amp;quot;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&amp;quot;termcapinfo rxvt &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39;termcapinfo xterm ti@:te@termcapinfo xterm &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39;常用操作 1screen -S name # 创建名称为 name 的会话2screen -t name # 创建名称为 name 的窗口3screen -ls # 显示存在的会话4screen -r name # 唤起一个被放入后台的会话Ctrl + a, ? # 显示所有按键绑定信息Ctrl + a, w # 显示所有窗口列表Ctrl + a, Ctrl + a # 切换到之前的窗口Ctrl + a, d # 暂离当前会话，将当前会话放入后台Ctrl + a, c # 在当前会话中创建一个新窗口Ctrl + a, A # 为当前窗口设置名称Ctrl + a, p # 上一个窗口Ctrl + a, n # 下一个窗口Ctrl + a, 0-9 # 切换到 0-9 窗口Ctrl + a, k # 杀掉当前窗口Ctrl + a, [ # 拷贝模式</description>
+    </item>
+    
+    <item>
+      <title>解决 Composer 无法下载代码库问题</title>
+      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3composer%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%BA%93%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 13 May 2019 19:20:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3composer%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%BA%93%E9%97%AE%E9%A2%98/</guid>
+      <description>可以尝试为 composer 设置国内镜像，代码如下
+1$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/参考&amp;amp;扩展  Composer 中文镜像  </description>
+    </item>
+    
+    <item>
+      <title>解决 VSCode 无法安装 Golang 扩展问题</title>
+      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3vscode%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85golang%E6%89%A9%E5%B1%95%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Mon, 13 May 2019 19:18:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3vscode%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85golang%E6%89%A9%E5%B1%95%E9%97%AE%E9%A2%98/</guid>
+      <description>SS 方法 1 从 SS 复制 HTTP Proxy Shell Export Line
+2 设置 Shell 代理
+1export http_proxy=http://127.0.0.1:1087;2export https_proxy=http://127.0.0.1:1087;3 使用 go get 方式安装
+Goproxy 环境变量方法 go 1.11 版本开始新增了 goproxy 环境变量，用于下载源码时设置代理地址
+1export GOPROXY=https://goproxy.io该方法依赖 go module 功能
+Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换为其他能够访问的包路径，比如 github 下的包路径
+1module hello23require (4 golang.org/x/text v0.3.05)67# 将限制访问的 golang.org 下的地址替换为能够访问的 github 地址8replace (9 golang.org/x/text =&amp;gt; github.com/golang/text v0.3.010)由于包依赖通常比较多和杂，所以不推荐使用该方法</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL 序列操作</title>
+      <link>https://kouler.com/posts/postgresql%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Wed, 07 Nov 2018 19:22:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/postgresql%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/</guid>
+      <description>1# 查看当前序列的值：2SELECT currval(&amp;#39;user_aticle_aid_seq&amp;#39;);34# 设置序列的初始值：5select setval(&amp;#39;user_aticle_aid_seq&amp;#39;,100);67# 递增序列的值：8select nextval(&amp;#39;user_aticle_aid_seq&amp;#39;);</description>
+    </item>
+    
+    <item>
+      <title>Mac 在登录屏隐藏账户</title>
+      <link>https://kouler.com/posts/mac%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</link>
+      <pubDate>Wed, 07 Nov 2018 09:27:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/mac%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</guid>
+      <description>1# 在登录屏隐藏 PostgreSQL 账户2$ sudo dscl . create /Users/postgres IsHidden 134# 在登录屏隐藏 hiddenuser 账户5$ sudo dscl . create /Users/hiddenuser IsHidden 167# 在登录屏隐藏通过 other... 登录8$ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE9参考 &amp;amp; 扩展  Hide PostgreSQL user in OSX Yosemite Hide a user account in macOS Remove “Other…” from Login screen  </description>
+    </item>
+    
+    <item>
+      <title>PHP 代码临时修改配置</title>
+      <link>https://kouler.com/posts/php%E4%BB%A3%E7%A0%81%E4%B8%B4%E6%97%B6%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE/</link>
+      <pubDate>Tue, 06 Nov 2018 19:01:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/php%E4%BB%A3%E7%A0%81%E4%B8%B4%E6%97%B6%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE/</guid>
+      <description>1&amp;lt;?php23// 修改程序最大执行时间 为 300s4ini_set(&amp;#34;max_execution_time&amp;#34;, 300);56// 修改程序内存限制为 128M7ini_set(&amp;#34;memory_limit&amp;#34;, &amp;#34;128M&amp;#34;);</description>
+    </item>
+    
+    <item>
+      <title>Lumen 加载根目录配置文件</title>
+      <link>https://kouler.com/posts/lumen%E5%8A%A0%E8%BD%BD%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>
+      <pubDate>Thu, 11 Oct 2018 22:57:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/lumen%E5%8A%A0%E8%BD%BD%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
+      <description>Lumen 版本: 5.3
+ 在根目录创建 config 目录 在 config 目录中新建配置文件 在 bootstrap/app.php 中加载配置文件  1&amp;lt;?php23// bootstrap/app.php4$app-&amp;gt;configure(&amp;#39;fileName&amp;#39;);56// Example: $app-&amp;gt;configure(&amp;#39;mail&amp;#39;);参考&amp;amp;扩展  Lumen 加载根目录配置文件  </description>
+    </item>
+    
+    <item>
+      <title>面向接口编程</title>
+      <link>https://kouler.com/posts/%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%E7%BC%96%E7%A8%8B/</link>
+      <pubDate>Wed, 26 Sep 2018 12:47:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%E7%BC%96%E7%A8%8B/</guid>
+      <description>面向接口编程和面向对象编程的关系 面向接口编程和面向对象编程并不是平级的，面向接口编程并不是比面向对象编程更先进的一种独立的编程思想，而是附属于面向对象思想体系，属于其中的一部分。或者说，它是面向对象编程体系中的思想精髓之一。
+面向接口编程综述 面向接口编程是在系统分析和架构设计中，分清层次和依赖关系，每个层级不直接向其上层提供服务（即不是直接实例化在上层中），而是通过定义一组接口，仅向上层暴露其接口功能，上层对于下层仅仅是接口依赖，而不依赖具体类。
+这样做的好处是显而易见的，首先对系统灵活性大有好处。当下层需要改变时，只要接口及接口功能不变，则上层不用做任何修改。甚至可以在不改动上层代码时将下层整个替换掉。比如我们将一个 WD 的 60G 硬盘换成一个希捷的 160G 的硬盘，计算机其他地方不用做任何改动，只需要将原硬盘拔下来，新硬盘插上就行了，因为计算机其他部分不依赖具体硬盘，而只依赖一个 IDE 接口，只要硬盘实现了这个接口，就可以替换上去。从这里看，程序中的接口和现实中的接口极为相似。
+使用接口的另一个好处就是不同部件或层次的开发人员可以并行开工，就像造硬盘的不用等造 CPU 的，也不用等造显示器的，只要接口一致，设计合理，完全可以并行进行开发，从而提高效率。
+关于抽象类和接口 如果从具体代码来看，对这两个概念很容易模糊。而单从具体功能来看，甚至觉得接口就是多余的，因为除多重继承外，抽象类似乎能完全取代接口。
+但接口的存在当然不只是为了实现多重继承。抽象类和接口的区别在于使用动机。使用抽象类是为了代码的复用，而使用接口的动机是为了实现多态性。
+Person 这个接口该不该定义，关键看具体应用中的使用情况。如果程序中有 Women 和 Man，都继承 Person，而且 Women 和 Man 绝大多数方法都相同，只有一个方法 ToWC() 不同，那么定义一个 AbstractPerson 抽象类比较合理，因为它可以把其他所有方法都包含进去，子类只定义 ToWC()，大大减少了重复代码量。
+但是，如果程序中的 Women 和 Man 两个类基本没有共同代码，而且有一个 PersonHandle 类需要实例化他们，并且不希望知道他们是男是女，而只需把他们当作人看待，并实现多态，那么定义成接口就有必要了。
+总而言之，接口与抽象类的区别主要在于使用的动机，而不在于其本身。而一个东西该定义成抽象类还是接口，要根据具体环境的上下文决定。
+面向接口编程的代码优化示例 我们要实现老师教儿童背古诗的功能，代码如下：
+1// 老师 2class Teacher {3 public void teach(Children children){} // 教儿童背古诗4}56// 儿童7class Children {8 public void listen(){} // 听课 9 public void recite(){} // 背诵 10}1112/* 这是标准的面向对象编程，描述了对象间的关联 */随着老师能力的提升，准备扩展服务对象，增加在校学生，代码如下：</description>
+    </item>
+    
+    <item>
+      <title>软件架构设计</title>
+      <link>https://kouler.com/posts/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</link>
+      <pubDate>Wed, 26 Sep 2018 11:00:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%BD%AF%E4%BB%B6%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/</guid>
+      <description>子系统的设计 在软件设计的过程中，往往需要对系统的结构层次进行分析，从中抽取出系统的设计框架，通过框架来指导整个软件设计的流程。而一个良好的系统框架也是决定整个系统的稳定性、封闭性、可维护性的重要条件之一。
+复杂的系统，最好先按业务领域横向拆分成可独立部署的子系统，每个子系统内部再按技术和业务纵向拆分成不同的模块。
+举例来说，按照一般的模块化或者功能拆分方法，我们可以将一个完善的电商系统分解为商品、库管、订单、支付、财务、结算、配送、搜索、CRM、虚拟货币、优惠票券、短信、邮件、活动等子系统。而子系统可以再次按照模块或者功能细分，比如订单系统可以按商品品类或者活动类型或者线上线下等维度拆分。支付系统可以按照内外部支付方式、支付和风控策略、支付模式（如跳转或直连等）等不同维度进行划分。
+子系统设计准则   分而治之，划分模块 子系统还可以拆分子系统，服务还可以拆分子服务，这里涉及到一个粒度的问题，非常考验设计者的水平和经验，需要准确把握，否则很容易过度设计
+  分层
+如果真正理解分层的含义，在很多情况下，多层不如经典三层
+  保证隔离，划清界限 不要过多假设，不要拖泥带水，任何模块或服务只做它该做的事情。实现隔离的最佳方法，就是面向接口编程，而不是针对具体实现编程 Programming to an Interface, not an Implementation
+  多态
+如果一定要复用类，请优先使用对象的组合而非继承
+  提取变化剧烈的点，定期重构，核心业务逻辑必须单元测试
+UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响后端业务逻辑，所以，接口设计要向 UI 和业务逻辑倾斜，基础框架和服务相对稳定，无需过度设计
+  模块的设计 系统模块划分过程中，要充分遵照当前系统的框架结构。模块的划分要和系统的结构层次相结合，根据系统层次对各个模块也进行层次划分。如果系统的模块划分和框架结构相违背的话，则会导致数据混乱，接口复杂，模块耦合性过高等问题出现。
+进行模块划分时，很多情况下不能清晰的把握每个模块的具体内容。往往会从需求归类或数据统一的角度上来设计模块。这种设计理念是对的，但如果只是单纯从这几个方面进行模块设计，会导致在模块划分上出现一些问题。
+比如设计的某一个模块，虽然数据接口统一，但内部实现的功能非常多，单一模块的规模过大，包含的内容过多，会导致程序实现难度增加，数据处理流程变得复杂，程序维护性降低，出错范围不易确定等问题出现。同时，由于模块实现的功能丰富，则必然会导致接口也变得繁多，那么与其他模块之间的独立性就得不到保证，严重影响对程序的理解。
+在设计模块的时候，需要遵循每个模块功能单一、接口简单、结构精简的原则。确保每个模块的规模不要太大，接口尽量单一简化。这样可能会导致模块数量比较多，但能够确保模块的独立性，且不会影响系统的整体框架结构。
+模块划分的意义：  功能完整独立，数据接口简单 程序易于实现，提高软件开发速度的同时能兼顾软件质量 程序实现逻辑更加清晰，可读性强，易于理解和维护 多人合作开发分工更明确，容易控制 系统运行可方便地选择不同的流程 易于测试和维护 有利于限制错误范围 抽象出可公用的模块，可维护性强，以避免同一处修改在多个地方出现 能充分利用可以重用的代码 基于模块化设计优秀的系统，方便的组装开发新的相似系统，甚至一个全新系统  模块划分准则  高内聚低耦合 规模适中 大模块分解不充分；小模块使用开销大，接口复杂。 功能单一明确 最好做到模块与目标的一一对应。方便单个模块的调试。 接口简单一致 设计应该使得信息传递简单并且与模块的功能一致。 尽量保证单入口单出口 避免内容耦合，易于理解和维护。 功能可预测
+相同的输入应该有相同的输出，否则难以理解、测试和维护。 联系尽可能少 对于必须的联系都应该有明确的说明，  模块化的实现 抽象： 抽出事物的本质特性而暂时不考虑它们的细节</description>
+    </item>
+    
+    <item>
+      <title>Golang WASM Demo</title>
+      <link>https://kouler.com/posts/golang-wasm-demo/</link>
+      <pubDate>Sun, 26 Aug 2018 16:14:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/golang-wasm-demo/</guid>
+      <description>Golang 1.11 加入了对 WebAssembly 的支持，以下会测试并运行一个简单的 Demo。
+ MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit)   编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码  编译测试代码 1// 测试代码 main.go2package main34import &amp;#34;fmt&amp;#34;56func main() {7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;)8}1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go编写 WebServer 代码 1// server.</description>
+    </item>
+    
+    <item>
+      <title>解决 Cron 不能正常执行 Laravel 计划任务</title>
+      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3cron%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%B0%83%E7%94%A8laravel%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/</link>
+      <pubDate>Tue, 14 Aug 2018 11:13:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3cron%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%B0%83%E7%94%A8laravel%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/</guid>
+      <description>在 Cron 文件中添加了以下 Laravel 任务调度命令后，发现没有正常执行，而直接在终端执行该命令是正常的
+1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /dev/null 2&amp;gt;&amp;amp;1在 Cron 文件中添加以下输出测试命令，也可以正常执行
+1* * * * * echo 111 &amp;gt;&amp;gt; /path/test安装 Rsyslog 后查看 Cron 日志，并没有发现任何异常，日志正常输出每一次的调度命令
+然后尝试将 Laravel 任务调度命令执行结果输出到文件，修改 Cron 文件后并没有在输出文件中发现任何内容
+1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /path/log查看关于 Linux 中重定向相关内容后怀疑可能于此有关
+ &amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
+2&amp;gt;&amp;gt; 将一个标准错误输出重定向到一个文件或设备 追加到原来的文件
+ 随即修改 Cron 文件，将标准错误重定向到文件
+1* * * * * php /path/artisan schedule:run 2&amp;gt;&amp;gt; /path/log文件中打印出了错误信息</description>
+    </item>
+    
+    <item>
       <title>Debian Ubuntu 更新内核并开启 TCP BBR 功能</title>
       <link>https://kouler.com/posts/debian-ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8%E5%B9%B6%E5%BC%80%E5%90%AFtcp-bbr%E5%8A%9F%E8%83%BD/</link>
       <pubDate>Sat, 16 Jun 2018 03:37:24 +0800</pubDate>
@@ -82,6 +291,23 @@ Release 版： 此版本意味着最终版本、上线版本，在前面版本�
     </item>
     
     <item>
+      <title>Golang 交叉编译</title>
+      <link>https://kouler.com/posts/golang%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</link>
+      <pubDate>Mon, 05 Mar 2018 18:28:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/golang%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91/</guid>
+      <description>什么是跨平台交叉编译 交叉编译 通俗地讲就是在一种平台上编译出能运行在体系结构不同的另一种平台上的程序，比如在 PC 平台（X86 CPU）上编译出能运行在以 ARM 为内核的 CPU 平台上的程序，编译得到的程序在 X86 CPU 平台上是不能运行的，必须放到ARM CPU 平台上才能运行，虽然两个平台用的都是 Linux 系统。
+交叉编译这种方法在异平台移植和嵌入式开发时非常有用。
+本地编译 相对与交叉编译，平常做的编译叫本地编译，也就是在当前平台编译，编译得到的程序也是在本地执行。
+用来编译跨平台程序的编译器就叫交叉编译器，相对来说，用来做本地编译的工具就叫本地编译器。
+所以要生成在目标机上运行的程序，必须要用交叉编译工具链来完成。在裁减和定制 Linux 内核用于嵌入式系统之前，由于一般嵌入式开发系统存储大小有限，通常都要在性能优越的 PC 上建立一个用于目标机的交叉编译工具链，用该交叉编译工具链在 PC 上编译目标机上要运行的程序。
+交叉编译工具链是一个由编译器、连接器和解释器组成的综合开发环境，交叉编译工具链主要由 binutils、gcc 和 glibc 3个部分组成。
+有时出于减小 libc 库大小的考虑，也可以用别的 c 库来代替 glibc，例如 uClibc、dietlibc 和 newlib。
+Golang 的跨平台交叉编译 Go 语言是编译型语言，可以将程序编译后在将其拿到其它操作系统中运行，此过程只需要在编译时增加对其它系统的支持。
+交叉编译依赖下面几个环境变量  $GOARCH 目标平台（编译后的目标平台）的处理器架构（386、amd64、arm） $GOOS 目标平台（编译后的目标平台）的操作系统（darwin、freebsd、linux、windows）  各平台的 GOOS 和 GOARCH 参考    OS ARCH OS version     linux 386 / amd64 / arm &amp;gt;= Linux 2.</description>
+    </item>
+    
+    <item>
       <title>迁移 Git 仓库</title>
       <link>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</link>
       <pubDate>Fri, 26 May 2017 13:21:15 +0800</pubDate>
@@ -125,6 +351,25 @@ SSH 隧道的搭建 首先需要有一台支持 SSH 的墙外服务器，此服�
       
       <guid>https://kouler.com/posts/laravel%E5%AD%97%E6%AE%B5%E9%AA%8C%E8%AF%81/</guid>
       <description>手动创建验证程序示例 1&amp;lt;?php 2 3$data = [ 4 &amp;#39;email&amp;#39; = &amp;#39;aaa@gmail.com&amp;#39;, 5 &amp;#39;name&amp;#39;=&amp;#39;aaa&amp;#39;, 6 &amp;#39;password&amp;#39;=&amp;#39;aaa&amp;#39; 7]; 8 9$rules = array( 10 &amp;#39;email&amp;#39; =&amp;gt; &amp;#39;required|email&amp;#39;, 11 &amp;#39;name&amp;#39; =&amp;gt; &amp;#39;required|between:1,20&amp;#39;, 12 &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;required|min:8&amp;#39;, 13); 14 15$message = array( 16 &amp;#39;required&amp;#39; =&amp;gt; &amp;#39;:attribute 不能为空&amp;#39;, 17 &amp;#39;between&amp;#39; =&amp;gt; &amp;#39;:attribute 长度必须在 :min 和 :max 之间&amp;#34; 18); 1920$attributes = array( 21&amp;#39;email&amp;#39; =&amp;gt; &amp;#39;电子邮件&amp;#39;, 22&amp;#39;name&amp;#39; =&amp;gt; &amp;#39;用户名&amp;#39;, 23&amp;#39;password&amp;#39; =&amp;gt; &amp;#39;用户密码&amp;#39;, 24); 25 26$validate = Validator::make($data,$rules,$message,$attributes); 27 28var_dump($validate-&amp;gt;fails()); 29var_dump($validate-&amp;gt;messages()); 30var_dump($validate-&amp;gt;messages()-&amp;gt;first()) Validator 的验证扩展 1&amp;lt;?</description>
+    </item>
+    
+    <item>
+      <title>MacOS 下开启显示器 HiDPI 方法</title>
+      <link>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 23 Nov 2016 10:21:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</guid>
+      <description>备份文件 In Google Cloud
+系统环境 操作系统：MacOS
+显示器型号：DELL2515H
+显示器分辨率：2560 * 1440 2K
+MacOS系统获取系统权限方法 MacOS系统下，某些系统文件夹只有系统有权限读写，称为System Integrity Protection（SIP），需要提前关闭。
+创建相应文件夹和文件 首先在终端获取显示器的 DisplayVendorID 和 DisplayProductID。
+1# 获取显示器 DisplayVendorID2ioreg -l | grep &amp;#34;DisplayVendorID&amp;#34;34# 获取显示器 DisplayProductID5ioreg -l | grep &amp;#34;DisplayProductID&amp;#34;在桌面新建一个文件夹，名称格式为 DisplayVendorID-xxxx，其中 xxxx 为显示器 DisplayVendorID 的16进制小写
+在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的16进制小写
+以上步骤可使用脚本 patch-edid.rb 自动生成。
+生成步骤：
+ 下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）  编辑新建的文件 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;UTF-8&amp;quot;?&amp;gt;&amp;lt;!DOCTYPE plist PUBLIC &amp;quot;-//Apple//DTD PLIST 1.</description>
     </item>
     
     <item>
