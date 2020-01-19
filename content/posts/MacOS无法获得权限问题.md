@@ -1,5 +1,5 @@
 ---
-title: "MacOS 无法获得权限问题"
+title: "macOS 无法获得权限问题"
 date: 2016-11-20T22:40:40+08:00
 publishdate: 2016-11-20
 lastmod: 2020-01-19

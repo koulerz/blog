@@ -1,5 +1,5 @@
 ---
-title: "PostgreSQL 中 Json 和 Jsonb 的区别"
+title: "PostgreSQL 中 JSON 和 JSONB 的区别"
 date: 2016-04-02T15:47:06+08:00
 publishdate: 2016-04-02
 lastmod: 2020-01-17

@@ -1,5 +1,5 @@
 ---
-title: "MacOS 下开启显示器 HiDPI 方法"
+title: "macOS 下开启显示器 HiDPI 方法"
 date: 2016-11-23T10:21:42+08:00
 publishdate: 2016-11-23
 lastmod: 2020-01-19
