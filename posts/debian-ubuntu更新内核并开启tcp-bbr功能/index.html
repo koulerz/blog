@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>Debian Ubuntu 更新内核并开启 TCP BBR 功能 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">Debian Ubuntu 更新内核并开启 TCP BBR 功能</h1>
+    
+    
+    <small class="text-secondary">Jun 16, 2018</small>
+    
+
+<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/debian">#debian</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/ubuntu">#ubuntu</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/bbr">#bbr</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/network">#network</a></code></small>
+
+    <br><br>
+<p><a href="https://github.com/google/bbr">BBR (Bottleneck Bandwidth and RTT)</a> 是 Google 提供的 TCP 拥塞控制算法，适用于复杂网络环境下的 TCP 加速。</p>
+<ol>
+<li>Debian 8.x 或者 Debian 9.x 系统，当然以下教程也适合 Ubuntu 14.04 或 Ubuntu 16.04</li>
+<li>如果是虚拟机，那么得使用 KVM 或 Xen 等可以修改内核的平台，OpenVZ 方法我们不做介绍</li>
+</ol>
+<h2 id="升级内核">升级内核</h2>
+<p>BBR 只支持 4.9.x 以上的内核，所以我们需要更新升级以下</p>
+<p>如果你使用的是 Debian 9.x，那么这一步可以直接跳过，其他三个内核版本较旧的系统，我们可以使用 Ubuntu 打包好的内核安装包</p>
+<p>首先，找到 4.9.x 以上版本的稳定内核，这里我们推荐使用 LTS 版本，目前最新的是 4.9.40 下载安装即可</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>mkdir kernel-tmp &amp;&amp; cd kernel-tmp
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988_4.9.88-040988.201803181131_all.deb
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-image-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>sudo dpkg -i *.deb
+</code></pre></div><p>安装完以后直接 <code>reboot</code> 重启，一切顺利的话请检查以下当前的内核版本</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>root@debian ~ <span style="color:#f00;font-style:italic"># uname -r</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>4.9.0-3-amd64
+</code></pre></div><h2 id="配置-bbr">配置 BBR</h2>
+<p>直接修改 <code>/etc/sysctl.conf</code> 文件即可</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>cat &gt;&gt; /etc/sysctl.conf <span style="color:#009c00">&lt;&lt; EOF
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#009c00">net.core.default_qdisc=fq
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#009c00">net.ipv4.tcp_congestion_control=bbr
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#009c00">EOF</span>
+</code></pre></div><p>然后使用 <code>sysctl -p</code> 命令让内核配置生效，不出意外，应该会提示</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>root@debian ~ <span style="color:#f00;font-style:italic"># sysctl -p</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>net.core.default_qdisc = fq
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>net.ipv4.tcp_congestion_control = bbr
+</code></pre></div><p>此时可以使用 <code>lsmod | grep bbr</code> 命令检查 BBR 是否已正确开启</p>
+<pre><code>root@debian ~ # lsmod | grep bbr
+tcp_bbr                16384  61
+</code></pre><p>如果出现 tcp_bbr 字样则说明没有问题</p>
+<h2 id="参考--扩展">参考 &amp; 扩展</h2>
+<ul>
+<li><a href="https://sb.sb/blog/debian-ubuntu-tcp-bbr/">Debian / Ubuntu 更新内核并开启 TCP BBR 拥塞控制算法</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

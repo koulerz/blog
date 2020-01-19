@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>debian on Kouler</title>
+    <link>https://kouler.com/tags/debian/</link>
+    <description>Recent content in debian on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 16 Jun 2018 03:37:24 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/debian/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Debian Ubuntu 更新内核并开启 TCP BBR 功能</title>
+      <link>https://kouler.com/posts/debian-ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8%E5%B9%B6%E5%BC%80%E5%90%AFtcp-bbr%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Sat, 16 Jun 2018 03:37:24 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/debian-ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8%E5%B9%B6%E5%BC%80%E5%90%AFtcp-bbr%E5%8A%9F%E8%83%BD/</guid>
+      <description>BBR (Bottleneck Bandwidth and RTT) 是 Google 提供的 TCP 拥塞控制算法，适用于复杂网络环境下的 TCP 加速。
+ Debian 8.x 或者 Debian 9.x 系统，当然以下教程也适合 Ubuntu 14.04 或 Ubuntu 16.04 如果是虚拟机，那么得使用 KVM 或 Xen 等可以修改内核的平台，OpenVZ 方法我们不做介绍  升级内核 BBR 只支持 4.9.x 以上的内核，所以我们需要更新升级以下
+如果你使用的是 Debian 9.x，那么这一步可以直接跳过，其他三个内核版本较旧的系统，我们可以使用 Ubuntu 打包好的内核安装包
+首先，找到 4.9.x 以上版本的稳定内核，这里我们推荐使用 LTS 版本，目前最新的是 4.9.40 下载安装即可
+1mkdir kernel-tmp &amp;amp;&amp;amp; cd kernel-tmp 2wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988_4.9.88-040988.201803181131_all.deb 3wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb 4wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-image-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb 5sudo dpkg -i *.deb 安装完以后直接 reboot 重启，一切顺利的话请检查以下当前的内核版本
+1root@debian ~ # uname -r 24.</description>
+    </item>
+    
+  </channel>
+</rss>

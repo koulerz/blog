@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>Lumen 问题汇总 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">Lumen 问题汇总</h1>
+    
+    
+    <small class="text-secondary">Oct 19, 2016</small>
+    
+
+<small><code><a href="https://kouler.com/tags/web">#web</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/lumen">#lumen</a></code></small>
+
+    <br><br>
+<h2 id="lumen-安装在子目录下时访问首页出现404错误">lumen 安装在子目录下时访问首页出现404错误</h2>
+<p>public/index.php 中的</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>$app-&gt;run();
+</code></pre></div><p>改为</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>$app-&gt;run($app[<span style="color:#009c00">&#39;request&#39;</span>]);
+</code></pre></div><h2 id="lumen-配置数据库">lumen 配置数据库</h2>
+<ol>
+<li>在根目录添加 .env 配置文件并修改数据库信息</li>
+<li>app.php 文件中去掉 <code>Dotenv::load(__DIR__ . '/../');</code>行的注释，只有去掉才可以使用env配置文件</li>
+<li>控制器文件中通过 app 函数来调用数据库，例： <br>
+<code>$result = app('db')-&gt;select(&quot;select * from xay_waiter&quot;);</code></li>
+</ol>
+<p><a href="http://laravelacademy.org/post/455.html">详细信息</a></p>
+<h2 id="使用-session">使用 Session</h2>
+<ol>
+<li>开启Facades，开启方式是去掉 bootstrap/app.php 中 <code>$app-&gt;withFacades();</code> 的注释。</li>
+<li>开启 Session，开启方式：去掉 bootstrap/app.php 中 <code>$app-&gt;middleware();</code> 的 <code>StartSession</code> 中间件的注释。</li>
+<li>使用时发生错误：<em>Class &lsquo;Memcached&rsquo; not found</em> ，因为在 .env 文件中，Session 的默认驱动是：memcached。修改即可。 <br>
+目前支持的驱动有：file、cookie、database、memcached、redis、array。</li>
+<li>
+<ul>
+<li><code>Session::put('key', 'value'); // 保存对象到 Session 中</code></li>
+<li><code>$value = Session::get('key'); // 从 Session 取回对象</code></li>
+<li><code>$value = Session::pull('key', 'default'); // 从 Session 取回对象并删除</code></li>
+<li><code>$data = Session::all(); // 从 Session 取出所有对象</code></li>
+<li><code>Session::has('users'); // 判断对象在 Session 中是否存在</code></li>
+<li><code>Session::forget('key'); // 从 Session 中移除对象</code></li>
+<li><code>Session::flush(); // 清空所有 Session</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="lumen-发送邮件">lumen 发送邮件</h2>
+<ol>
+<li>在 composer.json 中，添加 mail 依赖，添加完成后在命令行使用 <code>composer update</code> 命令更新 composer.lock 文件安装依赖</li>
+</ol>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#009c00">&#34;require&#34;</span>: {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    &#34;illuminate/mail&#34;: <span style="color:#009c00">&#34;5.1.*&#34;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>},
+</code></pre></div><ol start="2">
+<li>修改 env 配置文件中的邮件配置</li>
+</ol>
+<pre><code class="language-env" data-lang="env">MAIL_DRIVER=smtp
+MAIL_HOST=smtp.163.com
+MAIL_PORT=25    
+MAIL_USERNAME=name@163.com
+MAIL_PASSWORD=password
+MAIL_FROM_ADDRESS=name@163.com
+MAIL_FROM_NAME=name
+</code></pre><ol start="3">
+<li>在控制器中使用 <code>Mail::send()</code> 方法发送邮件</li>
+</ol>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>$email = <span style="color:#009c00">&#39;name@163.com&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>$name  = <span style="color:#009c00">&#39;name&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>$token = <span style="color:#009c00">&#39;token&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>$uid   = 1;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>$data  = [<span style="color:#009c00">&#39;email&#39;</span> =&gt; $email, <span style="color:#009c00">&#39;name&#39;</span> =&gt; $name, <span style="color:#009c00">&#39;token&#39;</span> =&gt; $token, <span style="color:#009c00">&#39;uid&#39;</span> =&gt; $uid];
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic">// 发送简短字符而非完整视图
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>Mail::raw(<span style="color:#009c00">&#39;Text to e-mail&#39;</span>, <span style="color:#00f">function</span> ($message) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    $message-&gt;from(<span style="color:#009c00">&#39;lan1ling@163.com&#39;</span>, <span style="color:#009c00">&#39;Laravel&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>    $message-&gt;to(<span style="color:#009c00">&#39;koulerz@qq.com&#39;</span>)-&gt;cc(<span style="color:#009c00">&#39;koulerz@gmail.com&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>});
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span style="color:#f00;font-style:italic">// 发送完整邮件
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"></span>Mail::send(<span style="color:#009c00">&#39;activemail&#39;</span>, $data, <span style="color:#00f">function</span> ($message) <span style="color:#00f">use</span> ($data) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>    $message-&gt;from(<span style="color:#009c00">&#39;lan1ling@163.com&#39;</span>, <span style="color:#009c00">&#39;lan1ling&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>    $message-&gt;to($data[<span style="color:#009c00">&#39;email&#39;</span>], $data[<span style="color:#009c00">&#39;name&#39;</span>]);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>    $message-&gt;subject(<span style="color:#009c00">&#39;欢迎注册我们的网站，请激活您的账号！&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>});
+</code></pre></div><ol start="4">
+<li>在 /resources/views/ 目录下创建邮件视图文件 activemail.blade.php</li>
+</ol>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;!Doctype html&gt;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>&lt;html lang=<span style="color:#009c00">&#34;zh-CN&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>  &lt;head&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    &lt;meta charset=<span style="color:#009c00">&#34;UTF-8&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    &lt;meta http-equiv=<span style="color:#009c00">&#34;X-UA-Compatible&#34;</span> content=<span style="color:#009c00">&#34;IE=edge&#34;</span>&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>  &lt;/head&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>&lt;body&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>  &lt;a href=<span style="color:#009c00">&#34;http://www.baidu.com&#34;</span> target=<span style="color:#009c00">&#34;_blank&#34;</span>&gt;{{$email.&#39;+&#39;.$name.&#39;+&#39;.$token.&#39;+&#39;.$uid}}点击激活你的账号&lt;/a&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>&lt;/body&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>&lt;/html&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>
+</code></pre></div>
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

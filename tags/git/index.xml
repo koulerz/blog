@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Kouler</title>
+    <link>https://kouler.com/tags/git/</link>
+    <description>Recent content in git on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 26 May 2017 13:21:15 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>迁移 Git 仓库</title>
+      <link>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</link>
+      <pubDate>Fri, 26 May 2017 13:21:15 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</guid>
+      <description>1// 切换到需要迁移的 Git 项目目录 2$ cd project 3 4// 添加 Git 远程仓库 5$ git remote add gitlab git@gitlab.com:team/name.git 6 7// 迁移代码到远程仓库 8$ git push -u gitlab master 参考 &amp;amp; 扩展阅读  如何把已存在的git项目转移到Gitlab项目 Git远程操作详解  </description>
+    </item>
+    
+  </channel>
+</rss>

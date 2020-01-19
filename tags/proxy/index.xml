@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>proxy on Kouler</title>
+    <link>https://kouler.com/tags/proxy/</link>
+    <description>Recent content in proxy on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 09 Mar 2018 10:46:39 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/proxy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>终端设置代理</title>
+      <link>https://kouler.com/posts/%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Fri, 09 Mar 2018 10:46:39 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</guid>
+      <description>设置和取消临时代理 临时代理在退出当前终端后失效
+1# 设置临时 HTTP 代理 2export http_proxy=http://proxyAddress:port 3 4# 设置临时 SOCKS5 代理 5export ALL_PROXY=socks5://proxyAddress:port 6 7# SS 下的 HTTP 代理 8export http_proxy=http://127.0.0.1:1087 9 10# 取消临时代理 11unset http_proxy 12unset ALL_PROXY 参考 &amp;amp; 扩展  让终端走代理的几种方法  </description>
+    </item>
+    
+  </channel>
+</rss>

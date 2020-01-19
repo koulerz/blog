@@ -20,5 +20,17 @@
       <description>文本编辑    快捷键 描述     Command + Alt + I 对当前文件进行格式化排版   Control + G 顺序选中相同的文本   Shift + Enter 在当前行下方插入新行   Command + Alt + Enter 在当前行上方插入新行   Command + / 单行注释   Command + Shift + / 块代码注释   Command + D 复制当前行   Command + P 查看当前函数参数   Command + Shift + Enter 补全代码（if）   Alt + / 自动完成   Alt + Click 插入多个光标（鼠标单击）   Alt Alt + Up 向上插入多个光标（双击 Alt 并按住）   Alt Alt + Down 向下插入多个光标（双击 Alt 并按住）   Alt + Double Click 选中多个文本（鼠标双击）   Alt + Mouse 选中多个文本（鼠标拖动）   Ctrl + Mouse 复制选中文本（鼠标拖动）   Command + Mouse 移动选中文本（鼠标拖动）   Command + J 活动代码提示   Command + Alt + T 插入环绕代码   Command + .</description>
     </item>
     
+    <item>
+      <title>PhpStorm 下配置调试环境</title>
+      <link>https://kouler.com/posts/phpstorm%E4%B8%8B%E9%85%8D%E7%BD%AE%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Wed, 06 Apr 2016 14:42:30 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/phpstorm%E4%B8%8B%E9%85%8D%E7%BD%AE%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/</guid>
+      <description>使用 brew 安装 php 和 xdebug
+PHP xdebug 配置信息
+1[xdebug] 2; xdebug.remote_autostart=1 3zend_extension=&amp;#34;/usr/local/Cellar/php71-xdebug/2.5.5/xdebug.so&amp;#34; 4xdebug.remote_enable=1 5xdebug.remote_handler=&amp;#34;dbgp&amp;#34; 6xdebug.remote_host=localhost 7xdebug.remote_port=9001 8xdebug.idekey=&amp;#34;PHPSTORM&amp;#34; 9xdebug.profiler_enable_trigger=1 10xdebug.profiler_output_dir=&amp;#34;/Users/kouler/Codes/php/xdebug_profiler&amp;#34; 需要注意 xdebug 和 phpfpm 的默认端口都是 9000，端口冲突
+参考 &amp;amp; 扩展  在Mac上的PHPSTORM配置XDebug来调试PHP程序 PHP:使用xdebug profiler 做性能分析  </description>
+    </item>
+    
   </channel>
 </rss>

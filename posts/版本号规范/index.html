@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.62.2" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>版本号规范 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">版本号规范</h1>
+    
+    
+    <small class="text-secondary">Mar 11, 2018</small>
+    
+    <br><br>
+<h2 id="版本号组成和范例">版本号组成和范例</h2>
+<p>&lt;主版本号&gt;.&lt;次版本号&gt;.&lt;修订号&gt;-&lt;先行版本号&gt;+&lt;版本编译信息&gt;</p>
+<pre><code># 主版本号+次版本号+修订号 范例：
+0.1.0
+1.0.0
+1.0.9
+1.10.0
+
+# 主版本号+次版本号+修订号+先行版本号 范例：
+1.0.0-alpha
+1.0.0-alpha.1
+1.0.0-0.3.7
+1.0.0-x.7.z.92
+
+# 主版本号+次版本号+修订号+先行版本号+版本编译信息 范例：
+1.0.0-alpha+001
+1.0.0+20130313144700
+1.0.0-beta+exp.sha.5114f85
+</code></pre><h2 id="版本号中希腊字母标识">版本号中希腊字母标识</h2>
+<p><strong>Alpha 版：</strong>
+也叫 α 版，此版本主要是以实现软件功能为主，通常只在软件开发者内部交流，一般而言，该版本软件的 Bug 较多，需要继续修改。</p>
+<p><strong>Beta 版：</strong>
+此版本相对于 α 版已经有了很大的改进，消除了严重的错误，但还是存在着一些缺陷，需要经过多次测试来进一步消除，此版本主要的修改对香是软件的 UI。</p>
+<p><strong>RC 版：</strong>
+（Release Candidate）发布候选版本，此版本已经相当成熟了，基本上不存在导致错误的 BUG，与即将发行的正式版相差无几，测试人员基本通过的版本。</p>
+<p><strong>Release 版：</strong>
+此版本意味着最终版本、上线版本，在前面版本的一系列测试版之后，终归会有一个正式版本，是最终交付用户使用的一个版本。该版本有时也称为标准版。一般情况下，Release 不会以单词形式出现在软件封面上，取而代之的是符号 (R)。</p>
+<h2 id="版本号修改规则">版本号修改规则</h2>
+<p><strong>主版本号：</strong>
+当功能模块有较大的变动，比如增加多个模块或者整体架构发生变化。此版本号由项目决定是否修改。</p>
+<p><strong>次版本号：</strong>
+当功能有一定的增加或变化，比如增加了对权限控制、增加自定义视图等功能。此版本号由项目决定是否修改。</p>
+<p><strong>修订号：</strong>
+一般是 Bug 修复或是一些小的变动，要经常发布修订版，时间间隔不限，修复一个严重的bug即可发布一个修订版。此版本号由项目经理决定是否修改。</p>
+<p><strong>先行版本号：</strong>
+被标上先行版本号则表示这个版本并非稳定而且可能无法达到兼容的需求。</p>
+<p><strong>版本编译信息：</strong>
+可以记录修改项目的当前日期或编译信息，每天对项目的修改都需要更改日期版本号。版本编译信息不标识版本优先级，因此当两个版本只有在版本编译信息有差别时，属于相同的优先层级。</p>
+<h2 id="参考--扩展">参考 &amp; 扩展</h2>
+<ul>
+<li><a href="https://semver.org/lang/zh-CN/">语义化版本 2.0.0</a></li>
+<li><a href="http://blog.csdn.net/gao_chun/article/details/72417127">APP版本号命名规范及原则</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

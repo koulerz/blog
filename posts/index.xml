@@ -21,6 +21,91 @@
     </item>
     
     <item>
+      <title>Debian Ubuntu 更新内核并开启 TCP BBR 功能</title>
+      <link>https://kouler.com/posts/debian-ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8%E5%B9%B6%E5%BC%80%E5%90%AFtcp-bbr%E5%8A%9F%E8%83%BD/</link>
+      <pubDate>Sat, 16 Jun 2018 03:37:24 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/debian-ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8%E5%B9%B6%E5%BC%80%E5%90%AFtcp-bbr%E5%8A%9F%E8%83%BD/</guid>
+      <description>BBR (Bottleneck Bandwidth and RTT) 是 Google 提供的 TCP 拥塞控制算法，适用于复杂网络环境下的 TCP 加速。
+ Debian 8.x 或者 Debian 9.x 系统，当然以下教程也适合 Ubuntu 14.04 或 Ubuntu 16.04 如果是虚拟机，那么得使用 KVM 或 Xen 等可以修改内核的平台，OpenVZ 方法我们不做介绍  升级内核 BBR 只支持 4.9.x 以上的内核，所以我们需要更新升级以下
+如果你使用的是 Debian 9.x，那么这一步可以直接跳过，其他三个内核版本较旧的系统，我们可以使用 Ubuntu 打包好的内核安装包
+首先，找到 4.9.x 以上版本的稳定内核，这里我们推荐使用 LTS 版本，目前最新的是 4.9.40 下载安装即可
+1mkdir kernel-tmp &amp;amp;&amp;amp; cd kernel-tmp 2wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988_4.9.88-040988.201803181131_all.deb 3wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb 4wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-image-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb 5sudo dpkg -i *.deb 安装完以后直接 reboot 重启，一切顺利的话请检查以下当前的内核版本
+1root@debian ~ # uname -r 24.</description>
+    </item>
+    
+    <item>
+      <title>早期IOS设备强制恢复系统方法</title>
+      <link>https://kouler.com/posts/%E6%97%A9%E6%9C%9Fios%E8%AE%BE%E5%A4%87%E5%BC%BA%E5%88%B6%E6%81%A2%E5%A4%8D%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Mon, 09 Apr 2018 21:41:39 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E6%97%A9%E6%9C%9Fios%E8%AE%BE%E5%A4%87%E5%BC%BA%E5%88%B6%E6%81%A2%E5%A4%8D%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%B3%95/</guid>
+      <description>关机后按住返回键 与电脑连接数据线 打开 iTunes 后自动弹出恢复,期间必须按住返回键  有误的官方做法</description>
+    </item>
+    
+    <item>
+      <title>无线路由器之间设置有线中继</title>
+      <link>https://kouler.com/posts/%E6%97%A0%E7%BA%BF%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B9%8B%E9%97%B4%E8%AE%BE%E7%BD%AE%E6%9C%89%E7%BA%BF%E4%B8%AD%E7%BB%A7/</link>
+      <pubDate>Fri, 23 Mar 2018 01:39:15 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E6%97%A0%E7%BA%BF%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B9%8B%E9%97%B4%E8%AE%BE%E7%BD%AE%E6%9C%89%E7%BA%BF%E4%B8%AD%E7%BB%A7/</guid>
+      <description> 第二个路由器关闭 DHCP 服务 WAN 口自动获取 IP 或者手动配制成第一个路由器的局域网 设置第二个路由器的密码，加密方式，ssid 和第一个一样，信道不能和第一个一样 第一个路由的 LAN 口进第二个路由的 LAN 口  </description>
+    </item>
+    
+    <item>
+      <title>版本号规范</title>
+      <link>https://kouler.com/posts/%E7%89%88%E6%9C%AC%E5%8F%B7%E8%A7%84%E8%8C%83/</link>
+      <pubDate>Sun, 11 Mar 2018 16:03:55 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E7%89%88%E6%9C%AC%E5%8F%B7%E8%A7%84%E8%8C%83/</guid>
+      <description>版本号组成和范例 &amp;lt;主版本号&amp;gt;.&amp;lt;次版本号&amp;gt;.&amp;lt;修订号&amp;gt;-&amp;lt;先行版本号&amp;gt;+&amp;lt;版本编译信息&amp;gt;
+# 主版本号+次版本号+修订号 范例： 0.1.0 1.0.0 1.0.9 1.10.0 # 主版本号+次版本号+修订号+先行版本号 范例： 1.0.0-alpha 1.0.0-alpha.1 1.0.0-0.3.7 1.0.0-x.7.z.92 # 主版本号+次版本号+修订号+先行版本号+版本编译信息 范例： 1.0.0-alpha+001 1.0.0+20130313144700 1.0.0-beta+exp.sha.5114f85 版本号中希腊字母标识 Alpha 版： 也叫 α 版，此版本主要是以实现软件功能为主，通常只在软件开发者内部交流，一般而言，该版本软件的 Bug 较多，需要继续修改。
+Beta 版： 此版本相对于 α 版已经有了很大的改进，消除了严重的错误，但还是存在着一些缺陷，需要经过多次测试来进一步消除，此版本主要的修改对香是软件的 UI。
+RC 版： （Release Candidate）发布候选版本，此版本已经相当成熟了，基本上不存在导致错误的 BUG，与即将发行的正式版相差无几，测试人员基本通过的版本。
+Release 版： 此版本意味着最终版本、上线版本，在前面版本的一系列测试版之后，终归会有一个正式版本，是最终交付用户使用的一个版本。该版本有时也称为标准版。一般情况下，Release 不会以单词形式出现在软件封面上，取而代之的是符号 (R)。
+版本号修改规则 主版本号： 当功能模块有较大的变动，比如增加多个模块或者整体架构发生变化。此版本号由项目决定是否修改。
+次版本号： 当功能有一定的增加或变化，比如增加了对权限控制、增加自定义视图等功能。此版本号由项目决定是否修改。
+修订号： 一般是 Bug 修复或是一些小的变动，要经常发布修订版，时间间隔不限，修复一个严重的bug即可发布一个修订版。此版本号由项目经理决定是否修改。
+先行版本号： 被标上先行版本号则表示这个版本并非稳定而且可能无法达到兼容的需求。
+版本编译信息： 可以记录修改项目的当前日期或编译信息，每天对项目的修改都需要更改日期版本号。版本编译信息不标识版本优先级，因此当两个版本只有在版本编译信息有差别时，属于相同的优先层级。
+参考 &amp;amp; 扩展  语义化版本 2.0.0 APP版本号命名规范及原则  </description>
+    </item>
+    
+    <item>
+      <title>终端设置代理</title>
+      <link>https://kouler.com/posts/%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Fri, 09 Mar 2018 10:46:39 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</guid>
+      <description>设置和取消临时代理 临时代理在退出当前终端后失效
+1# 设置临时 HTTP 代理 2export http_proxy=http://proxyAddress:port 3 4# 设置临时 SOCKS5 代理 5export ALL_PROXY=socks5://proxyAddress:port 6 7# SS 下的 HTTP 代理 8export http_proxy=http://127.0.0.1:1087 9 10# 取消临时代理 11unset http_proxy 12unset ALL_PROXY 参考 &amp;amp; 扩展  让终端走代理的几种方法  </description>
+    </item>
+    
+    <item>
+      <title>迁移 Git 仓库</title>
+      <link>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</link>
+      <pubDate>Fri, 26 May 2017 13:21:15 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</guid>
+      <description>1// 切换到需要迁移的 Git 项目目录 2$ cd project 3 4// 添加 Git 远程仓库 5$ git remote add gitlab git@gitlab.com:team/name.git 6 7// 迁移代码到远程仓库 8$ git push -u gitlab master 参考 &amp;amp; 扩展阅读  如何把已存在的git项目转移到Gitlab项目 Git远程操作详解  </description>
+    </item>
+    
+    <item>
+      <title>SSH 动态端口转发</title>
+      <link>https://kouler.com/posts/ssh%E5%8A%A8%E6%80%81%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</link>
+      <pubDate>Fri, 26 May 2017 00:35:46 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/ssh%E5%8A%A8%E6%80%81%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</guid>
+      <description>当我们在一个不安全的 WiFi 环境下上网，用 SSH 动态转发来保护我们的网页浏览及 MSN 信息无疑是十分必要的。
+动态转发的命令格式：
+1$ ssh -D &amp;lt;local port&amp;gt; &amp;lt;SSH Server&amp;gt; 这里 SSH 创建了一个 SOCKS 代理服务。我们可以直接使用 localhost:7001 来作为正常的 SOCKS 代理来使用，直接在浏览器或 MSN 上设置即可。在 SSH Client 端无法访问的网站现在也都可以正常浏览。而这里需要值得注意的是，此时 SSH 所包护的范围只包括从浏览器端（SSH Client 端）到 SSH Server 端的连接，并不包含从 SSH Server 端 到目标网站的连接。如果后半截连接的安全不能得到充分的保证的话，这种方式仍不是合适的解决方案。
+SSH 隧道的搭建 首先需要有一台支持 SSH 的墙外服务器，此服务器只要能 SSH 连接即可。
+客户端 SSH 执行如下命令：
+1$ ssh -D 7001 username@remote-host 上述命令中 -D 表示动态绑定，7001 表示本地 SOCKS 代理的侦听端口，可以改成别的，后面的 username@remote-host 就是登录远程服务器的用户名和主机。当然，这个命令后会提示输入密码，就是 username 这个用户的密码（除非配置了SSH公钥认证，可以不输入密码）这样隧道就打通了！
+最后在浏览器或者其他应用程序上设置 SOCKS 代理(设置 v4 的 SOCKS 就可以了，v5 的 SOCKS 增加了鉴权功能)，代理指向 127.</description>
+    </item>
+    
+    <item>
       <title>复杂请求的跨域解决方法</title>
       <link>https://kouler.com/posts/%E5%A4%8D%E6%9D%82%E8%AF%B7%E6%B1%82%E7%9A%84%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
       <pubDate>Fri, 17 Feb 2017 19:22:38 +0800</pubDate>
@@ -31,6 +116,60 @@
 服务器在此次 Options 请求的返回内容中还可以指示浏览器，是否在下次请求携带相关的 Cookie 或者 Http Authentication 数据过来。
 什么是简单请求  仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。  什么是复杂请求 不满足简单请求条件的都属于复杂请求。
 解决复杂请求下的跨域问题 1&amp;lt;?php 2 3class CORSMiddleware 4{ 5 public function handle($request, Closure $next) 6 { 7 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 8 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 9 10 $allow_origin = array( 11 &amp;#39;http://localhost:8888&amp;#39;, 12 &amp;#39;http://test.com&amp;#39;, 13 &amp;#39;https://test.</description>
+    </item>
+    
+    <item>
+      <title>Laravel 字段验证</title>
+      <link>https://kouler.com/posts/laravel%E5%AD%97%E6%AE%B5%E9%AA%8C%E8%AF%81/</link>
+      <pubDate>Sat, 17 Dec 2016 18:06:02 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/laravel%E5%AD%97%E6%AE%B5%E9%AA%8C%E8%AF%81/</guid>
+      <description>手动创建验证程序示例 1&amp;lt;?php 2 3$data = [ 4 &amp;#39;email&amp;#39; = &amp;#39;aaa@gmail.com&amp;#39;, 5 &amp;#39;name&amp;#39;=&amp;#39;aaa&amp;#39;, 6 &amp;#39;password&amp;#39;=&amp;#39;aaa&amp;#39; 7]; 8 9$rules = array( 10 &amp;#39;email&amp;#39; =&amp;gt; &amp;#39;required|email&amp;#39;, 11 &amp;#39;name&amp;#39; =&amp;gt; &amp;#39;required|between:1,20&amp;#39;, 12 &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;required|min:8&amp;#39;, 13); 14 15$message = array( 16 &amp;#39;required&amp;#39; =&amp;gt; &amp;#39;:attribute 不能为空&amp;#39;, 17 &amp;#39;between&amp;#39; =&amp;gt; &amp;#39;:attribute 长度必须在 :min 和 :max 之间&amp;#34; 18); 1920$attributes = array( 21&amp;#39;email&amp;#39; =&amp;gt; &amp;#39;电子邮件&amp;#39;, 22&amp;#39;name&amp;#39; =&amp;gt; &amp;#39;用户名&amp;#39;, 23&amp;#39;password&amp;#39; =&amp;gt; &amp;#39;用户密码&amp;#39;, 24); 25 26$validate = Validator::make($data,$rules,$message,$attributes); 27 28var_dump($validate-&amp;gt;fails()); 29var_dump($validate-&amp;gt;messages()); 30var_dump($validate-&amp;gt;messages()-&amp;gt;first()) Validator 的验证扩展 1&amp;lt;?</description>
+    </item>
+    
+    <item>
+      <title>MacOS 无法获得权限问题</title>
+      <link>https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sun, 20 Nov 2016 22:40:40 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</guid>
+      <description>通常情况下，在命令行中使用 sudo 命令便可以以 Root 用户执行命令
+在 MacOS 中，某些系统文件夹下，即使使用 sudo 命令也无法获得 Root 权限，这被称为 System Integrity Protection（SIP）
+要想关闭 SIP，需要进入 Recover 模式下设置，具体方法如下：
+ 重启电脑，开机时按住 Command + r 键进入 Recover 模式 在工具中找到 Terminal 命令行终端 在命令行中输入命令 csrutil disable 重新启动后 SIP 就被关闭了  如需重新打开 SIP 保护，操作步骤一样，执行命令为 csrutil enable</description>
+    </item>
+    
+    <item>
+      <title>Lumen 问题汇总</title>
+      <link>https://kouler.com/posts/lumen%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Wed, 19 Oct 2016 11:42:41 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/lumen%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
+      <description>lumen 安装在子目录下时访问首页出现404错误 public/index.php 中的
+1&amp;lt;?php 2 3$app-&amp;gt;run(); 改为
+1&amp;lt;?php 2 3$app-&amp;gt;run($app[&amp;#39;request&amp;#39;]); lumen 配置数据库  在根目录添加 .env 配置文件并修改数据库信息 app.php 文件中去掉 Dotenv::load(__DIR__ . &#39;/../&#39;);行的注释，只有去掉才可以使用env配置文件 控制器文件中通过 app 函数来调用数据库，例： $result = app(&#39;db&#39;)-&amp;gt;select(&amp;quot;select * from xay_waiter&amp;quot;);  详细信息
+使用 Session  开启Facades，开启方式是去掉 bootstrap/app.php 中 $app-&amp;gt;withFacades(); 的注释。 开启 Session，开启方式：去掉 bootstrap/app.php 中 $app-&amp;gt;middleware(); 的 StartSession 中间件的注释。 使用时发生错误：Class &amp;lsquo;Memcached&amp;rsquo; not found ，因为在 .env 文件中，Session 的默认驱动是：memcached。修改即可。 目前支持的驱动有：file、cookie、database、memcached、redis、array。   Session::put(&#39;key&#39;, &#39;value&#39;); // 保存对象到 Session 中 $value = Session::get(&#39;key&#39;); // 从 Session 取回对象 $value = Session::pull(&#39;key&#39;, &#39;default&#39;); // 从 Session 取回对象并删除 $data = Session::all(); // 从 Session 取出所有对象 Session::has(&#39;users&#39;); // 判断对象在 Session 中是否存在 Session::forget(&#39;key&#39;); // 从 Session 中移除对象 Session::flush(); // 清空所有 Session    lumen 发送邮件  在 composer.</description>
+    </item>
+    
+    <item>
+      <title>RESTful 设计风格中的 HTTP 状态码含义</title>
+      <link>https://kouler.com/posts/restful%E8%AE%BE%E8%AE%A1%E9%A3%8E%E6%A0%BC%E4%B8%AD%E7%9A%84http%E7%8A%B6%E6%80%81%E7%A0%81%E5%90%AB%E4%B9%89/</link>
+      <pubDate>Wed, 19 Oct 2016 11:35:15 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/restful%E8%AE%BE%E8%AE%A1%E9%A3%8E%E6%A0%BC%E4%B8%AD%E7%9A%84http%E7%8A%B6%E6%80%81%E7%A0%81%E5%90%AB%E4%B9%89/</guid>
+      <description>状态码 类型 含义     100 ~ 消息 代表请求已被接受，需要继续处理   200 ~ 成功 代表请求已成功被服务器接收、理解、并接受   300 ~ 重定向 代表需要客户端采取进一步的操作才能完成请求   400 ~ 请求错误 代表了客户端看起来可能发生了错误，妨碍了服务器的处理   500 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理   600 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理        状态代码 状态信息 含义 适用情况 对应懒喵项目错误号     100 Continue 初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新）     101 Switching Protocols 服务器将遵从客户的请求转换到另外一种协议（HTTP 1.</description>
+    </item>
+    
+    <item>
+      <title>浏览器提示检测到了网络变化解决方法</title>
+      <link>https://kouler.com/posts/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%90%E7%A4%BA%E6%A3%80%E6%B5%8B%E5%88%B0%E4%BA%86%E7%BD%91%E7%BB%9C%E5%8F%98%E5%8C%96%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 19 Oct 2016 11:25:02 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%90%E7%A4%BA%E6%A3%80%E6%B5%8B%E5%88%B0%E4%BA%86%E7%BD%91%E7%BB%9C%E5%8F%98%E5%8C%96%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
+      <description>问题 会有 ERR_CERT_DATABASE_CHANGED 与 NETWORK CHANGED 的提示。有时候会自动立刻刷新重载。 大部分 HTTPS 内的 AJAX 请求很多都发送失败，导致页面无法正常使用。
+解决方法 和 com.alipay.DispatcherService 支付宝插件有关 命令行中使用命令
+1$ sudo launchctl remove com.alipay.DispatcherService 停掉支付宝服务就没有这个问题了
+参考 &amp;amp; 扩展阅读  MacOS Sierra 升级 CHROME 用 HTTPS 访问间歇性失败  </description>
     </item>
     
     <item>
@@ -177,6 +316,18 @@ CPU对其的响应完全是被动的，但是可以屏蔽掉。
    类型 原因 异步/同步 返回行为 例子     陷阱 有意的异常 同步 总是返回到下一条指令 系统调用、信号机制 ( 通过软中断实现 )   故障 潜在可恢复的错误 同步 返回到当前指令 缺页异常、除 0 错误、段错误   终止 不可恢复的错误 同步 不会返回 硬件错误    软中断和硬中断 软中断是通信进程之间用来模拟硬中断的一种信号通信方式。是属于一种编程手段，也有称之为软中断通信机制。
 硬中断一般就是指的硬件中断，也就是常说的中断，由硬件触发。
 区别    类型 产生的位置 发生的时刻 时序     中断 CPU外部 随机 异步   异常 CPU内部 一条指令终止后 同步    信号机制 信号是异步的进程间的通讯机制，是在软件层次上对中断机制的一种模拟，在原理上，一个进程收到一个信号与处理器收到一个中断请求可以说是一样的。</description>
+    </item>
+    
+    <item>
+      <title>PhpStorm 下配置调试环境</title>
+      <link>https://kouler.com/posts/phpstorm%E4%B8%8B%E9%85%8D%E7%BD%AE%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Wed, 06 Apr 2016 14:42:30 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/phpstorm%E4%B8%8B%E9%85%8D%E7%BD%AE%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/</guid>
+      <description>使用 brew 安装 php 和 xdebug
+PHP xdebug 配置信息
+1[xdebug] 2; xdebug.remote_autostart=1 3zend_extension=&amp;#34;/usr/local/Cellar/php71-xdebug/2.5.5/xdebug.so&amp;#34; 4xdebug.remote_enable=1 5xdebug.remote_handler=&amp;#34;dbgp&amp;#34; 6xdebug.remote_host=localhost 7xdebug.remote_port=9001 8xdebug.idekey=&amp;#34;PHPSTORM&amp;#34; 9xdebug.profiler_enable_trigger=1 10xdebug.profiler_output_dir=&amp;#34;/Users/kouler/Codes/php/xdebug_profiler&amp;#34; 需要注意 xdebug 和 phpfpm 的默认端口都是 9000，端口冲突
+参考 &amp;amp; 扩展  在Mac上的PHPSTORM配置XDebug来调试PHP程序 PHP:使用xdebug profiler 做性能分析  </description>
     </item>
     
     <item>

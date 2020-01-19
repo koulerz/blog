@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xdebug on Kouler</title>
+    <link>https://kouler.com/tags/xdebug/</link>
+    <description>Recent content in xdebug on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 06 Apr 2016 14:42:30 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/xdebug/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>PhpStorm 下配置调试环境</title>
+      <link>https://kouler.com/posts/phpstorm%E4%B8%8B%E9%85%8D%E7%BD%AE%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Wed, 06 Apr 2016 14:42:30 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/phpstorm%E4%B8%8B%E9%85%8D%E7%BD%AE%E8%B0%83%E8%AF%95%E7%8E%AF%E5%A2%83/</guid>
+      <description>使用 brew 安装 php 和 xdebug
+PHP xdebug 配置信息
+1[xdebug] 2; xdebug.remote_autostart=1 3zend_extension=&amp;#34;/usr/local/Cellar/php71-xdebug/2.5.5/xdebug.so&amp;#34; 4xdebug.remote_enable=1 5xdebug.remote_handler=&amp;#34;dbgp&amp;#34; 6xdebug.remote_host=localhost 7xdebug.remote_port=9001 8xdebug.idekey=&amp;#34;PHPSTORM&amp;#34; 9xdebug.profiler_enable_trigger=1 10xdebug.profiler_output_dir=&amp;#34;/Users/kouler/Codes/php/xdebug_profiler&amp;#34; 需要注意 xdebug 和 phpfpm 的默认端口都是 9000，端口冲突
+参考 &amp;amp; 扩展  在Mac上的PHPSTORM配置XDebug来调试PHP程序 PHP:使用xdebug profiler 做性能分析  </description>
+    </item>
+    
+  </channel>
+</rss>

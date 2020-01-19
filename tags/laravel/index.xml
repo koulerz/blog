@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>laravel on Kouler</title>
+    <link>https://kouler.com/tags/laravel/</link>
+    <description>Recent content in laravel on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 17 Dec 2016 18:06:02 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Laravel 字段验证</title>
+      <link>https://kouler.com/posts/laravel%E5%AD%97%E6%AE%B5%E9%AA%8C%E8%AF%81/</link>
+      <pubDate>Sat, 17 Dec 2016 18:06:02 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/laravel%E5%AD%97%E6%AE%B5%E9%AA%8C%E8%AF%81/</guid>
+      <description>手动创建验证程序示例 1&amp;lt;?php 2 3$data = [ 4 &amp;#39;email&amp;#39; = &amp;#39;aaa@gmail.com&amp;#39;, 5 &amp;#39;name&amp;#39;=&amp;#39;aaa&amp;#39;, 6 &amp;#39;password&amp;#39;=&amp;#39;aaa&amp;#39; 7]; 8 9$rules = array( 10 &amp;#39;email&amp;#39; =&amp;gt; &amp;#39;required|email&amp;#39;, 11 &amp;#39;name&amp;#39; =&amp;gt; &amp;#39;required|between:1,20&amp;#39;, 12 &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;required|min:8&amp;#39;, 13); 14 15$message = array( 16 &amp;#39;required&amp;#39; =&amp;gt; &amp;#39;:attribute 不能为空&amp;#39;, 17 &amp;#39;between&amp;#39; =&amp;gt; &amp;#39;:attribute 长度必须在 :min 和 :max 之间&amp;#34; 18); 1920$attributes = array( 21&amp;#39;email&amp;#39; =&amp;gt; &amp;#39;电子邮件&amp;#39;, 22&amp;#39;name&amp;#39; =&amp;gt; &amp;#39;用户名&amp;#39;, 23&amp;#39;password&amp;#39; =&amp;gt; &amp;#39;用户密码&amp;#39;, 24); 25 26$validate = Validator::make($data,$rules,$message,$attributes); 27 28var_dump($validate-&amp;gt;fails()); 29var_dump($validate-&amp;gt;messages()); 30var_dump($validate-&amp;gt;messages()-&amp;gt;first()) Validator 的验证扩展 1&amp;lt;?</description>
+    </item>
+    
+  </channel>
+</rss>

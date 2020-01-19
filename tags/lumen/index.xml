@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>lumen on Kouler</title>
+    <link>https://kouler.com/tags/lumen/</link>
+    <description>Recent content in lumen on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 19 Oct 2016 11:42:41 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/lumen/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Lumen 问题汇总</title>
+      <link>https://kouler.com/posts/lumen%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Wed, 19 Oct 2016 11:42:41 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/lumen%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
+      <description>lumen 安装在子目录下时访问首页出现404错误 public/index.php 中的
+1&amp;lt;?php 2 3$app-&amp;gt;run(); 改为
+1&amp;lt;?php 2 3$app-&amp;gt;run($app[&amp;#39;request&amp;#39;]); lumen 配置数据库  在根目录添加 .env 配置文件并修改数据库信息 app.php 文件中去掉 Dotenv::load(__DIR__ . &#39;/../&#39;);行的注释，只有去掉才可以使用env配置文件 控制器文件中通过 app 函数来调用数据库，例： $result = app(&#39;db&#39;)-&amp;gt;select(&amp;quot;select * from xay_waiter&amp;quot;);  详细信息
+使用 Session  开启Facades，开启方式是去掉 bootstrap/app.php 中 $app-&amp;gt;withFacades(); 的注释。 开启 Session，开启方式：去掉 bootstrap/app.php 中 $app-&amp;gt;middleware(); 的 StartSession 中间件的注释。 使用时发生错误：Class &amp;lsquo;Memcached&amp;rsquo; not found ，因为在 .env 文件中，Session 的默认驱动是：memcached。修改即可。 目前支持的驱动有：file、cookie、database、memcached、redis、array。   Session::put(&#39;key&#39;, &#39;value&#39;); // 保存对象到 Session 中 $value = Session::get(&#39;key&#39;); // 从 Session 取回对象 $value = Session::pull(&#39;key&#39;, &#39;default&#39;); // 从 Session 取回对象并删除 $data = Session::all(); // 从 Session 取出所有对象 Session::has(&#39;users&#39;); // 判断对象在 Session 中是否存在 Session::forget(&#39;key&#39;); // 从 Session 中移除对象 Session::flush(); // 清空所有 Session    lumen 发送邮件  在 composer.</description>
+    </item>
+    
+  </channel>
+</rss>
