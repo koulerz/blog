@@ -1,8 +1,8 @@
 ---
 title: "通过启动参数设置Chrome禁止加载图片"
 date: 2020-03-08T05:56:37+08:00
-publishdate: 2020-03-08 05:56:37
-lastmod: 2020-03-08 05:56:37
+publishdate: 2020-03-08T05:56:37+08:00
+lastmod: 2020-03-08T05:56:37+08:00
 draft: false
 tags: ["chrome", "web"]
 ---
