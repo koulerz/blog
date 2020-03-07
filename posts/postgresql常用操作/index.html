@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.66.0" />
 
   
   <meta name="description" content="this is description">
@@ -212,20 +212,20 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00f">CREATE</span> <span style="color:#00f">TABLE</span> user_tbl(name VARCHAR(20), signup_date DATE);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span># 插入数据
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#00f">INSERT</span> <span style="color:#00f">INTO</span> user_tbl(name, signup_date) <span style="color:#00f">VALUES</span>(<span style="color:#009c00">&#39;</span><span style="color:#009c00">张三</span><span style="color:#009c00">&#39;</span>, <span style="color:#009c00">&#39;</span><span style="color:#009c00">2013-12-22</span><span style="color:#009c00">&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#00f">INSERT</span> <span style="color:#00f">INTO</span> user_tbl(name, signup_date) <span style="color:#00f">VALUES</span>(<span style="color:#009c00">&#39;张三&#39;</span>, <span style="color:#009c00">&#39;2013-12-22&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span># 查询记录
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#00f">SELECT</span> * <span style="color:#00f">FROM</span> user_tbl;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span># 更新数据
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#00f">UPDATE</span> user_tbl <span style="color:#00f">set</span> name = <span style="color:#009c00">&#39;</span><span style="color:#009c00">李四</span><span style="color:#009c00">&#39;</span> <span style="color:#00f">WHERE</span> name = <span style="color:#009c00">&#39;</span><span style="color:#009c00">张三</span><span style="color:#009c00">&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#00f">UPDATE</span> user_tbl <span style="color:#00f">set</span> name = <span style="color:#009c00">&#39;李四&#39;</span> <span style="color:#00f">WHERE</span> name = <span style="color:#009c00">&#39;张三&#39;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span># 删除记录
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#00f">DELETE</span> <span style="color:#00f">FROM</span> user_tbl <span style="color:#00f">WHERE</span> name = <span style="color:#009c00">&#39;</span><span style="color:#009c00">李四</span><span style="color:#009c00">&#39;</span> ;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#00f">DELETE</span> <span style="color:#00f">FROM</span> user_tbl <span style="color:#00f">WHERE</span> name = <span style="color:#009c00">&#39;李四&#39;</span> ;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span># 添加字段
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ADD</span> email VARCHAR(40);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ADD</span> <span style="color:#00f">COLUMN</span> images jsonb <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;</span><span style="color:#009c00">{}</span><span style="color:#009c00">&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ADD</span> <span style="color:#00f">COLUMN</span> images jsonb <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;{}&#39;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span># 更改字段类型
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ALTER</span> <span style="color:#00f">COLUMN</span> signup_date <span style="color:#00f">SET</span> <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span>;
@@ -237,10 +237,10 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span style="color:#00f">CREATE</span> <span style="color:#00f">INDEX</span> index_name <span style="color:#00f">ON</span> user_tbl (name);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span># 设置字段默认值（注意字符串使用单引号）
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ALTER</span> <span style="color:#00f">COLUMN</span> email <span style="color:#00f">SET</span> <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;</span><span style="color:#009c00">example@example.com</span><span style="color:#009c00">&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ALTER</span> <span style="color:#00f">COLUMN</span> email <span style="color:#00f">SET</span> <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;example@example.com&#39;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span># 设置字段默认值为指定序列（通常用于主键字段）
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ALTER</span> <span style="color:#00f">COLUMN</span> id <span style="color:#00f">SET</span> <span style="color:#00f">DEFAULT</span> nextval(<span style="color:#009c00">&#39;</span><span style="color:#009c00">user_id_seq</span><span style="color:#009c00">&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ALTER</span> <span style="color:#00f">COLUMN</span> id <span style="color:#00f">SET</span> <span style="color:#00f">DEFAULT</span> nextval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span># 去除字段默认值
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span style="color:#00f">ALTER</span> <span style="color:#00f">TABLE</span> user_tbl <span style="color:#00f">ALTER</span> email <span style="color:#00f">DROP</span> <span style="color:#00f">DEFAULT</span>;
@@ -264,13 +264,13 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54</span><span style="color:#00f">DROP</span> <span style="color:#00f">DATABASE</span> <span style="color:#00f">IF</span> <span style="color:#00f">EXISTS</span> hello;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56</span># 查看当前序列的值
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57</span><span style="color:#00f">SELECT</span> currval(<span style="color:#009c00">&#39;</span><span style="color:#009c00">user_id_seq</span><span style="color:#009c00">&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57</span><span style="color:#00f">SELECT</span> currval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59</span># 设置序列的初始值为 100
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60</span><span style="color:#00f">select</span> setval(<span style="color:#009c00">&#39;</span><span style="color:#009c00">user_id_seq</span><span style="color:#009c00">&#39;</span>,100);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60</span><span style="color:#00f">select</span> setval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>,100);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62</span># 递增序列的值
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63</span><span style="color:#00f">select</span> nextval(<span style="color:#009c00">&#39;</span><span style="color:#009c00">user_id_seq</span><span style="color:#009c00">&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63</span><span style="color:#00f">select</span> nextval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
 </code></pre></div><h2 id="创建数据表例子">创建数据表例子</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#00f">CREATE</span> <span style="color:#00f">TABLE</span> lm_user(
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>    id SERIAL <span style="color:#00f">PRIMARY</span> <span style="color:#00f">KEY</span> <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span>, <span style="color:#f00;font-style:italic">-- &#39;ID&#39;
@@ -279,8 +279,8 @@ blockquote,
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#f00;font-style:italic"></span>    mobilephone CHAR(15) <span style="color:#00f">DEFAULT</span> <span style="color:#00f">NULL</span> <span style="color:#00f">UNIQUE</span>, <span style="color:#f00;font-style:italic">-- &#39;手机号码&#39;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#f00;font-style:italic"></span>    password VARCHAR(60) <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span>, <span style="color:#f00;font-style:italic">-- &#39;登录密码&#39;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#f00;font-style:italic"></span>    name VARCHAR(20) <span style="color:#00f">DEFAULT</span> <span style="color:#00f">NULL</span>, <span style="color:#f00;font-style:italic">-- &#39;姓名&#39;
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#f00;font-style:italic"></span>    num INT <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span> <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;</span><span style="color:#009c00">0</span><span style="color:#009c00">&#39;</span>, <span style="color:#f00;font-style:italic">-- &#39;&#39;
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic"></span>    status SMALLINT <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span> <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;</span><span style="color:#009c00">1</span><span style="color:#009c00">&#39;</span> <span style="color:#f00;font-style:italic">-- &#39;状态&#39;
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#f00;font-style:italic"></span>    num INT <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span> <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;0&#39;</span>, <span style="color:#f00;font-style:italic">-- &#39;&#39;
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic"></span>    status SMALLINT <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span> <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;1&#39;</span> <span style="color:#f00;font-style:italic">-- &#39;状态&#39;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>);
 </code></pre></div><h2 id="备份和恢复">备份和恢复</h2>
 <pre><code>pg_dump     备份

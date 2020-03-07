@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.66.0" />
 
   
   <meta name="description" content="this is description">
@@ -203,8 +203,8 @@ blockquote,
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">echo</span> strcmp($string1, $string2);  
 </code></pre></div><p>这是为什么呢？PHP 是基于 C 实现的，PHP 代码都会被 Zend引擎编译成 opcode，最终作为 C语言去执行。而对于 C语言中 &ldquo;\0&rdquo; 是字符串的结束符，它读到 &ldquo;\0&rdquo; 就会默认字符读取已经结束，从而抛掉后面的字符串。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>main(){  
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    <span style="color:#00f">char</span> ab[] = <span style="color:#009c00"></span><span style="color:#009c00">&#34;</span><span style="color:#009c00">Hello</span><span style="color:#009c00">&#34;</span>;  
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#00f">char</span> ac[] = <span style="color:#009c00"></span><span style="color:#009c00">&#34;</span><span style="color:#009c00">Hello</span><span style="color:#009c00">\0</span><span style="color:#009c00">Hello</span><span style="color:#009c00">&#34;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    <span style="color:#00f">char</span> ab[] = <span style="color:#009c00">&#34;Hello&#34;</span>;  
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#00f">char</span> ac[] = <span style="color:#009c00">&#34;Hello</span><span style="color:#009c00">\0</span><span style="color:#009c00">Hello&#34;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>    <span style="color:#f00;font-style:italic">// 返回0, 由于是非二进制安全，误判为相等
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#f00;font-style:italic"></span>    strcmp(ab, ac); 

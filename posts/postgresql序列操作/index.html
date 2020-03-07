@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.62.2" />
+  <meta name="generator" content="Hugo 0.66.0" />
 
   
   <meta name="description" content="this is description">
@@ -190,13 +190,13 @@ blockquote,
 
     <br><br>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span># 查看当前序列的值：
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#00f">SELECT</span> currval(<span style="color:#009c00">&#39;</span><span style="color:#009c00">user_aticle_aid_seq</span><span style="color:#009c00">&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#00f">SELECT</span> currval(<span style="color:#009c00">&#39;user_aticle_aid_seq&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span># 设置序列的初始值：
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#00f">select</span> setval(<span style="color:#009c00">&#39;</span><span style="color:#009c00">user_aticle_aid_seq</span><span style="color:#009c00">&#39;</span>,100);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#00f">select</span> setval(<span style="color:#009c00">&#39;user_aticle_aid_seq&#39;</span>,100);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span># 递增序列的值：
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span style="color:#00f">select</span> nextval(<span style="color:#009c00">&#39;</span><span style="color:#009c00">user_aticle_aid_seq</span><span style="color:#009c00">&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span style="color:#00f">select</span> nextval(<span style="color:#009c00">&#39;user_aticle_aid_seq&#39;</span>);
 </code></pre></div>
     </article>
   </div>
