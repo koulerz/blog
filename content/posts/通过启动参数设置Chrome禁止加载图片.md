@@ -8,7 +8,7 @@ tags: ["chrome", "web"]
 ---
 试用 chromedp 时，希望启动的浏览器能够实现禁止加载图片的功能，以节省资源消耗。
 
-随后在 chromedp Github 仓库 Issues 中找到了相关提问和答案。启动浏览器时通过设置启动参数 `blink-settings` 的值为 `imagesEnabled=false` 得以实现。
+在 chromedp Github 仓库 Issues 中找到了相关提问和答案。启动浏览器时通过设置启动参数 `blink-settings` 的值为 `imagesEnabled=false` 得以实现。
 
 ## 参考 & 扩展
 - [chromedp](https://github.com/chromedp/chromedp)
