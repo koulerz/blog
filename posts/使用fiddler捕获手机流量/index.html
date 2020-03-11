@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.66.0" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>使用 Fiddler 捕获手机流量 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">使用 Fiddler 捕获手机流量</h1>
+    
+    
+    <small class="text-secondary">2020-03-12</small>
+    
+
+<small><code><a href="https://kouler.com/tags/fiddler">#fiddler</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/web">#web</a></code></small>
+
+    <br><br>
+<h2 id="fiddler-设置">Fiddler 设置</h2>
+<ol>
+<li>打开 Fiddler 连接设置，<code>Tools</code>-&gt;<code>Fiddler Options</code>-&gt;<code>Connections</code></li>
+<li>设置允许远程计算机连接，<code>Allow remote computers to connect</code></li>
+<li>可以自定义端口，默认端口为 8888，<code>Fiddler listens on port</code></li>
+<li>确认设置，<code>OK</code></li>
+<li>重启 Fiddler</li>
+</ol>
+<h2 id="手机端设置">手机端设置</h2>
+<ol>
+<li>确保手机和电脑在同一局域网内</li>
+<li>在当前无线网络高级设置中手动配置 HTTP 代理
+<ol>
+<li>IP 地址为电脑 IP 地址。鼠标移至 Fiddler 主界面右上 <code>Online</code> 字样处可查看当前 IP 地址</li>
+<li>端口为 Fiddler 监听端口。默认为 8888</li>
+</ol>
+</li>
+<li>禁用移动数据并关闭 VPN，使得数据通过无线网络代理传输</li>
+<li>打开手机浏览器，访问代理地址。例如: <code>http://192.168.1.111:8888</code>。正常情况下会打开 Fiddler Echo Service 页面</li>
+<li>点击页面中的 <code>FiddlerRoot certificate</code> 链接下载证书</li>
+<li>安装证书</li>
+</ol>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

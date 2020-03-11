@@ -6,10 +6,19 @@
     <description>Recent content on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 08 Mar 2020 05:56:37 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Mar 2020 00:41:43 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用 Fiddler 捕获手机流量</title>
+      <link>https://kouler.com/posts/%E4%BD%BF%E7%94%A8fiddler%E6%8D%95%E8%8E%B7%E6%89%8B%E6%9C%BA%E6%B5%81%E9%87%8F/</link>
+      <pubDate>Thu, 12 Mar 2020 00:41:43 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E4%BD%BF%E7%94%A8fiddler%E6%8D%95%E8%8E%B7%E6%89%8B%E6%9C%BA%E6%B5%81%E9%87%8F/</guid>
+      <description>Fiddler 设置  打开 Fiddler 连接设置，Tools-&amp;gt;Fiddler Options-&amp;gt;Connections 设置允许远程计算机连接，Allow remote computers to connect 可以自定义端口，默认端口为 8888，Fiddler listens on port 确认设置，OK 重启 Fiddler  手机端设置  确保手机和电脑在同一局域网内 在当前无线网络高级设置中手动配置 HTTP 代理  IP 地址为电脑 IP 地址。鼠标移至 Fiddler 主界面右上 Online 字样处可查看当前 IP 地址 端口为 Fiddler 监听端口。默认为 8888   禁用移动数据并关闭 VPN，使得数据通过无线网络代理传输 打开手机浏览器，访问代理地址。例如: http://192.168.1.111:8888。正常情况下会打开 Fiddler Echo Service 页面 点击页面中的 FiddlerRoot certificate 链接下载证书 安装证书  </description>
+    </item>
     
     <item>
       <title>通过启动参数设置 Chrome 禁止加载图片</title>
