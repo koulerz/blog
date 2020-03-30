@@ -201,6 +201,15 @@
     </item>
     
     <item>
+      <title>bash</title>
+      <link>https://kouler.com/tags/bash/</link>
+      <pubDate>Tue, 14 Aug 2018 11:13:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>cron</title>
       <link>https://kouler.com/tags/cron/</link>
       <pubDate>Tue, 14 Aug 2018 11:13:42 +0800</pubDate>
@@ -350,15 +359,6 @@
       <pubDate>Fri, 10 Jun 2016 22:36:02 +0800</pubDate>
       
       <guid>https://kouler.com/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>bash</title>
-      <link>https://kouler.com/tags/bash/</link>
-      <pubDate>Mon, 23 May 2016 22:45:49 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/bash/</guid>
       <description></description>
     </item>
     
