@@ -4,7 +4,7 @@ date: 2018-08-14T11:13:42+08:00
 publishdate: 2018-08-14
 lastmod: 2020-01-19
 draft: false
-tags: ["laravel", "cron"]
+tags: ["laravel", "cron", "bash", "terminal"]
 ---
 在 Cron 文件中添加了以下 Laravel 任务调度命令后，发现没有正常执行，而直接在终端执行该命令是正常的
 ```bash
