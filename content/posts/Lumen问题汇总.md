@@ -54,11 +54,11 @@ $app->run($app['request']);
 
 ```env
 MAIL_DRIVER=smtp
-MAIL_HOST=smtp.163.com
+MAIL_HOST=smtp.gmail.com
 MAIL_PORT=25    
-MAIL_USERNAME=name@163.com
+MAIL_USERNAME=name@gmail.com
 MAIL_PASSWORD=password
-MAIL_FROM_ADDRESS=name@163.com
+MAIL_FROM_ADDRESS=name@gmail.com
 MAIL_FROM_NAME=name
 ```
 
@@ -67,7 +67,7 @@ MAIL_FROM_NAME=name
 ```php
 <?php
 
-$email = 'name@163.com';
+$email = 'name@gmail.com';
 $name  = 'name';
 $token = 'token';
 $uid   = 1;
@@ -75,15 +75,15 @@ $data  = ['email' => $email, 'name' => $name, 'token' => $token, 'uid' => $uid];
 
 // 发送简短字符而非完整视图
 Mail::raw('Text to e-mail', function ($message) {
-    $message->from('lan1ling@163.com', 'Laravel');
-    $message->to('koulerz@qq.com')->cc('koulerz@gmail.com');
+    $message->from('from@gmail.com', 'Laravel');
+    $message->to('to@gmail.com')->cc('cc@gmail.com');
 });
 
 // 发送完整邮件
 Mail::send('activemail', $data, function ($message) use ($data) {
-    $message->from('lan1ling@163.com', 'lan1ling');
+    $message->from('from@gmail.com', 'from');
     $message->to($data['email'], $data['name']);
-    $message->subject('欢迎注册我们的网站，请激活您的账号！');
+    $message->subject('欢迎注册，请激活您的账号！');
 });
 ```
 4. 在 /resources/views/ 目录下创建邮件视图文件 activemail.blade.php
@@ -96,7 +96,7 @@ Mail::send('activemail', $data, function ($message) use ($data) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
   </head>
 <body>
-  <a href="http://www.baidu.com" target="_blank">{{$email.'+'.$name.'+'.$token.'+'.$uid}}点击激活你的账号</a>
+  <a href="http://www.google.com" target="_blank">{{$email.'+'.$name.'+'.$token.'+'.$uid}}点击激活你的账号</a>
 </body>
 </html>
 
