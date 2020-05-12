@@ -238,18 +238,18 @@ blockquote,
 <li>修改 env 配置文件中的邮件配置</li>
 </ol>
 <pre><code class="language-env" data-lang="env">MAIL_DRIVER=smtp
-MAIL_HOST=smtp.163.com
+MAIL_HOST=smtp.gmail.com
 MAIL_PORT=25    
-MAIL_USERNAME=name@163.com
+MAIL_USERNAME=name@gmail.com
 MAIL_PASSWORD=password
-MAIL_FROM_ADDRESS=name@163.com
+MAIL_FROM_ADDRESS=name@gmail.com
 MAIL_FROM_NAME=name
 </code></pre><ol start="3">
 <li>在控制器中使用 <code>Mail::send()</code> 方法发送邮件</li>
 </ol>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>$email = <span style="color:#009c00">&#39;name@163.com&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>$email = <span style="color:#009c00">&#39;name@gmail.com&#39;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>$name  = <span style="color:#009c00">&#39;name&#39;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>$token = <span style="color:#009c00">&#39;token&#39;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>$uid   = 1;
@@ -257,15 +257,15 @@ MAIL_FROM_NAME=name
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic">// 发送简短字符而非完整视图
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>Mail::raw(<span style="color:#009c00">&#39;Text to e-mail&#39;</span>, <span style="color:#00f">function</span> ($message) {
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    $message-&gt;from(<span style="color:#009c00">&#39;lan1ling@163.com&#39;</span>, <span style="color:#009c00">&#39;Laravel&#39;</span>);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>    $message-&gt;to(<span style="color:#009c00">&#39;koulerz@qq.com&#39;</span>)-&gt;cc(<span style="color:#009c00">&#39;koulerz@gmail.com&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    $message-&gt;from(<span style="color:#009c00">&#39;from@gmail.com&#39;</span>, <span style="color:#009c00">&#39;Laravel&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>    $message-&gt;to(<span style="color:#009c00">&#39;to@gmail.com&#39;</span>)-&gt;cc(<span style="color:#009c00">&#39;cc@gmail.com&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>});
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span style="color:#f00;font-style:italic">// 发送完整邮件
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"></span>Mail::send(<span style="color:#009c00">&#39;activemail&#39;</span>, $data, <span style="color:#00f">function</span> ($message) <span style="color:#00f">use</span> ($data) {
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>    $message-&gt;from(<span style="color:#009c00">&#39;lan1ling@163.com&#39;</span>, <span style="color:#009c00">&#39;lan1ling&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>    $message-&gt;from(<span style="color:#009c00">&#39;from@gmail.com&#39;</span>, <span style="color:#009c00">&#39;from&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>    $message-&gt;to($data[<span style="color:#009c00">&#39;email&#39;</span>], $data[<span style="color:#009c00">&#39;name&#39;</span>]);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>    $message-&gt;subject(<span style="color:#009c00">&#39;欢迎注册我们的网站，请激活您的账号！&#39;</span>);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>    $message-&gt;subject(<span style="color:#009c00">&#39;欢迎注册，请激活您的账号！&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>});
 </code></pre></div><ol start="4">
 <li>在 /resources/views/ 目录下创建邮件视图文件 activemail.blade.php</li>
@@ -277,7 +277,7 @@ MAIL_FROM_NAME=name
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    &lt;meta http-equiv=<span style="color:#009c00">&#34;X-UA-Compatible&#34;</span> content=<span style="color:#009c00">&#34;IE=edge&#34;</span>&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>  &lt;/head&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>&lt;body&gt;
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>  &lt;a href=<span style="color:#009c00">&#34;http://www.baidu.com&#34;</span> target=<span style="color:#009c00">&#34;_blank&#34;</span>&gt;{{$email.&#39;+&#39;.$name.&#39;+&#39;.$token.&#39;+&#39;.$uid}}点击激活你的账号&lt;/a&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>  &lt;a href=<span style="color:#009c00">&#34;http://www.google.com&#34;</span> target=<span style="color:#009c00">&#34;_blank&#34;</span>&gt;{{$email.&#39;+&#39;.$name.&#39;+&#39;.$token.&#39;+&#39;.$uid}}点击激活你的账号&lt;/a&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>&lt;/body&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>&lt;/html&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>
