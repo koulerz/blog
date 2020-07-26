@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker on Kouler</title>
+    <link>https://kouler.com/tags/docker/</link>
+    <description>Recent content in docker on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 27 Jul 2020 00:22:31 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker 常用命令</title>
+      <link>https://kouler.com/posts/docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 27 Jul 2020 00:22:31 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>查看 Docker 信息   常看 docker 版本：
+1$ docker version   查看 docker 系统信息：
+1$ docker info   镜像操作  从 DockerHub 检索镜像 1$ docker search image_name  拉取镜像 1$ docker pull image_name  删除镜像 1$ docker rmi image_name  列出镜像 1$ docker images  显示镜像历史 1$ docker history image_name   容器启动   启动容器并启动 bash：
+1$ docker run -i -t &amp;lt;image_name/continar_id&amp;gt; /bin/bash   启动容器并启动 sh：</description>
+    </item>
+    
+  </channel>
+</rss>
