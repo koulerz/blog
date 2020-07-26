@@ -154,15 +154,6 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
     </item>
     
     <item>
-      <title>PostgreSQL 序列操作</title>
-      <link>https://kouler.com/posts/postgresql%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/</link>
-      <pubDate>Wed, 07 Nov 2018 19:22:42 +0800</pubDate>
-      
-      <guid>https://kouler.com/posts/postgresql%E5%BA%8F%E5%88%97%E6%93%8D%E4%BD%9C/</guid>
-      <description>1# 查看当前序列的值： 2SELECT currval(&amp;#39;user_aticle_aid_seq&amp;#39;); 3 4# 设置序列的初始值： 5select setval(&amp;#39;user_aticle_aid_seq&amp;#39;,100); 6 7# 递增序列的值： 8select nextval(&amp;#39;user_aticle_aid_seq&amp;#39;); </description>
-    </item>
-    
-    <item>
       <title>Mac 在登录屏隐藏账户</title>
       <link>https://kouler.com/posts/mac%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</link>
       <pubDate>Wed, 07 Nov 2018 09:27:42 +0800</pubDate>
@@ -608,21 +599,12 @@ PHP xdebug 配置信息
     </item>
     
     <item>
-      <title>PostgreSQL JSON 数据类型参考</title>
-      <link>https://kouler.com/posts/postgresql-json%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%82%E8%80%83/</link>
-      <pubDate>Sun, 03 Apr 2016 12:46:56 +0800</pubDate>
-      
-      <guid>https://kouler.com/posts/postgresql-json%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%82%E8%80%83/</guid>
-      <description> JSON 类型 JSON Functions and Operators PostgreSQL 9.4 中使用 jsonb  </description>
-    </item>
-    
-    <item>
       <title>PostgreSQL 常用操作</title>
       <link>https://kouler.com/posts/postgresql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</link>
       <pubDate>Sun, 03 Apr 2016 12:21:24 +0800</pubDate>
       
       <guid>https://kouler.com/posts/postgresql%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
-      <description>常用控制台命令 \password 设置密码。 \q 退出。 \h 查看SQL命令的解释，比如\h select。 \? 查看psql命令列表。 \l 列出所有数据库。 \c [database_name] 连接其他数据库。 \d 列出当前数据库的所有表格。 \d [table_name] 列出某一张表格的结构。 \du 列出所有用户。 \e 打开文本编辑器。 \conninfo 列出当前数据库和连接的信息。 常用SQL语句 1# 创建新表 2CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); 3 4# 插入数据 5INSERT INTO user_tbl(name, signup_date) VALUES(&amp;#39;张三&amp;#39;, &amp;#39;2013-12-22&amp;#39;); 6 7# 查询记录 8SELECT * FROM user_tbl; 9 10# 更新数据 11UPDATE user_tbl set name = &amp;#39;李四&amp;#39; WHERE name = &amp;#39;张三&amp;#39;; 12 13# 删除记录 14DELETE FROM user_tbl WHERE name = &amp;#39;李四&amp;#39; ; 15 16# 添加字段 17ALTER TABLE user_tbl ADD email VARCHAR(40); 18ALTER TABLE user_tbl ADD COLUMN images jsonb DEFAULT &amp;#39;{}&amp;#39;; 19 20# 更改字段类型 21ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL; 22 23# 更改字段类型长度 24ALTER TABLE user_tbl ALTER COLUMN password TYPE varchar(32); 25 26# 为字段添加索引 27CREATE INDEX index_name ON user_tbl (name); 28 29# 设置字段默认值（注意字符串使用单引号） 30ALTER TABLE user_tbl ALTER COLUMN email SET DEFAULT &amp;#39;example@example.</description>
+      <description>增删改查 SQL 语句 1# 插入数据 2INSERT INTO user_tbl(name, signup_date) VALUES(&amp;#39;张三&amp;#39;, &amp;#39;2013-12-22&amp;#39;); 3 4# 查询记录 5SELECT * FROM user_tbl; 6 7# 更新数据 8UPDATE user_tbl set name = &amp;#39;李四&amp;#39; WHERE name = &amp;#39;张三&amp;#39;; 9 10# 删除记录 11DELETE FROM user_tbl WHERE name = &amp;#39;李四&amp;#39; ; 序列操作 SQL 语句 1# 查看当前序列的值 2SELECT currval(&amp;#39;user_id_seq&amp;#39;); 3 4# 设置序列的初始值为 100 5select setval(&amp;#39;user_id_seq&amp;#39;,100); 6 7# 递增序列的值并返回 8select nextval(&amp;#39;user_id_seq&amp;#39;); 查询 SQL 语句 1# 转换时间戳为格式化时间函数 TO_TIMESTAMP() 2SELECT TO_TIMESTAMP(created_at) FROM user; 3 4# 转换时间戳为格式化时间函数 TO_TIMESTAMP() ，显示为中国时区 5# 使用 &amp;#39;CST&amp;#39; 时区不一定显示为中国本地时间，建议使用 &amp;#39;Asia/Shanghai&amp;#39; 时区 6SELECT TO_TIMESTAMP(created_at) AT TIME ZONE &amp;#39;CST&amp;#39; FROM user; 7SELECT TO_TIMESTAMP(created_at) AT TIME ZONE &amp;#39;Asia/Shanghai&amp;#39; FROM user; 8 9# 返回字段中的条件判断 10SELECT name, CASE sex WHEN 1 THEN &amp;#39;男&amp;#39; WHEN 2 THEN &amp;#39;女&amp;#39; ELSE &amp;#39;保密&amp;#39; END AS sex, age FROM user; 11 12# 拼接字符串 13SELECT CONCAT(&amp;#39;姓名:&amp;#39;, name) AS name, age FROM user; 14 15# 数值计算 16SELECT id, amount/100 FROM order; 17 18# 保留 2 位小数精度 19SELECT id, round(100/3, 2) FROM order; 20 21# 解析数组格式数据，获取数据时先将数组转为 JSON，再用编程语言函数将 JSON 转为可识别格式，例如 PHP 中的 json_decode() 22SELECT array_to_json(ids) FROM user; Schema 操作 SQL 语句 1# 创建新表 2CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE); 3 4# 添加字段 5ALTER TABLE user_tbl ADD email VARCHAR(40); 6ALTER TABLE user_tbl ADD COLUMN images jsonb DEFAULT &amp;#39;{}&amp;#39;; 7 8# 更改字段类型 9ALTER TABLE user_tbl ALTER COLUMN signup_date SET NOT NULL; 10 11# 更改字段类型长度 12ALTER TABLE user_tbl ALTER COLUMN password TYPE varchar(32); 13 14# 为字段添加索引 15CREATE INDEX index_name ON user_tbl (name); 16 17# 设置字段默认值（注意字符串使用单引号） 18ALTER TABLE user_tbl ALTER COLUMN email SET DEFAULT &amp;#39;example@example.</description>
     </item>
     
     <item>
@@ -639,7 +621,8 @@ Jsonb 数据类型 Jsonb 数据类型以无压缩（decomposed）二进制格式
 jsonb 支持索引特性，这是一个明显的优点。
 jsonb 不会保留任何无关的空白，不会保留对象键的排列顺序，也不会保留任何重复的对象键。如果输入里面指定了重复的键，那么只有最后一个值会被保留。
 jsonb 类型可以检测一个 jsonb 值是否包含了另一个 jsonb 值，而 json 类型并不具备这样的特性。
-jsonb 会拒绝那些超出 PostgreSQL 数字类型范围的数字，而 json 则不会这样做。</description>
+jsonb 会拒绝那些超出 PostgreSQL 数字类型范围的数字，而 json 则不会这样做。
+参考 &amp;amp; 扩展  JSON 类型 JSON Functions and Operators PostgreSQL 9.</description>
     </item>
     
     <item>
