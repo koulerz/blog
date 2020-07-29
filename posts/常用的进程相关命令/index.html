@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>常用的进程相关命令 | Kouler</title>
+  <title>常用的进程操作命令 | Kouler</title>
   
 
   <style>
@@ -180,7 +180,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">常用的进程相关命令</h1>
+      <h1 style="margin:0 0 5px 0">常用的进程操作命令</h1>
     
     
     <small class="text-secondary">2020-07-29</small>
@@ -227,15 +227,15 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 向 PID 为 123 的进程发送信号 9，强制终止进程</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>kill -9 123
 </code></pre></div><p>常用信号：
-name|num|desc
-:-:|:-:|:-:
-HUP|1|终端断线
-INT|2|中断（同 Ctrl + C）
-QUIT|3|退出（同 Ctrl + \）
-TERM|15|终止
-KILL|9|强制终止
-CONT|18|继续（与STOP相反， fg/bg命令）
-STOP|19|暂停（同 Ctrl + Z</p>
+|name|num|desc|
+|:-:|:-:|:-:|
+|HUP|1|终端断线|
+|INT|2|中断 (同 Ctrl + C)|
+|QUIT|3|退出 (同 Ctrl + )|
+|TERM|15|终止|
+|KILL|9|强制终止|
+|CONT|18|继续 (与 STOP 相反，fg/bg 命令)|
+|STOP|19|暂停 (同 Ctrl + Z)|</p>
 </li>
 <li>
 <p>使用 <code>pkill</code> 命令中断进程，<code>pkill</code> 命令根据进程名称检索进程，并向所有检索到的进程发送信号</p>

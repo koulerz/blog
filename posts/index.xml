@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>常用的进程相关命令</title>
+      <title>常用的进程操作命令</title>
       <link>https://kouler.com/posts/%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4/</link>
       <pubDate>Wed, 29 Jul 2020 20:21:02 +0800</pubDate>
       
@@ -23,7 +23,7 @@
 1pgrep keyword   使用 lsof 命令根据端口号检索进程
 1lsof -i:22   使用 ps 命令检索进程
 1# sed &amp;#39;1d&amp;#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除 2# awk &amp;#39;{print $2}&amp;#39; 打印每一行中的 PID 列 3ps -ef| grep &amp;#34;go&amp;#34; | sed &amp;#39;1d&amp;#39; | awk &amp;#39;{print $2}&amp;#39;   中断进程   使用 kill 命令中断进程。kill 命令向指定进程发送信号，默认信号为 15（TERM 信号），表示终止进程
-1# 向 PID 为 123 的进程发送信号 15 2kill 123 3 4# 向 PID 为 123 的进程发送信号 9，强制终止进程 5kill -9 123 常用信号： name|num|desc :-:|:-:|:-: HUP|1|终端断线 INT|2|中断（同 Ctrl + C） QUIT|3|退出（同 Ctrl + \） TERM|15|终止 KILL|9|强制终止 CONT|18|继续（与STOP相反， fg/bg命令） STOP|19|暂停（同 Ctrl + Z</description>
+1# 向 PID 为 123 的进程发送信号 15 2kill 123 3 4# 向 PID 为 123 的进程发送信号 9，强制终止进程 5kill -9 123 常用信号： |name|num|desc| |:-:|:-:|:-:| |HUP|1|终端断线| |INT|2|中断 (同 Ctrl + C)| |QUIT|3|退出 (同 Ctrl + )| |TERM|15|终止| |KILL|9|强制终止| |CONT|18|继续 (与 STOP 相反，fg/bg 命令)| |STOP|19|暂停 (同 Ctrl + Z)|</description>
     </item>
     
     <item>
