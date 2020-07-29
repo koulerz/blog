@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 27 Jul 2020 00:22:31 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 29 Jul 2020 20:21:02 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>command</title>
       <link>https://kouler.com/tags/command/</link>
-      <pubDate>Mon, 27 Jul 2020 00:22:31 +0800</pubDate>
+      <pubDate>Wed, 29 Jul 2020 20:21:02 +0800</pubDate>
       
       <guid>https://kouler.com/tags/command/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://kouler.com/tags/linux/</link>
+      <pubDate>Wed, 29 Jul 2020 20:21:02 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/linux/</guid>
       <description></description>
     </item>
     
@@ -350,15 +359,6 @@
       <pubDate>Wed, 15 Jun 2016 23:28:36 +0800</pubDate>
       
       <guid>https://kouler.com/tags/webserver/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>https://kouler.com/tags/linux/</link>
-      <pubDate>Fri, 10 Jun 2016 22:36:02 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/linux/</guid>
       <description></description>
     </item>
     
