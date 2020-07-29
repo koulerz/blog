@@ -226,16 +226,53 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 向 PID 为 123 的进程发送信号 9，强制终止进程</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>kill -9 123
-</code></pre></div><p>常用信号：
-|name|num|desc|
-|:-:|:-:|:-:|
-|HUP|1|终端断线|
-|INT|2|中断 (同 Ctrl + C)|
-|QUIT|3|退出 (同 Ctrl + )|
-|TERM|15|终止|
-|KILL|9|强制终止|
-|CONT|18|继续 (与 STOP 相反，fg/bg 命令)|
-|STOP|19|暂停 (同 Ctrl + Z)|</p>
+</code></pre></div><p>常用信号：</p>
+<table>
+<thead>
+<tr>
+<th align="left">name</th>
+<th align="left">num</th>
+<th align="left">desc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">HUP</td>
+<td align="left">1</td>
+<td align="left">终端断线</td>
+</tr>
+<tr>
+<td align="left">INT</td>
+<td align="left">2</td>
+<td align="left">中断 (同 Ctrl + C)</td>
+</tr>
+<tr>
+<td align="left">QUIT</td>
+<td align="left">3</td>
+<td align="left">退出 (同 Ctrl + )</td>
+</tr>
+<tr>
+<td align="left">TERM</td>
+<td align="left">15</td>
+<td align="left">终止</td>
+</tr>
+<tr>
+<td align="left">KILL</td>
+<td align="left">9</td>
+<td align="left">强制终止</td>
+</tr>
+<tr>
+<td align="left">CONT</td>
+<td align="left">18</td>
+<td align="left">继续 (与 STOP 相反，fg/bg 命令)</td>
+</tr>
+<tr>
+<td align="left">STOP</td>
+<td align="left">19</td>
+<td align="left">暂停 (同 Ctrl + Z)</td>
+</tr>
+</tbody>
+</table>
 </li>
 <li>
 <p>使用 <code>pkill</code> 命令中断进程，<code>pkill</code> 命令根据进程名称检索进程，并向所有检索到的进程发送信号</p>
