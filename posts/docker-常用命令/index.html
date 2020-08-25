@@ -235,6 +235,23 @@ blockquote,
 <p>启动容器并以后台方式运行：</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker run -d -it &lt;image_name/continar_id&gt;
 </code></pre></div></li>
+<li>
+<p>启动容器并指定数据卷</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker run -i -t -v &lt;source_dir&gt;:&lt;target_dir&gt; &lt;image_name/continar_id&gt; /bin/bash
+</code></pre></div></li>
+<li>
+<p>启动容器并指定端口映射</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>$ docker run -i -t -p 5000:5000 &lt;image_name/continar_id&gt; /bin/bash
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic"># 指定一个地址</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>$ docker run -i -t -p 127.0.0.1:5000:5000 &lt;image_name/continar_id&gt; /bin/bash
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#f00;font-style:italic"># 指定 TCP 端口</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>$ docker run -i -t -p 127.0.0.1:5000:5000/tcp &lt;image_name/continar_id&gt; /bin/bash
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic">#  绑定 localhost 的任意端口到容器的 5000 端口，本地主机会自动分配一个端口</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>$ docker run -i -t -p 127.0.0.1::5000 &lt;image_name/continar_id&gt; /bin/bash
+</code></pre></div></li>
 </ul>
 <h2 id="容器操作">容器操作</h2>
 <ul>
