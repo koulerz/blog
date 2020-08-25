@@ -55,6 +55,25 @@ tags: ["docker", "command"]
     $ docker run -d -it <image_name/continar_id>
     ```
 
+- 启动容器并指定数据卷
+    ```shell
+    $ docker run -i -t -v <source_dir>:<target_dir> <image_name/continar_id> /bin/bash
+    ```
+
+- 启动容器并指定端口映射
+    ```shell
+    $ docker run -i -t -p 5000:5000 <image_name/continar_id> /bin/bash
+
+    # 指定一个地址
+    $ docker run -i -t -p 127.0.0.1:5000:5000 <image_name/continar_id> /bin/bash
+
+    # 指定 TCP 端口
+    $ docker run -i -t -p 127.0.0.1:5000:5000/tcp <image_name/continar_id> /bin/bash
+
+    #  绑定 localhost 的任意端口到容器的 5000 端口，本地主机会自动分配一个端口
+    $ docker run -i -t -p 127.0.0.1::5000 <image_name/continar_id> /bin/bash
+    ```
+
 ## 容器操作
 - 列出正在运行中的容器
     ```shell
