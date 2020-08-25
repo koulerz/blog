@@ -88,6 +88,10 @@ tags: ["docker", "command"]
     ```shell
     $ docker rm <id/container_name>
     ```
+- 修改容器名称
+    ```shell
+    $ docker rename <old_container_name> <new_container_name>
+    ```
 - 查看容器日志
     ```shell
     $ docker logs <id/container_name>
