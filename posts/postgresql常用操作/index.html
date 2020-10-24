@@ -207,6 +207,29 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span># 删除记录
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#00f">DELETE</span> <span style="color:#00f">FROM</span> user_tbl <span style="color:#00f">WHERE</span> name = <span style="color:#009c00">&#39;李四&#39;</span> ;
+</code></pre></div><h2 id="批量更新-sql-语句">批量更新 SQL 语句</h2>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 批量更新一个字段
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">UPDATE</span> mytable 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00f">SET</span> myfield = <span style="color:#00f">CASE</span> id 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    <span style="color:#00f">WHEN</span> 1 <span style="color:#00f">THEN</span> <span style="color:#009c00">&#39;value&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    <span style="color:#00f">WHEN</span> 2 <span style="color:#00f">THEN</span> <span style="color:#009c00">&#39;value&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    <span style="color:#00f">WHEN</span> 3 <span style="color:#00f">THEN</span> <span style="color:#009c00">&#39;value&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#00f">END</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#00f">WHERE</span> id <span style="color:#00f">IN</span> (1,2,3)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic">-- 批量更新多个字段
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">UPDATE</span> categories 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#00f">SET</span> display_order = <span style="color:#00f">CASE</span> id 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>    <span style="color:#00f">WHEN</span> 1 <span style="color:#00f">THEN</span> 3 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>    <span style="color:#00f">WHEN</span> 2 <span style="color:#00f">THEN</span> 4 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>    <span style="color:#00f">WHEN</span> 3 <span style="color:#00f">THEN</span> 5 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#00f">END</span>, 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>title = <span style="color:#00f">CASE</span> id 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>    <span style="color:#00f">WHEN</span> 1 <span style="color:#00f">THEN</span> <span style="color:#009c00">&#39;New Title 1&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span>    <span style="color:#00f">WHEN</span> 2 <span style="color:#00f">THEN</span> <span style="color:#009c00">&#39;New Title 2&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span>    <span style="color:#00f">WHEN</span> 3 <span style="color:#00f">THEN</span> <span style="color:#009c00">&#39;New Title 3&#39;</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#00f">END</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#00f">WHERE</span> id <span style="color:#00f">IN</span> (1,2,3)
 </code></pre></div><h2 id="序列操作-sql-语句">序列操作 SQL 语句</h2>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span># 查看当前序列的值
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#00f">SELECT</span> currval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
