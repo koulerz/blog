@@ -2,7 +2,7 @@
 title: "Tmux 常用命令和快捷键"
 date: 2019-08-07T17:43:42+08:00
 publishdate: 2019-08-07
-lastmod: 2020-01-19
+lastmod: 2020-10-24
 draft: false
 tags: ["command", "tmux", "terminal"]
 ---
