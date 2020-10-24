@@ -21,6 +21,32 @@ UPDATE user_tbl set name = '李四' WHERE name = '张三';
 DELETE FROM user_tbl WHERE name = '李四' ;
 ```
 
+## 批量更新 SQL 语句
+```sql
+-- 批量更新一个字段
+UPDATE mytable 
+SET myfield = CASE id 
+    WHEN 1 THEN 'value'
+    WHEN 2 THEN 'value'
+    WHEN 3 THEN 'value'
+END
+WHERE id IN (1,2,3)
+
+-- 批量更新多个字段
+UPDATE categories 
+SET display_order = CASE id 
+    WHEN 1 THEN 3 
+    WHEN 2 THEN 4 
+    WHEN 3 THEN 5 
+END, 
+title = CASE id 
+    WHEN 1 THEN 'New Title 1'
+    WHEN 2 THEN 'New Title 2'
+    WHEN 3 THEN 'New Title 3'
+END
+WHERE id IN (1,2,3)
+```
+
 ## 序列操作 SQL 语句
 ```sql
 # 查看当前序列的值
