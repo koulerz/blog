@@ -206,19 +206,26 @@ blockquote,
 <h2 id="镜像操作">镜像操作</h2>
 <ul>
 <li>从 DockerHub 检索镜像
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker search image_name
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker search &lt;image_name&gt;
 </code></pre></div></li>
 <li>拉取镜像
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker pull image_name
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker pull &lt;image_name&gt;
 </code></pre></div></li>
 <li>删除镜像
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker rmi image_name
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker rmi &lt;image_name&gt;
 </code></pre></div></li>
 <li>列出镜像
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker images
 </code></pre></div></li>
 <li>显示镜像历史
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker history image_name
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker history &lt;image_name&gt;
+</code></pre></div></li>
+<li>上传镜像到 Docker Hub
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 为镜像添加附带作者信息的标签</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>$ docker tag &lt;image_name&gt;:&lt;label&gt; &lt;author_name&gt;/&lt;image_name&gt;:&lt;label&gt;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 上传附带作者信息标签的镜像到 Docker Hub</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>$ docker push &lt;author_name&gt;/&lt;image_name&gt;:&lt;label&gt;
 </code></pre></div></li>
 </ul>
 <h2 id="容器启动">容器启动</h2>
@@ -236,8 +243,8 @@ blockquote,
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker run -d -it &lt;image_name/continar_id&gt;
 </code></pre></div></li>
 <li>
-<p>启动容器并指定数据卷</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker run -i -t -v &lt;source_dir&gt;:&lt;target_dir&gt; &lt;image_name/continar_id&gt; /bin/bash
+<p>启动容器，为容器命名并指定数据卷</p>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker run -i -t --name &lt;continar_name&gt; -v &lt;source_dir&gt;:&lt;target_dir&gt; &lt;image_name/continar_id&gt; /bin/bash
 </code></pre></div></li>
 <li>
 <p>启动容器并指定端口映射</p>
@@ -255,43 +262,60 @@ blockquote,
 </ul>
 <h2 id="容器操作">容器操作</h2>
 <ul>
-<li>列出正在运行中的容器
+<li>
+<p>列出正在运行中的容器</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker ps
 </code></pre></div></li>
-<li>列出所有容器
+<li>
+<p>列出所有容器</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker ps -a 
 </code></pre></div></li>
-<li>启动容器
+<li>
+<p>启动容器</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker start &lt;id/container_name&gt;
 </code></pre></div></li>
-<li>停止容器
+<li>
+<p>停止容器</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker stop &lt;id/container_name&gt;
 </code></pre></div></li>
-<li>重启容器
+<li>
+<p>重启容器</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker restart &lt;id/container_name&gt;
 </code></pre></div></li>
-<li>中断容器
+<li>
+<p>中断容器</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker kill &lt;id/container_name&gt;
 </code></pre></div></li>
-<li>进入正在运行的容器并运行 bash：
+<li>
+<p>进入正在运行的容器并运行 bash</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker exec -t -i &lt;id/container_name&gt;  /bin/bash
 </code></pre></div></li>
-<li>删除容器
+<li>
+<p>退出容器并保持后台运行</p>
+<pre><code>Ctrl+P+Q
+</code></pre></li>
+<li>
+<p>删除容器</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker rm &lt;id/container_name&gt;
 </code></pre></div></li>
-<li>修改容器名称
+<li>
+<p>修改容器名称</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker rename &lt;old_container_name&gt; &lt;new_container_name&gt;
 </code></pre></div></li>
-<li>查看容器日志
+<li>
+<p>查看容器日志</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker logs &lt;id/container_name&gt;
 </code></pre></div></li>
-<li>实时查看容器日志
+<li>
+<p>实时查看容器日志</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker logs -f &lt;id/container_name&gt;
 </code></pre></div></li>
-<li>显示运行中容器的进程信息
+<li>
+<p>显示运行中容器的进程信息</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker top &lt;id/container_name&gt;
 </code></pre></div></li>
-<li>查看容器内部详细信息
+<li>
+<p>查看容器内部详细信息</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker inspect &lt;id/container_name&gt;
 </code></pre></div></li>
 </ul>
