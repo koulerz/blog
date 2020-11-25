@@ -2,7 +2,7 @@
 title: "Docker 常用命令"
 date: 2020-07-27T00:22:31+08:00
 publishdate: 2020-07-27T00:22:31+08:00
-lastmod: 2020-08-25T18:34:31+08:00
+lastmod: 2020-11-25T11:51:31+08:00
 draft: false
 tags: ["docker", "command"]
 ---
@@ -20,15 +20,15 @@ tags: ["docker", "command"]
 ## 镜像操作
 - 从 DockerHub 检索镜像
     ```shell
-    $ docker search image_name
+    $ docker search <image_name>
     ```
 - 拉取镜像
     ```shell
-    $ docker pull image_name
+    $ docker pull <image_name>
     ```
 - 删除镜像
     ```shell
-    $ docker rmi image_name
+    $ docker rmi <image_name>
     ```
 - 列出镜像
     ```shell
@@ -36,7 +36,15 @@ tags: ["docker", "command"]
     ```
 - 显示镜像历史
     ```shell
-    $ docker history image_name
+    $ docker history <image_name>
+    ```
+- 上传镜像到 Docker Hub
+    ```shell
+    # 为镜像添加附带作者信息的标签
+    $ docker tag <image_name>:<label> <author_name>/<image_name>:<label>
+
+    # 上传附带作者信息标签的镜像到 Docker Hub
+    $ docker push <author_name>/<image_name>:<label>
     ```
 
 ## 容器启动
@@ -55,9 +63,9 @@ tags: ["docker", "command"]
     $ docker run -d -it <image_name/continar_id>
     ```
 
-- 启动容器并指定数据卷
+- 启动容器，为容器命名并指定数据卷
     ```shell
-    $ docker run -i -t -v <source_dir>:<target_dir> <image_name/continar_id> /bin/bash
+    $ docker run -i -t --name <continar_name> -v <source_dir>:<target_dir> <image_name/continar_id> /bin/bash
     ```
 
 - 启动容器并指定端口映射
@@ -99,10 +107,15 @@ tags: ["docker", "command"]
     ```shell
     $ docker kill <id/container_name>
     ```
-- 进入正在运行的容器并运行 bash：
+- 进入正在运行的容器并运行 bash
     ```shell
     $ docker exec -t -i <id/container_name>  /bin/bash
     ```
+- 退出容器并保持后台运行
+    ```
+    Ctrl+P+Q
+    ```
+
 - 删除容器
     ```shell
     $ docker rm <id/container_name>
