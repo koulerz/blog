@@ -1,7 +1,7 @@
 ---
 title: "macOS BigSur 开启显示器 HiDPI 方法"
 date: 2020-12-24T13:15:58+08:00
-publishdate: 2020-12-24T13:15:58+08:00
+publishdate: 2020-12-24T13:41:58+08:00
 lastmod: 2020-12-24T13:15:58+08:00
 draft: false
 tags: ["mac", "os", "hidpi"]
