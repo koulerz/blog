@@ -2,7 +2,7 @@
 title: "macOS 下开启显示器 HiDPI 方法"
 date: 2016-11-23T10:21:42+08:00
 publishdate: 2016-11-23
-lastmod: 2020-01-19
+lastmod: 2020-12-24
 draft: false
 tags: ["mac", "os"]
 ---
@@ -113,7 +113,7 @@ ioreg -l | grep "DisplayProductID"
 ## 参考 & 扩展
 - [Mac OS X 10.11 开启任意显示器 开启HiDPI方法](http://bbs.feng.com/read-htm-tid-9948814.html)
 - [Mac 2k 屏原生分辨率完美支持教程](http://bbs.feng.com/read-htm-tid-8937471.html)
-- [MacOS无法获得权限问题](http://note.youdao.com/noteshare?id=741857f7c6dccdc2b8adc5d42e33a160)
+- [MacOS无法获得权限问题](https://kouler.com/posts/macos无法获得权限问题/)
 - [patch-edid.rb](https://gist.github.com/adaugherity/7435890)
 - [RDM（RetinaDisplayMenu）](https://github.com/avibrazil/RDM)
 - [SwitchResX](http://download.cnet.com/SwitchResX/3000-2094_4-10558576.html)
