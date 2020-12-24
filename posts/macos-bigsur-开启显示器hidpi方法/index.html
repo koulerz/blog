@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>mac | Kouler</title>
+  <title>macOS BigSur 开启显示器 HiDPI 方法 | Kouler</title>
   
 
   <style>
@@ -180,13 +180,9 @@ blockquote,
   
   <div class="container">
     <article>
-      
-
-  <p>
-    <a href="https://kouler.com/posts/macos-bigsur-%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/">macOS BigSur 开启显示器 HiDPI 方法</a>
+      <h1 style="margin:0 0 5px 0">macOS BigSur 开启显示器 HiDPI 方法</h1>
     
     
-    <br>
     <small class="text-secondary">2020-12-24</small>
     
 
@@ -198,85 +194,20 @@ blockquote,
 
 <small><code><a href="https://kouler.com/tags/hidpi">#hidpi</a></code></small>
 
-    
-  </p>
-
-  <p>
-    <a href="https://kouler.com/posts/%E5%85%B3%E9%97%AD-macos-catalina-read-only-volume/">关闭 macOS Catalina Read-only Volume</a>
-    
-    
-    <br>
-    <small class="text-secondary">2019-10-08</small>
-    
-
-<small><code><a href="https://kouler.com/tags/mac">#mac</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://kouler.com/posts/macos%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/">macOS 桌面壁纸路径</a>
-    
-    
-    <br>
-    <small class="text-secondary">2019-10-08</small>
-    
-
-<small><code><a href="https://kouler.com/tags/mac">#mac</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://kouler.com/posts/mac%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/">Mac 在登录屏隐藏账户</a>
-    
-    
-    <br>
-    <small class="text-secondary">2018-11-07</small>
-    
-
-<small><code><a href="https://kouler.com/tags/mac">#mac</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/">macOS 下开启显示器 HiDPI 方法</a>
-    
-    
-    <br>
-    <small class="text-secondary">2016-11-23</small>
-    
-
-<small><code><a href="https://kouler.com/tags/mac">#mac</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/hidpi">#hidpi</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/">macOS 无法获得权限问题</a>
-    
-    
-    <br>
-    <small class="text-secondary">2016-11-20</small>
-    
-
-<small><code><a href="https://kouler.com/tags/mac">#mac</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
-
-    
-  </p>
+    <br><br>
+<p>过去为显示器设置 HiDPI 的方法仍然有效，可以查看参考和扩展中给出的链接。只是在最后遇到一个文件系统权限问题。</p>
+<h2 id="解决无法将文件写入只读文件系统问题">解决无法将文件写入只读文件系统问题</h2>
+<p><code>macOS BigSur</code> 系统中加入了只读文件系统，无法再使用过去的方式将配置文件写入直接拷贝到 <code>/System/Library/Displays/Contents/Resources/Overrides</code> 目录中。即便开启了 SIP 也不行。</p>
+<p>解决方法是将需要的文件写入 <code>/Library/Displays/Contents/Resources/Overrides</code> 目录中。写入该目录中同样有效。</p>
+<h2 id="使用脚本自动修改">使用脚本自动修改</h2>
+<p>发现一个自动适配 HiDPI 的脚本，但目前未测试使用。</p>
+<p><a href="https://github.com/mlch911/one-key-hidpi">https://github.com/mlch911/one-key-hidpi</a></p>
+<h2 id="参考--扩展">参考 &amp; 扩展</h2>
+<ul>
+<li><a href="https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/">macOS 下开启显示器 HiDPI 方法</a></li>
+<li><a href="https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/">macOS 无法获得权限问题</a></li>
+<li><a href="https://github.com/mlch911/one-key-hidpi">One key HiDPI</a></li>
+</ul>
 
     </article>
   </div>

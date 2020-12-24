@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 29 Jul 2020 20:21:02 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 24 Dec 2020 13:15:58 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>hidpi</title>
+      <link>https://kouler.com/tags/hidpi/</link>
+      <pubDate>Thu, 24 Dec 2020 13:15:58 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/hidpi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mac</title>
+      <link>https://kouler.com/tags/mac/</link>
+      <pubDate>Thu, 24 Dec 2020 13:15:58 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/mac/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>os</title>
+      <link>https://kouler.com/tags/os/</link>
+      <pubDate>Thu, 24 Dec 2020 13:15:58 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/os/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>command</title>
@@ -89,24 +116,6 @@
       <pubDate>Wed, 06 Nov 2019 13:52:42 +0800</pubDate>
       
       <guid>https://kouler.com/tags/terminal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>mac</title>
-      <link>https://kouler.com/tags/mac/</link>
-      <pubDate>Tue, 08 Oct 2019 22:33:42 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/mac/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>os</title>
-      <link>https://kouler.com/tags/os/</link>
-      <pubDate>Tue, 08 Oct 2019 20:20:42 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/os/</guid>
       <description></description>
     </item>
     

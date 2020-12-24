@@ -3,28 +3,48 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://kouler.com/tags/command/</loc>
-    <lastmod>2020-11-25T11:51:31+08:00</lastmod>
+    <loc>https://kouler.com/tags/hidpi/</loc>
+    <lastmod>2020-12-24T13:15:58+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://kouler.com/</loc>
+    <lastmod>2020-12-24T13:15:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/mac/</loc>
+    <lastmod>2020-12-24T13:15:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/posts/macos-bigsur-%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2020-12-24T13:15:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/os/</loc>
+    <lastmod>2020-12-24T13:15:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/posts/</loc>
+    <lastmod>2020-12-24T13:15:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/</loc>
+    <lastmod>2020-12-24T13:15:58+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/command/</loc>
     <lastmod>2020-11-25T11:51:31+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://kouler.com/tags/linux/</loc>
     <lastmod>2020-07-29T20:21:02+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kouler.com/posts/</loc>
-    <lastmod>2020-11-25T11:51:31+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kouler.com/tags/</loc>
-    <lastmod>2020-11-25T11:51:31+08:00</lastmod>
   </url>
   
   <url>
@@ -93,17 +113,7 @@
   </url>
   
   <url>
-    <loc>https://kouler.com/tags/mac/</loc>
-    <lastmod>2020-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kouler.com/posts/macos%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</loc>
-    <lastmod>2020-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kouler.com/tags/os/</loc>
     <lastmod>2020-01-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -344,7 +354,7 @@
   
   <url>
     <loc>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</loc>
-    <lastmod>2020-01-19T00:00:00+00:00</lastmod>
+    <lastmod>2020-12-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
