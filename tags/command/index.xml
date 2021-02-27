@@ -19,11 +19,11 @@
       <guid>https://kouler.com/posts/%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/</guid>
       <description>查看和检索进程   使用 ps 命令列出所有进程信息
 1ps aux   使用 ps 命令检索进程
-1ps aux|grep keyword   使用 pgrep 命令检索进程，该命令将打印出所有检索到的进程 ID
+1ps aux|grep keyword   使用 pidof 命令根据进程名称查找进程 ID
+1pidof nginx   使用 pgrep 命令检索进程，该命令将打印出所有检索到的进程 ID
 1pgrep keyword   使用 lsof 命令根据端口号检索进程
 1lsof -i:22   使用 ps 命令检索进程
-1# sed &amp;#39;1d&amp;#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除 2# awk &amp;#39;{print $2}&amp;#39; 打印每一行中的 PID 列 3ps -ef| grep &amp;#34;go&amp;#34; | sed &amp;#39;1d&amp;#39; | awk &amp;#39;{print $2}&amp;#39;   中断进程   使用 kill 命令中断进程。kill 命令向指定进程发送信号，默认信号为 15（TERM 信号），表示终止进程
-1# 向 PID 为 123 的进程发送信号 15 2kill 123 3 4# 向 PID 为 123 的进程发送信号 9，强制终止进程 5kill -9 123 常用信号：</description>
+1# sed &amp;#39;1d&amp;#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除 2# awk &amp;#39;{print $2}&amp;#39; 打印每一行中的 PID 列 3ps -ef| grep &amp;#34;go&amp;#34; | sed &amp;#39;1d&amp;#39; | awk &amp;#39;{print $2}&amp;#39;   中断进程   使用 kill 命令中断进程。kill 命令向指定进程发送信号，默认信号为 15（TERM 信号），表示终止进程</description>
     </item>
     
     <item>
