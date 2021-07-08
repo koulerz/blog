@@ -21,11 +21,11 @@
     </item>
     
     <item>
-      <title>postgres</title>
-      <link>https://kouler.com/tags/postgres/</link>
+      <title>postgresql</title>
+      <link>https://kouler.com/tags/postgresql/</link>
       <pubDate>Fri, 09 Jul 2021 02:52:43 +0800</pubDate>
       
-      <guid>https://kouler.com/tags/postgres/</guid>
+      <guid>https://kouler.com/tags/postgresql/</guid>
       <description></description>
     </item>
     
@@ -413,15 +413,6 @@
       <pubDate>Wed, 06 Apr 2016 14:42:30 +0800</pubDate>
       
       <guid>https://kouler.com/tags/xdebug/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>postgresql</title>
-      <link>https://kouler.com/tags/postgresql/</link>
-      <pubDate>Sun, 03 Apr 2016 12:21:24 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/postgresql/</guid>
       <description></description>
     </item>
     
