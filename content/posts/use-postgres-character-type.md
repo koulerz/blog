@@ -4,7 +4,7 @@ date: 2021-07-09T02:52:43+08:00
 publishdate: 2021-07-09T02:52:43+08:00
 lastmod: 2021-07-09T02:52:43+08:00
 draft: false
-tags: ["postgres", "database"]
+tags: ["postgresql", "database"]
 ---
 
 |              | char                                 | varchar    | text   |
