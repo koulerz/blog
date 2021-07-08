@@ -3,27 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://kouler.com/tags/database/</loc>
+    <lastmod>2021-07-09T02:52:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/</loc>
+    <lastmod>2021-07-09T02:52:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/postgres/</loc>
+    <lastmod>2021-07-09T02:52:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/posts/use-postgres-character-type/</loc>
+    <lastmod>2021-07-09T02:52:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/posts/</loc>
+    <lastmod>2021-07-09T02:52:43+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/</loc>
+    <lastmod>2021-07-09T02:52:43+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://kouler.com/tags/book/</loc>
     <lastmod>2021-06-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://kouler.com/</loc>
-    <lastmod>2021-06-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kouler.com/posts/</loc>
-    <lastmod>2021-06-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kouler.com/tags/read/</loc>
-    <lastmod>2021-06-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kouler.com/tags/</loc>
     <lastmod>2021-06-19T00:00:00+00:00</lastmod>
   </url>
   
@@ -475,11 +490,6 @@
   <url>
     <loc>https://kouler.com/tags/xdebug/</loc>
     <lastmod>2020-01-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kouler.com/tags/database/</loc>
-    <lastmod>2020-10-24T00:00:00+00:00</lastmod>
   </url>
   
   <url>
