@@ -1,5 +1,5 @@
 ---
-title: "Postgres 中的字符串类型"
+title: "PostgreSQL 中的字符串类型"
 date: 2021-07-09T02:52:43+08:00
 publishdate: 2021-07-09T02:52:43+08:00
 lastmod: 2021-07-09T02:52:43+08:00
