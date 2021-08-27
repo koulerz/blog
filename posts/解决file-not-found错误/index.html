@@ -199,16 +199,16 @@ blockquote,
 <li>创建了 <code>php</code> Docker 容器，增加了 <code>index.php</code> 测试文件并启动 <code>php-fpm</code></li>
 <li>宿主机增加 <code>nginx</code> 配置并重新启动</li>
 </ol>
-<h1 id="尝试解决">尝试解决</h1>
+<h2 id="尝试解决">尝试解决</h2>
 <p>根据错误提示，可以了解到错误原因大概率是 <code>nginx</code> 没有找到 <code>php</code> 文件。</p>
 <p>这一错误出现的原因大致分为两类，一是文件权限错误，二是文件路径错误。</p>
 <p>权限错误很容易就能够排查，所以怀疑大概率是 <code>nginx</code> 配置中的路径错误导致没有找到 <code>index.php</code> 文件。</p>
 <p>根据 <code>nginx</code> 文档修改 <code>nginx</code> 配置多次后仍然无法解决。</p>
-<h1 id="解决问题">解决问题</h1>
+<h2 id="解决问题">解决问题</h2>
 <p>能够使用的方法越来越少，不得已只能尝试使用终极办法。</p>
 <p>由于 <code>nginx</code> 是通过 <code>fastCGI</code> 协议与 <code>php-fpm</code> 通信，将需要执行的文件路径发送给 <code>php-fpm</code>，所以可以通过抓包软件直接抓取 <code>fastCGI</code> 的协议内容来调试文件路径错误。</p>
 <p>通过监听 <code>php</code> 容器的本地 <code>ip</code> 和端口号，可以看到 <code>nginx</code> 与 <code>php-fpm</code> 之间的通信内容。</p>
-<h2 id="nginx-向-php-fpm-发送的数据fastcgi-协议数据">nginx 向 php-fpm 发送的数据（FastCGI 协议数据）</h2>
+<h3 id="nginx-向-php-fpm-发送的数据fastcgi-协议数据">nginx 向 php-fpm 发送的数据（FastCGI 协议数据）</h3>
 <pre><code>SCRIPT_FILENAME/var/www/html/docker/index.php
 QUERY_STRING
 REQUEST_METHODGET
@@ -244,7 +244,7 @@ HTTP_SEC_FETCH_USER?1
 HTTP_SEC_FETCH_DESTdocument
 HTTP_ACCEPT_ENCODINGgzip, deflate, br#
 HTTP_ACCEPT_LANGUAGEzh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
-</code></pre><h2 id="php-fpm-给-nginx-发送的响应内容">php-fpm 给 nginx 发送的响应内容</h2>
+</code></pre><h3 id="php-fpm-给-nginx-发送的响应内容">php-fpm 给 nginx 发送的响应内容</h3>
 <pre><code>Primary script unknownk
 Status: 404 Not Found
 X-Powered-By: PHP/7.4.22
@@ -253,7 +253,7 @@ Content-type: text/html; charset=UTF-8
 File not found.
 </code></pre><p><code>FastCGI</code> 协议中 <code>SCRIPT_FILENAME</code> 的值就是最终要执行的 <code>php</code> 文件路径。</p>
 <p>将 <code>index.php</code> 测试文件放入正确位置后，终于能够正常访问。</p>
-<h1 id="修正-nginx-配置">修正 nginx 配置</h1>
+<h2 id="修正-nginx-配置">修正 nginx 配置</h2>
 <p>在抓包工具的帮助下，更直观和详细的了解了 <code>nginx</code> 配置文件中的路径组成。很快将 <code>nginx</code> 中的项目路径配置正确。</p>
 <pre><code class="language-conf" data-lang="conf"># nginx 配置
 location / {
@@ -265,7 +265,7 @@ location / {
     include        fastcgi_params;
 }
 </code></pre><p>访问 <code>http://localhost:8080/book/1</code> 时，<code>SCRIPT_FILENAME</code> 的值映射为 <code>/src/shop/public/index.php/book/</code>1</p>
-<h1 id="更优雅的-nginx-配置方式">更优雅的 nginx 配置方式</h1>
+<h2 id="更优雅的-nginx-配置方式">更优雅的 nginx 配置方式</h2>
 <pre><code class="language-conf" data-lang="conf"># 指定根目录
 root /src;
 
@@ -282,7 +282,7 @@ location ~ \.php$ {
     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
     include        fastcgi_params;
 }
-</code></pre><h1 id="参考--扩展">参考 &amp; 扩展</h1>
+</code></pre><h2 id="参考--扩展">参考 &amp; 扩展</h2>
 <ul>
 <li><a href="https://sexywp.com/should-nginx-and-php-put-together-or-seperate.htm">应该把 nginx 和 PHP 放在一个 image 里还是分开</a></li>
 <li><a href="https://stackoverflow.com/questions/35261922/how-to-debug-fastcgi-sent-in-stderr-primary-script-unknown-while-reading-respo">How to debug Primary script unknown</a></li>
