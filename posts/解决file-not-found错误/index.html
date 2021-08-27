@@ -192,18 +192,18 @@ blockquote,
 <small><code><a href="https://kouler.com/tags/php">#php</a></code></small>
 
     <br><br>
-<p>新创建的 php 容器配置好后，访问首页显示 <code>File not found</code>。</p>
-<p>nginx 错误日志中显示 <code>FastCGI sent in stderr: &quot;Primary script unknown&quot; while reading response header from upstream</code></p>
+<p>新创建的 <code>php</code> 容器配置好后，访问首页显示 <code>File not found</code>。</p>
+<p><code>nginx</code> 错误日志中显示 <code>FastCGI sent in stderr: &quot;Primary script unknown&quot; while reading response header from upstream</code></p>
 <p>于是在本地搭建了简化版的环境：</p>
 <ol>
 <li>创建了 <code>php</code> Docker 容器，增加了 <code>index.php</code> 测试文件并启动 <code>php-fpm</code></li>
-<li>宿主机增加 nginx 配置并重新启动</li>
+<li>宿主机增加 <code>nginx</code> 配置并重新启动</li>
 </ol>
 <h1 id="尝试解决">尝试解决</h1>
-<p>根据错误提示，可以了解到错误原因大概率是 nginx 没有找到 php 文件。</p>
+<p>根据错误提示，可以了解到错误原因大概率是 <code>nginx</code> 没有找到 <code>php</code> 文件。</p>
 <p>这一错误出现的原因大致分为两类，一是文件权限错误，二是文件路径错误。</p>
-<p>权限错误很容易就能够排查，所以怀疑大概率是 nginx 配置中的路径错误导致没有找到 <code>index.php</code> 文件。</p>
-<p>根据 nginx 文档修改 nginx 配置多次后仍然无法解决。</p>
+<p>权限错误很容易就能够排查，所以怀疑大概率是 <code>nginx</code> 配置中的路径错误导致没有找到 <code>index.php</code> 文件。</p>
+<p>根据 <code>nginx</code> 文档修改 <code>nginx</code> 配置多次后仍然无法解决。</p>
 <h1 id="解决问题">解决问题</h1>
 <p>能够使用的方法越来越少，不得已只能尝试使用终极办法。</p>
 <p>由于 <code>nginx</code> 是通过 <code>fastCGI</code> 协议与 <code>php-fpm</code> 通信，将需要执行的文件路径发送给 <code>php-fpm</code>，所以可以通过抓包软件直接抓取 <code>fastCGI</code> 的协议内容来调试文件路径错误。</p>
@@ -251,10 +251,10 @@ X-Powered-By: PHP/7.4.22
 Content-type: text/html; charset=UTF-8
 
 File not found.
-</code></pre><p>FastCGI 协议中 <code>SCRIPT_FILENAME</code> 的值就是最终要执行的 php 文件路径。</p>
+</code></pre><p><code>FastCGI</code> 协议中 <code>SCRIPT_FILENAME</code> 的值就是最终要执行的 <code>php</code> 文件路径。</p>
 <p>将 <code>index.php</code> 测试文件放入正确位置后，终于能够正常访问。</p>
 <h1 id="修正-nginx-配置">修正 nginx 配置</h1>
-<p>在抓包工具的帮助下，更直观和详细的了解了 nginx 配置文件中的路径组成。很快将 nginx 中的项目路径配置正确。</p>
+<p>在抓包工具的帮助下，更直观和详细的了解了 <code>nginx</code> 配置文件中的路径组成。很快将 <code>nginx</code> 中的项目路径配置正确。</p>
 <pre><code class="language-conf" data-lang="conf"># nginx 配置
 location / {
     root /src/shop/public;

