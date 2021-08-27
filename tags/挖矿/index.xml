@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>挖矿 on Kouler</title>
+    <link>https://kouler.com/tags/%E6%8C%96%E7%9F%BF/</link>
+    <description>Recent content in 挖矿 on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 27 Aug 2021 19:41:07 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/%E6%8C%96%E7%9F%BF/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>解决 kinsing 挖矿恶意程序的攻击</title>
+      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3-kinsing-%E6%8C%96%E7%9F%BF%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%94%BB%E5%87%BB/</link>
+      <pubDate>Fri, 27 Aug 2021 19:41:07 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3-kinsing-%E6%8C%96%E7%9F%BF%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%94%BB%E5%87%BB/</guid>
+      <description>环境  基于 php7.4.12 的容器 使用 Lumen 框架  发现异常状况 最开始察觉到异常是在错误邮件中
+错误信息是 Cannot modify header information - headers already sent by (output started at php://input:1)
+几天后，发现页面中出现大量跨域错误
+查看 git 提交日志，发现最近并没有大的变动，怀疑是运维问题
+再次检查邮箱，发现最近几日有大量 Cannot modify header information - headers already sent by (output started at php://input:1) 错误，错误文件指向了跨域处理文件，错误函数为 header()。与错误信息吻合，应该是在这之前有输出，此时可以确认导致错误的根本原因并非跨域问题。
+通过测试 API，发现其中一些 POST API 在正确的响应内容前会先将 POST 请求中的请求体输出。而 GET 参数则一切正常。
+寻找问题根源 多次测试 API 后发现一些规律。
+ 使用 x-www-form-urlencoded 和 json 方式时，PHP 直接返回了 POST 请求 body 信息。而使用 multipart/form-data 方式时却没有返回 GET 方法中，如果有 x-www-form-urlencoded 和 json body 时，会出现一样的错误 不通过 Lumen 框架，直接请求 php 文件，如果请求中有 x-www-form-urlencoded 和 json body 信息时，同样会出现错误  这里基本可以确认和框架没有关系。而且引出了 php://input 数据流。</description>
+    </item>
+    
+  </channel>
+</rss>
