@@ -16,7 +16,7 @@ tags: ["nginx", "php"]
 1. 创建了 `php` Docker 容器，增加了 `index.php` 测试文件并启动 `php-fpm`
 2. 宿主机增加 `nginx` 配置并重新启动
 
-# 尝试解决
+## 尝试解决
 
 根据错误提示，可以了解到错误原因大概率是 `nginx` 没有找到 `php` 文件。
 
@@ -26,7 +26,7 @@ tags: ["nginx", "php"]
 
 根据 `nginx` 文档修改 `nginx` 配置多次后仍然无法解决。
 
-# 解决问题
+## 解决问题
 
 能够使用的方法越来越少，不得已只能尝试使用终极办法。
 
@@ -34,7 +34,7 @@ tags: ["nginx", "php"]
 
 通过监听 `php` 容器的本地 `ip` 和端口号，可以看到 `nginx` 与 `php-fpm` 之间的通信内容。
 
-## nginx 向 php-fpm 发送的数据（FastCGI 协议数据）
+### nginx 向 php-fpm 发送的数据（FastCGI 协议数据）
 
 ```
 SCRIPT_FILENAME/var/www/html/docker/index.php
@@ -74,7 +74,7 @@ HTTP_ACCEPT_ENCODINGgzip, deflate, br#
 HTTP_ACCEPT_LANGUAGEzh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
 ```
 
-## php-fpm 给 nginx 发送的响应内容
+### php-fpm 给 nginx 发送的响应内容
 
 ```
 Primary script unknownk
@@ -89,7 +89,7 @@ File not found.
 
 将 `index.php` 测试文件放入正确位置后，终于能够正常访问。
 
-# 修正 nginx 配置
+## 修正 nginx 配置
 
 在抓包工具的帮助下，更直观和详细的了解了 `nginx` 配置文件中的路径组成。很快将 `nginx` 中的项目路径配置正确。
 
@@ -107,7 +107,7 @@ location / {
 
 访问 `http://localhost:8080/book/1` 时，`SCRIPT_FILENAME` 的值映射为 `/src/shop/public/index.php/book/`1
 
-# 更优雅的 nginx 配置方式
+## 更优雅的 nginx 配置方式
 
 ```conf
 # 指定根目录
@@ -128,7 +128,7 @@ location ~ \.php$ {
 }
 ```
 
-# 参考 & 扩展
+## 参考 & 扩展
 
 - [应该把 nginx 和 PHP 放在一个 image 里还是分开](https://sexywp.com/should-nginx-and-php-put-together-or-seperate.htm)
 - [How to debug Primary script unknown](https://stackoverflow.com/questions/35261922/how-to-debug-fastcgi-sent-in-stderr-primary-script-unknown-while-reading-respo)
