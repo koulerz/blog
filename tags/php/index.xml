@@ -6,17 +6,35 @@
     <description>Recent content in php on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 27 Aug 2021 19:41:07 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Aug 2021 02:20:34 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>解决 file not found 错误</title>
+      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3file-not-found%E9%94%99%E8%AF%AF/</link>
+      <pubDate>Sat, 28 Aug 2021 02:20:34 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3file-not-found%E9%94%99%E8%AF%AF/</guid>
+      <description>新创建的 php 容器配置好后，访问首页显示 File not found。
+nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unknown&amp;quot; while reading response header from upstream
+于是在本地搭建了简化版的环境：
+ 创建了 php Docker 容器，增加了 index.php 测试文件并启动 php-fpm 宿主机增加 nginx 配置并重新启动  尝试解决 根据错误提示，可以了解到错误原因大概率是 nginx 没有找到 php 文件。
+这一错误出现的原因大致分为两类，一是文件权限错误，二是文件路径错误。
+权限错误很容易就能够排查，所以怀疑大概率是 nginx 配置中的路径错误导致没有找到 index.php 文件。
+根据 nginx 文档修改 nginx 配置多次后仍然无法解决。
+解决问题 能够使用的方法越来越少，不得已只能尝试使用终极办法。
+由于 nginx 是通过 fastCGI 协议与 php-fpm 通信，将需要执行的文件路径发送给 php-fpm，所以可以通过抓包软件直接抓取 fastCGI 的协议内容来调试文件路径错误。
+通过监听 php 容器的本地 ip 和端口号，可以看到 nginx 与 php-fpm 之间的通信内容。</description>
+    </item>
+    
+    <item>
       <title>解决 kinsing 挖矿恶意程序的攻击</title>
-      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3-kinsing-%E6%8C%96%E7%9F%BF%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%94%BB%E5%87%BB/</link>
+      <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3kinsing%E6%8C%96%E7%9F%BF%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%94%BB%E5%87%BB/</link>
       <pubDate>Fri, 27 Aug 2021 19:41:07 +0800</pubDate>
       
-      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3-kinsing-%E6%8C%96%E7%9F%BF%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%94%BB%E5%87%BB/</guid>
+      <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3kinsing%E6%8C%96%E7%9F%BF%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%94%BB%E5%87%BB/</guid>
       <description>环境  基于 php7.4.12 的容器 使用 Lumen 框架  发现异常状况 最开始察觉到异常是在错误邮件中
 错误信息是 Cannot modify header information - headers already sent by (output started at php://input:1)
 几天后，发现页面中出现大量跨域错误
