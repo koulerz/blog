@@ -4,17 +4,7 @@ date: 2021-08-27T19:41:07+08:00
 publishdate: 2021-08-27T19:41:07+08:00
 lastmod: 2021-08-27T19:41:07+08:00
 draft: false
-tags:
-  [
-    "kinsing",
-    "kdevtmpfsi",
-    "挖矿",
-    "恶意程序",
-    "病毒",
-    "漏洞",
-    "php",
-    "php-fpm",
-  ]
+tags: ["kinsing", "kdevtmpfsi", "挖矿", "恶意程序", "漏洞", "php"]
 ---
 
 # 环境
