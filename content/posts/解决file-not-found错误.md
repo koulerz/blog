@@ -7,24 +7,24 @@ draft: false
 tags: ["nginx", "php"]
 ---
 
-新创建的 php 容器配置好后，访问首页显示 `File not found`。
+新创建的 `php` 容器配置好后，访问首页显示 `File not found`。
 
-nginx 错误日志中显示 `FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream`
+`nginx` 错误日志中显示 `FastCGI sent in stderr: "Primary script unknown" while reading response header from upstream`
 
 于是在本地搭建了简化版的环境：
 
 1. 创建了 `php` Docker 容器，增加了 `index.php` 测试文件并启动 `php-fpm`
-2. 宿主机增加 nginx 配置并重新启动
+2. 宿主机增加 `nginx` 配置并重新启动
 
 # 尝试解决
 
-根据错误提示，可以了解到错误原因大概率是 nginx 没有找到 php 文件。
+根据错误提示，可以了解到错误原因大概率是 `nginx` 没有找到 `php` 文件。
 
 这一错误出现的原因大致分为两类，一是文件权限错误，二是文件路径错误。
 
-权限错误很容易就能够排查，所以怀疑大概率是 nginx 配置中的路径错误导致没有找到 `index.php` 文件。
+权限错误很容易就能够排查，所以怀疑大概率是 `nginx` 配置中的路径错误导致没有找到 `index.php` 文件。
 
-根据 nginx 文档修改 nginx 配置多次后仍然无法解决。
+根据 `nginx` 文档修改 `nginx` 配置多次后仍然无法解决。
 
 # 解决问题
 
@@ -85,13 +85,13 @@ Content-type: text/html; charset=UTF-8
 File not found.
 ```
 
-FastCGI 协议中 `SCRIPT_FILENAME` 的值就是最终要执行的 php 文件路径。
+`FastCGI` 协议中 `SCRIPT_FILENAME` 的值就是最终要执行的 `php` 文件路径。
 
 将 `index.php` 测试文件放入正确位置后，终于能够正常访问。
 
 # 修正 nginx 配置
 
-在抓包工具的帮助下，更直观和详细的了解了 nginx 配置文件中的路径组成。很快将 nginx 中的项目路径配置正确。
+在抓包工具的帮助下，更直观和详细的了解了 `nginx` 配置文件中的路径组成。很快将 `nginx` 中的项目路径配置正确。
 
 ```conf
 # nginx 配置

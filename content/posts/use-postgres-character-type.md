@@ -21,7 +21,7 @@ tags: ["postgresql", "database"]
 - _text 等同于不限制长度的 carchar, 区别在于 varchar(n) 可以限制长度，数据超出长度时将会返回错误_
 - _相对于 text 类型，varchar(n) 明显的好处在于限制长度。但考虑到未来可能更改限制的长度，使用 text 类型并在代码逻辑中限制长度可能是更好的选择_
 
-# 参考
+## 参考
 
 - [PostgreSQL 字符类型](http://www.postgres.cn/docs/13/datatype-character.html)
 - [char-varchar-text-性能测试](https://www.depesz.com/2010/03/02/charx-vs-varcharx-vs-varchar-vs-text/)

@@ -7,12 +7,12 @@ draft: false
 tags: ["kinsing", "kdevtmpfsi", "挖矿", "恶意程序", "漏洞", "php"]
 ---
 
-# 环境
+## 环境
 
 - 基于 php7.4.12 的容器
 - 使用 Lumen 框架
 
-# 发现异常状况
+## 发现异常状况
 
 最开始察觉到异常是在错误邮件中
 
@@ -26,7 +26,7 @@ tags: ["kinsing", "kdevtmpfsi", "挖矿", "恶意程序", "漏洞", "php"]
 
 通过测试 API，发现其中一些 POST API 在正确的响应内容前会先将 POST 请求中的请求体输出。而 GET 参数则一切正常。
 
-# 寻找问题根源
+## 寻找问题根源
 
 多次测试 API 后发现一些规律。
 
@@ -38,7 +38,7 @@ tags: ["kinsing", "kdevtmpfsi", "挖矿", "恶意程序", "漏洞", "php"]
 
 POST 方法中的 x-www-form-urlencoded 和 raw 格式 Body 体会写入到 `php://input` 流中，与之前发现的规律相吻合。
 
-# 发现挖矿恶意程序
+## 发现挖矿恶意程序
 
 在查找 php:input 数据流问题时，偶然发现容器中运行着两个异常进程，名称分别是 `kinsing` 和 `kdevtmpfsi`
 
@@ -57,7 +57,7 @@ www-data 15605  199 29.3 2930476 2397156 ?     Ssl  Aug04 11245:50 /tmp/kdevtmpf
 
 至此可以确认一切的根源就是该挖矿恶意程序导致的。
 
-# 无法完全禁止挖矿恶意程序启动
+## 无法完全禁止挖矿恶意程序启动
 
 使用 `kill -9` 命令强制杀死挖矿进程后，发现其会在几分钟内自行重启
 
@@ -96,7 +96,7 @@ root     11785  0.0  0.0   7632  1412 ?        R+   20:59   0:00 ps aux
 
 通过进程树发现恶意程序是通过 `php-fpm` 进程执行了 `curl` 命令
 
-# 临时恢复服务
+## 临时恢复服务
 
 搜索后发现网络上大部分是通过 redis 被注入的恶意代码。
 
@@ -129,7 +129,7 @@ root     18553  0.0  0.0   7632  1412 ?        R+   03:16   0:00 ps aux
 
 不得已使用了另一种更直接的方式，每 20s 强制停止恶意程序。具体方法可以参考这篇文章 [Kinsing malware (kdevtmpfsi)- how to kill](https://www.createit.com/blog/kinsing-malware-how-to-kill/)
 
-# php-fpm 的漏洞逻辑
+## php-fpm 的漏洞逻辑
 
 - php-fpm 用于解析 fastcgi 协议，决定了 php 将执行哪个文件
 - 当 php-fpm 端口暴露在外，就可以自己构建 fastcig 协议内容
@@ -145,13 +145,13 @@ root     18553  0.0  0.0   7632  1412 ?        R+   03:16   0:00 ps aux
 
 详细内容可以参考这篇文章 [Fastcgi 协议分析 && PHP-FPM 未授权访问漏洞 && Exp 编写](https://www.leavesongs.com/PENETRATION/fastcgi-and-php-fpm.html)
 
-# 问题解决
+## 问题解决
 
 此次被攻击是由于疏忽导致，对外网暴露了 php-fpm 使用的 9000 端口。
 
 外网禁用 9000 端口并重新构建镜像部署服务后，问题得以解决。
 
-# 了解 Kinsing 恶意程序
+## 了解 Kinsing 恶意程序
 
 > Kinsing is Golang-based malware that runs a cryptocurrency miner and attempts to spread itself to other hosts in the victim environment.
 
@@ -159,7 +159,7 @@ root     18553  0.0  0.0   7632  1412 ?        R+   03:16   0:00 ps aux
 - [Kinsing Malware Attacks Targeting Container Environments](https://blog.aquasec.com/threat-alert-kinsing-malware-container-vulnerability)
 - [Kinsing: The Malware with Two Faces](https://www.cyberark.com/resources/threat-research-blog/kinsing-the-malware-with-two-faces)
 
-# 参考 & 扩展
+## 参考 & 扩展
 
 - [关于 linux 病毒 kinsing-kdevtmpfsi 的处理](https://learnku.com/articles/52350)
 - [kdevtmpfsi-using-the-entire-cpu](https://stackoverflow.com/questions/60151640/kdevtmpfsi-using-the-entire-cpu)
