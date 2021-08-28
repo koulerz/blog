@@ -6,10 +6,64 @@
     <description>Recent content in Posts on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 28 Aug 2021 02:20:34 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Aug 2021 18:08:32 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>使用 gitlab runner 自动部署代码</title>
+      <link>https://kouler.com/posts/%E4%BD%BF%E7%94%A8gitlab-runner%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Sat, 28 Aug 2021 18:08:32 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E4%BD%BF%E7%94%A8gitlab-runner%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81/</guid>
+      <description>下载 gitlab-runner 错误 下载链接：sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+错误信息
+root@desktop:~# sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64 --2021-06-09 17:31:14-- https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64 正在解析主机 gitlab-runner-downloads.s3.amazonaws.com (gitlab-runner-downloads.s3.amazonaws.com)... 52.217.16.228 正在连接 gitlab-runner-downloads.s3.amazonaws.com (gitlab-runner-downloads.s3.amazonaws.com)|52.217.16.228|:443... 已连接。 已发出 HTTP 请求，正在等待回应... 200 OK 长度： 46380315 (44M) [application/octet-stream] 正在保存至: “/usr/local/bin/gitlab-runner” /usr/local/bin/gitlab-run 100%[====================================&amp;gt;] 44.23M 33.4KB/s 剩余 0s s 段错误 最终使用官方链接下载成功 sudo curl -L --output /usr/local/bin/gitlab-runner &amp;quot;https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64&amp;quot;
+配置 gitlab-runner gitlab runner 安装与使用
+解决任务执行失败问题 错误信息： This job is stuck, because the project doesn&#39;t have any runners online assigned to it.</description>
+    </item>
+    
+    <item>
+      <title>docker 容器中的僵尸进程</title>
+      <link>https://kouler.com/posts/docker%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B/</link>
+      <pubDate>Sat, 28 Aug 2021 17:38:52 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/docker%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B/</guid>
+      <description>之前并非通过 docker stop 来停止程序和容器，而是通过容器中的 shell 脚本，在不停止容器的情况下，通过运行 shell 脚本来杀死程序。
+这种方式导致每次停止程序后，被停止的进程都会变成一个僵尸进程。即被标记为 defunct 的进程。僵尸进程只能通过重启容器的方式消除。
+尝试在容器内直接运行二进制程序，使其保持在前台运行，并通过 Ctrl + C 退出，不会产生僵尸进程。
+docker 容器中僵尸进程产生的原因 Linux 中子进程通常由其父进程 fork 创建，并在子进程退出时回收子进程的资源。
+当父进程先于子进程退出时，子进程会变成孤儿进程，而其父进程会变更为 init 进程。
+当子进程已终止，但父进程尚未回收子进程资源时，子进程的残留资源（PCB）存放于内核中，变成僵尸进程。
+Linux 中，若子进程缺失父进程，其残留资源会由 init 进程回收。但在 Docker 中，容器并非一个完整的操作系统，不会初始化 init 进程，容器中的第一个进程只是一个普通进程，所以并不会回收僵尸进程。
+当使用 shell 脚本在后台执行目标程序时，shell 脚本会在启动目标程序后立刻退出而不会等待目标程序结束。shell 脚本尚未退出时，目标程序的父进程为当前脚本程序，而当 shell 脚本退出后，目标程序的父进程为当前终端进程。
+终端进程并非 init 进程，不会回收孤儿进程的残留资源，所以子进程最终会变为僵尸进程。
+问题修复 之前将 docker 容器当作虚拟机来使用，导致产生了很多问题并且没有真正减轻运维负担。
+正确的做法是将 docker 容器作为单一服务，使用真正的容器化部署方式。</description>
+    </item>
+    
+    <item>
+      <title>捕获docker stop信号</title>
+      <link>https://kouler.com/posts/%E6%8D%95%E8%8E%B7docker-stop%E4%BF%A1%E5%8F%B7/</link>
+      <pubDate>Sat, 28 Aug 2021 16:15:01 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E6%8D%95%E8%8E%B7docker-stop%E4%BF%A1%E5%8F%B7/</guid>
+      <description>为了优化代码部署效率，将传统的手动部署方式改成了容器化部署方式
+过去的程序停止逻辑  程序持续监听 SIGINT 信号 使用 Ctrl + C 快捷键向程序发送 SIGINT 信号 程序收到 SIGINT 信号后执行退出前的收尾工作 收尾工作执行完成后，程序自动退出  容器化后产生的问题 使用容器化部署方式后，期望通过 docker stop 命令来执行程序退出逻辑并关闭程序和容器，结果发现程序和容器被强制关闭，而程序退出前的收尾工作并未执行。
+问题产生的原因 上网搜索后得知 docker stop 命令发送的并非 SIGINT 信号，而是 SIGTERM 信号。
+而程序代码中并未捕获 SIGTERM 信号，所以收到 SIGTERM 信号后，程序跳过了收尾工作，直接退出了。
+修复代码后的程序停止逻辑  程序持续监听 SIGINT 和 SIGTERM 信号 使用 docker stop 命令向程序发送 SIGTERM 信号 收到 SIGTERM 信号后执行退出前的收尾工作 收尾工作执行完成后，程序自动退出  修复代码后，使用 docker stop 命令能够按照预期正确退出程序。</description>
+    </item>
+    
+    <item>
+      <title>Linux中常见的进程中止信号</title>
+      <link>https://kouler.com/posts/linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%AD%E6%AD%A2%E4%BF%A1%E5%8F%B7/</link>
+      <pubDate>Sat, 28 Aug 2021 16:05:38 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%AD%E6%AD%A2%E4%BF%A1%E5%8F%B7/</guid>
+      <description>SIGINT  Ctrl + C 会发送 SIGINT 信号 信号会被当前进程树接收到，不仅当前进程会收到信号，它的子进程也会收到。 只能结束前台进程  SIGTERM  kill -15 会发送 SIGTERM 信号 没有参数的 kill 命令也会默认发送 SIGTERM 信号 只有当前进程会收到信号，子进程不会收到。如果当前进程被 kill 掉，那么它的子进程将会被 init 进程接管，也就是 pid 为 1 的进程 用来要求程序自己正常退出，让它自己清理文件和关闭。系统关机的时候会触发这个信号 这个信号不保证进程一定会被终止  SIGKILL  kill -9 会发送 SIGKILL 信号 用来强制使进程立即结束 SIGKILL 不能被捕获，程序收到这个信号后，一定会退出  </description>
+    </item>
     
     <item>
       <title>解决 file not found 错误</title>

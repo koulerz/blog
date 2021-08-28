@@ -6,10 +6,82 @@
     <description>Recent content in Tags on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 28 Aug 2021 02:20:34 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 28 Aug 2021 18:08:32 +0800</lastBuildDate>
     
 	<atom:link href="https://kouler.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>cicd</title>
+      <link>https://kouler.com/tags/cicd/</link>
+      <pubDate>Sat, 28 Aug 2021 18:08:32 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/cicd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>https://kouler.com/tags/git/</link>
+      <pubDate>Sat, 28 Aug 2021 18:08:32 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gitlab</title>
+      <link>https://kouler.com/tags/gitlab/</link>
+      <pubDate>Sat, 28 Aug 2021 18:08:32 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/gitlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docker</title>
+      <link>https://kouler.com/tags/docker/</link>
+      <pubDate>Sat, 28 Aug 2021 17:38:52 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>process</title>
+      <link>https://kouler.com/tags/process/</link>
+      <pubDate>Sat, 28 Aug 2021 17:38:52 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/process/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://kouler.com/tags/golang/</link>
+      <pubDate>Sat, 28 Aug 2021 16:15:01 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>signal</title>
+      <link>https://kouler.com/tags/signal/</link>
+      <pubDate>Sat, 28 Aug 2021 16:15:01 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/signal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://kouler.com/tags/linux/</link>
+      <pubDate>Sat, 28 Aug 2021 16:05:38 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/linux/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>nginx</title>
@@ -147,24 +219,6 @@
     </item>
     
     <item>
-      <title>linux</title>
-      <link>https://kouler.com/tags/linux/</link>
-      <pubDate>Wed, 29 Jul 2020 20:21:02 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>docker</title>
-      <link>https://kouler.com/tags/docker/</link>
-      <pubDate>Mon, 27 Jul 2020 00:22:31 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/docker/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>fiddler</title>
       <link>https://kouler.com/tags/fiddler/</link>
       <pubDate>Thu, 12 Mar 2020 00:41:43 +0800</pubDate>
@@ -260,15 +314,6 @@
       <pubDate>Mon, 13 May 2019 19:18:42 +0800</pubDate>
       
       <guid>https://kouler.com/tags/editor/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://kouler.com/tags/golang/</link>
-      <pubDate>Mon, 13 May 2019 19:18:42 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/golang/</guid>
       <description></description>
     </item>
     
@@ -386,15 +431,6 @@
       <pubDate>Fri, 09 Mar 2018 10:46:39 +0800</pubDate>
       
       <guid>https://kouler.com/tags/proxy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>https://kouler.com/tags/git/</link>
-      <pubDate>Fri, 26 May 2017 13:21:15 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/git/</guid>
       <description></description>
     </item>
     

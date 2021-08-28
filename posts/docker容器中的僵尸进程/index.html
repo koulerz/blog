@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>linux | Kouler</title>
+  <title>docker 容器中的僵尸进程 | Kouler</title>
   
 
   <style>
@@ -180,71 +180,31 @@ blockquote,
   
   <div class="container">
     <article>
-      
-
-  <p>
-    <a href="https://kouler.com/posts/linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%AD%E6%AD%A2%E4%BF%A1%E5%8F%B7/">Linux中常见的进程中止信号</a>
+      <h1 style="margin:0 0 5px 0">docker 容器中的僵尸进程</h1>
     
     
-    <br>
     <small class="text-secondary">2021-08-28</small>
     
 
-<small><code><a href="https://kouler.com/tags/linux">#linux</a></code></small>
+<small><code><a href="https://kouler.com/tags/docker">#docker</a></code></small>
 
 
-<small><code><a href="https://kouler.com/tags/signal">#signal</a></code></small>
+<small><code><a href="https://kouler.com/tags/process">#process</a></code></small>
 
-    
-  </p>
-
-  <p>
-    <a href="https://kouler.com/posts/%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/">常用的进程操作命令</a>
-    
-    
-    <br>
-    <small class="text-secondary">2020-07-29</small>
-    
-
-<small><code><a href="https://kouler.com/tags/linux">#linux</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/command">#command</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://kouler.com/posts/linux011%E5%86%85%E6%A0%B8%E5%BC%95%E5%AF%BC%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">Linux0.11 内核引导启动流程</a>
-    
-    
-    <br>
-    <small class="text-secondary">2016-06-10</small>
-    
-
-<small><code><a href="https://kouler.com/tags/linux">#linux</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
-
-    
-  </p>
-
-  <p>
-    <a href="https://kouler.com/posts/linux%E7%9A%84%E4%B8%AD%E6%96%AD%E5%BC%82%E5%B8%B8%E5%92%8C%E4%BF%A1%E5%8F%B7/">Linux 的中断异常和信号</a>
-    
-    
-    <br>
-    <small class="text-secondary">2016-04-19</small>
-    
-
-<small><code><a href="https://kouler.com/tags/linux">#linux</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
-
-    
-  </p>
+    <br><br>
+<p>之前并非通过 <code>docker stop</code> 来停止程序和容器，而是通过容器中的 shell 脚本，在不停止容器的情况下，通过运行 shell 脚本来杀死程序。</p>
+<p>这种方式导致每次停止程序后，被停止的进程都会变成一个僵尸进程。即被标记为 <code>defunct</code> 的进程。僵尸进程只能通过重启容器的方式消除。</p>
+<p>尝试在容器内直接运行二进制程序，使其保持在前台运行，并通过 <code>Ctrl + C</code> 退出，不会产生僵尸进程。</p>
+<h2 id="docker-容器中僵尸进程产生的原因">docker 容器中僵尸进程产生的原因</h2>
+<p>Linux 中子进程通常由其父进程 fork 创建，并在子进程退出时回收子进程的资源。</p>
+<p>当父进程先于子进程退出时，子进程会变成孤儿进程，而其父进程会变更为 init 进程。</p>
+<p>当子进程已终止，但父进程尚未回收子进程资源时，子进程的残留资源（PCB）存放于内核中，变成僵尸进程。</p>
+<p>Linux 中，若子进程缺失父进程，其残留资源会由 init 进程回收。但在 Docker 中，容器并非一个完整的操作系统，不会初始化 init 进程，容器中的第一个进程只是一个普通进程，所以并不会回收僵尸进程。</p>
+<p>当使用 shell 脚本在后台执行目标程序时，shell 脚本会在启动目标程序后立刻退出而不会等待目标程序结束。shell 脚本尚未退出时，目标程序的父进程为当前脚本程序，而当 shell 脚本退出后，目标程序的父进程为当前终端进程。</p>
+<p>终端进程并非 init 进程，不会回收孤儿进程的残留资源，所以子进程最终会变为僵尸进程。</p>
+<h2 id="问题修复">问题修复</h2>
+<p>之前将 docker 容器当作虚拟机来使用，导致产生了很多问题并且没有真正减轻运维负担。</p>
+<p>正确的做法是将 docker 容器作为单一服务，使用真正的容器化部署方式。</p>
 
     </article>
   </div>

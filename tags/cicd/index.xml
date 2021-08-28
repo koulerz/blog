@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cicd on Kouler</title>
+    <link>https://kouler.com/tags/cicd/</link>
+    <description>Recent content in cicd on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 28 Aug 2021 18:08:32 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/cicd/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>使用 gitlab runner 自动部署代码</title>
+      <link>https://kouler.com/posts/%E4%BD%BF%E7%94%A8gitlab-runner%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81/</link>
+      <pubDate>Sat, 28 Aug 2021 18:08:32 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E4%BD%BF%E7%94%A8gitlab-runner%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81/</guid>
+      <description>下载 gitlab-runner 错误 下载链接：sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+错误信息
+root@desktop:~# sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64 --2021-06-09 17:31:14-- https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64 正在解析主机 gitlab-runner-downloads.s3.amazonaws.com (gitlab-runner-downloads.s3.amazonaws.com)... 52.217.16.228 正在连接 gitlab-runner-downloads.s3.amazonaws.com (gitlab-runner-downloads.s3.amazonaws.com)|52.217.16.228|:443... 已连接。 已发出 HTTP 请求，正在等待回应... 200 OK 长度： 46380315 (44M) [application/octet-stream] 正在保存至: “/usr/local/bin/gitlab-runner” /usr/local/bin/gitlab-run 100%[====================================&amp;gt;] 44.23M 33.4KB/s 剩余 0s s 段错误 最终使用官方链接下载成功 sudo curl -L --output /usr/local/bin/gitlab-runner &amp;quot;https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64&amp;quot;
+配置 gitlab-runner gitlab runner 安装与使用
+解决任务执行失败问题 错误信息： This job is stuck, because the project doesn&#39;t have any runners online assigned to it.</description>
+    </item>
+    
+  </channel>
+</rss>

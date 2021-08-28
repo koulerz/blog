@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>signal on Kouler</title>
+    <link>https://kouler.com/tags/signal/</link>
+    <description>Recent content in signal on Kouler</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 28 Aug 2021 16:15:01 +0800</lastBuildDate>
+    
+	<atom:link href="https://kouler.com/tags/signal/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>捕获docker stop信号</title>
+      <link>https://kouler.com/posts/%E6%8D%95%E8%8E%B7docker-stop%E4%BF%A1%E5%8F%B7/</link>
+      <pubDate>Sat, 28 Aug 2021 16:15:01 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/%E6%8D%95%E8%8E%B7docker-stop%E4%BF%A1%E5%8F%B7/</guid>
+      <description>为了优化代码部署效率，将传统的手动部署方式改成了容器化部署方式
+过去的程序停止逻辑  程序持续监听 SIGINT 信号 使用 Ctrl + C 快捷键向程序发送 SIGINT 信号 程序收到 SIGINT 信号后执行退出前的收尾工作 收尾工作执行完成后，程序自动退出  容器化后产生的问题 使用容器化部署方式后，期望通过 docker stop 命令来执行程序退出逻辑并关闭程序和容器，结果发现程序和容器被强制关闭，而程序退出前的收尾工作并未执行。
+问题产生的原因 上网搜索后得知 docker stop 命令发送的并非 SIGINT 信号，而是 SIGTERM 信号。
+而程序代码中并未捕获 SIGTERM 信号，所以收到 SIGTERM 信号后，程序跳过了收尾工作，直接退出了。
+修复代码后的程序停止逻辑  程序持续监听 SIGINT 和 SIGTERM 信号 使用 docker stop 命令向程序发送 SIGTERM 信号 收到 SIGTERM 信号后执行退出前的收尾工作 收尾工作执行完成后，程序自动退出  修复代码后，使用 docker stop 命令能够按照预期正确退出程序。</description>
+    </item>
+    
+    <item>
+      <title>Linux中常见的进程中止信号</title>
+      <link>https://kouler.com/posts/linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%AD%E6%AD%A2%E4%BF%A1%E5%8F%B7/</link>
+      <pubDate>Sat, 28 Aug 2021 16:05:38 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%AD%E6%AD%A2%E4%BF%A1%E5%8F%B7/</guid>
+      <description>SIGINT  Ctrl + C 会发送 SIGINT 信号 信号会被当前进程树接收到，不仅当前进程会收到信号，它的子进程也会收到。 只能结束前台进程  SIGTERM  kill -15 会发送 SIGTERM 信号 没有参数的 kill 命令也会默认发送 SIGTERM 信号 只有当前进程会收到信号，子进程不会收到。如果当前进程被 kill 掉，那么它的子进程将会被 init 进程接管，也就是 pid 为 1 的进程 用来要求程序自己正常退出，让它自己清理文件和关闭。系统关机的时候会触发这个信号 这个信号不保证进程一定会被终止  SIGKILL  kill -9 会发送 SIGKILL 信号 用来强制使进程立即结束 SIGKILL 不能被捕获，程序收到这个信号后，一定会退出  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.66.0" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>使用 gitlab runner 自动部署代码 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">使用 gitlab runner 自动部署代码</h1>
+    
+    
+    <small class="text-secondary">2021-08-28</small>
+    
+
+<small><code><a href="https://kouler.com/tags/gitlab">#gitlab</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/cicd">#cicd</a></code></small>
+
+    <br><br>
+<h2 id="下载-gitlab-runner-错误">下载 gitlab-runner 错误</h2>
+<p>下载链接：<code>sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64</code></p>
+<p>错误信息</p>
+<pre><code>root@desktop:~# sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+--2021-06-09 17:31:14--  https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+正在解析主机 gitlab-runner-downloads.s3.amazonaws.com (gitlab-runner-downloads.s3.amazonaws.com)... 52.217.16.228
+正在连接 gitlab-runner-downloads.s3.amazonaws.com (gitlab-runner-downloads.s3.amazonaws.com)|52.217.16.228|:443... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度： 46380315 (44M) [application/octet-stream]
+正在保存至: “/usr/local/bin/gitlab-runner”
+
+/usr/local/bin/gitlab-run 100%[====================================&gt;]  44.23M  33.4KB/s    剩余 0s    s
+段错误
+</code></pre><p>最终使用官方链接下载成功 <code>sudo curl -L --output /usr/local/bin/gitlab-runner &quot;https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64&quot;</code></p>
+<h2 id="配置-gitlab-runner">配置 gitlab-runner</h2>
+<p><a href="https://cloud.tencent.com/developer/article/1620321">gitlab runner 安装与使用</a></p>
+<h2 id="解决任务执行失败问题">解决任务执行失败问题</h2>
+<p>错误信息：
+<code>This job is stuck, because the project doesn't have any runners online assigned to it. Go to Runners page </code></p>
+<p>出错原因：
+是因为 gitlab-runner 中配置了 tag 标签，但 job 中没有设置 tag 标签</p>
+<p>解决方法有两种：</p>
+<ol>
+<li>在 job 中指明标签</li>
+<li>在 gitlab-runner 中设置允许执行没有标签的 job</li>
+</ol>
+<p><a href="https://stackoverflow.com/questions/53370840/this-job-is-stuck-because-the-project-doesnt-have-any-runners-online-assigned">This job is stuck, because the project doesn&rsquo;t have any runners online assigned to it</a></p>
+<h2 id="对设备不适当的-ioctl-操作">对设备不适当的 ioctl 操作</h2>
+<p>错误信息：<code>mesg: ttyname 失败: 对设备不适当的 ioctl 操作</code></p>
+<p>解决方法：</p>
+<ol>
+<li>打开 /root/.profile 文件</li>
+<li>将 <code>mesg n || true</code> 行替换为 <code>tty -s &amp;&amp; mesg n</code></li>
+</ol>
+<ul>
+<li><a href="https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant/1160074#1160074">ttyname failed: Inappropriate ioctl for device` in Vagrant</a></li>
+</ul>
+<h2 id="docker-权限错误">Docker 权限错误</h2>
+<pre><code>$ docker volume create z1-go
+Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.29/volumes/create: dial unix /var/run/docker.sock: connect: permission denied
+</code></pre><p>解决方法：
+将用户 <code>gitlab-runner</code> 加入 <code>docker</code> 用户组
+<code>usermod -a -G docker gitlab-runner</code></p>
+<h2 id="无法正确启动服务">无法正确启动服务</h2>
+<p>使用 <code>gitlab-runner start</code> 无法启动服务，但使用 <code>gitlab-runner run</code> 能够启动服务。</p>
+<p>可能是因为之前安装过 gitlab-runner 服务导致的冲突</p>
+<h3 id="syslog-错误信息">syslog 错误信息</h3>
+<pre><code>Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Service hold-off time over, scheduling restart.
+Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Scheduled restart job, restart counter is at 1035.
+Jun 11 17:34:46 desktop systemd[1]: Stopped GitLab Runner.
+Jun 11 17:34:46 desktop systemd[1]: Started GitLab Runner.
+Jun 11 17:34:46 desktop gitlab-runner[31473]: Runtime platform                                  #033[0;m  arch#033[0;m=amd64 os#033[0;m=linux pid#033[0;m=31473 revision#033[0;m=7a6612da version#033[0;m=13.12.0
+Jun 11 17:34:46 desktop gitlab-runner[31473]: Starting multi-runner from /etc/gitlab-runner/config.toml...#033[0;m  builds#033[0;m=0
+Jun 11 17:34:46 desktop gitlab-runner[31473]: Running in system-mode.                           #033[0;m
+Jun 11 17:34:46 desktop gitlab-runner[31473]:                                                   #033[0;m
+Jun 11 17:34:46 desktop gitlab-runner[31473]: #033[31;1mFATAL: Service run failed                         #033[0;m  #033[31;1merror#033[0;m=chdir /home/gitlab-runner: no such file or directory
+Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Main process exited, code=exited, status=1/FAILURE
+Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Failed with result 'exit-code'.
+</code></pre><h3 id="解决方法">解决方法</h3>
+<p>完全删除后，重新下载并安装解决了该问题</p>
+<ul>
+<li>Ubuntu 查看开机启动服务：<code>sudo systemctl list-unit-files --type=service|grep enabled</code></li>
+<li>Ubuntu 禁用开启服务：<code>sudo systemctl disable apache2.service</code></li>
+</ul>
+<h3 id="参考">参考</h3>
+<ul>
+<li><a href="https://gitlab.com/gitlab-org/gitlab-runner/-/issues/3344">gitlab-runner service not starting</a></li>
+<li><a href="https://www.cnblogs.com/dhu121/p/13257256.html">卸载 gitlab-runner</a></li>
+</ul>
+<h2 id="qa">Q&amp;A</h2>
+<ol>
+<li>服务器安装 gitlab-runner 并注册成功后，如何关联具体的项目地址？<br>
+看起来 gitlab-runner 仅仅是作为 gitlab 的扩展硬件资源。即当每次提交代码时，最简单的方式是在 gitlab 的服务器执行 CI/CD 流程，但由于这会消耗大量的资源，所以现在由用户各自配置的机器自主执行。</li>
+<li>gitlab-runner 是否需要自动拉取代码<br>
+无需自动拉取代码。gitlab-runner 会自主拉取最新代码</li>
+<li>如何在 gitlab 页面删除执行失败的 pipeline<br>
+暂时没找到清除方法</li>
+<li>gitlab-runner 注册成功后，部署在哪里，是否无需再拉取代码即可自动部署在本地服务器<br>
+gitlab-runner 会自主拉取最新代码在部署环境的指定目录。根据 gitlab-ci.yml 文件中的命令决定如何部署服务。</li>
+<li>gitlab-runner 代码目录在哪里<br>
+本机具体路径为 <code>/home/my/builds/njBCKP-_/0/my/api-z1/.git/</code>，具体路径可能会因为系统环境有所不同</li>
+<li>同一项目如何部署在多个服务器
+<ol>
+<li>为统一项目配置多个 gitlab-runner，并设置不同标签</li>
+<li>在 gitlab-ci.yml 配置文件中，根据标签配置不同的命令</li>
+</ol>
+</li>
+<li>项目配置文件如何载入
+<ol>
+<li>在 gitlab 中可以自定义所需的环境变量</li>
+<li>在 gitlab-ci.yml 中设置配置文件路径</li>
+<li>配置文件从 Dockerfile 文件中载入</li>
+</ol>
+</li>
+<li>Github 是否有类似的功能<br>
+Github 提供了 Github Aciton 功能，与 Gitlab 中的 CI/CD 功能类似。同时，也提供了 Runner 程序用于将 Github Action 配置到自建主机。</li>
+<li>gitlab-runner 配置文件在哪<br>
+linux 系统中，在 <code>/etc/gitlab-runner/</code></li>
+<li>使用调试模式运行 gitlab-runner
+<ul>
+<li><code>gitlab-runner -debug run</code></li>
+<li>可以查看 <a href="https://docs.gitlab.com/runner/faq/">gitlab-runner faq</a></li>
+</ul>
+</li>
+<li>如何设置手动执行 Job<br>
+在 <code>gitlab-ci.yml</code> 文件想要手动执行的 Job 中加入 <code>when: manual</code> 配置项</li>
+<li>如何使用 gitlab 设置中定义的变量<br>
+使用美元符号引用定义的变量，例如 <code>$VARIABLES_NAME</code></li>
+<li>如何使用 <code>gitlab-ci.yml</code> 文件中的环境（environment）参数</li>
+<li>如何顺序执行 Job
+<ol>
+<li>可以通过设置多个 stage 间接为 job 设置执行顺序</li>
+<li>可以将全部 job 设置为手动执行，然后手动按顺序执行</li>
+</ol>
+</li>
+<li>gitlab-runner 的 start 命令和 run 命令的区别
+<ul>
+<li>通过 <code>start</code> 启动后，无需再运行 <code>run</code> 命令</li>
+<li><code>run</code> 命令可以用来测试</li>
+</ul>
+</li>
+</ol>
+<h2 id="参考--扩展">参考 &amp; 扩展</h2>
+<ul>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/README.html">gitlab-ci.yml 文件配置项</a></li>
+<li><a href="https://docs.gitlab.com/runner/install/">Install GitLab Runner</a></li>
+<li><a href="https://docs.gitlab.com/runner/install/linux-manually.html#install-1">Install GitLab Runner In Linux</a></li>
+<li><a href="https://docs.gitlab.com/runner/">GitLab Runner</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/yaml/README.html">Keyword reference for the .gitlab-ci.yml file</a></li>
+<li><a href="https://docs.gitlab.com/ee/ci/variables/predefined_variables.html">Predefined variables reference</a></li>
+<li><a href="https://docs.gitlab.com/runner/faq/">gitlab-runner faq</a></li>
+<li><a href="https://docs.gitlab.com/runner/executors/shell.html">shell executors</a></li>
+<li><a href="https://docs.gitlab.com/runner/executors/docker.html">docker executors</a></li>
+<li><a href="https://gitlab.com/gitlab-org/gitlab-runner">gitlab-runner source code</a></li>
+<li><a href="https://gitlab.com/gitlab-org/gitlab-runner/-/issues/3344">gitlab-runner service not starting</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1620321">gitlab runner 安装与使用</a></li>
+<li><a href="https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant/1160074#1160074">ttyname failed: Inappropriate ioctl for device` in Vagrant</a></li>
+<li><a href="https://stackoverflow.com/questions/53370840/this-job-is-stuck-because-the-project-doesnt-have-any-runners-online-assigned">This job is stuck, because the project doesn&rsquo;t have any runners online assigned to it</a></li>
+<li><a href="https://www.cnblogs.com/dhu121/p/13257256.html">卸载 gitlab-runner</a></li>
+<li><a href="https://gitlab.com/gitlab-org/gitlab-runner/-/issues/2160">Runner uses Docker/Ruby instead of the Shell it&rsquo;s configured for</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>
