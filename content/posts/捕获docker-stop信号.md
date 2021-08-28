@@ -1,19 +1,19 @@
 ---
-title: "捕获docker stop信号"
+title: "捕获 docker stop 信号"
 date: 2021-08-28T16:15:01+08:00
 publishdate: 2021-08-28T16:15:01+08:00
 lastmod: 2021-08-28T16:15:01+08:00
 draft: false
-tags: ["docker", "signal", "golang"]
+tags: ["docker", "signal"]
 ---
 
 为了优化代码部署效率，将传统的手动部署方式改成了容器化部署方式
 
 ## 过去的程序停止逻辑
 
-1. 程序持续监听 `SIGINT` 信号
-2. 使用 `Ctrl + C` 快捷键向程序发送 `SIGINT` 信号
-3. 程序收到 `SIGINT` 信号后执行退出前的收尾工作
+1. 程序持续监听 SIGINT 信号
+2. 使用 `Ctrl + C` 快捷键向程序发送 SIGINT 信号
+3. 程序收到 SIGINT 信号后执行退出前的收尾工作
 4. 收尾工作执行完成后，程序自动退出
 
 ## 容器化后产生的问题
@@ -22,15 +22,15 @@ tags: ["docker", "signal", "golang"]
 
 ## 问题产生的原因
 
-上网搜索后得知 `docker stop` 命令发送的并非 `SIGINT` 信号，而是 `SIGTERM` 信号。
+上网搜索后得知 `docker stop` 命令发送的并非 SIGINT 信号，而是 SIGTERM 信号。
 
-而程序代码中并未捕获 `SIGTERM` 信号，所以收到 `SIGTERM` 信号后，程序跳过了收尾工作，直接退出了。
+而程序代码中并未捕获 SIGTERM 信号，所以收到 SIGTERM 信号后，程序跳过了收尾工作，直接退出了。
 
 ## 修复代码后的程序停止逻辑
 
-1. 程序持续监听 `SIGINT` 和 `SIGTERM` 信号
-2. 使用 `docker stop` 命令向程序发送 `SIGTERM` 信号
-3. 收到 `SIGTERM` 信号后执行退出前的收尾工作
+1. 程序持续监听 SIGINT 和 SIGTERM 信号
+2. 使用 `docker stop` 命令向程序发送 SIGTERM 信号
+3. 收到 SIGTERM 信号后执行退出前的收尾工作
 4. 收尾工作执行完成后，程序自动退出
 
 修复代码后，使用 `docker stop` 命令能够按照预期正确退出程序。
