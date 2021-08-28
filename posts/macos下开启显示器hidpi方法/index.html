@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>macOS 下开启显示器 HiDPI 方法 | Kouler</title>
+  <title>MacOS 下开启显示器 HiDPI 方法 | Kouler</title>
   
 
   <style>
@@ -180,7 +180,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">macOS 下开启显示器 HiDPI 方法</h1>
+      <h1 style="margin:0 0 5px 0">MacOS 下开启显示器 HiDPI 方法</h1>
     
     
     <small class="text-secondary">2016-11-23</small>
@@ -201,8 +201,8 @@ blockquote,
 <p>操作系统：MacOS</p>
 <p>显示器型号：DELL2515H</p>
 <p>显示器分辨率：2560 * 1440 2K</p>
-<h2 id="macos系统获取系统权限方法">MacOS系统获取系统权限方法</h2>
-<p>MacOS系统下，某些系统文件夹只有系统有权限读写，称为System Integrity Protection（SIP），需要提前关闭。</p>
+<h2 id="macos-系统获取系统权限方法">MacOS 系统获取系统权限方法</h2>
+<p>MacOS 系统下，某些系统文件夹只有系统有权限读写，称为 System Integrity Protection（SIP），需要提前关闭。</p>
 <h2 id="创建相应文件夹和文件">创建相应文件夹和文件</h2>
 <p>首先在终端获取显示器的 DisplayVendorID 和 DisplayProductID。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 获取显示器 DisplayVendorID</span>
@@ -210,8 +210,8 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 获取显示器 DisplayProductID</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>ioreg -l | grep <span style="color:#009c00">&#34;DisplayProductID&#34;</span>
-</code></pre></div><p>在桌面新建一个文件夹，名称格式为 DisplayVendorID-xxxx，其中 xxxx 为显示器 DisplayVendorID 的16进制小写</p>
-<p>在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的16进制小写</p>
+</code></pre></div><p>在桌面新建一个文件夹，名称格式为 DisplayVendorID-xxxx，其中 xxxx 为显示器 DisplayVendorID 的 16 进制小写</p>
+<p>在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的 16 进制小写</p>
 <p>以上步骤可使用脚本 patch-edid.rb 自动生成。</p>
 <p>生成步骤：</p>
 <ol>
@@ -242,21 +242,21 @@ blockquote,
     &lt;/array&gt;
 &lt;/dict&gt;
 &lt;/plist&gt;
-</code></pre><p>该文件是XML格式的，在Mac中被称为plist（Property List）文件，即属性列表文件。可以使用工具 PlistPro 来编辑。</p>
+</code></pre><p>该文件是 XML 格式的，在 Mac 中被称为 plist（Property List）文件，即属性列表文件。可以使用工具 PlistPro 来编辑。</p>
 <p>文件中共有 8 个 data 标签，其中每两个为一组，即（1，2）、（3，4）、（5，6）、（7，8），每一个 data 标签表示一个分辨率。</p>
 <div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic"># data 标签解码后</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#009c00">&#39;&#39;&#39;
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#009c00">00000A00 000005A0 00000001 00200000 
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#009c00">00001400 00000B40 00000001 00200000 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#009c00">00000A00 000005A0 00000001 00200000
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#009c00">00001400 00000B40 00000001 00200000
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#009c00">00000780 00000438 00000001 00200000 
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#009c00">00000F00 00000870 00000001 00200000 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#009c00">00000780 00000438 00000001 00200000
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#009c00">00000F00 00000870 00000001 00200000
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#009c00">00000640 00000384 00000001 00200000 
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#009c00">00000C80 00000708 00000001 00200000 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#009c00">00000640 00000384 00000001 00200000
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#009c00">00000C80 00000708 00000001 00200000
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#009c00">
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#009c00">00000500 000002D0 00000001 00200000 
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#009c00">00000A00 000005A0 00000001 00200000 
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#009c00">00000500 000002D0 00000001 00200000
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#009c00">00000A00 000005A0 00000001 00200000
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#009c00">&#39;&#39;&#39;</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span style="color:#f00;font-style:italic"># 转为十进制</span>
@@ -274,16 +274,16 @@ blockquote,
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span style="color:#009c00">1280 720  1 2097152
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span style="color:#009c00">2560 1440 1 2097152
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#009c00">&#39;&#39;&#39;</span>
-</code></pre></div><p>可见每组 data 标签中，第一个 data 标签为我们需要HiDPI的分辨率，第二个 data 标签是第一个标签分辨率的两倍。</p>
+</code></pre></div><p>可见每组 data 标签中，第一个 data 标签为我们需要 HiDPI 的分辨率，第二个 data 标签是第一个标签分辨率的两倍。</p>
 <p>可以根据自己的显示器随意填多个 data 标签组，编辑文件时需要填十六进制</p>
-<h2 id="使用新建的hidpi分辨率">使用新建的HiDPI分辨率</h2>
+<h2 id="使用新建的-hidpi-分辨率">使用新建的 HiDPI 分辨率</h2>
 <p>将新建的文件夹整个拷贝到目录 /System/Library/Displays/Contents/Resources/Overrides/ 中，如果有重复的文件夹，建议先把原来的文件夹备份。重启之后就可以生效了。</p>
 <p>可以使用工具 SwitchResX 或 RDM（RetinaDisplayMenu） 来切换不同分辨率。</p>
 <h2 id="参考--扩展">参考 &amp; 扩展</h2>
 <ul>
-<li><a href="http://bbs.feng.com/read-htm-tid-9948814.html">Mac OS X 10.11 开启任意显示器 开启HiDPI方法</a></li>
+<li><a href="http://bbs.feng.com/read-htm-tid-9948814.html">Mac OS X 10.11 开启任意显示器 开启 HiDPI 方法</a></li>
 <li><a href="http://bbs.feng.com/read-htm-tid-8937471.html">Mac 2k 屏原生分辨率完美支持教程</a></li>
-<li><a href="https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/">MacOS无法获得权限问题</a></li>
+<li><a href="https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/">MacOS 无法获得权限问题</a></li>
 <li><a href="https://gist.github.com/adaugherity/7435890">patch-edid.rb</a></li>
 <li><a href="https://github.com/avibrazil/RDM">RDM（RetinaDisplayMenu）</a></li>
 <li><a href="http://download.cnet.com/SwitchResX/3000-2094_4-10558576.html">SwitchResX</a></li>

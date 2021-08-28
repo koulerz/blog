@@ -53,11 +53,6 @@
   </url>
   
   <url>
-    <loc>https://kouler.com/tags/golang/</loc>
-    <lastmod>2021-08-28T16:15:01+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://kouler.com/tags/signal/</loc>
     <lastmod>2021-08-28T16:15:01+08:00</lastmod>
   </url>
@@ -294,6 +289,11 @@
   
   <url>
     <loc>https://kouler.com/tags/editor/</loc>
+    <lastmod>2020-01-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kouler.com/tags/golang/</loc>
     <lastmod>2020-01-19T00:00:00+00:00</lastmod>
   </url>
   

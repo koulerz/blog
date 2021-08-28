@@ -12,7 +12,7 @@
     
     
     <item>
-      <title>docker 容器中的僵尸进程</title>
+      <title>Docker 容器中的僵尸进程</title>
       <link>https://kouler.com/posts/docker%E5%AE%B9%E5%99%A8%E4%B8%AD%E7%9A%84%E5%83%B5%E5%B0%B8%E8%BF%9B%E7%A8%8B/</link>
       <pubDate>Sat, 28 Aug 2021 17:38:52 +0800</pubDate>
       
@@ -31,7 +31,7 @@ Linux 中，若子进程缺失父进程，其残留资源会由 init 进程回�
     </item>
     
     <item>
-      <title>捕获docker stop信号</title>
+      <title>捕获 docker stop 信号</title>
       <link>https://kouler.com/posts/%E6%8D%95%E8%8E%B7docker-stop%E4%BF%A1%E5%8F%B7/</link>
       <pubDate>Sat, 28 Aug 2021 16:15:01 +0800</pubDate>
       

@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>捕获docker stop信号 | Kouler</title>
+  <title>捕获 docker stop 信号 | Kouler</title>
   
 
   <style>
@@ -180,7 +180,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">捕获docker stop信号</h1>
+      <h1 style="margin:0 0 5px 0">捕获 docker stop 信号</h1>
     
     
     <small class="text-secondary">2021-08-28</small>
@@ -191,28 +191,25 @@ blockquote,
 
 <small><code><a href="https://kouler.com/tags/signal">#signal</a></code></small>
 
-
-<small><code><a href="https://kouler.com/tags/golang">#golang</a></code></small>
-
     <br><br>
 <p>为了优化代码部署效率，将传统的手动部署方式改成了容器化部署方式</p>
 <h2 id="过去的程序停止逻辑">过去的程序停止逻辑</h2>
 <ol>
-<li>程序持续监听 <code>SIGINT</code> 信号</li>
-<li>使用 <code>Ctrl + C</code> 快捷键向程序发送 <code>SIGINT</code> 信号</li>
-<li>程序收到 <code>SIGINT</code> 信号后执行退出前的收尾工作</li>
+<li>程序持续监听 SIGINT 信号</li>
+<li>使用 <code>Ctrl + C</code> 快捷键向程序发送 SIGINT 信号</li>
+<li>程序收到 SIGINT 信号后执行退出前的收尾工作</li>
 <li>收尾工作执行完成后，程序自动退出</li>
 </ol>
 <h2 id="容器化后产生的问题">容器化后产生的问题</h2>
 <p>使用容器化部署方式后，期望通过 <code>docker stop</code> 命令来执行程序退出逻辑并关闭程序和容器，结果发现程序和容器被强制关闭，而程序退出前的收尾工作并未执行。</p>
 <h2 id="问题产生的原因">问题产生的原因</h2>
-<p>上网搜索后得知 <code>docker stop</code> 命令发送的并非 <code>SIGINT</code> 信号，而是 <code>SIGTERM</code> 信号。</p>
-<p>而程序代码中并未捕获 <code>SIGTERM</code> 信号，所以收到 <code>SIGTERM</code> 信号后，程序跳过了收尾工作，直接退出了。</p>
+<p>上网搜索后得知 <code>docker stop</code> 命令发送的并非 SIGINT 信号，而是 SIGTERM 信号。</p>
+<p>而程序代码中并未捕获 SIGTERM 信号，所以收到 SIGTERM 信号后，程序跳过了收尾工作，直接退出了。</p>
 <h2 id="修复代码后的程序停止逻辑">修复代码后的程序停止逻辑</h2>
 <ol>
-<li>程序持续监听 <code>SIGINT</code> 和 <code>SIGTERM</code> 信号</li>
-<li>使用 <code>docker stop</code> 命令向程序发送 <code>SIGTERM</code> 信号</li>
-<li>收到 <code>SIGTERM</code> 信号后执行退出前的收尾工作</li>
+<li>程序持续监听 SIGINT 和 SIGTERM 信号</li>
+<li>使用 <code>docker stop</code> 命令向程序发送 SIGTERM 信号</li>
+<li>收到 SIGTERM 信号后执行退出前的收尾工作</li>
 <li>收尾工作执行完成后，程序自动退出</li>
 </ol>
 <p>修复代码后，使用 <code>docker stop</code> 命令能够按照预期正确退出程序。</p>

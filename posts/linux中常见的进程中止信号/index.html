@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>Linux中常见的进程中止信号 | Kouler</title>
+  <title>Linux 中常见的进程中止信号 | Kouler</title>
   
 
   <style>
@@ -180,7 +180,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">Linux中常见的进程中止信号</h1>
+      <h1 style="margin:0 0 5px 0">Linux 中常见的进程中止信号</h1>
     
     
     <small class="text-secondary">2021-08-28</small>
@@ -194,23 +194,23 @@ blockquote,
     <br><br>
 <h2 id="sigint">SIGINT</h2>
 <ul>
-<li><code>Ctrl + C</code> 会发送 <code>SIGINT</code> 信号</li>
+<li><code>Ctrl + C</code> 会发送 SIGINT 信号</li>
 <li>信号会被当前进程树接收到，不仅当前进程会收到信号，它的子进程也会收到。</li>
 <li>只能结束前台进程</li>
 </ul>
 <h2 id="sigterm">SIGTERM</h2>
 <ul>
-<li><code>kill -15</code> 会发送 <code>SIGTERM</code> 信号</li>
-<li>没有参数的 <code>kill</code> 命令也会默认发送 <code>SIGTERM</code> 信号</li>
-<li>只有当前进程会收到信号，子进程不会收到。如果当前进程被 <code>kill</code> 掉，那么它的子进程将会被 <code>init</code> 进程接管，也就是 <code>pid</code> 为 <code>1</code> 的进程</li>
+<li><code>kill -15</code> 会发送 SIGTERM 信号</li>
+<li>没有参数的 kill 命令也会默认发送 SIGTERM 信号</li>
+<li>只有当前进程会收到信号，子进程不会收到。如果当前进程被 kill 掉，那么它的子进程将会被 init 进程接管，也就是 pid 为 1 的进程</li>
 <li>用来要求程序自己正常退出，让它自己清理文件和关闭。系统关机的时候会触发这个信号</li>
 <li>这个信号不保证进程一定会被终止</li>
 </ul>
 <h2 id="sigkill">SIGKILL</h2>
 <ul>
-<li><code>kill -9</code> 会发送 <code>SIGKILL</code> 信号</li>
+<li><code>kill -9</code> 会发送 SIGKILL 信号</li>
 <li>用来强制使进程立即结束</li>
-<li><code>SIGKILL</code> 不能被捕获，程序收到这个信号后，一定会退出</li>
+<li>SIGKILL 不能被捕获，程序收到这个信号后，一定会退出</li>
 </ul>
 
     </article>
