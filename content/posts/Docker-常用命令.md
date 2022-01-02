@@ -46,6 +46,10 @@ tags: ["docker", "command"]
     # 上传附带作者信息标签的镜像到 Docker Hub
     $ docker push <author_name>/<image_name>:<label>
     ```
+- 清理镜像
+    ```shell
+    $ docker image prune
+    ```
 
 ## 容器启动
 - 启动容器并启动 bash：
@@ -139,4 +143,14 @@ tags: ["docker", "command"]
 - 查看容器内部详细信息
     ```shell
     $ docker inspect <id/container_name>
+    ```
+
+## 数据卷
+- 创建数据卷
+    ```shell
+    $ docker volume create <VOLUME_NAME>
+    ```
+- 查看数据卷
+    ```shell
+    $ docker volume ls
     ```
