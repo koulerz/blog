@@ -18,6 +18,17 @@ tags: ["docker", "command"]
     ```
 
 ## 镜像操作
+- 根据 Dockerfile 创建 Docker 镜像
+    ```shell
+    # 1. 首先创建一个新的目录 docker
+    # 2. 在目录下新建 Dockerfile 文件
+    # 3. 完善 Dockerfile 文件内容
+    # 4. 在新创建的目录下使用 docker build 命令构建新的镜像
+    # 
+    # 示例：[docker build -t go1.16.0:alpine .]
+
+    $ docker build -t <新的镜像名>:<新镜像的tag> <Dockerfile文件所在路径>
+    ```
 - 从 DockerHub 检索镜像
     ```shell
     $ docker search <image_name>
