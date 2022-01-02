@@ -66,11 +66,11 @@ https://github.com/mlch911/one-key-hidpi
     </item>
     
     <item>
-      <title>MacOS 下开启显示器 HiDPI 方法</title>
-      <link>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</link>
+      <title>macOS 下开启显示器 HiDPI 方法</title>
+      <link>https://kouler.com/posts/macos-%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8-hidpi-%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 23 Nov 2016 10:21:42 +0800</pubDate>
       
-      <guid>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://kouler.com/posts/macos-%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8-hidpi-%E6%96%B9%E6%B3%95/</guid>
       <description>备份文件 In Google Cloud
 系统环境 操作系统：MacOS
 显示器型号：DELL2515H
@@ -86,10 +86,10 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
     
     <item>
       <title>macOS 无法获得权限问题</title>
-      <link>https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</link>
+      <link>https://kouler.com/posts/macos-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sun, 20 Nov 2016 22:40:40 +0800</pubDate>
       
-      <guid>https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://kouler.com/posts/macos-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</guid>
       <description>通常情况下，在命令行中使用 sudo 命令便可以以 Root 用户执行命令
 在 MacOS 中，某些系统文件夹下，即使使用 sudo 命令也无法获得 Root 权限，这被称为 System Integrity Protection（SIP）
 要想关闭 SIP，需要进入 Recover 模式下设置，具体方法如下：

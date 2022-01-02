@@ -6,14 +6,16 @@
     <description>Recent content in git on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 May 2017 13:21:15 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 13:25:15 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>迁移 Git 仓库</title>
-      <link>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</link>
-      <pubDate>Fri, 26 May 2017 13:21:15 +0800</pubDate>
+      <title>Git 常用命令</title>
+      <link>https://kouler.com/posts/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sun, 02 Jan 2022 13:25:15 +0800</pubDate>
       
-      <guid>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</guid>
-      <description>1// 切换到需要迁移的 Git 项目目录 2$ cd project 3 4// 添加 Git 远程仓库 5$ git remote add gitlab git@gitlab.com:team/name.git 6 7// 迁移代码到远程仓库 8$ git push -u gitlab master 参考 &amp;amp; 扩展阅读  如何把已存在的git项目转移到Gitlab项目 Git远程操作详解  </description>
+      <guid>https://kouler.com/posts/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>迁移 Git 仓库 1// 切换到需要迁移的 Git 项目目录 2$ cd project 3 4// 添加 Git 远程仓库 5$ git remote add gitlab git@gitlab.com:team/name.git 6 7// 迁移代码到远程仓库 8$ git push -u gitlab master 克隆仓库   仅克隆最近一次提交 git clone --depth=1 &amp;lt;repository&amp;gt;
+  仅克隆指定分支的最近一次提交 git clone -b &amp;lt;branch&amp;gt; --depth=1 &amp;lt;repository&amp;gt;
+  清除线下仓库中线上已不存在的分支 `git remote prune origin`  本地创建并切换到对应的远程分支，创建对应的 origin/dev 本地分支，命名为 dev `git checkout -b dev origin/dev`  删除本地分支命令行 `git branch -d &amp;lt;branch&amp;gt;`  本地分支拉取并合并线上主分支 `git pull origin master`  将本地已有项目添加到 Git 仓库  进入本地项目，初始化 Git 仓库 git init 为本地项目指定远程仓库地址 git remote add origin git@github.</description>
     </item>
     
   </channel>

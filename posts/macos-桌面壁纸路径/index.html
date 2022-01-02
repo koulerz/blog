@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
 
   
-  <title>迁移 Git 仓库 | Kouler</title>
+  <title>macOS 桌面壁纸路径 | Kouler</title>
   
 
   <style>
@@ -180,27 +180,30 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">迁移 Git 仓库</h1>
+      <h1 style="margin:0 0 5px 0">macOS 桌面壁纸路径</h1>
     
     
-    <small class="text-secondary">2017-05-26</small>
+    <small class="text-secondary">2019-10-08</small>
     
 
-<small><code><a href="https://kouler.com/tags/git">#git</a></code></small>
+<small><code><a href="https://kouler.com/tags/mac">#mac</a></code></small>
 
     <br><br>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>// 切换到需要迁移的 Git 项目目录
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>$ cd project
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>// 添加 Git 远程仓库
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>$ git remote add gitlab git@gitlab.com:team/name.git
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>// 迁移代码到远程仓库
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>$ git push -u gitlab master
-</code></pre></div><h2 id="参考--扩展阅读">参考 &amp; 扩展阅读</h2>
+<h2 id="默认路径">默认路径</h2>
+<ol>
+<li><code>/Library/Desktop Pictures</code></li>
+<li><code>/System/Library/Desktop Pictures</code></li>
+</ol>
+<h2 id="查看当前桌面壁纸路径">查看当前桌面壁纸路径</h2>
+<p>输入以下命令后会在桌面显示当前桌面壁纸所在路径</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ defaults write com.apple.dock desktop-picture-show-debug-text -bool TRUE
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>$ killall Dock
+</code></pre></div><p>输入以下命令后不再显示当前壁纸路径</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ defaults delete com.apple.dock desktop-picture-show-debug-text
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>$ killall Dock
+</code></pre></div><h2 id="参考">参考</h2>
 <ul>
-<li><a href="https://segmentfault.com/q/1010000000385886">如何把已存在的git项目转移到Gitlab项目</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html">Git远程操作详解</a></li>
+<li><a href="https://www.macx.cn/thread-2098621-1-1.html">找不到当前壁纸文件的路径</a></li>
 </ul>
 
     </article>

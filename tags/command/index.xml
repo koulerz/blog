@@ -6,7 +6,16 @@
     <description>Recent content in command on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 29 Jul 2020 20:21:02 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 13:46:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode 常用快捷键</title>
+      <link>https://kouler.com/posts/vscode-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Sun, 02 Jan 2022 13:46:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/vscode-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>macOS Editor Command + N 新建 Tab Command + Shift + N 新建窗口 Ctrl + ` 显示/隐藏控制台 Command + B 显示/隐藏侧边栏 Command + \ 分割编辑器组 Command + 1/2/3 定位编辑器组 Command + P 查找文件/安装插件 Option + Shift + F 格式化文档 Ctrl + R 显示最近打开过的文件 Option + Z 切换自动换行 File Command + K R 在 Finder 中打开当前文件 Command + K P 复制当前文件路径 Command + K M 更改文件语言 Command + Option + ↑ 向上插入光标 Command + Option + ↓ 向下插入光标 Option + Shift + I 在选中行的末尾插入光标 Command + Shift + K 删除当前行 Option + ↑ 向上移动当前行 Option + ↓ 向下移动当前行 Option + Shift + ↑ 向上复制当前行 Option + Shift + ↓ 向下复制当前行 Command + Enter 向下插入行 Command + Shift + Enter 向上插入行 Option + Shift + → 按块选中 Option + Shift + ← 按块撤销选中 Command + D 选中当前选中内容的下一个 Command + L 选中当前行 Command + F2 选中所有当前单词 Command + Shift + L 选中所有当前内容 Ctrl + G 定位到指定行 Command + P + : 定位到指定行 Command + P + @ 定位到对应 Symbols Command + Shift + \ 定位到代码块前后位置 Command + U 定位上一次光标操作 Command + K Command + D 定位到下一个选中内容的位置 Windows Editor Ctrl + N 新建 Tab Ctrl + Shift + N 新建窗口 Ctrl + ` 显示/隐藏控制台 Ctrl + B 显示/隐藏侧边栏 Ctrl + \ 分割编辑器组 Ctrl + 1/2/3 定位编辑器组 Ctrl + P 查找文件/安装插件 Ctrl + Shift + F 格式化文档 Ctrl + C 显示最近打开过的文件 Alt + Z 切换自动换行 File Ctrl + ↑ 向上滚动一行 Ctrl + ↓ 向下滚动一行 Ctrl + K P 复制当前文件路径 Ctrl + K M 更改文件语言 Ctrl + Alt + ↑ 向上插入光标 Ctrl + Alt + ↓ 向下插入光标 Alt + Shift + I 在选中行的末尾插入光标 Ctrl + Shift + K 删除当前行 Alt + ↑ 向上移动当前行 Alt + ↓ 向下移动当前行 Alt + Shift + ↑ 向上复制当前行 Alt + Shift + ↓ 向下复制当前行 Ctrl + Enter 向下插入行 Ctrl + Shift + Enter 向上插入行 Alt + Shift + → 按块选中 Alt + Shift + ← 按块撤销选中 Ctrl + F2 选中所有当前单词 Ctrl + D 选中当前选中内容的下一个 Ctrl + L 选中当前行 Ctrl + Shift + L 选中所有选中的内容 Ctrl + G 定位到指定行 Ctrl + P + : 定位到指定行 Ctrl + P + @ 定位到对应 Symbols Alt + → 定位上一次光标位置 Alt + ← 定位下一次光标位置 Ctrl + Shift + \ 定位到代码块前后位置 F3 定位到下一个选中内容的位置 Shift + F3 定位到上一个选中内容的位置 Ctrl + U 定位上一次光标操作 Ctrl + K Ctrl + D 定位到下一个选中内容的位置 </description>
+    </item>
+    
     <item>
       <title>常用的进程操作命令</title>
       <link>https://kouler.com/posts/%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/</link>
@@ -30,7 +39,7 @@
       <guid>https://kouler.com/posts/docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>查看 Docker 信息   常看 docker 版本：
 1$ docker version   查看 docker 系统信息：
-1$ docker info   镜像操作  从 DockerHub 检索镜像 1$ docker search &amp;lt;image_name&amp;gt;  拉取镜像 1$ docker pull &amp;lt;image_name&amp;gt;  删除镜像 1$ docker rmi &amp;lt;image_name&amp;gt;  列出镜像 1$ docker images  显示镜像历史 1$ docker history &amp;lt;image_name&amp;gt;  上传镜像到 Docker Hub 1# 为镜像添加附带作者信息的标签 2$ docker tag &amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 3 4# 上传附带作者信息标签的镜像到 Docker Hub 5$ docker push &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt;   容器启动   启动容器并启动 bash：</description>
+1$ docker info   镜像操作  根据 Dockerfile 创建 Docker 镜像 1# 1. 首先创建一个新的目录 docker 2# 2. 在目录下新建 Dockerfile 文件 3# 3. 完善 Dockerfile 文件内容 4# 4. 在新创建的目录下使用 docker build 命令构建新的镜像 5#  6# 示例：[docker build -t go1.16.0:alpine .] 7 8$ docker build -t &amp;lt;新的镜像名&amp;gt;:&amp;lt;新镜像的tag&amp;gt; &amp;lt;Dockerfile文件所在路径&amp;gt;  从 DockerHub 检索镜像 1$ docker search &amp;lt;image_name&amp;gt;  拉取镜像 1$ docker pull &amp;lt;image_name&amp;gt;  删除镜像 1$ docker rmi &amp;lt;image_name&amp;gt;  列出镜像 1$ docker images  显示镜像历史 1$ docker history &amp;lt;image_name&amp;gt;  上传镜像到 Docker Hub 1# 为镜像添加附带作者信息的标签 2$ docker tag &amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 3 4# 上传附带作者信息标签的镜像到 Docker Hub 5$ docker push &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt;  清理镜像 1$ docker image prune   容器启动   启动容器并启动 bash：</description>
     </item>
     
     <item>

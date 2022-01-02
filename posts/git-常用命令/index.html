@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.89.4" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>Git 常用命令 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">Git 常用命令</h1>
+    
+    
+    <small class="text-secondary">2022-01-02</small>
+    
+
+<small><code><a href="https://kouler.com/tags/git">#git</a></code></small>
+
+    <br><br>
+<h2 id="迁移-git-仓库">迁移 Git 仓库</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>// 切换到需要迁移的 Git 项目目录
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>$ cd project
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>// 添加 Git 远程仓库
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>$ git remote add gitlab git@gitlab.com:team/name.git
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>// 迁移代码到远程仓库
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>$ git push -u gitlab master
+</code></pre></div><h2 id="克隆仓库">克隆仓库</h2>
+<ul>
+<li>
+<p>仅克隆最近一次提交
+<code>git clone --depth=1 &lt;repository&gt;</code></p>
+</li>
+<li>
+<p>仅克隆指定分支的最近一次提交
+<code>git clone -b &lt;branch&gt; --depth=1 &lt;repository&gt;</code></p>
+</li>
+</ul>
+<h2 id="清除线下仓库中线上已不存在的分支">清除线下仓库中线上已不存在的分支</h2>
+<pre><code>`git remote prune origin`
+</code></pre>
+<h2 id="本地创建并切换到对应的远程分支创建对应的-origindev-本地分支命名为-dev">本地创建并切换到对应的远程分支，创建对应的 <code>origin/dev</code> 本地分支，命名为 <code>dev</code></h2>
+<pre><code>`git checkout -b dev origin/dev`
+</code></pre>
+<h2 id="删除本地分支命令行">删除本地分支命令行</h2>
+<pre><code>`git branch -d &lt;branch&gt;`
+</code></pre>
+<h2 id="本地分支拉取并合并线上主分支">本地分支拉取并合并线上主分支</h2>
+<pre><code>`git pull origin master`
+</code></pre>
+<h2 id="将本地已有项目添加到-git-仓库">将本地已有项目添加到 Git 仓库</h2>
+<ol>
+<li>进入本地项目，初始化 Git 仓库 <code>git init</code></li>
+<li>为本地项目指定远程仓库地址 <code>git remote add origin git@github.com:yourusername/yourproject.git</code></li>
+<li>将远程仓库项目拉取到本地 <code>git pull</code> - 这一步可能需要设置远程仓库分支 <code>git branch --set-upstream-to=origin/&lt;branch&gt; master</code> - 这一步可能遇到拒绝合并的错误 <code>fatal: refusing to merge unrelated histories Error redoing merge</code>，可以强制合并 <code>git pull --allow-unrelated-histories</code></li>
+<li>合并本地和远程仓库并提交和推送</li>
+</ol>
+<h2 id="合并-commit">合并 commit</h2>
+<p><code>git commit -a –amend -m &quot;提交注释信息&quot;</code></p>
+<p><code>git commit --amend</code> 会合并当前提交和上一次的提交，如果当前提交有注释，则以当前的注释为合并后的提交的注释。若当前提交没有注释，则以上一次提交的注释作为合并后的提交的注释</p>
+<h2 id="将分支-a-的修改转移到分支-b">将分支 A 的修改转移到分支 B</h2>
+<h3 id="修改尚未-commit-时">修改尚未 commit 时</h3>
+<ol>
+<li>A 分支下执行 <code>git stash</code></li>
+<li>B 分支下执行 <code>git stash pop</code></li>
+<li>查看修改结果 <code>git status -sb</code></li>
+</ol>
+<h3 id="修改已经-commit-时">修改已经 commit 时</h3>
+<ol>
+<li>A 分支下执行 <code>git log</code>，查看需要转移的 commitID</li>
+<li>B 分支下执行 <code>git cherry-pick commitID</code>，转移当前提交内容</li>
+<li>查看修改结果 <code>git status -sb</code></li>
+</ol>
+<h2 id="fork-仓库同步远程仓库代码">Fork 仓库同步远程仓库代码</h2>
+<ol>
+<li>将远程仓库关联到本地 upstream <code>git remote add upstream https://github.com/test.git</code></li>
+<li>确认是否配置成功 <code>git remote -v</code></li>
+<li>拉取远程仓库代码 <code>git fetch upstream</code></li>
+<li>本地仓库切换到主分支 <code>git checkout master</code></li>
+<li>合并远程仓库代码到本地主分支 <code>git merge upstream/master</code></li>
+<li><code>git push</code></li>
+</ol>
+<h2 id="解决-refusing-to-merge-unrelated-histories-错误">解决 refusing to merge unrelated histories 错误</h2>
+<p>github 新创建了仓库，将本地代码 push 上去前需要先拉取远端仓库代码。拉取时提示 <code>refusing to merge unrelated histories</code> 错误</p>
+<p>这是由于这两个 git 仓库没有共同的提交记录，git 认为是两个项目。为了防止开发者上传错误，在 git 2.9.2 版本后，这种情况将给出这样的提示。</p>
+<p>若仍然希望拉取代码，可以明确允许不相关的记录拉取 <code>git pull --allow-unrelated-histories</code></p>
+<h2 id="删除提交记录">删除提交记录</h2>
+<ol>
+<li><code>git log</code> 记下要删除的记录的上一条记录的 commit 号，如 xxxxx</li>
+<li><code>git rebase -i xxxxx</code>，将打开编辑器</li>
+<li>将要删除的 commit 号的 <code>pick</code> 前缀改为 <code>drop</code> 然后保存退出</li>
+<li><code>git log</code> 查看是否删除成功</li>
+<li><code>git push origin HEAD --force</code> 强制推送到远端仓库</li>
+</ol>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://segmentfault.com/q/1010000000385886">如何把已存在的 git 项目转移到 Gitlab 项目</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html">Git 远程操作详解</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>

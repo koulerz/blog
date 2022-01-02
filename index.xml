@@ -6,7 +6,27 @@
     <description>Recent content on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 28 Aug 2021 18:08:32 +0800</lastBuildDate><atom:link href="https://kouler.com/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Jan 2022 13:46:42 +0800</lastBuildDate><atom:link href="https://kouler.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode 常用快捷键</title>
+      <link>https://kouler.com/posts/vscode-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>
+      <pubDate>Sun, 02 Jan 2022 13:46:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/vscode-%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
+      <description>macOS Editor Command + N 新建 Tab Command + Shift + N 新建窗口 Ctrl + ` 显示/隐藏控制台 Command + B 显示/隐藏侧边栏 Command + \ 分割编辑器组 Command + 1/2/3 定位编辑器组 Command + P 查找文件/安装插件 Option + Shift + F 格式化文档 Ctrl + R 显示最近打开过的文件 Option + Z 切换自动换行 File Command + K R 在 Finder 中打开当前文件 Command + K P 复制当前文件路径 Command + K M 更改文件语言 Command + Option + ↑ 向上插入光标 Command + Option + ↓ 向下插入光标 Option + Shift + I 在选中行的末尾插入光标 Command + Shift + K 删除当前行 Option + ↑ 向上移动当前行 Option + ↓ 向下移动当前行 Option + Shift + ↑ 向上复制当前行 Option + Shift + ↓ 向下复制当前行 Command + Enter 向下插入行 Command + Shift + Enter 向上插入行 Option + Shift + → 按块选中 Option + Shift + ← 按块撤销选中 Command + D 选中当前选中内容的下一个 Command + L 选中当前行 Command + F2 选中所有当前单词 Command + Shift + L 选中所有当前内容 Ctrl + G 定位到指定行 Command + P + : 定位到指定行 Command + P + @ 定位到对应 Symbols Command + Shift + \ 定位到代码块前后位置 Command + U 定位上一次光标操作 Command + K Command + D 定位到下一个选中内容的位置 Windows Editor Ctrl + N 新建 Tab Ctrl + Shift + N 新建窗口 Ctrl + ` 显示/隐藏控制台 Ctrl + B 显示/隐藏侧边栏 Ctrl + \ 分割编辑器组 Ctrl + 1/2/3 定位编辑器组 Ctrl + P 查找文件/安装插件 Ctrl + Shift + F 格式化文档 Ctrl + C 显示最近打开过的文件 Alt + Z 切换自动换行 File Ctrl + ↑ 向上滚动一行 Ctrl + ↓ 向下滚动一行 Ctrl + K P 复制当前文件路径 Ctrl + K M 更改文件语言 Ctrl + Alt + ↑ 向上插入光标 Ctrl + Alt + ↓ 向下插入光标 Alt + Shift + I 在选中行的末尾插入光标 Ctrl + Shift + K 删除当前行 Alt + ↑ 向上移动当前行 Alt + ↓ 向下移动当前行 Alt + Shift + ↑ 向上复制当前行 Alt + Shift + ↓ 向下复制当前行 Ctrl + Enter 向下插入行 Ctrl + Shift + Enter 向上插入行 Alt + Shift + → 按块选中 Alt + Shift + ← 按块撤销选中 Ctrl + F2 选中所有当前单词 Ctrl + D 选中当前选中内容的下一个 Ctrl + L 选中当前行 Ctrl + Shift + L 选中所有选中的内容 Ctrl + G 定位到指定行 Ctrl + P + : 定位到指定行 Ctrl + P + @ 定位到对应 Symbols Alt + → 定位上一次光标位置 Alt + ← 定位下一次光标位置 Ctrl + Shift + \ 定位到代码块前后位置 F3 定位到下一个选中内容的位置 Shift + F3 定位到上一个选中内容的位置 Ctrl + U 定位上一次光标操作 Ctrl + K Ctrl + D 定位到下一个选中内容的位置 </description>
+    </item>
+    
+    <item>
+      <title>Git 常用命令</title>
+      <link>https://kouler.com/posts/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Sun, 02 Jan 2022 13:25:15 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>迁移 Git 仓库 1// 切换到需要迁移的 Git 项目目录 2$ cd project 3 4// 添加 Git 远程仓库 5$ git remote add gitlab git@gitlab.com:team/name.git 6 7// 迁移代码到远程仓库 8$ git push -u gitlab master 克隆仓库   仅克隆最近一次提交 git clone --depth=1 &amp;lt;repository&amp;gt;
+  仅克隆指定分支的最近一次提交 git clone -b &amp;lt;branch&amp;gt; --depth=1 &amp;lt;repository&amp;gt;
+  清除线下仓库中线上已不存在的分支 `git remote prune origin`  本地创建并切换到对应的远程分支，创建对应的 origin/dev 本地分支，命名为 dev `git checkout -b dev origin/dev`  删除本地分支命令行 `git branch -d &amp;lt;branch&amp;gt;`  本地分支拉取并合并线上主分支 `git pull origin master`  将本地已有项目添加到 Git 仓库  进入本地项目，初始化 Git 仓库 git init 为本地项目指定远程仓库地址 git remote add origin git@github.</description>
+    </item>
+    
     <item>
       <title>使用 gitlab runner 自动部署代码</title>
       <link>https://kouler.com/posts/%E4%BD%BF%E7%94%A8gitlab-runner%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2%E4%BB%A3%E7%A0%81/</link>
@@ -150,7 +170,7 @@ https://github.com/mlch911/one-key-hidpi
       <guid>https://kouler.com/posts/docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
       <description>查看 Docker 信息   常看 docker 版本：
 1$ docker version   查看 docker 系统信息：
-1$ docker info   镜像操作  从 DockerHub 检索镜像 1$ docker search &amp;lt;image_name&amp;gt;  拉取镜像 1$ docker pull &amp;lt;image_name&amp;gt;  删除镜像 1$ docker rmi &amp;lt;image_name&amp;gt;  列出镜像 1$ docker images  显示镜像历史 1$ docker history &amp;lt;image_name&amp;gt;  上传镜像到 Docker Hub 1# 为镜像添加附带作者信息的标签 2$ docker tag &amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 3 4# 上传附带作者信息标签的镜像到 Docker Hub 5$ docker push &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt;   容器启动   启动容器并启动 bash：</description>
+1$ docker info   镜像操作  根据 Dockerfile 创建 Docker 镜像 1# 1. 首先创建一个新的目录 docker 2# 2. 在目录下新建 Dockerfile 文件 3# 3. 完善 Dockerfile 文件内容 4# 4. 在新创建的目录下使用 docker build 命令构建新的镜像 5#  6# 示例：[docker build -t go1.16.0:alpine .] 7 8$ docker build -t &amp;lt;新的镜像名&amp;gt;:&amp;lt;新镜像的tag&amp;gt; &amp;lt;Dockerfile文件所在路径&amp;gt;  从 DockerHub 检索镜像 1$ docker search &amp;lt;image_name&amp;gt;  拉取镜像 1$ docker pull &amp;lt;image_name&amp;gt;  删除镜像 1$ docker rmi &amp;lt;image_name&amp;gt;  列出镜像 1$ docker images  显示镜像历史 1$ docker history &amp;lt;image_name&amp;gt;  上传镜像到 Docker Hub 1# 为镜像添加附带作者信息的标签 2$ docker tag &amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 3 4# 上传附带作者信息标签的镜像到 Docker Hub 5$ docker push &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt;  清理镜像 1$ docker image prune   容器启动   启动容器并启动 bash：</description>
     </item>
     
     <item>
@@ -196,11 +216,11 @@ https://github.com/mlch911/one-key-hidpi
     </item>
     
     <item>
-      <title>MacOS 桌面壁纸路径</title>
-      <link>https://kouler.com/posts/macos%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</link>
+      <title>macOS 桌面壁纸路径</title>
+      <link>https://kouler.com/posts/macos-%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</link>
       <pubDate>Tue, 08 Oct 2019 22:33:42 +0800</pubDate>
       
-      <guid>https://kouler.com/posts/macos%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</guid>
+      <guid>https://kouler.com/posts/macos-%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</guid>
       <description>默认路径  /Library/Desktop Pictures /System/Library/Desktop Pictures  查看当前桌面壁纸路径 输入以下命令后会在桌面显示当前桌面壁纸所在路径
 1$ defaults write com.apple.dock desktop-picture-show-debug-text -bool TRUE 2$ killall Dock 输入以下命令后不再显示当前壁纸路径
 1$ defaults delete com.apple.dock desktop-picture-show-debug-text 2$ killall Dock 参考  找不到当前壁纸文件的路径  </description>
@@ -285,10 +305,10 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
     
     <item>
       <title>Mac 在登录屏隐藏账户</title>
-      <link>https://kouler.com/posts/mac%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</link>
+      <link>https://kouler.com/posts/mac-%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</link>
       <pubDate>Wed, 07 Nov 2018 09:27:42 +0800</pubDate>
       
-      <guid>https://kouler.com/posts/mac%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</guid>
+      <guid>https://kouler.com/posts/mac-%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</guid>
       <description>1# 在登录屏隐藏 PostgreSQL 账户 2$ sudo dscl . create /Users/postgres IsHidden 1 3 4# 在登录屏隐藏 hiddenuser 账户 5$ sudo dscl . create /Users/hiddenuser IsHidden 1 6 7# 在登录屏隐藏通过 other... 登录 8$ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE 9 参考 &amp;amp; 扩展  Hide PostgreSQL user in OSX Yosemite Hide a user account in macOS Remove “Other…” from Login screen  </description>
     </item>
     
@@ -461,15 +481,6 @@ Golang 的跨平台交叉编译 Go 语言是编译型语言，可以将程序编
     </item>
     
     <item>
-      <title>迁移 Git 仓库</title>
-      <link>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</link>
-      <pubDate>Fri, 26 May 2017 13:21:15 +0800</pubDate>
-      
-      <guid>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</guid>
-      <description>1// 切换到需要迁移的 Git 项目目录 2$ cd project 3 4// 添加 Git 远程仓库 5$ git remote add gitlab git@gitlab.com:team/name.git 6 7// 迁移代码到远程仓库 8$ git push -u gitlab master 参考 &amp;amp; 扩展阅读  如何把已存在的git项目转移到Gitlab项目 Git远程操作详解  </description>
-    </item>
-    
-    <item>
       <title>SSH 动态端口转发</title>
       <link>https://kouler.com/posts/ssh%E5%8A%A8%E6%80%81%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</link>
       <pubDate>Fri, 26 May 2017 00:35:46 +0800</pubDate>
@@ -507,11 +518,11 @@ SSH 隧道的搭建 首先需要有一台支持 SSH 的墙外服务器，此服�
     </item>
     
     <item>
-      <title>MacOS 下开启显示器 HiDPI 方法</title>
-      <link>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</link>
+      <title>macOS 下开启显示器 HiDPI 方法</title>
+      <link>https://kouler.com/posts/macos-%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8-hidpi-%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 23 Nov 2016 10:21:42 +0800</pubDate>
       
-      <guid>https://kouler.com/posts/macos%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8hidpi%E6%96%B9%E6%B3%95/</guid>
+      <guid>https://kouler.com/posts/macos-%E4%B8%8B%E5%BC%80%E5%90%AF%E6%98%BE%E7%A4%BA%E5%99%A8-hidpi-%E6%96%B9%E6%B3%95/</guid>
       <description>备份文件 In Google Cloud
 系统环境 操作系统：MacOS
 显示器型号：DELL2515H
@@ -527,10 +538,10 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
     
     <item>
       <title>macOS 无法获得权限问题</title>
-      <link>https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</link>
+      <link>https://kouler.com/posts/macos-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</link>
       <pubDate>Sun, 20 Nov 2016 22:40:40 +0800</pubDate>
       
-      <guid>https://kouler.com/posts/macos%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</guid>
+      <guid>https://kouler.com/posts/macos-%E6%97%A0%E6%B3%95%E8%8E%B7%E5%BE%97%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/</guid>
       <description>通常情况下，在命令行中使用 sudo 命令便可以以 Root 用户执行命令
 在 MacOS 中，某些系统文件夹下，即使使用 sudo 命令也无法获得 Root 权限，这被称为 System Integrity Protection（SIP）
 要想关闭 SIP，需要进入 Recover 模式下设置，具体方法如下：

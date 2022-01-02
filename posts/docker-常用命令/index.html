@@ -205,6 +205,16 @@ blockquote,
 </ul>
 <h2 id="镜像操作">镜像操作</h2>
 <ul>
+<li>根据 Dockerfile 创建 Docker 镜像
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 1. 首先创建一个新的目录 docker</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#f00;font-style:italic"># 2. 在目录下新建 Dockerfile 文件</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#f00;font-style:italic"># 3. 完善 Dockerfile 文件内容</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 4. 在新创建的目录下使用 docker build 命令构建新的镜像</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#f00;font-style:italic"># </span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#f00;font-style:italic"># 示例：[docker build -t go1.16.0:alpine .]</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>$ docker build -t &lt;新的镜像名&gt;:&lt;新镜像的tag&gt; &lt;Dockerfile文件所在路径&gt;
+</code></pre></div></li>
 <li>从 DockerHub 检索镜像
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker search &lt;image_name&gt;
 </code></pre></div></li>
@@ -226,6 +236,9 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 上传附带作者信息标签的镜像到 Docker Hub</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>$ docker push &lt;author_name&gt;/&lt;image_name&gt;:&lt;label&gt;
+</code></pre></div></li>
+<li>清理镜像
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker image prune
 </code></pre></div></li>
 </ul>
 <h2 id="容器启动">容器启动</h2>
@@ -317,6 +330,15 @@ blockquote,
 <li>
 <p>查看容器内部详细信息</p>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker inspect &lt;id/container_name&gt;
+</code></pre></div></li>
+</ul>
+<h2 id="数据卷">数据卷</h2>
+<ul>
+<li>创建数据卷
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker volume create &lt;VOLUME_NAME&gt;
+</code></pre></div></li>
+<li>查看数据卷
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>$ docker volume ls
 </code></pre></div></li>
 </ul>
 
