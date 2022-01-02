@@ -1,5 +1,5 @@
 ---
-title: "MacOS 桌面壁纸路径"
+title: "macOS 桌面壁纸路径"
 date: 2019-10-08T22:33:42+08:00
 publishdate: 2019-10-08
 lastmod: 2020-01-19
