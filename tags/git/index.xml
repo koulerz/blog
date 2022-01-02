@@ -6,11 +6,7 @@
     <description>Recent content in git on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 28 Aug 2021 18:08:32 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 26 May 2017 13:21:15 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>迁移 Git 仓库</title>
       <link>https://kouler.com/posts/%E8%BF%81%E7%A7%BBgit%E4%BB%93%E5%BA%93/</link>

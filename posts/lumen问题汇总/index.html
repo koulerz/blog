@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -194,11 +194,11 @@ blockquote,
     <br><br>
 <h2 id="lumen-安装在子目录下时访问首页出现404错误">lumen 安装在子目录下时访问首页出现404错误</h2>
 <p>public/index.php 中的</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>$app-&gt;run();
 </code></pre></div><p>改为</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>$app-&gt;run($app[<span style="color:#009c00">&#39;request&#39;</span>]);
 </code></pre></div><h2 id="lumen-配置数据库">lumen 配置数据库</h2>
@@ -231,23 +231,23 @@ blockquote,
 <ol>
 <li>在 composer.json 中，添加 mail 依赖，添加完成后在命令行使用 <code>composer update</code> 命令更新 composer.lock 文件安装依赖</li>
 </ol>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#009c00">&#34;require&#34;</span>: {
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-json" data-lang="json"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#009c00">&#34;require&#34;</span>: {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    &#34;illuminate/mail&#34;: <span style="color:#009c00">&#34;5.1.*&#34;</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>},
 </code></pre></div><ol start="2">
 <li>修改 env 配置文件中的邮件配置</li>
 </ol>
-<pre><code class="language-env" data-lang="env">MAIL_DRIVER=smtp
-MAIL_HOST=smtp.gmail.com
-MAIL_PORT=25    
-MAIL_USERNAME=name@gmail.com
-MAIL_PASSWORD=password
-MAIL_FROM_ADDRESS=name@gmail.com
-MAIL_FROM_NAME=name
-</code></pre><ol start="3">
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-env" data-lang="env"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>MAIL_DRIVER=smtp
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>MAIL_HOST=smtp.gmail.com
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>MAIL_PORT=25    
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>MAIL_USERNAME=name@gmail.com
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>MAIL_PASSWORD=password
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>MAIL_FROM_ADDRESS=name@gmail.com
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>MAIL_FROM_NAME=name
+</code></pre></div><ol start="3">
 <li>在控制器中使用 <code>Mail::send()</code> 方法发送邮件</li>
 </ol>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>$email = <span style="color:#009c00">&#39;name@gmail.com&#39;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>$name  = <span style="color:#009c00">&#39;name&#39;</span>;
@@ -270,7 +270,7 @@ MAIL_FROM_NAME=name
 </code></pre></div><ol start="4">
 <li>在 /resources/views/ 目录下创建邮件视图文件 activemail.blade.php</li>
 </ol>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;!Doctype html&gt;</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-html" data-lang="html"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;!Doctype html&gt;</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>&lt;html lang=<span style="color:#009c00">&#34;zh-CN&#34;</span>&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>  &lt;head&gt;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    &lt;meta charset=<span style="color:#009c00">&#34;UTF-8&#34;</span>&gt;

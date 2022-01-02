@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -194,7 +194,7 @@ blockquote,
 <p><code>try</code> 是用来定义检测异常的代码块。 <br>
 需要进行异常处理的代码都必须放入 <code>try</code> 代码块内，以便捕获可能存在的异常。 <br>
 每一个 <code>try</code> 至少要有一个与之对应的 <code>catch</code> 。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#00f">try</span> {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#f00;font-style:italic">// 需要进行异常处理的代码
@@ -206,7 +206,7 @@ blockquote,
 PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <p>当一个异常被抛出时，其后（指抛出异常时所在的代码块）的代码将不会继续执行，而 PHP 就会尝试查找第一个能与之匹配的 <code>catch</code>。</p>
 <p>如果一个异常没有被捕获，而且又没用使用 <code>set_exception_handler()</code> 作相应的处理的话，那么 PHP 将会产生一个严重的错误，并且输出 <code>Uncaught Exception ...</code> （未捕获异常）的提示信息。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#00f">catch</span>(Exception $e) {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#00f">echo</span> $e;
@@ -216,7 +216,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <p>为了处理不同类型的异常，也许会定义多个 <code>catch</code> 块，应该先定义最特定的类型，这是因为 <code>catch</code> 块是按照顺序来解析的。</p>
 <h2 id="throw-语句">Throw 语句</h2>
 <p><code>throw</code> 语句是用来触发并抛出异常的，并且会中断发生在这一点上的执行过程。必须给 <code>throw</code> 语句传递一个 <code>Exception</code> 类的实例。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>$a = <span style="color:#00f">new</span> Exception(<span style="color:#009c00">&#39;Err Msg&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#00f">throw</span> $a;
@@ -226,7 +226,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span style="color:#00f">throw</span> <span style="color:#00f">new</span> Exception(<span style="color:#009c00">&#39;Err Msg&#39;</span>);
 </code></pre></div><h2 id="finally-语句">Finally 语句</h2>
 <p>无论是否检测到异常，程序都会执行 Finally 语句，可在代码块中插入出错后继续执行的代码,如关闭数据库连接，关闭已打开的文件或返回给客户端错误信息等。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00f">try</span> {  
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>     <span style="color:#f00;font-style:italic">// 需要进行异常处理的代码 
@@ -241,7 +241,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <p><code>Exception</code> 类是所有异常类的基类，其构造函数可以接受一条错误信息或者错误代码作为参数。</p>
 <p>构造好异常的实例，就会获得几个关键信息。 <br>
 如：构造异常的代码所处位置，在构造时执行的代码，错误信息和错误代码。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>getMessage()  <span style="color:#f00;font-style:italic">// 返回异常信息    
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"></span>getCode()     <span style="color:#f00;font-style:italic">// 返回错误代码    
@@ -252,7 +252,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <p><code>getTrace()</code> 与内置函数 <code>debug_backtrace()</code> 类似。</p>
 <p><code>getTraceAscString()</code> 与 <code>getTrace()</code> 相同，不过返回的不是数组而是字符串。</p>
 <p><code>__toString()</code> 返回用字符串表达的整个异常信息。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00f">function</span> <span style="color:#c34e00">connectToDatabase</span>()
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>{
@@ -268,7 +268,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>}
 </code></pre></div><h2 id="扩展异常">扩展异常</h2>
 <p><code>mysql_error()</code> 是提示mysql错误的函数,下面的这段代码就记录了<code>mysql_error()</code> 函数输出的错误信息。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00f">class</span> <span style="color:#007575">databaseException</span> <span style="color:#00f">extends</span> Exception{
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    <span style="color:#00f">public</span> $databaseErrorMessage;
@@ -288,7 +288,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>}
 </code></pre></div><h2 id="php-中-try-catch-捕获异常实例详解">PHP 中 Try Catch 捕获异常实例详解</h2>
 <p>PHP内置异常类的基本属性和方法</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#00f">try</span>{
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#f00;font-style:italic">// 需要进行异常处理的代码
@@ -300,7 +300,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 </code></pre></div><p>为了进一步处理异常，我们需要使用 PHP 中 <code>try{}</code> <code>catch{}</code>&mdash;-包括 Try 语句和至少一个的 Catch 语句。</p>
 <p>任何调用可能抛出异常的方法的代码都应该使用 Try 语句。 Catch 语句用来处理可能抛出的异常。</p>
 <p>以下显示了我们处理 <code>getCommandObject()</code> 抛出的异常的方法。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00f">try</span> {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    $mgr = <span style="color:#00f">new</span> CommandManager();
@@ -314,7 +314,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <p>因为异常本身就是一种与其它任何对象不同的 PHP 内建的类型，不会产生混淆。</p>
 <p>如果抛出了一个异常， Try 语句中的脚本将会停止执行，然后马上转向执行 Catch 语句中的脚本。</p>
 <p>例子如下：包含文件错误抛出异常</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic">// 错误的演示
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">try</span> {
@@ -338,7 +338,7 @@ PHP允许在 <code>catch</code> 代码块内再次抛出（throw）异常。</p>
 <p>PHP将查询一个匹配的 Catch 代码块。如果有多个 Catch代码块，传递给每一个 Catch 代码块的对象必须具有不同类型，这样 PHP 可以找到需要进入哪一个 Catch 代码块。</p>
 <p>当 Try 代码块不再抛出异常或者找不到 Catch 能匹配所抛出的异常时， PHP 代码就会在跳转最后一个 Catch 的后面继续执行。</p>
 <p>多个异常的捕获的示例如下</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00f">class</span> <span style="color:#007575">MyException</span> <span style="color:#00f">extends</span> Exception {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>   <span style="color:#f00;font-style:italic">// 重定义构造器使第一个参数 message 变为必须被指定的属性
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>   <span style="color:#00f">public</span> <span style="color:#00f">function</span> __construct($message, $code=0)

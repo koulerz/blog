@@ -6,11 +6,7 @@
     <description>Recent content in api on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 19 Oct 2016 11:35:15 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 19 Oct 2016 11:35:15 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>RESTful 设计风格中的 HTTP 状态码含义</title>
       <link>https://kouler.com/posts/restful%E8%AE%BE%E8%AE%A1%E9%A3%8E%E6%A0%BC%E4%B8%AD%E7%9A%84http%E7%8A%B6%E6%80%81%E7%A0%81%E5%90%AB%E4%B9%89/</link>

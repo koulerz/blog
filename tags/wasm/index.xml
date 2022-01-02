@@ -6,11 +6,7 @@
     <description>Recent content in wasm on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 26 Aug 2018 16:14:42 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/wasm/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 26 Aug 2018 16:14:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/wasm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Golang WASM Demo</title>
       <link>https://kouler.com/posts/golang-wasm-demo/</link>

@@ -6,11 +6,7 @@
     <description>Recent content in nginx on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 28 Aug 2021 02:20:34 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 28 Aug 2021 02:20:34 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>解决 file not found 错误</title>
       <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3file-not-found%E9%94%99%E8%AF%AF/</link>

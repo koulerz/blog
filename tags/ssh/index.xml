@@ -6,11 +6,7 @@
     <description>Recent content in ssh on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Fri, 26 May 2017 00:35:46 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 26 May 2017 00:35:46 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SSH 动态端口转发</title>
       <link>https://kouler.com/posts/ssh%E5%8A%A8%E6%80%81%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91/</link>

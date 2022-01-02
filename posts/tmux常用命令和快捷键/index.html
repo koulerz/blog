@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -196,7 +196,7 @@ blockquote,
 
     <br><br>
 <h2 id="tmux-命令">Tmux 命令</h2>
-<pre><code># 开启一个 Tmux Session
+<pre tabindex="0"><code># 开启一个 Tmux Session
 $ tmux new -s name 
 
 # 使会话在后台运行，等同于 `Ctrl + B` + `D`
@@ -215,7 +215,7 @@ tmux kill-session -t demo
 tmux kill-server 
 </code></pre><h2 id="tmux-快捷键">Tmux 快捷键</h2>
 <p>Tmux Session 中的命令需要先按下 Tmux 前缀键（默认是 <code>Ctrl + B</code>）</p>
-<pre><code># 会话（Session） 指令
+<pre tabindex="0"><code># 会话（Session） 指令
 
 ?        # 快捷键帮助列表
 d        # detach，退出 Tmux Session，回到父级 Shell
@@ -223,7 +223,7 @@ r        # 强制重载当前会话
 :        # 进入命令行模式，此时可直接输入ls等命令
 s        # 列出所有 Session，可通过 j, k, 方向键选择，回车切换
 $        # 为当前 Session 命名
-</code></pre><pre><code># 窗口（window）指令
+</code></pre><pre tabindex="0"><code># 窗口（window）指令
 
 c        # 新建 Window
 &amp;        # 关闭当前窗口
@@ -235,7 +235,7 @@ w        # 打开窗口列表，用于且切换窗口
 ,        # 为当前窗口命名
 .        # 修改当前窗口编号（适用于窗口重新排序）
 f        # 快速定位到窗口（输入关键字匹配窗口名称）
-</code></pre><pre><code># 面板（pane）指令
+</code></pre><pre tabindex="0"><code># 面板（pane）指令
 
 %        # 垂直切分面板
 &quot;        # 水平切分面板

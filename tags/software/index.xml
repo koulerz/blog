@@ -6,11 +6,7 @@
     <description>Recent content in software on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 26 Sep 2018 12:47:42 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 26 Sep 2018 12:47:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/software/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>面向接口编程</title>
       <link>https://kouler.com/posts/%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%E7%BC%96%E7%A8%8B/</link>

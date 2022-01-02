@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -196,27 +196,27 @@ blockquote,
 <ul>
 <li>
 <p>使用 <code>ps</code> 命令列出所有进程信息</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>ps aux
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>ps aux
 </code></pre></div></li>
 <li>
 <p>使用 <code>ps</code> 命令检索进程</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>ps aux|grep keyword
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>ps aux|grep keyword
 </code></pre></div></li>
 <li>
 <p>使用 <code>pidof</code> 命令根据进程名称查找进程 ID</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pidof nginx
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pidof nginx
 </code></pre></div></li>
 <li>
 <p>使用 <code>pgrep</code> 命令检索进程，该命令将打印出所有检索到的进程 ID</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pgrep keyword
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pgrep keyword
 </code></pre></div></li>
 <li>
 <p>使用 <code>lsof</code> 命令根据端口号检索进程</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>lsof -i:22
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>lsof -i:22
 </code></pre></div></li>
 <li>
 <p>使用 <code>ps</code> 命令检索进程</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># sed &#39;1d&#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># sed &#39;1d&#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#f00;font-style:italic"># awk &#39;{print $2}&#39; 打印每一行中的 PID 列</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>ps -ef| grep <span style="color:#009c00">&#34;go&#34;</span> | sed <span style="color:#009c00">&#39;1d&#39;</span> | awk <span style="color:#009c00">&#39;{print $2}&#39;</span>
 </code></pre></div></li>
@@ -225,7 +225,7 @@ blockquote,
 <ul>
 <li>
 <p>使用 <code>kill</code> 命令中断进程。<code>kill</code> 命令向指定进程发送信号，默认信号为 15（TERM 信号），表示终止进程</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 向 PID 为 123 的进程发送信号 15</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 向 PID 为 123 的进程发送信号 15</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>kill 123
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 向 PID 为 123 的进程发送信号 9，强制终止进程</span>
@@ -234,53 +234,53 @@ blockquote,
 <table>
 <thead>
 <tr>
-<th align="left">name</th>
-<th align="left">num</th>
-<th align="left">desc</th>
+<th style="text-align:left">name</th>
+<th style="text-align:left">num</th>
+<th style="text-align:left">desc</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">HUP</td>
-<td align="left">1</td>
-<td align="left">终端断线</td>
+<td style="text-align:left">HUP</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">终端断线</td>
 </tr>
 <tr>
-<td align="left">INT</td>
-<td align="left">2</td>
-<td align="left">中断 (同 Ctrl + C)</td>
+<td style="text-align:left">INT</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">中断 (同 Ctrl + C)</td>
 </tr>
 <tr>
-<td align="left">QUIT</td>
-<td align="left">3</td>
-<td align="left">退出 (同 Ctrl + )</td>
+<td style="text-align:left">QUIT</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">退出 (同 Ctrl + )</td>
 </tr>
 <tr>
-<td align="left">TERM</td>
-<td align="left">15</td>
-<td align="left">终止</td>
+<td style="text-align:left">TERM</td>
+<td style="text-align:left">15</td>
+<td style="text-align:left">终止</td>
 </tr>
 <tr>
-<td align="left">KILL</td>
-<td align="left">9</td>
-<td align="left">强制终止</td>
+<td style="text-align:left">KILL</td>
+<td style="text-align:left">9</td>
+<td style="text-align:left">强制终止</td>
 </tr>
 <tr>
-<td align="left">CONT</td>
-<td align="left">18</td>
-<td align="left">继续 (与 STOP 相反，fg/bg 命令)</td>
+<td style="text-align:left">CONT</td>
+<td style="text-align:left">18</td>
+<td style="text-align:left">继续 (与 STOP 相反，fg/bg 命令)</td>
 </tr>
 <tr>
-<td align="left">STOP</td>
-<td align="left">19</td>
-<td align="left">暂停 (同 Ctrl + Z)</td>
+<td style="text-align:left">STOP</td>
+<td style="text-align:left">19</td>
+<td style="text-align:left">暂停 (同 Ctrl + Z)</td>
 </tr>
 </tbody>
 </table>
 </li>
 <li>
 <p>使用 <code>pkill</code> 命令中断进程，<code>pkill</code> 命令根据进程名称检索进程，并向所有检索到的进程发送信号</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pkill -15 process_name
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>pkill -15 process_name
 </code></pre></div></li>
 </ul>
 

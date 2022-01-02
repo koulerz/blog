@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -191,7 +191,7 @@ blockquote,
     <br><br>
 <h2 id="二进制安全是什么">二进制安全是什么</h2>
 <p>先看一段代码：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>$string1 = <span style="color:#009c00">&#34;Hello&#34;</span>; 
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>$string2 = <span style="color:#009c00">&#34;Hello</span><span style="color:#009c00">\0</span><span style="color:#009c00">Hello&#34;</span>;
@@ -202,7 +202,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic">// 返回&lt;0,不相等
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">echo</span> strcmp($string1, $string2);  
 </code></pre></div><p>这是为什么呢？PHP 是基于 C 实现的，PHP 代码都会被 Zend引擎编译成 opcode，最终作为 C语言去执行。而对于 C语言中 &ldquo;\0&rdquo; 是字符串的结束符，它读到 &ldquo;\0&rdquo; 就会默认字符读取已经结束，从而抛掉后面的字符串。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>main(){  
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>main(){  
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    <span style="color:#00f">char</span> ab[] = <span style="color:#009c00">&#34;Hello&#34;</span>;  
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#00f">char</span> ac[] = <span style="color:#009c00">&#34;Hello</span><span style="color:#009c00">\0</span><span style="color:#009c00">Hello&#34;</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    
@@ -215,7 +215,7 @@ blockquote,
 </blockquote>
 <h2 id="php是如何实现二进制安全的">PHP是如何实现二进制安全的</h2>
 <p>既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#00f">struct</span>{
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#00f">struct</span>{
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>    <span style="color:#00f">char</span> *val;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>    <span style="color:#00f">int</span> len;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>} str;

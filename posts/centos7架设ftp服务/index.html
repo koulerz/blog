@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -194,15 +194,15 @@ blockquote,
 <p>目前的状况是浏览器端可以登录，但无法显示文件列表</p>
 <ol>
 <li>开机并启动 vsfptd
-<pre><code># 启动服务
+<pre tabindex="0"><code># 启动服务
 service vsftpd start
-   
+
 # 停止服务
 service vsftpd stop
-   
+
 # 重启服务
 service vsftpd restart
-   
+
 # 查看状态
 service vsftpd status
 </code></pre></li>
@@ -213,12 +213,12 @@ service vsftpd status
 <li>安装 <code>ntfs-3g</code>，使用该工具挂载硬盘</li>
 <li>命令行登录ftp，提示错误 <code>500 Illegal PORT command</code></li>
 <li>将 vsftpd 设置为被动模式，增加 vsftpd 配置项
-<pre><code># 开启被动模式
+<pre tabindex="0"><code># 开启被动模式
 pasv_enable=YES 
-   
+
 # 被动模式最低端口
 pasv_min_port=30000 
-   
+
 # 被动模式最高端口
 pasv_max_port=31000 
 </code></pre></li>
@@ -227,9 +227,9 @@ pasv_max_port=31000
 <li>发现将 ntfs 挂载之后目录权限均为 root，使用 chown 更改所属用户没有效果，后来通过 ntfs-3g 挂载时设置用户和用户组为 vsftpd 用户</li>
 <li>SELinux 在访问 ftp 时收到警告</li>
 <li>设置 SELinux 对 ftp 的控制，允许访问目录
-<pre><code># 查看 SELinux 中 ftp 权限
+<pre tabindex="0"><code># 查看 SELinux 中 ftp 权限
 getsebool -a | grep ftp
-    
+
 # 允许 ftp 访问目录
 setsebool -P tftp_home_dir 1
 setsebool -P allow_ftpd_full_access 1
@@ -237,12 +237,12 @@ setsebool -P allow_ftpd_full_access 1
 <li>解决错误 <code>vsftpd: refusing to run with writable root inside chroot()</code>，在 vsftpd 配置文件中添加 <code>allow_writeable_chroot=YES</code></li>
 <li>ftp 仍然无法显示挂载硬盘的目录列表，原因是设置 ftp 为被动模式，防火墙阻止了之前设置的用于传输数据的被动模式端口 30000-31000</li>
 <li>批量开放防火墙端口
-<pre><code>firewall-cmd --permanent --zone=public --add-port=30000-31000/tcp
+<pre tabindex="0"><code>firewall-cmd --permanent --zone=public --add-port=30000-31000/tcp
 firewall-cmd --reload
 </code></pre></li>
 <li>设置开机启动 vsftpd 服务 <code>chkconfig vsftpd on</code></li>
 <li>设置开机自动挂载 NTFS 硬盘
-<pre><code># 编辑 /etc/fstab 文件
+<pre tabindex="0"><code># 编辑 /etc/fstab 文件
 UUID=831df52d-baad-4902-bcce-6128cec95411 /home/vsftpd/ftp ntfs-3g defaults 0 0
 </code></pre></li>
 </ol>

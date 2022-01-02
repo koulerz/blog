@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -210,26 +210,26 @@ blockquote,
 <p>BBR 只支持 4.9.x 以上的内核，所以我们需要更新升级以下</p>
 <p>如果你使用的是 Debian 9.x，那么这一步可以直接跳过，其他三个内核版本较旧的系统，我们可以使用 Ubuntu 打包好的内核安装包</p>
 <p>首先，找到 4.9.x 以上版本的稳定内核，这里我们推荐使用 LTS 版本，目前最新的是 4.9.40 下载安装即可</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>mkdir kernel-tmp &amp;&amp; cd kernel-tmp
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>mkdir kernel-tmp &amp;&amp; cd kernel-tmp
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988_4.9.88-040988.201803181131_all.deb
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-image-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>sudo dpkg -i *.deb
 </code></pre></div><p>安装完以后直接 <code>reboot</code> 重启，一切顺利的话请检查以下当前的内核版本</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>root@debian ~ <span style="color:#f00;font-style:italic"># uname -r</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>root@debian ~ <span style="color:#f00;font-style:italic"># uname -r</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>4.9.0-3-amd64
 </code></pre></div><h2 id="配置-bbr">配置 BBR</h2>
 <p>直接修改 <code>/etc/sysctl.conf</code> 文件即可</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>cat &gt;&gt; /etc/sysctl.conf <span style="color:#009c00">&lt;&lt; EOF
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>cat &gt;&gt; /etc/sysctl.conf <span style="color:#009c00">&lt;&lt; EOF
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#009c00">net.core.default_qdisc=fq
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#009c00">net.ipv4.tcp_congestion_control=bbr
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#009c00">EOF</span>
 </code></pre></div><p>然后使用 <code>sysctl -p</code> 命令让内核配置生效，不出意外，应该会提示</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>root@debian ~ <span style="color:#f00;font-style:italic"># sysctl -p</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>root@debian ~ <span style="color:#f00;font-style:italic"># sysctl -p</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>net.core.default_qdisc = fq
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>net.ipv4.tcp_congestion_control = bbr
 </code></pre></div><p>此时可以使用 <code>lsmod | grep bbr</code> 命令检查 BBR 是否已正确开启</p>
-<pre><code>root@debian ~ # lsmod | grep bbr
+<pre tabindex="0"><code>root@debian ~ # lsmod | grep bbr
 tcp_bbr                16384  61
 </code></pre><p>如果出现 tcp_bbr 字样则说明没有问题</p>
 <h2 id="参考--扩展">参考 &amp; 扩展</h2>

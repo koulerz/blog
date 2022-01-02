@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -198,41 +198,41 @@ blockquote,
 <table>
 <thead>
 <tr>
-<th align="center">状态码</th>
-<th align="left">类型</th>
-<th align="left">含义</th>
+<th style="text-align:center">状态码</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">含义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">100 ~</td>
-<td align="left">消息</td>
-<td align="left">代表请求已被接受，需要继续处理</td>
+<td style="text-align:center">100 ~</td>
+<td style="text-align:left">消息</td>
+<td style="text-align:left">代表请求已被接受，需要继续处理</td>
 </tr>
 <tr>
-<td align="center">200 ~</td>
-<td align="left">成功</td>
-<td align="left">代表请求已成功被服务器接收、理解、并接受</td>
+<td style="text-align:center">200 ~</td>
+<td style="text-align:left">成功</td>
+<td style="text-align:left">代表请求已成功被服务器接收、理解、并接受</td>
 </tr>
 <tr>
-<td align="center">300 ~</td>
-<td align="left">重定向</td>
-<td align="left">代表需要客户端采取进一步的操作才能完成请求</td>
+<td style="text-align:center">300 ~</td>
+<td style="text-align:left">重定向</td>
+<td style="text-align:left">代表需要客户端采取进一步的操作才能完成请求</td>
 </tr>
 <tr>
-<td align="center">400 ~</td>
-<td align="left">请求错误</td>
-<td align="left">代表了客户端看起来可能发生了错误，妨碍了服务器的处理</td>
+<td style="text-align:center">400 ~</td>
+<td style="text-align:left">请求错误</td>
+<td style="text-align:left">代表了客户端看起来可能发生了错误，妨碍了服务器的处理</td>
 </tr>
 <tr>
-<td align="center">500 ~</td>
-<td align="left">服务器错误</td>
-<td align="left">代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理</td>
+<td style="text-align:center">500 ~</td>
+<td style="text-align:left">服务器错误</td>
+<td style="text-align:left">代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理</td>
 </tr>
 <tr>
-<td align="center">600 ~</td>
-<td align="left">服务器错误</td>
-<td align="left">代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理</td>
+<td style="text-align:center">600 ~</td>
+<td style="text-align:left">服务器错误</td>
+<td style="text-align:left">代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理</td>
 </tr>
 </tbody>
 </table>
@@ -240,410 +240,410 @@ blockquote,
 <table>
 <thead>
 <tr>
-<th align="center">状态代码</th>
-<th align="center">状态信息</th>
-<th align="left">含义</th>
-<th align="left">适用情况</th>
-<th align="center">对应懒喵项目错误号</th>
+<th style="text-align:center">状态代码</th>
+<th style="text-align:center">状态信息</th>
+<th style="text-align:left">含义</th>
+<th style="text-align:left">适用情况</th>
+<th style="text-align:center">对应懒喵项目错误号</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">100</td>
-<td align="center">Continue</td>
-<td align="left">初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新）</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">Continue</td>
+<td style="text-align:left">初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新）</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">101</td>
-<td align="center">Switching Protocols</td>
-<td align="left">服务器将遵从客户的请求转换到另外一种协议（HTTP 1.1新）</td>
+<td style="text-align:center">101</td>
+<td style="text-align:center">Switching Protocols</td>
+<td style="text-align:left">服务器将遵从客户的请求转换到另外一种协议（HTTP 1.1新）</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">102</td>
-<td align="center">Processing</td>
-<td align="left">由WebDAV（RFC 2518）扩展的状态码，代表处理将被继续执行</td>
+<td style="text-align:center">102</td>
+<td style="text-align:center">Processing</td>
+<td style="text-align:left">由WebDAV（RFC 2518）扩展的状态码，代表处理将被继续执行</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">200</td>
-<td align="center">OK</td>
-<td align="left">请求已成功，请求所希望的响应头或数据体将随此响应返回</td>
-<td align="left">GET:表示已在响应中发出 DELETE:资源已被删除 PUT:如果已存在资源被更改 POST:如果现有资源已被更改</td>
-<td align="center">10000 10008</td>
+<td style="text-align:center">200</td>
+<td style="text-align:center">OK</td>
+<td style="text-align:left">请求已成功，请求所希望的响应头或数据体将随此响应返回</td>
+<td style="text-align:left">GET:表示已在响应中发出 DELETE:资源已被删除 PUT:如果已存在资源被更改 POST:如果现有资源已被更改</td>
+<td style="text-align:center">10000 10008</td>
 </tr>
 <tr>
-<td align="center">201</td>
-<td align="center">Created</td>
-<td align="left">请求已经被实现，而且有一个新的资源已经依据请求的需要而建立，且其 URI 已经随Location 头信息返回</td>
-<td align="left">PUT:如果新资源被创建 POST:如果新资源被创建</td>
+<td style="text-align:center">201</td>
+<td style="text-align:center">Created</td>
+<td style="text-align:left">请求已经被实现，而且有一个新的资源已经依据请求的需要而建立，且其 URI 已经随Location 头信息返回</td>
+<td style="text-align:left">PUT:如果新资源被创建 POST:如果新资源被创建</td>
 <td></td>
 </tr>
 <tr>
-<td align="center">202</td>
-<td align="center">Accepted</td>
-<td align="left">服务器已接受请求，但尚未处理</td>
-<td align="left">POST:已接受处理请求但尚未完成（异步处理）</td>
+<td style="text-align:center">202</td>
+<td style="text-align:center">Accepted</td>
+<td style="text-align:left">服务器已接受请求，但尚未处理</td>
+<td style="text-align:left">POST:已接受处理请求但尚未完成（异步处理）</td>
 <td></td>
 </tr>
 <tr>
-<td align="center">203</td>
-<td align="center">Non-Authoritative Information</td>
-<td align="left">服务器已成功处理了请求，但返回的实体头部元信息不是在原始服务器上有效的确定集合，而是来自本地或者第三方的拷贝。当前的信息可能是原始版本的子集或者超集</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td align="center">204</td>
-<td align="center">No Content</td>
-<td align="left">服务器成功处理了请求，但不需要返回任何实体内容，并且希望返回更新了的元信息。如果客户端是浏览器的话，那么用户浏览器应保留发送了该请求的页面，而不产生任何文档视图上的变化。由于204响应被禁止包含任何消息体，因此它始终以消息头后的第一个空行结尾</td>
-<td align="left">GET:资源有空表示</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">205</td>
-<td align="center">Reset Content</td>
-<td align="left">服务器成功处理了请求，且没有返回任何内容。但是与204响应不同，返回此状态码的响应要求请求者重置文档视图。该响应主要是被用于接受用户输入后，立即重置表单，以便用户能够轻松地开始另一次输入。与204响应一样，该响应也被禁止包含任何消息体，且以消息头后的第一个空行结束</td>
+<td style="text-align:center">203</td>
+<td style="text-align:center">Non-Authoritative Information</td>
+<td style="text-align:left">服务器已成功处理了请求，但返回的实体头部元信息不是在原始服务器上有效的确定集合，而是来自本地或者第三方的拷贝。当前的信息可能是原始版本的子集或者超集</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">206</td>
-<td align="center">Partial Content</td>
-<td align="left">服务器已经成功处理了部分 GET 请求</td>
+<td style="text-align:center">204</td>
+<td style="text-align:center">No Content</td>
+<td style="text-align:left">服务器成功处理了请求，但不需要返回任何实体内容，并且希望返回更新了的元信息。如果客户端是浏览器的话，那么用户浏览器应保留发送了该请求的页面，而不产生任何文档视图上的变化。由于204响应被禁止包含任何消息体，因此它始终以消息头后的第一个空行结尾</td>
+<td style="text-align:left">GET:资源有空表示</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">205</td>
+<td style="text-align:center">Reset Content</td>
+<td style="text-align:left">服务器成功处理了请求，且没有返回任何内容。但是与204响应不同，返回此状态码的响应要求请求者重置文档视图。该响应主要是被用于接受用户输入后，立即重置表单，以便用户能够轻松地开始另一次输入。与204响应一样，该响应也被禁止包含任何消息体，且以消息头后的第一个空行结束</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">300</td>
-<td align="center">Multiple Choices</td>
-<td align="left">被请求的资源有一系列可供选择的回馈信息，每个都有自己特定的地址和浏览器驱动的商议信息。用户或浏览器能够自行选择一个首选的地址进行重定向。</td>
+<td style="text-align:center">206</td>
+<td style="text-align:center">Partial Content</td>
+<td style="text-align:left">服务器已经成功处理了部分 GET 请求</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">301</td>
-<td align="center">Moved Permanently</td>
-<td align="left">被请求的资源已永久移动到新位置，并且将来任何对此资源的引用都应该使用本响应返回的若干个 URI 之一</td>
-<td align="left">GET:资源的URI已被更新 DELETE:资源的URI已更改 PUT:资源的URI已更改 POST:资源的URI被更新</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">302</td>
-<td align="center">Move temporarily</td>
-<td align="left">请求的资源临时从不同的 URI响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求</td>
+<td style="text-align:center">300</td>
+<td style="text-align:center">Multiple Choices</td>
+<td style="text-align:left">被请求的资源有一系列可供选择的回馈信息，每个都有自己特定的地址和浏览器驱动的商议信息。用户或浏览器能够自行选择一个首选的地址进行重定向。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">303</td>
-<td align="center">See Other</td>
-<td align="left">对应当前请求的响应可以在另一个 URI 上被找到，而且客户端应当采用 GET 的方式访问那个资源。</td>
-<td align="left">GET:其他（如，负载均衡） DELETE:其他，如负载均衡 PUT:其他（如，负载均衡） POST:其他（如，负载均衡）</td>
+<td style="text-align:center">301</td>
+<td style="text-align:center">Moved Permanently</td>
+<td style="text-align:left">被请求的资源已永久移动到新位置，并且将来任何对此资源的引用都应该使用本响应返回的若干个 URI 之一</td>
+<td style="text-align:left">GET:资源的URI已被更新 DELETE:资源的URI已更改 PUT:资源的URI已更改 POST:资源的URI被更新</td>
 <td></td>
 </tr>
 <tr>
-<td align="center">304</td>
-<td align="center">Not Modified</td>
-<td align="left">如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个状态码。304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾</td>
-<td align="left">GET:资源未更改（缓存）</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">305</td>
-<td align="center">Use Proxy</td>
-<td align="left">被请求的资源必须通过指定的代理才能被访问。</td>
+<td style="text-align:center">302</td>
+<td style="text-align:center">Move temporarily</td>
+<td style="text-align:left">请求的资源临时从不同的 URI响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">306</td>
-<td align="center">Switch Proxy</td>
-<td align="left">在最新版的规范中，306状态码已经不再被使用。</td>
+<td style="text-align:center">303</td>
+<td style="text-align:center">See Other</td>
+<td style="text-align:left">对应当前请求的响应可以在另一个 URI 上被找到，而且客户端应当采用 GET 的方式访问那个资源。</td>
+<td style="text-align:left">GET:其他（如，负载均衡） DELETE:其他，如负载均衡 PUT:其他（如，负载均衡） POST:其他（如，负载均衡）</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">304</td>
+<td style="text-align:center">Not Modified</td>
+<td style="text-align:left">如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个状态码。304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾</td>
+<td style="text-align:left">GET:资源未更改（缓存）</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">305</td>
+<td style="text-align:center">Use Proxy</td>
+<td style="text-align:left">被请求的资源必须通过指定的代理才能被访问。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">307</td>
-<td align="center">Temporary Redirect</td>
-<td align="left">请求的资源临时从不同的URI 响应请求。</td>
+<td style="text-align:center">306</td>
+<td style="text-align:center">Switch Proxy</td>
+<td style="text-align:left">在最新版的规范中，306状态码已经不再被使用。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">400</td>
-<td align="center">Bad Request</td>
-<td align="left">语义有误，当前请求无法被服务器理解。请求参数有误。</td>
-<td align="left">GET:指代坏请求（如，参数错误） DELETE:指代坏请求 PUT:指代坏请求 POST:指代坏请求</td>
-<td align="center">10002 11001</td>
-</tr>
-<tr>
-<td align="center">401</td>
-<td align="center">Unauthorized</td>
-<td align="left">当前请求需要用户验证。</td>
-<td align="left">表示用户没有权限（令牌、用户名、密码错误、用户未登录）</td>
-<td align="center">10005</td>
-</tr>
-<tr>
-<td align="center">403</td>
-<td align="center">Forbidden</td>
-<td align="left">服务器已经理解请求，但是拒绝执行它。与401响应不同的是，身份验证并不能提供任何帮助，而且这个请求也不应该被重复提交。</td>
-<td align="left">示用户得到授权（与401错误相对），但是访问是被禁止的。比如付费的增值服务到期\权限不够</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">404</td>
-<td align="center">Not Found</td>
-<td align="left">请求失败，请求所希望得到的资源未被在服务器上发现。</td>
-<td align="left">GET:资源不存在 DELETE:资源不存在 PUT:资源不存在 POST:资源不存在</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">405</td>
-<td align="center">Method Not Allowed</td>
-<td align="left">请求行中指定的请求方法不能被用于请求相应的资源。</td>
-<td align="left">表示服务端不允许客户端这么做</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">406</td>
-<td align="center">Not Acceptable</td>
-<td align="left">请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体。</td>
-<td align="left">GET:服务端不支持所需表示 PUT:服务端不支持所需表示 POST:服务端不支持所需表示 用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">407</td>
-<td align="center">Proxy Authentication Required</td>
-<td align="left">与401响应类似，只不过客户端必须在代理服务器上进行身份验证。</td>
+<td style="text-align:center">307</td>
+<td style="text-align:center">Temporary Redirect</td>
+<td style="text-align:left">请求的资源临时从不同的URI 响应请求。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">408</td>
-<td align="center">Request Timeout</td>
-<td align="left">请求超时。</td>
+<td style="text-align:center">400</td>
+<td style="text-align:center">Bad Request</td>
+<td style="text-align:left">语义有误，当前请求无法被服务器理解。请求参数有误。</td>
+<td style="text-align:left">GET:指代坏请求（如，参数错误） DELETE:指代坏请求 PUT:指代坏请求 POST:指代坏请求</td>
+<td style="text-align:center">10002 11001</td>
+</tr>
+<tr>
+<td style="text-align:center">401</td>
+<td style="text-align:center">Unauthorized</td>
+<td style="text-align:left">当前请求需要用户验证。</td>
+<td style="text-align:left">表示用户没有权限（令牌、用户名、密码错误、用户未登录）</td>
+<td style="text-align:center">10005</td>
+</tr>
+<tr>
+<td style="text-align:center">403</td>
+<td style="text-align:center">Forbidden</td>
+<td style="text-align:left">服务器已经理解请求，但是拒绝执行它。与401响应不同的是，身份验证并不能提供任何帮助，而且这个请求也不应该被重复提交。</td>
+<td style="text-align:left">示用户得到授权（与401错误相对），但是访问是被禁止的。比如付费的增值服务到期\权限不够</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">404</td>
+<td style="text-align:center">Not Found</td>
+<td style="text-align:left">请求失败，请求所希望得到的资源未被在服务器上发现。</td>
+<td style="text-align:left">GET:资源不存在 DELETE:资源不存在 PUT:资源不存在 POST:资源不存在</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">405</td>
+<td style="text-align:center">Method Not Allowed</td>
+<td style="text-align:left">请求行中指定的请求方法不能被用于请求相应的资源。</td>
+<td style="text-align:left">表示服务端不允许客户端这么做</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">406</td>
+<td style="text-align:center">Not Acceptable</td>
+<td style="text-align:left">请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体。</td>
+<td style="text-align:left">GET:服务端不支持所需表示 PUT:服务端不支持所需表示 POST:服务端不支持所需表示 用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">407</td>
+<td style="text-align:center">Proxy Authentication Required</td>
+<td style="text-align:left">与401响应类似，只不过客户端必须在代理服务器上进行身份验证。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">409</td>
-<td align="center">Conflict</td>
-<td align="left">由于和被请求的资源的当前状态之间存在冲突，请求无法完成。</td>
-<td align="left">DELETE:通用冲突 PUT:通用冲突 POST:通用冲突</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">410</td>
-<td align="center">Gone</td>
-<td align="left">被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址。</td>
+<td style="text-align:center">408</td>
+<td style="text-align:center">Request Timeout</td>
+<td style="text-align:left">请求超时。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">411</td>
-<td align="center">Length Required</td>
-<td align="left">服务器拒绝在没有定义 Content-Length 头的情况下接受请求。</td>
+<td style="text-align:center">409</td>
+<td style="text-align:center">Conflict</td>
+<td style="text-align:left">由于和被请求的资源的当前状态之间存在冲突，请求无法完成。</td>
+<td style="text-align:left">DELETE:通用冲突 PUT:通用冲突 POST:通用冲突</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">410</td>
+<td style="text-align:center">Gone</td>
+<td style="text-align:left">被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">412</td>
-<td align="center">Precondition Failed</td>
-<td align="left">服务器在验证在请求的头字段中给出先决条件时，没能满足其中的一个或多个。</td>
-<td align="left">PUT:前置条件失败（如执行条件更新时的冲突） POST:前置条件失败（如执行条件更新时的冲突）</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">413</td>
-<td align="center">Request Entity Too Large</td>
-<td align="left">服务器拒绝处理当前请求，因为该请求提交的实体数据大小超过了服务器愿意或者能够处理的范围。</td>
+<td style="text-align:center">411</td>
+<td style="text-align:center">Length Required</td>
+<td style="text-align:left">服务器拒绝在没有定义 Content-Length 头的情况下接受请求。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">414</td>
-<td align="center">Request-URI Too Long</td>
-<td align="left">请求的URI 长度超过了服务器能够解释的长度，因此服务器拒绝对该请求提供服务。</td>
+<td style="text-align:center">412</td>
+<td style="text-align:center">Precondition Failed</td>
+<td style="text-align:left">服务器在验证在请求的头字段中给出先决条件时，没能满足其中的一个或多个。</td>
+<td style="text-align:left">PUT:前置条件失败（如执行条件更新时的冲突） POST:前置条件失败（如执行条件更新时的冲突）</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">413</td>
+<td style="text-align:center">Request Entity Too Large</td>
+<td style="text-align:left">服务器拒绝处理当前请求，因为该请求提交的实体数据大小超过了服务器愿意或者能够处理的范围。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">415</td>
-<td align="center">Unsupported Media Type</td>
-<td align="left">对于当前请求的方法和所请求的资源，请求中提交的实体并不是服务器中所支持的格式，因此请求被拒绝。</td>
-<td align="left">PUT:接受到的表示不受支持 POST:接受到的表示不受支持</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">416</td>
-<td align="center">Requested Range Not Satisfiable</td>
-<td align="left">如果请求中包含了 Range 请求头，并且 Range 中指定的任何数据范围都与当前资源的可用范围不重合，同时请求中又没有定义 If-Range 请求头，那么服务器就应当返回416状态码。</td>
+<td style="text-align:center">414</td>
+<td style="text-align:center">Request-URI Too Long</td>
+<td style="text-align:left">请求的URI 长度超过了服务器能够解释的长度，因此服务器拒绝对该请求提供服务。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">417</td>
-<td align="center">Expectation Failed</td>
-<td align="left">在请求头 Expect 中指定的预期内容无法被服务器满足，或者这个服务器是一个代理服务器，它有明显的证据证明在当前路由的下一个节点上，Expect 的内容无法被满足。</td>
+<td style="text-align:center">415</td>
+<td style="text-align:center">Unsupported Media Type</td>
+<td style="text-align:left">对于当前请求的方法和所请求的资源，请求中提交的实体并不是服务器中所支持的格式，因此请求被拒绝。</td>
+<td style="text-align:left">PUT:接受到的表示不受支持 POST:接受到的表示不受支持</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">416</td>
+<td style="text-align:center">Requested Range Not Satisfiable</td>
+<td style="text-align:left">如果请求中包含了 Range 请求头，并且 Range 中指定的任何数据范围都与当前资源的可用范围不重合，同时请求中又没有定义 If-Range 请求头，那么服务器就应当返回416状态码。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">421</td>
-<td align="center">There are too many connections from your internet address</td>
-<td align="left">从当前客户端所在的IP地址到服务器的连接数超过了服务器许可的最大范围。</td>
+<td style="text-align:center">417</td>
+<td style="text-align:center">Expectation Failed</td>
+<td style="text-align:left">在请求头 Expect 中指定的预期内容无法被服务器满足，或者这个服务器是一个代理服务器，它有明显的证据证明在当前路由的下一个节点上，Expect 的内容无法被满足。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">422</td>
-<td align="center">Unprocessable Entity</td>
-<td align="left">请求格式正确，但是由于含有语义错误，无法响应。</td>
-<td align="left">发送了非法的资源</td>
-<td></td>
-</tr>
-<tr>
-<td align="center">423</td>
-<td align="center">Locked</td>
-<td align="left">当前资源被锁定。</td>
+<td style="text-align:center">421</td>
+<td style="text-align:center">There are too many connections from your internet address</td>
+<td style="text-align:left">从当前客户端所在的IP地址到服务器的连接数超过了服务器许可的最大范围。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">424</td>
-<td align="center">Failed Dependency</td>
-<td align="left">由于之前的某个请求发生的错误，导致当前请求失败</td>
+<td style="text-align:center">422</td>
+<td style="text-align:center">Unprocessable Entity</td>
+<td style="text-align:left">请求格式正确，但是由于含有语义错误，无法响应。</td>
+<td style="text-align:left">发送了非法的资源</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">423</td>
+<td style="text-align:center">Locked</td>
+<td style="text-align:left">当前资源被锁定。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">425</td>
-<td align="center">Unordered Collection</td>
-<td align="left">在WebDav Advanced Collections 草案中定义，但是未出现在《WebDAV 顺序集协议》</td>
+<td style="text-align:center">424</td>
+<td style="text-align:center">Failed Dependency</td>
+<td style="text-align:left">由于之前的某个请求发生的错误，导致当前请求失败</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">426</td>
-<td align="center">Upgrade Required</td>
-<td align="left">客户端应当切换到TLS/1.0</td>
+<td style="text-align:center">425</td>
+<td style="text-align:center">Unordered Collection</td>
+<td style="text-align:left">在WebDav Advanced Collections 草案中定义，但是未出现在《WebDAV 顺序集协议》</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">428</td>
-<td align="center">Precondition Required</td>
-<td align="left">要求先决条件 当服务器端使用 428 Precondition Required 状态码时，表示客户端必须发送上述的请求头才能执行该请求操作。这个方法为服务器提供一种有效的方法来阻止 “lost update”问题的出现。</td>
-<td align="left"></td>
-<td></td>
-</tr>
-<tr>
-<td align="center">429</td>
-<td align="center">Too Many Requests</td>
-<td align="left">太多请求 如果你希望限制客户端对服务的请求数，可使用 429 状态码，同时包含一个 Retry-After 响应头用于告诉客户端多长时间后可以再次请求服务。</td>
-<td align="left"></td>
-<td></td>
-</tr>
-<tr>
-<td align="center">431</td>
-<td align="center">Request Header Fields Too Large</td>
-<td align="left">某些情况下，客户端发送 HTTP 请求头会变得很大，那么服务器可发送 431 Request Header Fields Too Large 来指明该问题。</td>
-<td align="left"></td>
-<td></td>
-</tr>
-<tr>
-<td align="center">449</td>
-<td align="center">Retry With</td>
-<td align="left">由微软扩展，代表请求应当在执行完适当的操作后进行重试</td>
+<td style="text-align:center">426</td>
+<td style="text-align:center">Upgrade Required</td>
+<td style="text-align:left">客户端应当切换到TLS/1.0</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">500</td>
-<td align="center">Internal Server Error</td>
-<td align="left">服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。</td>
-<td align="left">GET:通用错误响应 DELETE:通用错误响应 PUT:通用错误响应 POST:通用错误响应</td>
-<td align="center">10004</td>
-</tr>
-<tr>
-<td align="center">501</td>
-<td align="center">Not Implemented</td>
-<td align="left">服务器不支持当前请求所需要的某个功能。</td>
-<td align="left">表示客户端或许可以这么做，但服务端还没有实现这个功能</td>
+<td style="text-align:center">428</td>
+<td style="text-align:center">Precondition Required</td>
+<td style="text-align:left">要求先决条件 当服务器端使用 428 Precondition Required 状态码时，表示客户端必须发送上述的请求头才能执行该请求操作。这个方法为服务器提供一种有效的方法来阻止 “lost update”问题的出现。</td>
+<td style="text-align:left"></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">502</td>
-<td align="center">Bad Gateway</td>
-<td align="left">作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td align="center">503</td>
-<td align="center">Service Unavailable</td>
-<td align="left">由于临时的服务器维护或者过载，服务器当前无法处理请求。</td>
-<td align="left">GET:服务端当前无法处理请求 DELETE:服务端当前无法处理请求 PUT:服务当前无法处理请求 POST:服务当前无法处理请求</td>
+<td style="text-align:center">429</td>
+<td style="text-align:center">Too Many Requests</td>
+<td style="text-align:left">太多请求 如果你希望限制客户端对服务的请求数，可使用 429 状态码，同时包含一个 Retry-After 响应头用于告诉客户端多长时间后可以再次请求服务。</td>
+<td style="text-align:left"></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">504</td>
-<td align="center">Gateway Timeout</td>
-<td align="left">作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应。</td>
+<td style="text-align:center">431</td>
+<td style="text-align:center">Request Header Fields Too Large</td>
+<td style="text-align:left">某些情况下，客户端发送 HTTP 请求头会变得很大，那么服务器可发送 431 Request Header Fields Too Large 来指明该问题。</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">449</td>
+<td style="text-align:center">Retry With</td>
+<td style="text-align:left">由微软扩展，代表请求应当在执行完适当的操作后进行重试</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">505</td>
-<td align="center">HTTP Version Not Supported</td>
-<td align="left">服务器不支持，或者拒绝支持在请求中使用的 HTTP 版本。</td>
+<td style="text-align:center">500</td>
+<td style="text-align:center">Internal Server Error</td>
+<td style="text-align:left">服务器遇到了一个未曾预料的状况，导致了它无法完成对请求的处理。</td>
+<td style="text-align:left">GET:通用错误响应 DELETE:通用错误响应 PUT:通用错误响应 POST:通用错误响应</td>
+<td style="text-align:center">10004</td>
+</tr>
+<tr>
+<td style="text-align:center">501</td>
+<td style="text-align:center">Not Implemented</td>
+<td style="text-align:left">服务器不支持当前请求所需要的某个功能。</td>
+<td style="text-align:left">表示客户端或许可以这么做，但服务端还没有实现这个功能</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">502</td>
+<td style="text-align:center">Bad Gateway</td>
+<td style="text-align:left">作为网关或者代理工作的服务器尝试执行请求时，从上游服务器接收到无效的响应。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">506</td>
-<td align="center">Variant Also Negotiates</td>
-<td align="left">代表服务器存在内部配置错误：被请求的协商变元资源被配置为在透明内容协商中使用自己，因此在一个协商处理中不是一个合适的重点。</td>
+<td style="text-align:center">503</td>
+<td style="text-align:center">Service Unavailable</td>
+<td style="text-align:left">由于临时的服务器维护或者过载，服务器当前无法处理请求。</td>
+<td style="text-align:left">GET:服务端当前无法处理请求 DELETE:服务端当前无法处理请求 PUT:服务当前无法处理请求 POST:服务当前无法处理请求</td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">504</td>
+<td style="text-align:center">Gateway Timeout</td>
+<td style="text-align:left">作为网关或者代理工作的服务器尝试执行请求时，未能及时从上游服务器（URI标识出的服务器，例如HTTP、FTP、LDAP）或者辅助服务器（例如DNS）收到响应。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">507</td>
-<td align="center">Insufficient Storage</td>
-<td align="left">服务器无法存储完成请求所必须的内容。这个状况被认为是临时的。</td>
+<td style="text-align:center">505</td>
+<td style="text-align:center">HTTP Version Not Supported</td>
+<td style="text-align:left">服务器不支持，或者拒绝支持在请求中使用的 HTTP 版本。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">509</td>
-<td align="center">Bandwidth Limit Exceeded</td>
-<td align="left">服务器达到带宽限制。这不是一个官方的状态码，但是仍被广泛使用。</td>
+<td style="text-align:center">506</td>
+<td style="text-align:center">Variant Also Negotiates</td>
+<td style="text-align:left">代表服务器存在内部配置错误：被请求的协商变元资源被配置为在透明内容协商中使用自己，因此在一个协商处理中不是一个合适的重点。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">510</td>
-<td align="center">Not Extended</td>
-<td align="left">获取资源所需要的策略并没有没满足。</td>
+<td style="text-align:center">507</td>
+<td style="text-align:center">Insufficient Storage</td>
+<td style="text-align:left">服务器无法存储完成请求所必须的内容。这个状况被认为是临时的。</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">511</td>
-<td align="center">Network Authentication Required</td>
-<td align="left">要求网络认证</td>
-<td align="left"></td>
+<td style="text-align:center">509</td>
+<td style="text-align:center">Bandwidth Limit Exceeded</td>
+<td style="text-align:left">服务器达到带宽限制。这不是一个官方的状态码，但是仍被广泛使用。</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
-<td align="center">600</td>
-<td align="center">Unparseable Response Headers</td>
-<td align="left">源站没有返回响应头部，只返回实体内容</td>
+<td style="text-align:center">510</td>
+<td style="text-align:center">Not Extended</td>
+<td style="text-align:left">获取资源所需要的策略并没有没满足。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">511</td>
+<td style="text-align:center">Network Authentication Required</td>
+<td style="text-align:left">要求网络认证</td>
+<td style="text-align:left"></td>
+<td></td>
+</tr>
+<tr>
+<td style="text-align:center">600</td>
+<td style="text-align:center">Unparseable Response Headers</td>
+<td style="text-align:left">源站没有返回响应头部，只返回实体内容</td>
 <td></td>
 <td></td>
 </tr>

@@ -6,11 +6,7 @@
     <description>Recent content in lumen on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 11 Oct 2018 22:57:42 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/lumen/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 11 Oct 2018 22:57:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/lumen/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lumen 加载根目录配置文件</title>
       <link>https://kouler.com/posts/lumen%E5%8A%A0%E8%BD%BD%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</link>

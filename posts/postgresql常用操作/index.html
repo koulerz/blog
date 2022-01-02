@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -196,7 +196,7 @@ blockquote,
 
     <br><br>
 <h2 id="增删改查-sql-语句">增删改查 SQL 语句</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 插入数据
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 插入数据
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">INSERT</span> <span style="color:#00f">INTO</span> user_tbl(name, signup_date) <span style="color:#00f">VALUES</span>(<span style="color:#009c00">&#39;张三&#39;</span>, <span style="color:#009c00">&#39;2013-12-22&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic">-- 查询记录
@@ -208,7 +208,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic">-- 删除记录
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">DELETE</span> <span style="color:#00f">FROM</span> user_tbl <span style="color:#00f">WHERE</span> name = <span style="color:#009c00">&#39;李四&#39;</span> ;
 </code></pre></div><h2 id="批量更新-sql-语句">批量更新 SQL 语句</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 批量更新一个字段
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 批量更新一个字段
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">UPDATE</span> mytable 
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00f">SET</span> myfield = <span style="color:#00f">CASE</span> id 
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    <span style="color:#00f">WHEN</span> 1 <span style="color:#00f">THEN</span> <span style="color:#009c00">&#39;value&#39;</span>
@@ -231,7 +231,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#00f">END</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#00f">WHERE</span> id <span style="color:#00f">IN</span> (1,2,3)
 </code></pre></div><h2 id="序列操作-sql-语句">序列操作 SQL 语句</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">-- 查看当前序列的值
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">-- 查看当前序列的值
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">SELECT</span> currval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic">-- 设置序列的初始值为 100
@@ -240,7 +240,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span style="color:#f00;font-style:italic">-- 递增序列的值并返回
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">select</span> nextval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
 </code></pre></div><h2 id="查询-sql-语句">查询 SQL 语句</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 转换时间戳为格式化时间函数 TO_TIMESTAMP()
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 转换时间戳为格式化时间函数 TO_TIMESTAMP()
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">SELECT</span> TO_TIMESTAMP(created_at) <span style="color:#00f">FROM</span> <span style="color:#00f">user</span>;
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic">-- 转换时间戳为格式化时间函数 TO_TIMESTAMP() ，显示为中国时区
@@ -263,7 +263,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span style="color:#f00;font-style:italic">-- 解析数组格式数据，获取数据时先将数组转为 JSON，再用编程语言函数将 JSON 转为可识别格式，例如 PHP 中的 json_decode()
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">SELECT</span> array_to_json(ids) <span style="color:#00f">FROM</span> <span style="color:#00f">user</span>;
 </code></pre></div><h2 id="schema-操作-sql-语句">Schema 操作 SQL 语句</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 创建新表
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 创建新表
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">CREATE</span> <span style="color:#00f">TABLE</span> user_tbl(name VARCHAR(20), signup_date DATE);
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic">-- 添加字段
@@ -306,7 +306,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span style="color:#f00;font-style:italic">-- 删除库
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">DROP</span> <span style="color:#00f">DATABASE</span> <span style="color:#00f">IF</span> <span style="color:#00f">EXISTS</span> hello;
 </code></pre></div><h2 id="创建数据表例子">创建数据表例子</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#00f">CREATE</span> <span style="color:#00f">TABLE</span> lm_user(
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#00f">CREATE</span> <span style="color:#00f">TABLE</span> lm_user(
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>    id SERIAL <span style="color:#00f">PRIMARY</span> <span style="color:#00f">KEY</span> <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span>, <span style="color:#f00;font-style:italic">-- &#39;ID&#39;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic"></span>    openid VARCHAR(20) <span style="color:#00f">DEFAULT</span> <span style="color:#00f">NULL</span> <span style="color:#00f">UNIQUE</span>, <span style="color:#f00;font-style:italic">-- &#39;OPENID&#39;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>    email VARCHAR(50) <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span> <span style="color:#00f">UNIQUE</span>, <span style="color:#f00;font-style:italic">-- &#39;email&#39;
@@ -317,7 +317,7 @@ blockquote,
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic"></span>    status SMALLINT <span style="color:#00f">NOT</span> <span style="color:#00f">NULL</span> <span style="color:#00f">DEFAULT</span> <span style="color:#009c00">&#39;1&#39;</span> <span style="color:#f00;font-style:italic">-- &#39;状态&#39;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>);
 </code></pre></div><h2 id="常用控制台命令">常用控制台命令</h2>
-<pre><code>\password           设置密码。
+<pre tabindex="0"><code>\password           设置密码。
 \q                  退出。
 \h                  查看SQL命令的解释，比如\h select。
 \?                  查看psql命令列表。
@@ -329,7 +329,7 @@ blockquote,
 \e                  打开文本编辑器。
 \conninfo           列出当前数据库和连接的信息。
 </code></pre><h2 id="备份和恢复">备份和恢复</h2>
-<pre><code>pg_dump     备份
+<pre tabindex="0"><code>pg_dump     备份
 pg_dumpall  备份所有数据库
 pg_restore  恢复
 psql exampledb &lt; exampledb.sql 导入数据

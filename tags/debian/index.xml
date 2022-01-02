@@ -6,11 +6,7 @@
     <description>Recent content in debian on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 16 Jun 2018 03:37:24 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/debian/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 16 Jun 2018 03:37:24 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/debian/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Debian Ubuntu 更新内核并开启 TCP BBR 功能</title>
       <link>https://kouler.com/posts/debian-ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8%E5%B9%B6%E5%BC%80%E5%90%AFtcp-bbr%E5%8A%9F%E8%83%BD/</link>

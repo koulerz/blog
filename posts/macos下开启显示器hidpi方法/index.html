@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -205,7 +205,7 @@ blockquote,
 <p>MacOS 系统下，某些系统文件夹只有系统有权限读写，称为 System Integrity Protection（SIP），需要提前关闭。</p>
 <h2 id="创建相应文件夹和文件">创建相应文件夹和文件</h2>
 <p>首先在终端获取显示器的 DisplayVendorID 和 DisplayProductID。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 获取显示器 DisplayVendorID</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 获取显示器 DisplayVendorID</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>ioreg -l | grep <span style="color:#009c00">&#34;DisplayVendorID&#34;</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic"># 获取显示器 DisplayProductID</span>
@@ -221,7 +221,7 @@ blockquote,
 <li>脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）</li>
 </ol>
 <h2 id="编辑新建的文件">编辑新建的文件</h2>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+<pre tabindex="0"><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&gt;
 &lt;plist version=&quot;1.0&quot;&gt;
 &lt;dict&gt;
@@ -244,7 +244,7 @@ blockquote,
 &lt;/plist&gt;
 </code></pre><p>该文件是 XML 格式的，在 Mac 中被称为 plist（Property List）文件，即属性列表文件。可以使用工具 PlistPro 来编辑。</p>
 <p>文件中共有 8 个 data 标签，其中每两个为一组，即（1，2）、（3，4）、（5，6）、（7，8），每一个 data 标签表示一个分辨率。</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic"># data 标签解码后</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic"># data 标签解码后</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#009c00">&#39;&#39;&#39;
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#009c00">00000A00 000005A0 00000001 00200000
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#009c00">00001400 00000B40 00000001 00200000

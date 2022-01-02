@@ -6,11 +6,7 @@
     <description>Recent content in tmux on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 07 Aug 2019 17:43:42 +0800</lastBuildDate>
-    
-	<atom:link href="https://kouler.com/tags/tmux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 07 Aug 2019 17:43:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/tmux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tmux 常用命令和快捷键</title>
       <link>https://kouler.com/posts/tmux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</link>

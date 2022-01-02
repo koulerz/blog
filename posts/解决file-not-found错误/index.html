@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -209,7 +209,7 @@ blockquote,
 <p>由于 <code>nginx</code> 是通过 <code>fastCGI</code> 协议与 <code>php-fpm</code> 通信，将需要执行的文件路径发送给 <code>php-fpm</code>，所以可以通过抓包软件直接抓取 <code>fastCGI</code> 的协议内容来调试文件路径错误。</p>
 <p>通过监听 <code>php</code> 容器的本地 <code>ip</code> 和端口号，可以看到 <code>nginx</code> 与 <code>php-fpm</code> 之间的通信内容。</p>
 <h3 id="nginx-向-php-fpm-发送的数据fastcgi-协议数据">nginx 向 php-fpm 发送的数据（FastCGI 协议数据）</h3>
-<pre><code>SCRIPT_FILENAME/var/www/html/docker/index.php
+<pre tabindex="0"><code>SCRIPT_FILENAME/var/www/html/docker/index.php
 QUERY_STRING
 REQUEST_METHODGET
 CONTENT_TYPE
@@ -245,7 +245,7 @@ HTTP_SEC_FETCH_DESTdocument
 HTTP_ACCEPT_ENCODINGgzip, deflate, br#
 HTTP_ACCEPT_LANGUAGEzh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
 </code></pre><h3 id="php-fpm-给-nginx-发送的响应内容">php-fpm 给 nginx 发送的响应内容</h3>
-<pre><code>Primary script unknownk
+<pre tabindex="0"><code>Primary script unknownk
 Status: 404 Not Found
 X-Powered-By: PHP/7.4.22
 Content-type: text/html; charset=UTF-8
@@ -255,7 +255,7 @@ File not found.
 <p>将 <code>index.php</code> 测试文件放入正确位置后，终于能够正常访问。</p>
 <h2 id="修正-nginx-配置">修正 nginx 配置</h2>
 <p>在抓包工具的帮助下，更直观和详细的了解了 <code>nginx</code> 配置文件中的路径组成。很快将 <code>nginx</code> 中的项目路径配置正确。</p>
-<pre><code class="language-conf" data-lang="conf"># nginx 配置
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># nginx 配置
 location / {
     root /src/shop/public;
 
@@ -266,7 +266,7 @@ location / {
 }
 </code></pre><p>访问 <code>http://localhost:8080/book/1</code> 时，<code>SCRIPT_FILENAME</code> 的值映射为 <code>/src/shop/public/index.php/book/</code>1</p>
 <h2 id="更优雅的-nginx-配置方式">更优雅的 nginx 配置方式</h2>
-<pre><code class="language-conf" data-lang="conf"># 指定根目录
+<pre tabindex="0"><code class="language-conf" data-lang="conf"># 指定根目录
 root /src;
 
 # 还原真实的 URL

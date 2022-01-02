@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -195,17 +195,17 @@ blockquote,
 <p>本文通过设置 Access-Control-Allow-Origin 来实现跨域。 <br>
 例如：客户端的域名是 client.com，而请求的域名是 server.com。 <br>
 如果直接使用 ajax 访问，会有以下错误：</p>
-<pre><code>XMLHttpRequest cannot load http://server.com/server.php. 
+<pre tabindex="0"><code>XMLHttpRequest cannot load http://server.com/server.php. 
 No 'Access-Control-Allow-Origin' header is present on the requested resource.
 Origin 'http://client.com' is therefore not allowed access.
 </code></pre><h2 id="允许单个域名访问">允许单个域名访问</h2>
 <p>指定某域名（ <a href="http://client.com">http://client.com</a> ）跨域访问，则只需在 <a href="http://server.com/server.php">http://server.com/server.php</a> 文件头部添加如下代码：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>header(<span style="color:#009c00">&#39;Access-Control-Allow-Origin: http://client.com&#39;</span>);
 </code></pre></div><h2 id="允许多个域名访问">允许多个域名访问</h2>
 <p>指定多个域名（ <a href="http://client1.com">http://client1.com</a>, <a href="http://client2.com">http://client2.com</a> 等 ）跨域访问，则只需在 <a href="http://server.com/server.php">http://server.com/server.php</a> 文件头部添加如下代码：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>$origin = isset($_SERVER[<span style="color:#009c00">&#39;HTTP_ORIGIN&#39;</span>])? $_SERVER[<span style="color:#009c00">&#39;HTTP_ORIGIN&#39;</span>] : <span style="color:#009c00">&#39;&#39;</span>;  
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>  
@@ -219,7 +219,7 @@ Origin 'http://client.com' is therefore not allowed access.
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>} 
 </code></pre></div><h2 id="允许所有域名访问">允许所有域名访问</h2>
 <p>允许所有域名访问则只需在 <a href="http://server.com/server.php">http://server.com/server.php</a> 文件头部添加如下代码：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">&lt;?php</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>header(<span style="color:#009c00">&#39;Access-Control-Allow-Origin: *&#39;</span>); 
 </code></pre></div><h2 id="参考--扩展阅读">参考 &amp; 扩展阅读</h2>

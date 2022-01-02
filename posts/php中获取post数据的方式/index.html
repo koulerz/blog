@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -198,30 +198,30 @@ blockquote,
 <table>
 <thead>
 <tr>
-<th align="left"></th>
-<th align="center">form-data</th>
-<th align="center">x-www-form-urlencoded</th>
-<th align="center">raw</th>
+<th style="text-align:left"></th>
+<th style="text-align:center">form-data</th>
+<th style="text-align:center">x-www-form-urlencoded</th>
+<th style="text-align:center">raw</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">$_POST</td>
-<td align="center"><strong>推荐</strong></td>
-<td align="center"><strong>推荐</strong></td>
-<td align="center">无效</td>
+<td style="text-align:left">$_POST</td>
+<td style="text-align:center"><strong>推荐</strong></td>
+<td style="text-align:center"><strong>推荐</strong></td>
+<td style="text-align:center">无效</td>
 </tr>
 <tr>
-<td align="left">$GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;]</td>
-<td align="center">无效</td>
-<td align="center">无效</td>
-<td align="center">有效</td>
+<td style="text-align:left">$GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;]</td>
+<td style="text-align:center">无效</td>
+<td style="text-align:center">无效</td>
+<td style="text-align:center">有效</td>
 </tr>
 <tr>
-<td align="left">php://input</td>
-<td align="center">无效</td>
-<td align="center">有效</td>
-<td align="center"><strong>推荐</strong></td>
+<td style="text-align:left">php://input</td>
+<td style="text-align:center">无效</td>
+<td style="text-align:center">有效</td>
+<td style="text-align:center"><strong>推荐</strong></td>
 </tr>
 </tbody>
 </table>
@@ -234,7 +234,7 @@ blockquote,
 <p>不过，访问原始 POST 数据的更好方法是 php://input。</p>
 <h2 id="phpinput-方式">php://input 方式</h2>
 <p>php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。</p>
-<p>php://input 不能用于 enctype=&quot;multipart/form-data&rdquo;。</p>
+<p>php://input 不能用于 enctype=&ldquo;multipart/form-data&rdquo;。</p>
 <h2 id="参考--扩展阅读">参考 &amp; 扩展阅读</h2>
 <ul>
 <li><a href="http://blog.csdn.net/china_skag/article/details/7284227">$GLOBALS[&lsquo;HTTP_RAW_POST_DATA&rsquo;] 和$_POST的区别</a></li>

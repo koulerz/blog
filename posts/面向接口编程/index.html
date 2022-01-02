@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -203,7 +203,7 @@ blockquote,
 <p>总而言之，接口与抽象类的区别主要在于使用的动机，而不在于其本身。而一个东西该定义成抽象类还是接口，要根据具体环境的上下文决定。</p>
 <h2 id="面向接口编程的代码优化示例">面向接口编程的代码优化示例</h2>
 <p>我们要实现老师教儿童背古诗的功能，代码如下：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Teacher</span> {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(Children children){} <span style="color:#f00;font-style:italic">// 教儿童背古诗
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>}
@@ -216,7 +216,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span style="color:#f00;font-style:italic">/* 这是标准的面向对象编程，描述了对象间的关联 */</span>
 </code></pre></div><p>随着老师能力的提升，准备扩展服务对象，增加在校学生，代码如下：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Teacher</span> {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(Children children){} <span style="color:#f00;font-style:italic">// 教儿童背古诗
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(Students students){} <span style="color:#f00;font-style:italic">// 教学生背古诗
@@ -236,7 +236,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span style="color:#f00;font-style:italic">/* 这同样是标准的面向对象编程，但不具备扩展性 */</span>
 </code></pre></div><p>继续扩展服务对象，增加外国人，这下老师又要研究新的业务？不如一步到位，提前掌握更宽泛的技能，代码如下：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Teacher</span> {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(Person person){} <span style="color:#f00;font-style:italic">// 教人背古诗
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>}
@@ -268,7 +268,7 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span style="color:#f00;font-style:italic">/* 这对面向对象编程进行了更深入的应用，具备了一定的扩展性，称为面向基类编程，通常基类会被声明为抽象类，所以又称面向抽象类编程 */</span>
 </code></pre></div><p>按照之前的经验，估计业务又要扩展了，不过即使再出现新的服务对象类型，只要是人，老师都可以应付。</p>
 <p>但是这次新的服务对象是鹦鹉，现有的技能不匹配了。如果继续加宽服务对象范围为动物，很多动物又没办法服务，那怎么称呼这些服务对象呢？算了，不管这些对象是什么，我只需要考虑他们能干什么就好了。于是代码变成了这样：</p>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// 老师 
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">class</span> <span style="color:#007575">Teacher</span> {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>    <span style="color:#00f">public</span> <span style="color:#00f">void</span> <span style="color:#c34e00">teach</span>(ListenAndReciteAble lar){} <span style="color:#f00;font-style:italic">// 教背古诗
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"></span>}

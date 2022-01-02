@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -195,7 +195,7 @@ blockquote,
 <h2 id="下载-gitlab-runner-错误">下载 gitlab-runner 错误</h2>
 <p>下载链接：<code>sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64</code></p>
 <p>错误信息</p>
-<pre><code>root@desktop:~# sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+<pre tabindex="0"><code>root@desktop:~# sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
 --2021-06-09 17:31:14--  https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
 正在解析主机 gitlab-runner-downloads.s3.amazonaws.com (gitlab-runner-downloads.s3.amazonaws.com)... 52.217.16.228
 正在连接 gitlab-runner-downloads.s3.amazonaws.com (gitlab-runner-downloads.s3.amazonaws.com)|52.217.16.228|:443... 已连接。
@@ -230,7 +230,7 @@ blockquote,
 <li><a href="https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant/1160074#1160074">ttyname failed: Inappropriate ioctl for device` in Vagrant</a></li>
 </ul>
 <h2 id="docker-权限错误">Docker 权限错误</h2>
-<pre><code>$ docker volume create z1-go
+<pre tabindex="0"><code>$ docker volume create z1-go
 Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.29/volumes/create: dial unix /var/run/docker.sock: connect: permission denied
 </code></pre><p>解决方法：
 将用户 <code>gitlab-runner</code> 加入 <code>docker</code> 用户组
@@ -239,7 +239,7 @@ Got permission denied while trying to connect to the Docker daemon socket at uni
 <p>使用 <code>gitlab-runner start</code> 无法启动服务，但使用 <code>gitlab-runner run</code> 能够启动服务。</p>
 <p>可能是因为之前安装过 gitlab-runner 服务导致的冲突</p>
 <h3 id="syslog-错误信息">syslog 错误信息</h3>
-<pre><code>Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Service hold-off time over, scheduling restart.
+<pre tabindex="0"><code>Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Service hold-off time over, scheduling restart.
 Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Scheduled restart job, restart counter is at 1035.
 Jun 11 17:34:46 desktop systemd[1]: Stopped GitLab Runner.
 Jun 11 17:34:46 desktop systemd[1]: Started GitLab Runner.

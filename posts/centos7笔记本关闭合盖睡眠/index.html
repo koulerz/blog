@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -198,7 +198,7 @@ blockquote,
 <li>执行<code>systemctl restart systemd-logind</code>命令，使刚才的修改生效</li>
 </ol>
 <p>修改后的文件内容如下：</p>
-<pre><code>[Login]
+<pre tabindex="0"><code>[Login]
 #NAutoVTs=6
 #ReserveVT=6
 #KillUserProcesses=no
@@ -221,7 +221,7 @@ HandleLidSwitch=ignore
 #UserTasksMax=
 </code></pre><p>如需再次进入待机状态，可执行<code>systemctl suspend</code>命令。</p>
 <h2 id="通过修改配置文件自定义电源管理">通过修改配置文件自定义电源管理</h2>
-<pre><code># /etc/systemd
+<pre tabindex="0"><code># /etc/systemd
 
 动作:
 HandlePowerKey       # 按下电源键后的动作

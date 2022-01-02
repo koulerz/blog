@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.66.0" />
+  <meta name="generator" content="Hugo 0.89.4" />
 
   
   <meta name="description" content="this is description">
@@ -208,7 +208,7 @@ blockquote,
 <li>使用浏览器测试代码</li>
 </ol>
 <h2 id="编译测试代码">编译测试代码</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">// 测试代码 main.go
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">// 测试代码 main.go
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">package</span> main
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#00f">import</span> <span style="color:#009c00">&#34;fmt&#34;</span>
@@ -216,10 +216,10 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#00f">func</span> <span style="color:#c34e00">main</span>() {
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>    fmt.<span style="color:#c34e00">Println</span>(<span style="color:#009c00">&#34;hello, Go/WASM!&#34;</span>)
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>}
-</code></pre></div><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载</span>
+</code></pre></div><div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>$ GOOS=js GOARCH=wasm go build -o test.wasm main.go
 </code></pre></div><h2 id="编写-webserver-代码">编写 WebServer 代码</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// server.go
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">// server.go
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">package</span> main
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#00f">import</span> (
@@ -234,10 +234,10 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>    log.<span style="color:#c34e00">Fatal</span>(http.<span style="color:#c34e00">ListenAndServe</span>(<span style="color:#009c00">&#34;:&#34;</span>+*port, http.<span style="color:#c34e00">FileServer</span>(http.<span style="color:#c34e00">Dir</span>(<span style="color:#009c00">&#34;.&#34;</span>))))
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>}
 </code></pre></div><h2 id="拷贝-golang-自带的测试文件">拷贝 Golang 自带的测试文件</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># /usr/local/go 是 Golang 根目录 (GOROOT)</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># /usr/local/go 是 Golang 根目录 (GOROOT)</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>$ cp /usr/local/go/misc/wasm/wasm_exec.{html,js} ./
 </code></pre></div><h2 id="在浏览器测试代码">在浏览器测试代码</h2>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 启动 WebServer</span>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic"># 启动 WebServer</span>
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>$ go run server.go
 </code></pre></div><p>打开测试网页 <code>localhost:8000/wasm_exec.html</code>，会看到一个 <code>run</code> 按钮</p>
 <p>点击按钮，在浏览器控制台将会看到 <code>hello, Go/WASM!</code> 字符串，代表代码正确运行</p>
