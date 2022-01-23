@@ -6,7 +6,18 @@
     <description>Recent content in laravel on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 14 Aug 2018 11:13:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Jan 2022 15:42:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Laravel 中的服务容器设计模式</title>
+      <link>https://kouler.com/posts/laravel-%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 23 Jan 2022 15:42:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/posts/laravel-%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description>名词解释：    术语 说明     IoC (Inversion of Control) 控制反转   DI (Dependence Injection) 依赖注入   Service Container 服务容器/IOC 容器   Service Provider 服务提供者    目录  什么是依赖 什么是容器 什么是服务提供者 什么是Facades 执行流程 概述执行流程 参考  什么是依赖 大多数面向对象编程语言，在调用一个类的时候，先要实例化这个类，生成一个对象。 如果在写一个类时，过程中要调用到很多其它类，甚至这里的其它类，也要“依赖”于更多其它的类，那么可以想象，就需要进行多少次实例化。这就是“依赖”的意思。
+什么是容器 容器（IoC容器）是一个设计模式，是 Laravel 的核心机制，容器本身就是通过 Laravel 中的一个核心类实现的，这个类，叫做 Application , 程序启动的时候就实例化了这个类， 放在 $app 变量中, 这就是 IoC 容器。 如果把某个类（不管有多少依赖关系）放入这个容器中，可以“解析”出这个类的实例。 Laravel 框架中 vendor 文件夹下的内核文件和各种扩展服务大都已注册在容器中方便使用。
+什么是服务提供者 IoC容器中存放着注册过的类，但调用某个类时容器可以直接解析出这个类的对象。那么如何将类注册到IoC容器呢？这个时候就需要服务提供者了。框架中的扩展服务和开发者写的第三方扩展都是通过服务提供者注册到 IoC 容器，服务提供者提供了连接扩展与内核的作用，也正是因为有服务提供者，所以注册代码才不至于写乱。</description>
+    </item>
+    
     <item>
       <title>解决 Cron 不能正常执行 Laravel 计划任务</title>
       <link>https://kouler.com/posts/%E8%A7%A3%E5%86%B3cron%E4%B8%8D%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%B0%83%E7%94%A8laravel%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1/</link>

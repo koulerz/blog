@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Kouler</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 02 Jan 2022 13:46:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 Jan 2022 15:42:42 +0800</lastBuildDate><atom:link href="https://kouler.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>laravel</title>
+      <link>https://kouler.com/tags/laravel/</link>
+      <pubDate>Sun, 23 Jan 2022 15:42:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/laravel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>设计模式</title>
+      <link>https://kouler.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link>
+      <pubDate>Sun, 23 Jan 2022 15:42:42 +0800</pubDate>
+      
+      <guid>https://kouler.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>command</title>
       <link>https://kouler.com/tags/command/</link>
@@ -364,15 +382,6 @@
       <pubDate>Tue, 14 Aug 2018 11:13:42 +0800</pubDate>
       
       <guid>https://kouler.com/tags/cron/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>laravel</title>
-      <link>https://kouler.com/tags/laravel/</link>
-      <pubDate>Tue, 14 Aug 2018 11:13:42 +0800</pubDate>
-      
-      <guid>https://kouler.com/tags/laravel/</guid>
       <description></description>
     </item>
     

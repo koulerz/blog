@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <meta name="generator" content="Hugo 0.89.4" />
+
+  
+  <meta name="description" content="this is description">
+  
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="https://kouler.com/apple-touch-icon.png">
+
+  
+  <link rel="icon" type="image/png" sizes="32x32" href="https://kouler.com/favicon-32x32.png">
+
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="https://kouler.com/favicon-16x16.png">
+
+  
+  <link rel="manifest" href="https://kouler.com/site.webmanifest">
+
+  
+  <link rel="mask-icon" href="https://kouler.com/safari-pinned-tab.svg" color="#5bbad5">
+
+  <meta name="msapplication-TileColor" content="#da532c">
+
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <link rel="stylesheet" href="https://kouler.com/css/bootstrap.min.css" />
+
+  
+  <title>Laravel 中的服务容器设计模式 | Kouler</title>
+  
+
+  <style>
+body {
+  min-width: 300px;
+}
+
+.custom-navbar {
+  margin-bottom: 1em;
+  height: 60px;
+}
+
+.custom-navbar a {
+  display: inline-block; 
+  padding: 18px 0;
+  margin-right: 1em; 
+  font-weight: bold; 
+}
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  text-decoration: none; 
+}
+
+@media print {
+  .custom-navbar {
+    display: none;
+  }
+}
+
+article {
+  padding-bottom: 1em;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+body {
+  background-color: #fff;
+}
+
+
+
+body {
+  color: #212529;
+}
+
+
+
+a {
+  color: #336699;
+}
+
+
+
+a:hover,
+a:focus {
+  color: #336699;
+}
+
+
+
+.custom-navbar {
+  background-color: #ffffff;
+}
+
+
+
+.custom-navbar a {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+
+
+.custom-navbar a:hover,
+.custom-navbar a:focus {
+  color: rgba(0, 0, 0, 1);
+}
+
+
+
+.container {
+  max-width: 1024px;
+}
+
+
+
+pre {
+  display: block;
+  padding: 9.5px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+pre code {
+  padding: 0;
+  font-size: inherit;
+  color: inherit; 
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+code {
+  padding: 0 0 0 3px;
+  font-size: .9em;
+}
+
+code a,
+code a:hover {
+  color: #999999;
+}
+
+
+
+blockquote,
+.blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 1em;
+  border-left: 5px solid #6c757d;
+}
+
+</style>
+</head>
+
+<body>
+  <nav class="custom-navbar">
+  <div class="container">
+    
+    <a href="/">Posts</a>
+    
+    <a href="/tags/">Tags</a>
+    
+  </div>
+</nav>
+  
+  <div class="container">
+    <article>
+      <h1 style="margin:0 0 5px 0">Laravel 中的服务容器设计模式</h1>
+    
+    
+    <small class="text-secondary">2022-01-23</small>
+    
+
+<small><code><a href="https://kouler.com/tags/laravel">#laravel</a></code></small>
+
+
+<small><code><a href="https://kouler.com/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">#设计模式</a></code></small>
+
+    <br><br>
+<h2 id="名词解释">名词解释：</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">术语</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">IoC (Inversion of Control)</td>
+<td style="text-align:left">控制反转</td>
+</tr>
+<tr>
+<td style="text-align:left">DI (Dependence Injection)</td>
+<td style="text-align:left">依赖注入</td>
+</tr>
+<tr>
+<td style="text-align:left">Service Container</td>
+<td style="text-align:left">服务容器/IOC 容器</td>
+</tr>
+<tr>
+<td style="text-align:left">Service Provider</td>
+<td style="text-align:left">服务提供者</td>
+</tr>
+</tbody>
+</table>
+<h2 id="目录">目录</h2>
+<ol>
+<li>什么是依赖</li>
+<li>什么是容器</li>
+<li>什么是服务提供者</li>
+<li>什么是Facades</li>
+<li>执行流程</li>
+<li>概述执行流程</li>
+<li>参考</li>
+</ol>
+<h2 id="什么是依赖">什么是依赖</h2>
+<p>大多数面向对象编程语言，在调用一个类的时候，先要实例化这个类，生成一个对象。 如果在写一个类时，过程中要调用到很多其它类，甚至这里的其它类，也要“依赖”于更多其它的类，那么可以想象，就需要进行多少次实例化。这就是“依赖”的意思。</p>
+<h2 id="什么是容器">什么是容器</h2>
+<p>容器（IoC容器）是一个设计模式，是 Laravel 的核心机制，容器本身就是通过 Laravel 中的一个核心类实现的，这个类，叫做 Application , 程序启动的时候就实例化了这个类， 放在 $app 变量中, 这就是 IoC 容器。
+如果把某个类（不管有多少依赖关系）放入这个容器中，可以“解析”出这个类的实例。
+Laravel 框架中 vendor 文件夹下的内核文件和各种扩展服务大都已注册在容器中方便使用。</p>
+<h2 id="什么是服务提供者">什么是服务提供者</h2>
+<p>IoC容器中存放着注册过的类，但调用某个类时容器可以直接解析出这个类的对象。那么如何将类注册到IoC容器呢？这个时候就需要服务提供者了。框架中的扩展服务和开发者写的第三方扩展都是通过服务提供者注册到 IoC 容器，服务提供者提供了连接扩展与内核的作用，也正是因为有服务提供者，所以注册代码才不至于写乱。</p>
+<p>接下来扩展一个自己的类将它注册到 IoC 容器并调用它的实例：</p>
+<p>需要的文件：</p>
+<ul>
+<li><code>/app/Tools/Piece.php</code> 扩展类</li>
+<li><code>/app/Providers/ToolServiceProvider.php</code> 通过服务提供者将类注册到容器</li>
+<li><code>/config/app.php</code> 配置文件</li>
+<li><code>/app/Controllers/TestController.php</code> 控制器，用来调用扩展类</li>
+</ul>
+<ol>
+<li>
+<p>首先创建扩展类</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic">// FilePath: /app/Tools/Piece.php
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#00f">namespace</span> App\Tools;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#00f">class</span> <span style="color:#007575">Piece</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    <span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">work</span>()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>        <span style="color:#00f">echo</span> <span style="color:#009c00">&#34;i am working&#34;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>}
+</code></pre></div></li>
+<li>
+<p>接下来将这个扩展类通过 Service Provider 注册到容器</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic">// FilePath: /app/Providers/ToolServiceProvider.php
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#00f">namespace</span> App\Providers;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#00f">use</span> App\Tools\Piece;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#00f">use</span> Illuminate\Support\ServiceProvider;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#00f">class</span> <span style="color:#007575">ToolServiceProvider</span> <span style="color:#00f">extends</span> ServiceProvider
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    <span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">register</span>()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>        $this-&gt;app-&gt;singleton(<span style="color:#009c00">&#39;ptool&#39;</span>, <span style="color:#00f">function</span>(){
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>            <span style="color:#00f">return</span> <span style="color:#00f">new</span> Piece;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>        });
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>}
+</code></pre></div><ul>
+<li>这就是服务提供者，这个服务提供者完成将扩展类注册到IoC容器中的工作。</li>
+<li>这个服务提供者(ServiceProvider)文件中，register() 这个方法只能用来注册服务，不能写其它不相关的东西。</li>
+<li>在匿名函数里 new 了一个类实例并返回，这也就是为什么通过 IoC 容器可以直接得到类实例的原因。</li>
+<li>这里的 ptool 可以理解成一个别名，名称可以随意取，以后的使用中将通过这个别名从容器中获取到这个类实例。</li>
+<li>注意这里的 singleton 方法，Laravel 提供了多种方式将类注册到容器，singleton 是其中一种，意为单例模式，意思是这个类不论使用多少次，只能生成一个对象（即匿名函数中的代码只执行一次）。可以查看官方文档了解其它方式。</li>
+</ul>
+</li>
+<li>
+<p>现在扩展类仍无法在容器中生效，还需要将写好的服务提供者(Service Provider)加载到启动序列。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic">// FilePath: /config/app.php
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#009c00">&#39;providers&#39;</span> =&gt; [
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>    <span style="color:#f00;font-style:italic">// Laravel Framework Service Providers ...
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#f00;font-style:italic">// ...
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    <span style="color:#f00;font-style:italic">// Application Service Providers ...
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#f00;font-style:italic">// ...
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"></span>    App\Providers\ToolServiceProvider::class,
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>],
+</code></pre></div><p>App 配置文件中，这个 providers 数组中存放着所有服务提供者。</p>
+</li>
+<li>
+<p>到目前为止，扩展类已经注册到 IoC容器中了，接下来看如何使用它</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic">// FilePath: /app/Http/Controllers/TestController.php
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#00f">namespace</span> App\Http\Controllers;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#00f">use</span> App;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#00f">use</span> App\Http\Controllers\Controller;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#00f">class</span> <span style="color:#007575">TestController</span> <span style="color:#00f">extends</span> Controller
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    <span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">index</span>()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>        App::make(<span style="color:#009c00">&#39;ptool&#39;</span>)-&gt;work();
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>}
+</code></pre></div><p>使用 App 中的 make() 方法，通过传入服务提供者中定义的别名就可以得到扩展类的实例，然后访问扩展类中的 work() 方法。</p>
+</li>
+<li>
+<p>访问 <code>localhost:8888/laravel/public</code> 地址，页面正确输出 <code>i am working</code></p>
+</li>
+</ol>
+<h2 id="什么是facades">什么是Facades</h2>
+<p>在 TestController.php 文件中，使用了 App::make(&lsquo;ptool&rsquo;)-&gt;work() 调用 work() 方法，其实还有更简单和优雅的写法。类似于这句代码中调用 App 类下的 make() 方法，App::make()，
+那么从 App::make(&lsquo;ptool&rsquo;)-&gt;work() 简化到 Piece::work() 就是 Facades 所要做的事情。</p>
+<p>接下来将实现它。需要的文件：</p>
+<ul>
+<li><code>/app/Facades/Piece.php</code> Piece类的 Facade 文件</li>
+<li><code>/config/app.php</code> 配置文件</li>
+<li><code>/app/Controllers/TestController.php</code> 控制器，用来调用扩展类</li>
+</ul>
+<ol>
+<li>
+<p>首先创建 Piece 类的 Facade 文件</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic">// FilePath: /app/Facades/Piece.php
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#00f">namespace</span> App\Facades;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#00f">use</span> Illuminate\Support\Facades\Facade;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#00f">class</span> <span style="color:#007575">Piece</span> <span style="color:#00f">extends</span> Facade
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>    <span style="color:#00f">protected</span> <span style="color:#00f">static</span> <span style="color:#00f">function</span> <span style="color:#c34e00">getFacadeAccessor</span>()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>        <span style="color:#00f">return</span> <span style="color:#009c00">&#39;ptool&#39;</span>;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>}
+</code></pre></div><p>通过这个文件 Facades 会自动完成 App::make(&lsquo;ptool&rsquo;) 这步操作并返回类实例。</p>
+</li>
+<li>
+<p>类似于服务提供者(Service Provider)使用之前要注册，要想使用 Facades，也需要在配置文件中的 aliases 数组中先设置一个别名。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#f00;font-style:italic">// FilePath: /config/app.php
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#009c00">&#39;aliases&#39;</span> =&gt; [
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>    <span style="color:#009c00">&#39;App&#39;</span> =&gt; Illuminate\Support\Facades\App::class;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>    <span style="color:#f00;font-style:italic">// ...
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#009c00">&#39;Piece&#39;</span> =&gt; App\Facades\Piece::class;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span>],
+</code></pre></div><p>这个数组中是所有设置过 Facades 的类，可以看到刚刚提及的 App::make()。</p>
+</li>
+<li>
+<p>现在就可以使用更简单的方式调用扩展类中的 work() 方法了，其实简单的说 Facades 只是一个别名而已，为了使代码看起来更优雅。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic">// FilePath: /app/Http/Controllers/TestController.php
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#00f">namespace</span> App\Http\Controllers;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#00f">use</span> App;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#00f">use</span> App\Facades\Piece;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#00f">use</span> App\Http\Controllers\Controller;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#00f">class</span> <span style="color:#007575">TestController</span> <span style="color:#00f">extends</span> Controller
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>    <span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">index</span>()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>        Piece::work();
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>}
+</code></pre></div></li>
+<li>
+<p>访问 <code>localhost:8888/laravel/public</code> 地址，页面正确输出 <code>i am working</code></p>
+</li>
+</ol>
+<h2 id="执行流程">执行流程</h2>
+<p>接下来通过自己写的扩展透过 Laravel 源代码来理解一下 Laravel 框架中这部分的执行流程。</p>
+<ol>
+<li>
+<p>首先请求路由：
+/app/Http/routes.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>Router::get(<span style="color:#009c00">&#39;/&#39;</span>, <span style="color:#009c00">&#39;TestController@index&#39;</span>);  <span style="color:#f00;font-style:italic">// &lt;--
+</span></code></pre></div></li>
+<li>
+<p>通过路由，找到 TestController 中的 index() 方法：
+/app/Http/Controllers/TestController.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span style="color:#00f">namespace</span> App\Http\Controllers;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#00f">use</span> App;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#00f">use</span> App\Facades\Piece;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span style="color:#00f">class</span> <span style="color:#007575">TestController</span> <span style="color:#00f">extends</span> Controller
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>    <span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">index</span>()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>        Piece::work(); <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#f00;font-style:italic"></span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>}
+</code></pre></div></li>
+<li>
+<p>从现在开始，Facades 开始发挥作用，通过在App配置文件中设置的别名，自动加载 App\Facades\Piece 类
+/config/app.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#009c00">&#39;aliases&#39;</span> =&gt; [
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#009c00">&#39;App&#39;</span> =&gt; Illuminate\Support\Facades\App::class;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>    <span style="color:#f00;font-style:italic">// ...
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#f00;font-style:italic"></span>    <span style="color:#009c00">&#39;Piece&#39;</span> =&gt; App\Facades\Piece::class; <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span style="color:#f00;font-style:italic"></span>]
+</code></pre></div></li>
+<li>
+<p>现在便可通过别名将 Piece::work() 还原成  App\Facades\Piece::work()。接下来就是 Facades 的关键部分，这里的两个冒号表示去访问 Piece 类中的静态方法，而这个类中又没有 work() 静态方法，Facades 便是使用了 PHP 中的 __callStatic() 魔术方法使得程序跳转到这个方法中来
+/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#00f">function</span> __callStatic($method, $args)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    $instance = <span style="color:#00f">static</span>::getFacadeRoot(); <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    <span style="color:#00f">switch</span> (count($args)) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>        <span style="color:#00f">case</span> 0:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>            <span style="color:#00f">return</span> $instance-&gt;$method();
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>        <span style="color:#00f">case</span> 1:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>            <span style="color:#00f">return</span> $instance-&gt;$method();
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>        <span style="color:#00f">case</span> 2:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>            <span style="color:#00f">return</span> $instance-&gt;$method($args[0], $args[1]);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>    <span style="color:#f00;font-style:italic">// ...
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span style="color:#f00;font-style:italic"></span>}
+</code></pre></div><p>下图中的 static::getFacadeAccessor() 方法便是在 /app/Facades/Piece.php 文件中的那个方法
+/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#00f">function</span> <span style="color:#c34e00">getFacadeRoot</span>()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#00f">return</span> <span style="color:#00f">static</span>::resolveFacadeInstance(<span style="color:#00f">static</span>::getFacadeAccessor()); <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#f00;font-style:italic"></span>}
+</code></pre></div></li>
+<li>
+<p>这个方法返回 ptool ，正是在服务提供者(Service Provider)中注册的类别名
+/app/Facades/Piece.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00f">namespace</span> App\Facades;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#00f">use</span> Illuminate\Support\Facades\Facade;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span style="color:#00f">class</span> <span style="color:#007575">Piece</span> <span style="color:#00f">extends</span> Facade
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    <span style="color:#00f">protected</span> <span style="color:#00f">static</span> <span style="color:#00f">function</span> <span style="color:#c34e00">getFacadeAccessor</span>()
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>    {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>        <span style="color:#00f">return</span> <span style="color:#009c00">&#39;ptool&#39;</span>; <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#f00;font-style:italic"></span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>}
+</code></pre></div></li>
+<li>
+<p>到这里，程序自动执行了 App::make(&lsquo;ptool&rsquo;) 这段代码，还记得使用 Facades 时将 App::make(&lsquo;ptool&rsquo;)-&gt;work() 简化成了 Piece::work() 吗，所以在这里，Facades 的工作就算结束了。
+/vendor/laravel/framework/src/Illuminate/Foundation/Application.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">make</span>($abstract, <span style="color:#00f">array</span> $parameters=[])
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    $abstract = $this-&gt;getAlias($abstract);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    <span style="color:#00f">if</span> (isset($this-&gt;deferredServices[$abstract])) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>        $this-&gt;loadDeferredProvider($abstract);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>    <span style="color:#00f">return</span> <span style="color:#00f">parent</span>::make($abstract, $parameters); <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span style="color:#f00;font-style:italic"></span>}
+</code></pre></div></li>
+<li>
+<p>通过Container 文件中的 make 方法，可以找到 ptool 对应的服务提供者
+/vendor/laravel/framework/src/Illuminate/Container/Container.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">make</span>($abstract, <span style="color:#00f">array</span> $parameters=[])
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    $abstract = $this-&gt;getAlias($abstract);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    <span style="color:#00f">if</span> (isset($this-&gt;instances[$abstract])) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>        <span style="color:#00f">return</span> $this-&gt;instances[$abstract];
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>    $concrete = $this-&gt;getConcrete($abstract);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>    <span style="color:#00f">if</span> ($this-&gt;isBuildable($concrete, $abstract)) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>        $object = $this-&gt;build($concrete, $parameters); <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#f00;font-style:italic"></span>    } <span style="color:#00f">else</span> {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>        $object = $this-&gt;make($concrete, $parameters);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span>}
+</code></pre></div><p>/vendor/laravel/framework/src/Illuminate/Container/Container.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">build</span>($concrete, <span style="color:#00f">array</span> $parameters = [])
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    <span style="color:#00f">if</span> ($concrete instanceof Closure) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>        <span style="color:#00f">return</span> $concrete($this, $parameters); <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#f00;font-style:italic"></span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>}
+</code></pre></div></li>
+<li>
+<p>找到创建的服务提供者 ( Service Provider ) 文件后，执行方法中的代码，这里返回一个实例，也就是扩展类 ( App\Tools\Piece ) 实例
+/app/Providers/ToolServiceProvider.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#00f">public</span> <span style="color:#00f">function</span> <span style="color:#c34e00">register</span>() 
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>    $this-&gt;app-&gt;singleton(<span style="color:#009c00">&#39;ptool&#39;</span>, <span style="color:#00f">function</span>() {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span>        <span style="color:#00f">return</span> <span style="color:#00f">new</span> Piece; <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#f00;font-style:italic"></span>    });
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>}
+</code></pre></div></li>
+<li>
+<p>最后，程序跳回 Facades ，执行扩展类中的 work() 方法
+/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-php" data-lang="php"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span>&lt;?php
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#00f">public</span> <span style="color:#00f">static</span> <span style="color:#00f">function</span> __callStatic($method, $args)
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>{
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span>    $instance = <span style="color:#00f">static</span>::getFacadeRoot();
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>    <span style="color:#00f">switch</span> (count($args)) {
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span>        <span style="color:#00f">case</span> 0:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>            <span style="color:#00f">return</span> $instance-&gt;$method(); <span style="color:#f00;font-style:italic">// &lt;--
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span style="color:#f00;font-style:italic"></span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span>        <span style="color:#00f">case</span> 1:
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>            <span style="color:#00f">return</span> $instance-&gt;$method($args[0]);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span>        <span style="color:#f00;font-style:italic">// ...
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span style="color:#f00;font-style:italic"></span>    }
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span>}
+</code></pre></div></li>
+<li>
+<p>访问 <code>localhost:8888/laravel/public</code> 地址，页面正确输出 <code>i am working</code>。整个流程结束</p>
+</li>
+</ol>
+<h2 id="概述文件执行流程">概述文件执行流程</h2>
+<ol>
+<li><code>/app/Http/routes.php</code> 路由文件</li>
+<li><code>/app/Controllers/TestController.php</code> 控制器，用来调用扩展类</li>
+<li><code>/config/app.php</code> 配置文件</li>
+<li><code>/app/Facades/Piece.php</code> Piece类的 Facade 文件</li>
+<li><code>/app/Providers/ToolServiceProvider.php</code> 通过服务提供者将类注册到容器</li>
+<li><code>/app/Tools/Piece.php</code> 扩展类</li>
+</ol>
+<p>简单的说，请求通过路由文件 <code>routes.php</code> 执行控制器 <code>TestController.php</code>，控制器中的代码通过 App 配置文件 <code>app.php</code> 找到 Facades 文件 <code>\Facades\Piece.php</code>，Facades 文件找到 Service Provider 文件 <code>ToolServiceProvider.php</code>，通过 Service Provider 获取到扩展类 <code>Piece.php</code> 的实例 ，执行实例中的 work() 方法。</p>
+<h2 id="参考">参考</h2>
+<ul>
+<li><a href="https://laravel.com/docs/5.2">Laravel 官方文档</a></li>
+<li><a href="http://laravelbase.com/collections/1/46">Service Provider</a></li>
+<li><a href="http://laravelbase.com/collections/1/47">Service Container IoC 容器</a></li>
+<li><a href="http://yansu.org/2014/12/06/ioc-and-facade-in-laravel.html">Laravel 核心：控制反转和门面模式</a></li>
+<li><a href="https://www.youtube.com/watch?v=sXvTKlZuW4M">Laravel5的Façade、Service Provider之一知半解</a></li>
+<li><a href="https://www.youtube.com/watch?v=dkCW_uCMFPw">Laravel 4 - IoC Container Basics</a></li>
+</ul>
+
+    </article>
+  </div>
+
+  
+  
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-123456789-1', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+
+  
+</body>
+
+</html>
