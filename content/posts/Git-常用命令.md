@@ -2,7 +2,7 @@
 title: "Git 常用命令"
 date: 2022-01-02T13:25:15+08:00
 publishdate: 2022-01-02
-lastmod: 2022-01-02
+lastmod: 2022-01-23
 draft: false
 tags: ["git"]
 ---
@@ -96,7 +96,12 @@ github 新创建了仓库，将本地代码 push 上去前需要先拉取远端�
 4. `git log` 查看是否删除成功
 5. `git push origin HEAD --force` 强制推送到远端仓库
 
+## 忽略 gitignore 中已被追踪的文件
+`git rm --cached <file>`
+
+
 ## 参考
 
 - [如何把已存在的 git 项目转移到 Gitlab 项目](https://segmentfault.com/q/1010000000385886)
 - [Git 远程操作详解](http://www.ruanyifeng.com/blog/2014/06/git_remote.html)
+- [How to make Git “forget” about a file that was tracked but is now in .gitignore?](https://stackoverflow.com/questions/1274057/how-to-make-git-forget-about-a-file-that-was-tracked-but-is-now-in-gitignore)
