@@ -232,13 +232,14 @@ blockquote,
 <span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span style="color:#00f">WHERE</span> id <span style="color:#00f">IN</span> (1,2,3)
 </code></pre></div><h2 id="序列操作-sql-语句">序列操作 SQL 语句</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span style="color:#f00;font-style:italic">-- 查看当前序列的值
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">SELECT</span> currval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span style="color:#f00;font-style:italic">-- 设置序列的初始值为 100
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">select</span> setval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>,100);
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span style="color:#f00;font-style:italic">-- 递增序列的值并返回
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">select</span> nextval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">SELECT</span> currval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);    
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span style="color:#00f">SELECT</span> last_value <span style="color:#00f">FROM</span> user_id_seq;
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span style="color:#f00;font-style:italic">-- 设置序列的初始值为 100
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">SELECT</span> setval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>,100);
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span>
+<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span style="color:#f00;font-style:italic">-- 递增序列的值并返回
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">9</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">SELECT</span> nextval(<span style="color:#009c00">&#39;user_id_seq&#39;</span>);
 </code></pre></div><h2 id="查询-sql-语句">查询 SQL 语句</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sql" data-lang="sql"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic">-- 转换时间戳为格式化时间函数 TO_TIMESTAMP()
 </span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span style="color:#f00;font-style:italic"></span><span style="color:#00f">SELECT</span> TO_TIMESTAMP(created_at) <span style="color:#00f">FROM</span> <span style="color:#00f">user</span>;
