@@ -56,6 +56,9 @@ Command + P + @         定位到对应 Symbols
 Command + Shift + \     定位到代码块前后位置
 Command + U             定位上一次光标操作
 Command + K Command + D 定位到下一个选中内容的位置
+
+Command + K Command + 0 折叠全部
+Command + K Command + J 展开全部
 ```
 
 ## Windows
@@ -113,4 +116,7 @@ F3                      定位到下一个选中内容的位置
 Shift + F3              定位到上一个选中内容的位置
 Ctrl + U                定位上一次光标操作
 Ctrl + K Ctrl + D       定位到下一个选中内容的位置
+
+Ctrl + K Ctrl + 0       折叠全部
+Ctrl + K Ctrl + J       展开全部
 ```
