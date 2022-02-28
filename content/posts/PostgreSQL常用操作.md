@@ -50,13 +50,14 @@ WHERE id IN (1,2,3)
 ## 序列操作 SQL 语句
 ```sql
 -- 查看当前序列的值
-SELECT currval('user_id_seq');
+SELECT currval('user_id_seq');    
+SELECT last_value FROM user_id_seq;
 
 -- 设置序列的初始值为 100
-select setval('user_id_seq',100);
+SELECT setval('user_id_seq',100);
 
 -- 递增序列的值并返回
-select nextval('user_id_seq');
+SELECT nextval('user_id_seq');
 ```
 
 ## 查询 SQL 语句
