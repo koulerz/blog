@@ -6,7 +6,9 @@ lastmod: 2020-10-24
 draft: false
 tags: ["postgresql", "database", "command"]
 ---
+
 ## 增删改查 SQL 语句
+
 ```sql
 -- 插入数据
 INSERT INTO user_tbl(name, signup_date) VALUES('张三', '2013-12-22');
@@ -22,10 +24,11 @@ DELETE FROM user_tbl WHERE name = '李四' ;
 ```
 
 ## 批量更新 SQL 语句
+
 ```sql
 -- 批量更新一个字段
-UPDATE mytable 
-SET myfield = CASE id 
+UPDATE mytable
+SET myfield = CASE id
     WHEN 1 THEN 'value'
     WHEN 2 THEN 'value'
     WHEN 3 THEN 'value'
@@ -33,13 +36,13 @@ END
 WHERE id IN (1,2,3)
 
 -- 批量更新多个字段
-UPDATE categories 
-SET display_order = CASE id 
-    WHEN 1 THEN 3 
-    WHEN 2 THEN 4 
-    WHEN 3 THEN 5 
-END, 
-title = CASE id 
+UPDATE categories
+SET display_order = CASE id
+    WHEN 1 THEN 3
+    WHEN 2 THEN 4
+    WHEN 3 THEN 5
+END,
+title = CASE id
     WHEN 1 THEN 'New Title 1'
     WHEN 2 THEN 'New Title 2'
     WHEN 3 THEN 'New Title 3'
@@ -48,9 +51,10 @@ WHERE id IN (1,2,3)
 ```
 
 ## 序列操作 SQL 语句
+
 ```sql
 -- 查看当前序列的值
-SELECT currval('user_id_seq');    
+SELECT currval('user_id_seq');
 SELECT last_value FROM user_id_seq;
 
 -- 设置序列的初始值为 100
@@ -61,6 +65,7 @@ SELECT nextval('user_id_seq');
 ```
 
 ## 查询 SQL 语句
+
 ```sql
 -- 转换时间戳为格式化时间函数 TO_TIMESTAMP()
 SELECT TO_TIMESTAMP(created_at) FROM user;
@@ -69,6 +74,7 @@ SELECT TO_TIMESTAMP(created_at) FROM user;
 -- 使用 'CST' 时区不一定显示为中国本地时间，建议使用 'Asia/Shanghai' 时区
 SELECT TO_TIMESTAMP(created_at) AT TIME ZONE 'CST' FROM user;
 SELECT TO_TIMESTAMP(created_at) AT TIME ZONE 'Asia/Shanghai' FROM user;
+SELECT TO_CHAR(TO_TIMESTAMP(created_at) AT TIME ZONE 'UTC-8', 'YYYY-MM-DD HH24:MI:SS') FROM user;
 
 -- 返回字段中的条件判断
 SELECT name, CASE sex WHEN 1 THEN '男' WHEN 2 THEN '女' ELSE '保密' END AS sex, age FROM user;
@@ -87,6 +93,7 @@ SELECT array_to_json(ids) FROM user;
 ```
 
 ## Schema 操作 SQL 语句
+
 ```sql
 -- 创建新表
 CREATE TABLE user_tbl(name VARCHAR(20), signup_date DATE);
@@ -133,6 +140,7 @@ DROP DATABASE IF EXISTS hello;
 ```
 
 ## 创建数据表例子
+
 ```sql
 CREATE TABLE lm_user(
     id SERIAL PRIMARY KEY NOT NULL, -- 'ID'
@@ -147,6 +155,7 @@ CREATE TABLE lm_user(
 ```
 
 ## 常用控制台命令
+
 ```
 \password           设置密码。
 \q                  退出。
@@ -162,6 +171,7 @@ CREATE TABLE lm_user(
 ```
 
 ## 备份和恢复
+
 ```
 pg_dump     备份
 pg_dumpall  备份所有数据库
@@ -170,5 +180,6 @@ psql exampledb < exampledb.sql 导入数据
 ```
 
 ## 参考 & 扩展阅读
+
 - [Sequence 和主键有什么区别](http://bbs.csdn.net/topics/340077504)
 - [PostgreSQL 序列（SEQUENCE）](http://www.cnblogs.com/mchina/archive/2013/04/10/3012493.html)
