@@ -2,7 +2,7 @@
 title: "PostgreSQL 常用操作"
 date: 2016-04-03T12:21:24+08:00
 publishdate: 2016-04-03
-lastmod: 2020-10-24
+lastmod: 2022-03-14
 draft: false
 tags: ["postgresql", "database", "command"]
 ---
