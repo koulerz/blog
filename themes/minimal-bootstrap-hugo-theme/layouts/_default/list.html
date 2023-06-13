@@ -2,18 +2,11 @@
 
 <h1>{{ .Title }}</h1>
 
-{{ $pages := .Pages }}
-{{ range $pages.ByPublishDate.Reverse }}
-  <p>
-    <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
-    {{ $customDateFormat := "January 2, 2006" }}
-    {{ with .Site.Params.customDateFormat }}{{ $customDateFormat = . }}{{ end }}
-    <small class="text-secondary">{{ .PublishDate.Format $customDateFormat }}</small>
-    {{ partial "tags" . }}
-    {{ if eq .Site.Params.showPostSummary true }}
-    {{ .Summary }}
-    {{ end }}
-  </p>
-{{ end }}
-
-{{- end -}}
+{{ $pages := .Pages }} {{ range $pages.ByPublishDate.Reverse }}
+<p>
+  {{ $customDateFormat := "January 2, 2006" }} {{ with.Site.Params.customDateFormat }}{{ $customDateFormat = . }}{{ end }}
+  <small class="text-secondary">{{ .PublishDate.Format $customDateFormat }}</small>
+  <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
+  {{ partial "tags" . }} {{ if eq .Site.Params.showPostSummary true }} {{.Summary }} {{ end }}
+</p>
+{{ end }} {{- end -}}
