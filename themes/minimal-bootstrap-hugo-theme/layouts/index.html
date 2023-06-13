@@ -6,14 +6,16 @@
     {{ $homepage = .Name }}
   {{ end }}
 {{ end }}
+<h1>{{ $homepage }}</h1>
 
 {{ $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{ range $pages.ByPublishDate.Reverse }}
   <p>
+    <a href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
     {{ $customDateFormat := "January 2, 2006" }}
     {{ with .Site.Params.customDateFormat }}{{ $customDateFormat = . }}{{ end }}
+    <br>
     <small class="text-secondary">{{ .PublishDate.Format $customDateFormat }}</small>
-    <a style="padding:0 5px;" href="{{ .Permalink }}">{{ .Title | markdownify }}</a>
     {{ partial "tags" . }}
     {{ if eq .Site.Params.showPostSummary true }}
     <br>
