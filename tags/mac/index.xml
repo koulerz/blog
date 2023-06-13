@@ -18,7 +18,7 @@
 解决方法是将需要的文件写入 /Library/Displays/Contents/Resources/Overrides 目录中。写入该目录中同样有效。
 使用脚本自动修改 发现一个自动适配 HiDPI 的脚本，但目前还未测试使用。
 https://github.com/mlch911/one-key-hidpi
-参考 &amp;amp; 扩展  macOS 下开启显示器 HiDPI 方法 macOS 无法获得权限问题 One key HiDPI  </description>
+参考 &amp;amp; 扩展 macOS 下开启显示器 HiDPI 方法 macOS 无法获得权限问题 One key HiDPI </description>
     </item>
     
     <item>
@@ -27,9 +27,9 @@ https://github.com/mlch911/one-key-hidpi
       <pubDate>Tue, 08 Oct 2019 22:33:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/macos-%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</guid>
-      <description>默认路径  /Library/Desktop Pictures /System/Library/Desktop Pictures  查看当前桌面壁纸路径 输入以下命令后会在桌面显示当前桌面壁纸所在路径
+      <description>默认路径 /Library/Desktop Pictures /System/Library/Desktop Pictures 查看当前桌面壁纸路径 输入以下命令后会在桌面显示当前桌面壁纸所在路径
 1$ defaults write com.apple.dock desktop-picture-show-debug-text -bool TRUE 2$ killall Dock 输入以下命令后不再显示当前壁纸路径
-1$ defaults delete com.apple.dock desktop-picture-show-debug-text 2$ killall Dock 参考  找不到当前壁纸文件的路径  </description>
+1$ defaults delete com.apple.dock desktop-picture-show-debug-text 2$ killall Dock 参考 找不到当前壁纸文件的路径 </description>
     </item>
     
     <item>
@@ -39,7 +39,7 @@ https://github.com/mlch911/one-key-hidpi
       
       <guid>https://kouler.com/posts/%E5%85%B3%E9%97%AD-macos-catalina-read-only-volume/</guid>
       <description>运行以下命令即可关闭 Read-only Volume，系统重启后命令会失效
-1$ sudo mount -uw / 2 3# killall Finder 参考  macOS Catalina Read-only file system with SIP disabled  </description>
+1$ sudo mount -uw / 2 3# killall Finder 参考 macOS Catalina Read-only file system with SIP disabled </description>
     </item>
     
     <item>
@@ -48,7 +48,7 @@ https://github.com/mlch911/one-key-hidpi
       <pubDate>Wed, 07 Nov 2018 09:27:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/mac-%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</guid>
-      <description>1# 在登录屏隐藏 PostgreSQL 账户 2$ sudo dscl . create /Users/postgres IsHidden 1 3 4# 在登录屏隐藏 hiddenuser 账户 5$ sudo dscl . create /Users/hiddenuser IsHidden 1 6 7# 在登录屏隐藏通过 other... 登录 8$ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE 9 参考 &amp;amp; 扩展  Hide PostgreSQL user in OSX Yosemite Hide a user account in macOS Remove “Other…” from Login screen  </description>
+      <description>1# 在登录屏隐藏 PostgreSQL 账户 2$ sudo dscl . create /Users/postgres IsHidden 1 3 4# 在登录屏隐藏 hiddenuser 账户 5$ sudo dscl . create /Users/hiddenuser IsHidden 1 6 7# 在登录屏隐藏通过 other... 登录 8$ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE 参考 &amp;amp; 扩展 Hide PostgreSQL user in OSX Yosemite Hide a user account in macOS Remove “Other…” from Login screen </description>
     </item>
     
     <item>
@@ -67,7 +67,7 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
 在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的 16 进制小写
 以上步骤可使用脚本 patch-edid.rb 自动生成。
 生成步骤：
- 下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）  编辑新建的文件 &amp;lt;?</description>
+下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果） 编辑新建的文件 &amp;lt;?xml version=&amp;#34;1.</description>
     </item>
     
     <item>
@@ -79,7 +79,7 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
       <description>通常情况下，在命令行中使用 sudo 命令便可以以 Root 用户执行命令
 在 MacOS 中，某些系统文件夹下，即使使用 sudo 命令也无法获得 Root 权限，这被称为 System Integrity Protection（SIP）
 要想关闭 SIP，需要进入 Recover 模式下设置，具体方法如下：
- 重启电脑，开机时按住 Command + r 键进入 Recover 模式 在工具中找到 Terminal 命令行终端 在命令行中输入命令 csrutil disable 重新启动后 SIP 就被关闭了  如需重新打开 SIP 保护，操作步骤一样，执行命令为 csrutil enable</description>
+重启电脑，开机时按住 Command + r 键进入 Recover 模式 在工具中找到 Terminal 命令行终端 在命令行中输入命令 csrutil disable 重新启动后 SIP 就被关闭了 如需重新打开 SIP 保护，操作步骤一样，执行命令为 csrutil enable</description>
     </item>
     
   </channel>

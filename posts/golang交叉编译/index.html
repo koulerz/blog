@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,15 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">Golang 交叉编译</h1>
-    
-    
-    <small class="text-secondary">2018-03-05</small>
-    
-
-<small><code><a href="https://kouler.com/tags/golang">#golang</a></code></small>
-
-    <br><br>
+      <h1>Golang 交叉编译</h1>
 <h2 id="什么是跨平台交叉编译">什么是跨平台交叉编译</h2>
 <h3 id="交叉编译">交叉编译</h3>
 <p>通俗地讲就是在一种平台上编译出能运行在体系结构不同的另一种平台上的程序，比如在 PC 平台（X86 CPU）上编译出能运行在以 ARM 为内核的 CPU 平台上的程序，编译得到的程序在 X86 CPU 平台上是不能运行的，必须放到ARM CPU 平台上才能运行，虽然两个平台用的都是 Linux 系统。</p>
@@ -239,21 +230,21 @@ blockquote,
 </tbody>
 </table>
 <h3 id="执行编译">执行编译</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span style="color:#f00;font-style:italic"># 如果你想在Windows 32位系统下运行</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span>$ GOOS=windows GOARCH=386 go build test.go
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span style="color:#f00;font-style:italic"># 如果你想在Windows 64位系统下运行</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span>$ GOOS=windows GOARCH=amd64 go build test.go
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span style="color:#f00;font-style:italic"># 如果你想在Linux 32位系统下运行</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span>$ GOOS=linux GOARCH=386 go build test.go
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span style="color:#f00;font-style:italic"># 如果你想在Linux 64位系统下运行</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span>$ GOOS=linux GOARCH=amd64 go build test.go
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span style="color:#f00;font-style:italic"># 编译为 WEB 端 WASM 二进制代码</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span>$ GOOS=js GOARCH=wasm go build test.go
-</code></pre></div><p>命令中可以设置 CGO_ENABLED = 0 表示设置CGO工具不可用；</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f00;font-style:italic"># 如果你想在Windows 32位系统下运行</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>$ GOOS=windows GOARCH=386 go build test.go
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#f00;font-style:italic"># 如果你想在Windows 64位系统下运行</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>$ GOOS=windows GOARCH=amd64 go build test.go
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span><span style="color:#f00;font-style:italic"># 如果你想在Linux 32位系统下运行</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>$ GOOS=linux GOARCH=386 go build test.go
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#f00;font-style:italic"># 如果你想在Linux 64位系统下运行</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>$ GOOS=linux GOARCH=amd64 go build test.go
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#f00;font-style:italic"># 编译为 WEB 端 WASM 二进制代码</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>$ GOOS=js GOARCH=wasm go build test.go
+</span></span></code></pre></div><p>命令中可以设置 CGO_ENABLED = 0 表示设置CGO工具不可用；</p>
 <p>GOOS 表示程序构建环境的目标操作系统(Linux、Windows)；</p>
 <p>GOARCH 表示程序构建环境的目标计算架构(32位、64位)；</p>
 <p>现在你可以在相关目标操作系统上运行编译后的程序了。</p>

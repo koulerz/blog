@@ -18,9 +18,9 @@
 1* * * * * echo 111 &amp;gt;&amp;gt; /path/test 安装 Rsyslog 后查看 Cron 日志，并没有发现任何异常，日志正常输出每一次的调度命令
 然后尝试将 Laravel 任务调度命令执行结果输出到文件，修改 Cron 文件后并没有在输出文件中发现任何内容
 1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /path/log 查看关于 Linux 中重定向相关内容后怀疑可能于此有关
- &amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
+&amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
 2&amp;gt;&amp;gt; 将一个标准错误输出重定向到一个文件或设备 追加到原来的文件
- 随即修改 Cron 文件，将标准错误重定向到文件
+随即修改 Cron 文件，将标准错误重定向到文件
 1* * * * * php /path/artisan schedule:run 2&amp;gt;&amp;gt; /path/log 文件中打印出了错误信息</description>
     </item>
     

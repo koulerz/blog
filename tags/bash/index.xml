@@ -18,9 +18,9 @@
 1* * * * * echo 111 &amp;gt;&amp;gt; /path/test 安装 Rsyslog 后查看 Cron 日志，并没有发现任何异常，日志正常输出每一次的调度命令
 然后尝试将 Laravel 任务调度命令执行结果输出到文件，修改 Cron 文件后并没有在输出文件中发现任何内容
 1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /path/log 查看关于 Linux 中重定向相关内容后怀疑可能于此有关
- &amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
+&amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
 2&amp;gt;&amp;gt; 将一个标准错误输出重定向到一个文件或设备 追加到原来的文件
- 随即修改 Cron 文件，将标准错误重定向到文件
+随即修改 Cron 文件，将标准错误重定向到文件
 1* * * * * php /path/artisan schedule:run 2&amp;gt;&amp;gt; /path/log 文件中打印出了错误信息</description>
     </item>
     
@@ -30,7 +30,7 @@
       <pubDate>Mon, 23 May 2016 22:45:49 +0800</pubDate>
       
       <guid>https://kouler.com/posts/bash%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>编辑命令 Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符 Bang (!) 命令 !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !*： 上一条命令的所有参数 !*:p： 打印输出 !* 的内容 ^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo 参考 &amp;amp; 扩展阅读  让你提升命令行效率的 Bash 快捷键  </description>
+      <description>编辑命令 Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符 Bang (!) 命令 !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !*： 上一条命令的所有参数 !*:p： 打印输出 !* 的内容 ^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo 参考 &amp;amp; 扩展阅读 让你提升命令行效率的 Bash 快捷键 </description>
     </item>
     
   </channel>

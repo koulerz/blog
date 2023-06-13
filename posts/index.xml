@@ -13,9 +13,13 @@
       <pubDate>Sun, 23 Jan 2022 15:42:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/laravel-%E4%B8%AD%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%AE%B9%E5%99%A8%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</guid>
-      <description>名词解释：    术语 说明     IoC (Inversion of Control) 控制反转   DI (Dependence Injection) 依赖注入   Service Container 服务容器/IOC 容器   Service Provider 服务提供者    目录  什么是依赖 什么是容器 什么是服务提供者 什么是Facades 执行流程 概述执行流程 参考  什么是依赖 大多数面向对象编程语言，在调用一个类的时候，先要实例化这个类，生成一个对象。 如果在写一个类时，过程中要调用到很多其它类，甚至这里的其它类，也要“依赖”于更多其它的类，那么可以想象，就需要进行多少次实例化。这就是“依赖”的意思。
+      <description>名词解释： 术语 说明 IoC (Inversion of Control) 控制反转 DI (Dependence Injection) 依赖注入 Service Container 服务容器/IOC 容器 Service Provider 服务提供者 目录 什么是依赖 什么是容器 什么是服务提供者 什么是Facades 执行流程 概述执行流程 参考 什么是依赖 大多数面向对象编程语言，在调用一个类的时候，先要实例化这个类，生成一个对象。 如果在写一个类时，过程中要调用到很多其它类，甚至这里的其它类，也要“依赖”于更多其它的类，那么可以想象，就需要进行多少次实例化。这就是“依赖”的意思。
 什么是容器 容器（IoC容器）是一个设计模式，是 Laravel 的核心机制，容器本身就是通过 Laravel 中的一个核心类实现的，这个类，叫做 Application , 程序启动的时候就实例化了这个类， 放在 $app 变量中, 这就是 IoC 容器。 如果把某个类（不管有多少依赖关系）放入这个容器中，可以“解析”出这个类的实例。 Laravel 框架中 vendor 文件夹下的内核文件和各种扩展服务大都已注册在容器中方便使用。
-什么是服务提供者 IoC容器中存放着注册过的类，但调用某个类时容器可以直接解析出这个类的对象。那么如何将类注册到IoC容器呢？这个时候就需要服务提供者了。框架中的扩展服务和开发者写的第三方扩展都是通过服务提供者注册到 IoC 容器，服务提供者提供了连接扩展与内核的作用，也正是因为有服务提供者，所以注册代码才不至于写乱。</description>
+什么是服务提供者 IoC容器中存放着注册过的类，但调用某个类时容器可以直接解析出这个类的对象。那么如何将类注册到IoC容器呢？这个时候就需要服务提供者了。框架中的扩展服务和开发者写的第三方扩展都是通过服务提供者注册到 IoC 容器，服务提供者提供了连接扩展与内核的作用，也正是因为有服务提供者，所以注册代码才不至于写乱。
+接下来扩展一个自己的类将它注册到 IoC 容器并调用它的实例：
+需要的文件：
+/app/Tools/Piece.php 扩展类 /app/Providers/ToolServiceProvider.php 通过服务提供者将类注册到容器 /config/app.php 配置文件 /app/Controllers/TestController.php 控制器，用来调用扩展类 首先创建扩展类
+1&amp;lt;?php 2// FilePath: /app/Tools/Piece.</description>
     </item>
     
     <item>
@@ -33,9 +37,9 @@
       <pubDate>Sun, 02 Jan 2022 13:25:15 +0800</pubDate>
       
       <guid>https://kouler.com/posts/git-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>迁移 Git 仓库 1// 切换到需要迁移的 Git 项目目录 2$ cd project 3 4// 添加 Git 远程仓库 5$ git remote add gitlab git@gitlab.com:team/name.git 6 7// 迁移代码到远程仓库 8$ git push -u gitlab master 克隆仓库   仅克隆最近一次提交 git clone --depth=1 &amp;lt;repository&amp;gt;
-  仅克隆指定分支的最近一次提交 git clone -b &amp;lt;branch&amp;gt; --depth=1 &amp;lt;repository&amp;gt;
-  清除线下仓库中线上已不存在的分支 `git remote prune origin`  本地创建并切换到对应的远程分支，创建对应的 origin/dev 本地分支，命名为 dev `git checkout -b dev origin/dev`  删除本地分支命令行 `git branch -d &amp;lt;branch&amp;gt;`  本地分支拉取并合并线上主分支 `git pull origin master`  将本地已有项目添加到 Git 仓库  进入本地项目，初始化 Git 仓库 git init 为本地项目指定远程仓库地址 git remote add origin git@github.</description>
+      <description>迁移 Git 仓库 1// 切换到需要迁移的 Git 项目目录 2$ cd project 3 4// 添加 Git 远程仓库 5$ git remote add gitlab git@gitlab.com:team/name.git 6 7// 迁移代码到远程仓库 8$ git push -u gitlab master 克隆仓库 仅克隆最近一次提交 git clone --depth=1 &amp;lt;repository&amp;gt;
+仅克隆指定分支的最近一次提交 git clone -b &amp;lt;branch&amp;gt; --depth=1 &amp;lt;repository&amp;gt;
+清除线下仓库中线上已不存在的分支 `git remote prune origin` 本地创建并切换到对应的远程分支，创建对应的 origin/dev 本地分支，命名为 dev `git checkout -b dev origin/dev` 删除本地分支命令行 `git branch -d &amp;lt;branch&amp;gt;` 本地分支拉取并合并线上主分支 `git pull origin master` 将本地已有项目添加到 Git 仓库 进入本地项目，初始化 Git 仓库 git init 为本地项目指定远程仓库地址 git remote add origin git@github.</description>
     </item>
     
     <item>
@@ -77,10 +81,10 @@ Linux 中，若子进程缺失父进程，其残留资源会由 init 进程回�
       
       <guid>https://kouler.com/posts/%E6%8D%95%E8%8E%B7docker-stop%E4%BF%A1%E5%8F%B7/</guid>
       <description>为了优化代码部署效率，将传统的手动部署方式改成了容器化部署方式
-过去的程序停止逻辑  程序持续监听 SIGINT 信号 使用 Ctrl + C 快捷键向程序发送 SIGINT 信号 程序收到 SIGINT 信号后执行退出前的收尾工作 收尾工作执行完成后，程序自动退出  容器化后产生的问题 使用容器化部署方式后，期望通过 docker stop 命令来执行程序退出逻辑并关闭程序和容器，结果发现程序和容器被强制关闭，而程序退出前的收尾工作并未执行。
+过去的程序停止逻辑 程序持续监听 SIGINT 信号 使用 Ctrl + C 快捷键向程序发送 SIGINT 信号 程序收到 SIGINT 信号后执行退出前的收尾工作 收尾工作执行完成后，程序自动退出 容器化后产生的问题 使用容器化部署方式后，期望通过 docker stop 命令来执行程序退出逻辑并关闭程序和容器，结果发现程序和容器被强制关闭，而程序退出前的收尾工作并未执行。
 问题产生的原因 上网搜索后得知 docker stop 命令发送的并非 SIGINT 信号，而是 SIGTERM 信号。
 而程序代码中并未捕获 SIGTERM 信号，所以收到 SIGTERM 信号后，程序跳过了收尾工作，直接退出了。
-修复代码后的程序停止逻辑  程序持续监听 SIGINT 和 SIGTERM 信号 使用 docker stop 命令向程序发送 SIGTERM 信号 收到 SIGTERM 信号后执行退出前的收尾工作 收尾工作执行完成后，程序自动退出  修复代码后，使用 docker stop 命令能够按照预期正确退出程序。</description>
+修复代码后的程序停止逻辑 程序持续监听 SIGINT 和 SIGTERM 信号 使用 docker stop 命令向程序发送 SIGTERM 信号 收到 SIGTERM 信号后执行退出前的收尾工作 收尾工作执行完成后，程序自动退出 修复代码后，使用 docker stop 命令能够按照预期正确退出程序。</description>
     </item>
     
     <item>
@@ -89,7 +93,7 @@ Linux 中，若子进程缺失父进程，其残留资源会由 init 进程回�
       <pubDate>Sat, 28 Aug 2021 16:05:38 +0800</pubDate>
       
       <guid>https://kouler.com/posts/linux%E4%B8%AD%E5%B8%B8%E8%A7%81%E7%9A%84%E8%BF%9B%E7%A8%8B%E4%B8%AD%E6%AD%A2%E4%BF%A1%E5%8F%B7/</guid>
-      <description>SIGINT  Ctrl + C 会发送 SIGINT 信号 信号会被当前进程树接收到，不仅当前进程会收到信号，它的子进程也会收到。 只能结束前台进程  SIGTERM  kill -15 会发送 SIGTERM 信号 没有参数的 kill 命令也会默认发送 SIGTERM 信号 只有当前进程会收到信号，子进程不会收到。如果当前进程被 kill 掉，那么它的子进程将会被 init 进程接管，也就是 pid 为 1 的进程 用来要求程序自己正常退出，让它自己清理文件和关闭。系统关机的时候会触发这个信号 这个信号不保证进程一定会被终止  SIGKILL  kill -9 会发送 SIGKILL 信号 用来强制使进程立即结束 SIGKILL 不能被捕获，程序收到这个信号后，一定会退出  </description>
+      <description>SIGINT Ctrl + C 会发送 SIGINT 信号 信号会被当前进程树接收到，不仅当前进程会收到信号，它的子进程也会收到。 只能结束前台进程 SIGTERM kill -15 会发送 SIGTERM 信号 没有参数的 kill 命令也会默认发送 SIGTERM 信号 只有当前进程会收到信号，子进程不会收到。如果当前进程被 kill 掉，那么它的子进程将会被 init 进程接管，也就是 pid 为 1 的进程 用来要求程序自己正常退出，让它自己清理文件和关闭。系统关机的时候会触发这个信号 这个信号不保证进程一定会被终止 SIGKILL kill -9 会发送 SIGKILL 信号 用来强制使进程立即结束 SIGKILL 不能被捕获，程序收到这个信号后，一定会退出 </description>
     </item>
     
     <item>
@@ -101,7 +105,7 @@ Linux 中，若子进程缺失父进程，其残留资源会由 init 进程回�
       <description>新创建的 php 容器配置好后，访问首页显示 File not found。
 nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unknown&amp;quot; while reading response header from upstream
 于是在本地搭建了简化版的环境：
- 创建了 php Docker 容器，增加了 index.php 测试文件并启动 php-fpm 宿主机增加 nginx 配置并重新启动  尝试解决 根据错误提示，可以了解到错误原因大概率是 nginx 没有找到 php 文件。
+创建了 php Docker 容器，增加了 index.php 测试文件并启动 php-fpm 宿主机增加 nginx 配置并重新启动 尝试解决 根据错误提示，可以了解到错误原因大概率是 nginx 没有找到 php 文件。
 这一错误出现的原因大致分为两类，一是文件权限错误，二是文件路径错误。
 权限错误很容易就能够排查，所以怀疑大概率是 nginx 配置中的路径错误导致没有找到 index.php 文件。
 根据 nginx 文档修改 nginx 配置多次后仍然无法解决。
@@ -116,14 +120,14 @@ nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unk
       <pubDate>Fri, 27 Aug 2021 19:41:07 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3kinsing%E6%8C%96%E7%9F%BF%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%94%BB%E5%87%BB/</guid>
-      <description>环境  基于 php7.4.12 的容器 使用 Lumen 框架  发现异常状况 最开始察觉到异常是在错误邮件中
+      <description>环境 基于 php7.4.12 的容器 使用 Lumen 框架 发现异常状况 最开始察觉到异常是在错误邮件中
 错误信息是 Cannot modify header information - headers already sent by (output started at php://input:1)
 几天后，发现页面中出现大量跨域错误
 查看 git 提交日志，发现最近并没有大的变动，怀疑是运维问题
 再次检查邮箱，发现最近几日有大量 Cannot modify header information - headers already sent by (output started at php://input:1) 错误，错误文件指向了跨域处理文件，错误函数为 header()。与错误信息吻合，应该是在这之前有输出，此时可以确认导致错误的根本原因并非跨域问题。
 通过测试 API，发现其中一些 POST API 在正确的响应内容前会先将 POST 请求中的请求体输出。而 GET 参数则一切正常。
 寻找问题根源 多次测试 API 后发现一些规律。
- 使用 x-www-form-urlencoded 和 json 方式时，PHP 直接返回了 POST 请求 body 信息。而使用 multipart/form-data 方式时却没有返回 GET 方法中，如果有 x-www-form-urlencoded 和 json body 时，会出现一样的错误 不通过 Lumen 框架，直接请求 php 文件，如果请求中有 x-www-form-urlencoded 和 json body 信息时，同样会出现错误  这里基本可以确认和框架没有关系。而且引出了 php://input 数据流。</description>
+使用 x-www-form-urlencoded 和 json 方式时，PHP 直接返回了 POST 请求 body 信息。而使用 multipart/form-data 方式时却没有返回 GET 方法中，如果有 x-www-form-urlencoded 和 json body 时，会出现一样的错误 不通过 Lumen 框架，直接请求 php 文件，如果请求中有 x-www-form-urlencoded 和 json body 信息时，同样会出现错误 这里基本可以确认和框架没有关系。而且引出了 php://input 数据流。</description>
     </item>
     
     <item>
@@ -132,7 +136,7 @@ nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unk
       <pubDate>Fri, 09 Jul 2021 02:52:43 +0800</pubDate>
       
       <guid>https://kouler.com/posts/use-postgres-character-type/</guid>
-      <description>    char varchar text     是否固定长度 是 否 否   空白字符补全 是 否 否   最大长度限制 指定的长度 指定的长度 无限制   默认长度 char(1) 无限制 无限制   超出范围 返回错误(若超出部分是空字符串则截取) 返回错误 无限制     char, varchar, text 类型之间几乎没有性能差异。char 类型因为填充空白字符效率可能更低 char 类型会在长度不足时以空白字符填补，所以当字符串末尾的空白字符有意义时，可能会产生混淆 任何情况下，PostgreSQL 能被存储的最长的字符串是 1GB，所以在类型中所谓的无限制，最长也不能超过 1GB text 等同于不限制长度的 carchar, 区别在于 varchar(n) 可以限制长度，数据超出长度时将会返回错误 相对于 text 类型，varchar(n) 明显的好处在于限制长度。但考虑到未来可能更改限制的长度，使用 text 类型并在代码逻辑中限制长度可能是更好的选择  参考  PostgreSQL 字符类型 char-varchar-text-性能测试  </description>
+      <description> char varchar text 是否固定长度 是 否 否 空白字符补全 是 否 否 最大长度限制 指定的长度 指定的长度 无限制 默认长度 char(1) 无限制 无限制 超出范围 返回错误(若超出部分是空字符串则截取) 返回错误 无限制 char, varchar, text 类型之间几乎没有性能差异。char 类型因为填充空白字符效率可能更低 char 类型会在长度不足时以空白字符填补，所以当字符串末尾的空白字符有意义时，可能会产生混淆 任何情况下，PostgreSQL 能被存储的最长的字符串是 1GB，所以在类型中所谓的无限制，最长也不能超过 1GB text 等同于不限制长度的 carchar, 区别在于 varchar(n) 可以限制长度，数据超出长度时将会返回错误 相对于 text 类型，varchar(n) 明显的好处在于限制长度。但考虑到未来可能更改限制的长度，使用 text 类型并在代码逻辑中限制长度可能是更好的选择 参考 PostgreSQL 字符类型 char-varchar-text-性能测试 </description>
     </item>
     
     <item>
@@ -141,7 +145,7 @@ nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unk
       <pubDate>Sat, 19 Jun 2021 20:52:36 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E6%88%91%E4%BB%AC%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%9D%A1%E8%A7%89%E8%AF%BB%E4%B9%A6%E6%80%BB%E7%BB%93/</guid>
-      <description>12 条睡眠小贴士  坚持固定的睡眠时间。不仅是起床时间，你也可以为就寝时间设置闹钟。如果你只能从这 12 条建议中记住一条，那么记住这一条吧 锻炼很有益，但不要在一天中太晚的时间进行。尽量每天尝试锻炼至少 30 分钟，但要在睡前 2~3 小时结束锻炼 避免咖啡因和尼古丁的摄入。咖啡，可乐，某些茶和巧克力都含有兴奋剂咖啡因，其效果可能需要 8 小时才能完全清除。尼古丁也是一种兴奋剂，通会使吸烟者睡得很轻 睡前避免喝酒精饮料。睡前喝一杯酒或含酒精的饮料可以帮助你放松，但大量摄入酒精会让你处于睡眠较轻的阶段并导致夜间呼吸问题 深夜避免大量进食和喝饮料。简单的零食可以，但大量进食会导致消化不良，干扰睡眠 尽量避免使用会延迟或破坏睡眠的药物。一些常用的心脏，血压或哮喘药物，以及一些治疗咳嗽，感冒或过敏的非处方药和草药都可以破坏睡眠模式 下午 3 点以后不要午睡。午睡可以帮助弥补缺失的睡眠，但是午后的午睡可能会造成夜间更难入睡 睡前放松。不要把白天安排得太满，以至于没有时间放松。你的睡前习惯应该包含一项轻松的活动，如阅读或听音乐 睡前洗个热水澡。洗过澡后，体温的下降可能会使你感到困倦，洗澡也可以帮助你放松和缓解紧张，让你更容易入睡 保持卧室幽暗凉爽，并且不要放置任何电子产品。摆脱卧室里任何可能让你分心的东西，比如噪声，明亮的灯光，不舒服的床或过高的室温。失眠的会经常看钟表，因此请将时钟的表盘转到看不见的方向，这样你就不会在尝试入睡时担心时间了 适当晒晒太阳。日光是调节日常睡眠模式的关键。尽量每天在自然阳光下晒 30 分钟以上。睡眠专家建议，如果你有睡眠问题，那么你应该在早晨接阳光照射 1 小时，并在睡前调暗室内灯光 醒着时不要躺在床上。如果你躺在床上 20 分钟后仍然很清醒，或者开始感到焦虑或担心，那么就起床进行一些轻松的活动，直到感到困倦  两种睡眠模式  快速眼动睡眠（REM），又称有梦睡眠  快速眼动睡眠期间，眼球会在眼皮下快速左右移动，且伴随着非常活跃的脑电波，与清醒时的脑电波几乎相同 快速眼动睡眠与我们称之为梦的经历联系密切，梦境发生在快速眼动睡眠阶段 快速眼动睡眠时的眼球运动并不与梦境中的视觉体验相吻合 在快速眼动睡眠期间，大脑深层活动急剧增加。包括大脑后部的视觉空间区域，发起运动的运动皮层，海马体及其周边区域和深层情绪中心的杏仁核 快速眼动睡眠可以被看作有以下特征，视觉，运动，情绪和自传体记忆相关的大脑区域活动非常活跃，而控制理性思维的区域活动相对减弱 在快速眼动睡眠开始前的几秒钟，以及整个快速眼动睡眠阶段，人会完全麻痹，身体中的随意肌（即非控制呼吸等自然运作的肌肉）没有任何张力。这个阶段大脑是高度活跃的，但身体不能动，肌肉不再对大脑的指令做出反应。这才使得我们在梦中安全的打斗，疯狂奔跑而不至于产生灾难性后果 睡眠麻痹是从睡眠中醒来时，短暂丧失说话和活动能力，这种情况大多发生在快速眼动睡眠中   非快速眼动睡眠（NREM），又称深度睡眠  非快速眼动睡眠期间眼球不会移动，脑电波也会变得平静 非快速眼动睡眠阶段持续时间更长 深度非快速眼动睡眠期间，总体的新陈代谢活动比醒着时有所降低 深度非快速眼动睡眠可以增强个体记忆 梦游并不发生在通常认为的快速眼动睡眠阶段，即有梦阶段，而是在非快速眼动睡眠中最深的阶段     人类的睡眠在非快速眼动睡眠（NREM）和快速眼动睡眠（REM）阶段交替循环 非快速眼动睡眠和快速眼动睡眠大约每 90 分钟会发生一次转换。但这种转换并不清晰和规律，仅仅是表明哪一种睡眠占主导位置  两种睡眠模式发挥的作用  快速眼动睡眠（REM），又称有梦睡眠  快速眼动睡眠可以重新调整和校准人类大脑的情感回路，提高我们的识别能力，帮助我们读懂面部表情和情绪 对于创伤后的应激障碍患者，每晚都被噩梦折磨，可能与快速眼动睡眠被打乱有关 快速眼动睡眠的做梦状态可以激发创造力 快速眼动睡眠让这些记忆碰撞激发新的见解 快速眼动睡眠提供了精湛的，补足性的好处，以抽象且非常新奇的方式，将记忆的元素互相搅拌融合。在有梦睡眠期间，大脑会思考大量获得的知识然后提取总体规则和共同点。这个过程被成为概念联觉（ideasthesia）   非快速眼动睡眠（NREM），又称深度睡眠  非快速眼动睡眠帮助将新信息安全地转移到大脑的长期储存处 通过核磁共振成像我们观察到，对同一记忆的获取，新接收到时是在海马体区域，而经过整晚的睡眠后，同样记忆被转移到了大脑皮层 深度非快速眼动睡眠时间越多，第二天记住的信息就越多。记忆的巩固主要在这一阶段 即便只有 20 分钟的白天小睡，只要包含足够的非快速眼动睡眠阶段，也会帮助巩固记忆 大脑中存在一种类淋巴系统，会收集并清除由神经元产生的代谢垃圾。在深度非快速睡眠期间，排出量会增加 10~20 倍    睡眠对人体的好处  睡眠充实了大脑的各种功能，包括学习，记忆，逻辑决定和选择能力 睡眠能够改善我们的心理健康，重新校准大脑中的情感回路 睡眠会强化免疫系统，帮助对抗恶性肿瘤，防止感染，抵御疾病 睡名能促进新陈代谢和心血管系统的健康 睡眠对大脑的优势有很多，其中对记忆力的影响尤其突出 睡眠有助于恢复大脑的学习能力，为新的记忆腾出空间 睡眠时会有规律的脉冲在短期记忆区（海马体）和长期存储区（大脑皮层）之间来回移动，就像数据的传递 睡眠可以帮助我们巩固记忆 对人的对照实验显示，睡眠对巩固知识的效率要比保持清醒的效率高出 20%~40% 睡眠不仅能保存在睡前学习到的记忆，甚至能拯救在学习后不久就忘记的记忆 在睡眠时使用声音提示可以显著提高相应信息的记忆能力。或许可以在白天记单词，而在睡眠时播放这些单词的声音以巩固这些单词的记忆 对于其他类型的记忆比如骑自行车，弹钢琴等，通过睡眠也发生了记忆转移的情况。只不过这些记忆是转移到了意识层面下运作的大脑回路中。这些转移过程主要发生了睡眠最后的两个小时，即 8 小时正常睡眠的第 6，7 个时辰 临床研究中，通过治愈老年人的睡眠障碍，使他们的认知能力下降速度明显减慢，病推迟了阿尔茨海默病的发病时间 5~10 年  睡眠不足对人体的害处  每晚的规律睡眠少于 6~7 小时会破坏免疫系统，癌症风险增加一倍以上 睡眠不足是决定未来是否患上阿尔茨海默病的关键因素，成年阶段睡得太少会显著增加患上阿尔茨海默病的风险 睡眠不足可能严重影响血糖水平 睡眠不足可能增加冠状动脉堵塞、变薄的风险，可能受到心血管疾病、中风和充血性心力衰竭的威胁 睡眠不足会提升饥饿激素的浓度，同时抑制产生饱腹感的激素浓度 学习能力的恢复在清晨十分特别集中，这意味这如果只睡 6 个小时，那么睡眠所带来的恢复能力就会减弱很多 长期睡眠不足，个体会逐渐适应自己表现受损，警觉性降低和能量水平降低的状况。个体很难意识到长期缺乏睡眠对他们智力和身体活力的影响 睡眠不足的人和那些达到法定醉驾标准人认知受损程度一样 人类的循环利用周期是 16 小时。清醒 16 小时后，大脑会开始失灵 睡眠不足会使情绪剧烈波动，严重放大正面情绪和负面情绪，无法使其达到平衡 睡眠不足的情况下学习到的少数记忆也将会在此后的几个小时和几天内被遗忘 睡眠越短，生命越短 发达国家中损害卫生保健系统的疾病，如心脏病，肥胖症，痴呆症，糖尿病和癌症等，都被发现与睡眠不足有着千丝万缕的关系 睡眠质量差，心脏就不健康 接近中年，健康的恢复能力开始下降，睡眠不足对心血管系统的影响就逐渐增加 睡得越少，就会越想吃东西。增加糖尿病和肥胖的风险 睡眠不足会使得男性的睾酮水平下降，女性的卵泡释放激素下降，影响生殖健康 睡眠不足会使免疫力降低，增加癌症风险 睡眠质量越差，染色体端粒就越容易受到损害。导致 DNA 螺旋受到损害  决定什么时候睡觉或醒来的两个因素  24 小时昼夜节律：大脑深处的 24 小时生物钟发射的信号  昼夜节律也控制着其他节奏，包括偏好的饮食时间，心情和情绪，产生的尿量，核心体温，代谢率和多种激素的释放等 每个人的昼夜节律可能是不同的   腺苷：大脑中积聚的化学物质，清醒时间越长，这种化学物质就会积聚的越多，会感觉越困  当清醒的时间越久，体内的腺苷就会积累的越多，后果是人们越渴望睡眠。当腺苷浓度达到峰值，不可抗拒的睡眠欲望就会占据上风 腺苷发挥作用的方式是通过与受体结合，刺激受体使人感到困意。而咖啡因起作用的方式是霸占这些受体，阻止其与腺苷结合，阻断腺苷向大脑传递困觉信号 睡眠过程中大脑会降解清除白天的腺苷。大约 8 个小时的健康睡眠后，腺苷的清除就会完成    24 小时昼夜节律和腺苷的睡眠信号是相互独立的。比如开夜车时，即便腺苷水平逐渐累积，但当人熬过了 24 小时昼夜节律中困意最强的阶段，大约在凌晨 3 点，此时昼夜节律会使我们逐渐清醒，这中清醒状态大概会持续到下午或晚上，随着昼夜节律的再次转换，加上腺苷长时间的积聚，就会受到睡眠压力的沉重打击。</description>
+      <description>12 条睡眠小贴士 坚持固定的睡眠时间。不仅是起床时间，你也可以为就寝时间设置闹钟。如果你只能从这 12 条建议中记住一条，那么记住这一条吧 锻炼很有益，但不要在一天中太晚的时间进行。尽量每天尝试锻炼至少 30 分钟，但要在睡前 2~3 小时结束锻炼 避免咖啡因和尼古丁的摄入。咖啡，可乐，某些茶和巧克力都含有兴奋剂咖啡因，其效果可能需要 8 小时才能完全清除。尼古丁也是一种兴奋剂，通会使吸烟者睡得很轻 睡前避免喝酒精饮料。睡前喝一杯酒或含酒精的饮料可以帮助你放松，但大量摄入酒精会让你处于睡眠较轻的阶段并导致夜间呼吸问题 深夜避免大量进食和喝饮料。简单的零食可以，但大量进食会导致消化不良，干扰睡眠 尽量避免使用会延迟或破坏睡眠的药物。一些常用的心脏，血压或哮喘药物，以及一些治疗咳嗽，感冒或过敏的非处方药和草药都可以破坏睡眠模式 下午 3 点以后不要午睡。午睡可以帮助弥补缺失的睡眠，但是午后的午睡可能会造成夜间更难入睡 睡前放松。不要把白天安排得太满，以至于没有时间放松。你的睡前习惯应该包含一项轻松的活动，如阅读或听音乐 睡前洗个热水澡。洗过澡后，体温的下降可能会使你感到困倦，洗澡也可以帮助你放松和缓解紧张，让你更容易入睡 保持卧室幽暗凉爽，并且不要放置任何电子产品。摆脱卧室里任何可能让你分心的东西，比如噪声，明亮的灯光，不舒服的床或过高的室温。失眠的会经常看钟表，因此请将时钟的表盘转到看不见的方向，这样你就不会在尝试入睡时担心时间了 适当晒晒太阳。日光是调节日常睡眠模式的关键。尽量每天在自然阳光下晒 30 分钟以上。睡眠专家建议，如果你有睡眠问题，那么你应该在早晨接阳光照射 1 小时，并在睡前调暗室内灯光 醒着时不要躺在床上。如果你躺在床上 20 分钟后仍然很清醒，或者开始感到焦虑或担心，那么就起床进行一些轻松的活动，直到感到困倦 两种睡眠模式 快速眼动睡眠（REM），又称有梦睡眠 快速眼动睡眠期间，眼球会在眼皮下快速左右移动，且伴随着非常活跃的脑电波，与清醒时的脑电波几乎相同 快速眼动睡眠与我们称之为梦的经历联系密切，梦境发生在快速眼动睡眠阶段 快速眼动睡眠时的眼球运动并不与梦境中的视觉体验相吻合 在快速眼动睡眠期间，大脑深层活动急剧增加。包括大脑后部的视觉空间区域，发起运动的运动皮层，海马体及其周边区域和深层情绪中心的杏仁核 快速眼动睡眠可以被看作有以下特征，视觉，运动，情绪和自传体记忆相关的大脑区域活动非常活跃，而控制理性思维的区域活动相对减弱 在快速眼动睡眠开始前的几秒钟，以及整个快速眼动睡眠阶段，人会完全麻痹，身体中的随意肌（即非控制呼吸等自然运作的肌肉）没有任何张力。这个阶段大脑是高度活跃的，但身体不能动，肌肉不再对大脑的指令做出反应。这才使得我们在梦中安全的打斗，疯狂奔跑而不至于产生灾难性后果 睡眠麻痹是从睡眠中醒来时，短暂丧失说话和活动能力，这种情况大多发生在快速眼动睡眠中 非快速眼动睡眠（NREM），又称深度睡眠 非快速眼动睡眠期间眼球不会移动，脑电波也会变得平静 非快速眼动睡眠阶段持续时间更长 深度非快速眼动睡眠期间，总体的新陈代谢活动比醒着时有所降低 深度非快速眼动睡眠可以增强个体记忆 梦游并不发生在通常认为的快速眼动睡眠阶段，即有梦阶段，而是在非快速眼动睡眠中最深的阶段 人类的睡眠在非快速眼动睡眠（NREM）和快速眼动睡眠（REM）阶段交替循环 非快速眼动睡眠和快速眼动睡眠大约每 90 分钟会发生一次转换。但这种转换并不清晰和规律，仅仅是表明哪一种睡眠占主导位置 两种睡眠模式发挥的作用 快速眼动睡眠（REM），又称有梦睡眠 快速眼动睡眠可以重新调整和校准人类大脑的情感回路，提高我们的识别能力，帮助我们读懂面部表情和情绪 对于创伤后的应激障碍患者，每晚都被噩梦折磨，可能与快速眼动睡眠被打乱有关 快速眼动睡眠的做梦状态可以激发创造力 快速眼动睡眠让这些记忆碰撞激发新的见解 快速眼动睡眠提供了精湛的，补足性的好处，以抽象且非常新奇的方式，将记忆的元素互相搅拌融合。在有梦睡眠期间，大脑会思考大量获得的知识然后提取总体规则和共同点。这个过程被成为概念联觉（ideasthesia） 非快速眼动睡眠（NREM），又称深度睡眠 非快速眼动睡眠帮助将新信息安全地转移到大脑的长期储存处 通过核磁共振成像我们观察到，对同一记忆的获取，新接收到时是在海马体区域，而经过整晚的睡眠后，同样记忆被转移到了大脑皮层 深度非快速眼动睡眠时间越多，第二天记住的信息就越多。记忆的巩固主要在这一阶段 即便只有 20 分钟的白天小睡，只要包含足够的非快速眼动睡眠阶段，也会帮助巩固记忆 大脑中存在一种类淋巴系统，会收集并清除由神经元产生的代谢垃圾。在深度非快速睡眠期间，排出量会增加 10~20 倍 睡眠对人体的好处 睡眠充实了大脑的各种功能，包括学习，记忆，逻辑决定和选择能力 睡眠能够改善我们的心理健康，重新校准大脑中的情感回路 睡眠会强化免疫系统，帮助对抗恶性肿瘤，防止感染，抵御疾病 睡名能促进新陈代谢和心血管系统的健康 睡眠对大脑的优势有很多，其中对记忆力的影响尤其突出 睡眠有助于恢复大脑的学习能力，为新的记忆腾出空间 睡眠时会有规律的脉冲在短期记忆区（海马体）和长期存储区（大脑皮层）之间来回移动，就像数据的传递 睡眠可以帮助我们巩固记忆 对人的对照实验显示，睡眠对巩固知识的效率要比保持清醒的效率高出 20%~40% 睡眠不仅能保存在睡前学习到的记忆，甚至能拯救在学习后不久就忘记的记忆 在睡眠时使用声音提示可以显著提高相应信息的记忆能力。或许可以在白天记单词，而在睡眠时播放这些单词的声音以巩固这些单词的记忆 对于其他类型的记忆比如骑自行车，弹钢琴等，通过睡眠也发生了记忆转移的情况。只不过这些记忆是转移到了意识层面下运作的大脑回路中。这些转移过程主要发生了睡眠最后的两个小时，即 8 小时正常睡眠的第 6，7 个时辰 临床研究中，通过治愈老年人的睡眠障碍，使他们的认知能力下降速度明显减慢，病推迟了阿尔茨海默病的发病时间 5~10 年 睡眠不足对人体的害处 每晚的规律睡眠少于 6~7 小时会破坏免疫系统，癌症风险增加一倍以上 睡眠不足是决定未来是否患上阿尔茨海默病的关键因素，成年阶段睡得太少会显著增加患上阿尔茨海默病的风险 睡眠不足可能严重影响血糖水平 睡眠不足可能增加冠状动脉堵塞、变薄的风险，可能受到心血管疾病、中风和充血性心力衰竭的威胁 睡眠不足会提升饥饿激素的浓度，同时抑制产生饱腹感的激素浓度 学习能力的恢复在清晨十分特别集中，这意味这如果只睡 6 个小时，那么睡眠所带来的恢复能力就会减弱很多 长期睡眠不足，个体会逐渐适应自己表现受损，警觉性降低和能量水平降低的状况。个体很难意识到长期缺乏睡眠对他们智力和身体活力的影响 睡眠不足的人和那些达到法定醉驾标准人认知受损程度一样 人类的循环利用周期是 16 小时。清醒 16 小时后，大脑会开始失灵 睡眠不足会使情绪剧烈波动，严重放大正面情绪和负面情绪，无法使其达到平衡 睡眠不足的情况下学习到的少数记忆也将会在此后的几个小时和几天内被遗忘 睡眠越短，生命越短 发达国家中损害卫生保健系统的疾病，如心脏病，肥胖症，痴呆症，糖尿病和癌症等，都被发现与睡眠不足有着千丝万缕的关系 睡眠质量差，心脏就不健康 接近中年，健康的恢复能力开始下降，睡眠不足对心血管系统的影响就逐渐增加 睡得越少，就会越想吃东西。增加糖尿病和肥胖的风险 睡眠不足会使得男性的睾酮水平下降，女性的卵泡释放激素下降，影响生殖健康 睡眠不足会使免疫力降低，增加癌症风险 睡眠质量越差，染色体端粒就越容易受到损害。导致 DNA 螺旋受到损害 决定什么时候睡觉或醒来的两个因素 24 小时昼夜节律：大脑深处的 24 小时生物钟发射的信号 昼夜节律也控制着其他节奏，包括偏好的饮食时间，心情和情绪，产生的尿量，核心体温，代谢率和多种激素的释放等 每个人的昼夜节律可能是不同的 腺苷：大脑中积聚的化学物质，清醒时间越长，这种化学物质就会积聚的越多，会感觉越困 当清醒的时间越久，体内的腺苷就会积累的越多，后果是人们越渴望睡眠。当腺苷浓度达到峰值，不可抗拒的睡眠欲望就会占据上风 腺苷发挥作用的方式是通过与受体结合，刺激受体使人感到困意。而咖啡因起作用的方式是霸占这些受体，阻止其与腺苷结合，阻断腺苷向大脑传递困觉信号 睡眠过程中大脑会降解清除白天的腺苷。大约 8 个小时的健康睡眠后，腺苷的清除就会完成 24 小时昼夜节律和腺苷的睡眠信号是相互独立的。比如开夜车时，即便腺苷水平逐渐累积，但当人熬过了 24 小时昼夜节律中困意最强的阶段，大约在凌晨 3 点，此时昼夜节律会使我们逐渐清醒，这中清醒状态大概会持续到下午或晚上，随着昼夜节律的再次转换，加上腺苷长时间的积聚，就会受到睡眠压力的沉重打击。</description>
     </item>
     
     <item>
@@ -155,7 +159,7 @@ nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unk
 解决方法是将需要的文件写入 /Library/Displays/Contents/Resources/Overrides 目录中。写入该目录中同样有效。
 使用脚本自动修改 发现一个自动适配 HiDPI 的脚本，但目前还未测试使用。
 https://github.com/mlch911/one-key-hidpi
-参考 &amp;amp; 扩展  macOS 下开启显示器 HiDPI 方法 macOS 无法获得权限问题 One key HiDPI  </description>
+参考 &amp;amp; 扩展 macOS 下开启显示器 HiDPI 方法 macOS 无法获得权限问题 One key HiDPI </description>
     </item>
     
     <item>
@@ -164,13 +168,14 @@ https://github.com/mlch911/one-key-hidpi
       <pubDate>Wed, 29 Jul 2020 20:21:02 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/</guid>
-      <description>查看和检索进程   使用 ps 命令列出所有进程信息
-1ps aux   使用 ps 命令检索进程
-1ps aux|grep keyword   使用 pidof 命令根据进程名称查找进程 ID
-1pidof nginx   使用 pgrep 命令检索进程，该命令将打印出所有检索到的进程 ID
-1pgrep keyword   使用 lsof 命令根据端口号检索进程
-1lsof -i:22   使用 ps 命令检索进程
-1# sed &amp;#39;1d&amp;#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除 2# awk &amp;#39;{print $2}&amp;#39; 打印每一行中的 PID 列 3ps -ef| grep &amp;#34;go&amp;#34; | sed &amp;#39;1d&amp;#39; | awk &amp;#39;{print $2}&amp;#39;   中断进程   使用 kill 命令中断进程。kill 命令向指定进程发送信号，默认信号为 15（TERM 信号），表示终止进程</description>
+      <description>查看和检索进程 使用 ps 命令列出所有进程信息
+1ps aux 使用 ps 命令检索进程
+1ps aux|grep keyword 使用 pidof 命令根据进程名称查找进程 ID
+1pidof nginx 使用 pgrep 命令检索进程，该命令将打印出所有检索到的进程 ID
+1pgrep keyword 使用 lsof 命令根据端口号检索进程
+1lsof -i:22 使用 ps 命令检索进程
+1# sed &amp;#39;1d&amp;#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除 2# awk &amp;#39;{print $2}&amp;#39; 打印每一行中的 PID 列 3ps -ef| grep &amp;#34;go&amp;#34; | sed &amp;#39;1d&amp;#39; | awk &amp;#39;{print $2}&amp;#39; 中断进程 使用 kill 命令中断进程。kill 命令向指定进程发送信号，默认信号为 15（TERM 信号），表示终止进程
+1# 向 PID 为 123 的进程发送信号 15 2kill 123 3 4# 向 PID 为 123 的进程发送信号 9，强制终止进程 5kill -9 123 常用信号：</description>
     </item>
     
     <item>
@@ -179,9 +184,9 @@ https://github.com/mlch911/one-key-hidpi
       <pubDate>Mon, 27 Jul 2020 00:22:31 +0800</pubDate>
       
       <guid>https://kouler.com/posts/docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>查看 Docker 信息   常看 docker 版本：
-1$ docker version   查看 docker 系统信息：
-1$ docker info   镜像操作  根据 Dockerfile 创建 Docker 镜像 1# 1. 首先创建一个新的目录 docker 2# 2. 在目录下新建 Dockerfile 文件 3# 3. 完善 Dockerfile 文件内容 4# 4. 在新创建的目录下使用 docker build 命令构建新的镜像 5#  6# 示例：[docker build -t go1.16.0:alpine .] 7 8$ docker build -t &amp;lt;新的镜像名&amp;gt;:&amp;lt;新镜像的tag&amp;gt; &amp;lt;Dockerfile文件所在路径&amp;gt;  从 DockerHub 检索镜像 1$ docker search &amp;lt;image_name&amp;gt;  拉取镜像 1$ docker pull &amp;lt;image_name&amp;gt;  删除镜像 1$ docker rmi &amp;lt;image_name&amp;gt;  列出镜像 1$ docker images  显示镜像历史 1$ docker history &amp;lt;image_name&amp;gt;  上传镜像到 Docker Hub 1# 为镜像添加附带作者信息的标签 2$ docker tag &amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 3 4# 上传附带作者信息标签的镜像到 Docker Hub 5$ docker push &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt;  清理镜像 1$ docker image prune   容器启动   启动容器并启动 bash：</description>
+      <description>查看 Docker 信息 常看 docker 版本：
+1$ docker version 查看 docker 系统信息：
+1$ docker info 镜像操作 根据 Dockerfile 创建 Docker 镜像 1# 1. 首先创建一个新的目录 docker 2# 2. 在目录下新建 Dockerfile 文件 3# 3. 完善 Dockerfile 文件内容 4# 4. 在新创建的目录下使用 docker build 命令构建新的镜像 5# 6# 示例：[docker build -t go1.16.0:alpine .] 7 8$ docker build -t &amp;lt;新的镜像名&amp;gt;:&amp;lt;新镜像的tag&amp;gt; &amp;lt;Dockerfile文件所在路径&amp;gt; 从 DockerHub 检索镜像 1$ docker search &amp;lt;image_name&amp;gt; 拉取镜像 1$ docker pull &amp;lt;image_name&amp;gt; 删除镜像 1$ docker rmi &amp;lt;image_name&amp;gt; 列出镜像 1$ docker images 显示镜像历史 1$ docker history &amp;lt;image_name&amp;gt; 上传镜像到 Docker Hub 1# 为镜像添加附带作者信息的标签 2$ docker tag &amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 3 4# 上传附带作者信息标签的镜像到 Docker Hub 5$ docker push &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 清理镜像 1$ docker image prune 容器启动 启动容器并启动 bash：</description>
     </item>
     
     <item>
@@ -190,7 +195,7 @@ https://github.com/mlch911/one-key-hidpi
       <pubDate>Thu, 12 Mar 2020 00:41:43 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E4%BD%BF%E7%94%A8fiddler%E6%8D%95%E8%8E%B7%E6%89%8B%E6%9C%BA%E6%B5%81%E9%87%8F/</guid>
-      <description>Fiddler 设置  打开 Fiddler 连接设置，Tools-&amp;gt;Fiddler Options-&amp;gt;Connections 设置允许远程计算机连接，Allow remote computers to connect 可以自定义端口，默认端口为 8888，Fiddler listens on port 确认设置，OK 重启 Fiddler  手机端设置  确保手机和电脑在同一局域网内 在当前无线网络高级设置中手动配置 HTTP 代理  IP 地址为电脑 IP 地址。鼠标移至 Fiddler 主界面右上 Online 字样处可查看当前 IP 地址 端口为 Fiddler 监听端口。默认为 8888   禁用移动数据并关闭 VPN，使得数据通过无线网络代理传输 打开手机浏览器，访问代理地址。例如: http://192.168.1.111:8888。正常情况下会打开 Fiddler Echo Service 页面 点击页面中的 FiddlerRoot certificate 链接下载证书 安装证书  </description>
+      <description>Fiddler 设置 打开 Fiddler 连接设置，Tools-&amp;gt;Fiddler Options-&amp;gt;Connections 设置允许远程计算机连接，Allow remote computers to connect 可以自定义端口，默认端口为 8888，Fiddler listens on port 确认设置，OK 重启 Fiddler 手机端设置 确保手机和电脑在同一局域网内 在当前无线网络高级设置中手动配置 HTTP 代理 IP 地址为电脑 IP 地址。鼠标移至 Fiddler 主界面右上 Online 字样处可查看当前 IP 地址 端口为 Fiddler 监听端口。默认为 8888 禁用移动数据并关闭 VPN，使得数据通过无线网络代理传输 打开手机浏览器，访问代理地址。例如: http://192.168.1.111:8888。正常情况下会打开 Fiddler Echo Service 页面 点击页面中的 FiddlerRoot certificate 链接下载证书 安装证书 </description>
     </item>
     
     <item>
@@ -201,7 +206,7 @@ https://github.com/mlch911/one-key-hidpi
       <guid>https://kouler.com/posts/%E9%80%9A%E8%BF%87%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AEchrome%E7%A6%81%E6%AD%A2%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87/</guid>
       <description>试用 chromedp 时，希望启动的浏览器能够实现禁止加载图片的功能，以节省资源消耗。
 在 chromedp Github 仓库 Issues 中找到了相关提问和答案。启动浏览器时通过设置启动参数 blink-settings 的值为 imagesEnabled=false 得以实现。
-参考 &amp;amp; 扩展  chromedp how to disable images load Chrome 命令行可配置参数 Chrome 命令行参数 blink-settings 的所有配置项  </description>
+参考 &amp;amp; 扩展 chromedp how to disable images load Chrome 命令行可配置参数 Chrome 命令行参数 blink-settings 的所有配置项 </description>
     </item>
     
     <item>
@@ -210,7 +215,7 @@ https://github.com/mlch911/one-key-hidpi
       <pubDate>Fri, 17 Jan 2020 22:42:14 +0800</pubDate>
       
       <guid>https://kouler.com/posts/use-hugo/</guid>
-      <description>Hugo 安装和配置  Hugo Documentation minimal-bootstrap-hugo-theme  Hugo 常用命令 1$ hugo help // 帮助命令 2$ hugo version // 打印版本号 3$ hugo new site sitename // 创建新站点 4$ hugo new posts/new-post.md // 创建新文章 5$ hugo // 生成静态页面 6$ hugo server // 启动 Hugo Web Server 在 Github 托管 Hugo  Host on GitHub  Github Pages site 配置个人域名  在发布项目根目录添加 CNAME 文件，内容为个人域名 配置个人域名 DNS，添加 CNAME 记录，将 www 子域指向个人 Github Pages site 地址，yourname.</description>
+      <description>Hugo 安装和配置 Hugo Documentation minimal-bootstrap-hugo-theme Hugo 常用命令 1$ hugo help // 帮助命令 2$ hugo version // 打印版本号 3$ hugo new site sitename // 创建新站点 4$ hugo new posts/new-post.md // 创建新文章 5$ hugo // 生成静态页面 6$ hugo server // 启动 Hugo Web Server 在 Github 托管 Hugo Host on GitHub Github Pages site 配置个人域名 在发布项目根目录添加 CNAME 文件，内容为个人域名 配置个人域名 DNS，添加 CNAME 记录，将 www 子域指向个人 Github Pages site 地址，yourname.github.io 配置个人域名 DNS，添加 A 记录，将域名指向 Github Pages 提供的 IP 地址 在 Github Pages site 仓库设置中添加配置好的域名，开启 Enforce HTTPS Host on GitHub CNAME errors Managing a custom domain for your GitHub Pages site </description>
     </item>
     
     <item>
@@ -220,10 +225,10 @@ https://github.com/mlch911/one-key-hidpi
       
       <guid>https://kouler.com/posts/zsh%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98/</guid>
       <description>环境变量失效 默认 shell 修改为 zsh 后，.bash_profile 中的环境变量全部失效
-解决方法  用户目录下创建 .zshrc 文件 将以下命令写入文件 source ~/.bash_profile  重启终端后可解决
+解决方法 用户目录下创建 .zshrc 文件 将以下命令写入文件 source ~/.bash_profile 重启终端后可解决
 终端用户名配置未生效 .bash_profile 中的终端用户名配置（PS1）仍未生效 export PS1=&#39;\[\033[01;36m\]\w \[\033[00m\]\$ &#39;
 解决方法 解决 zsh 环境变量失效的问题后，在 .bash_profile 文件中修改 PS1 的值
-## 修改前 export PS1=&#39;\[\033[01;36m\]\w \[\033[00m\]\$ &#39; # for bash ## 修改后 export PS1=&#39;%~ %(!.#.$) &#39; # for zsh 参考  环境变量怎么配置都不起作用？已经解决！一切源于 zsh zsh prompt expansion  </description>
+## 修改前 export PS1=&amp;#39;\[\033[01;36m\]\w \[\033[00m\]\$ &amp;#39; # for bash ## 修改后 export PS1=&amp;#39;%~ %(!.#.$) &amp;#39; # for zsh 参考 环境变量怎么配置都不起作用？已经解决！一切源于 zsh zsh prompt expansion </description>
     </item>
     
     <item>
@@ -232,9 +237,9 @@ https://github.com/mlch911/one-key-hidpi
       <pubDate>Tue, 08 Oct 2019 22:33:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/macos-%E6%A1%8C%E9%9D%A2%E5%A3%81%E7%BA%B8%E8%B7%AF%E5%BE%84/</guid>
-      <description>默认路径  /Library/Desktop Pictures /System/Library/Desktop Pictures  查看当前桌面壁纸路径 输入以下命令后会在桌面显示当前桌面壁纸所在路径
+      <description>默认路径 /Library/Desktop Pictures /System/Library/Desktop Pictures 查看当前桌面壁纸路径 输入以下命令后会在桌面显示当前桌面壁纸所在路径
 1$ defaults write com.apple.dock desktop-picture-show-debug-text -bool TRUE 2$ killall Dock 输入以下命令后不再显示当前壁纸路径
-1$ defaults delete com.apple.dock desktop-picture-show-debug-text 2$ killall Dock 参考  找不到当前壁纸文件的路径  </description>
+1$ defaults delete com.apple.dock desktop-picture-show-debug-text 2$ killall Dock 参考 找不到当前壁纸文件的路径 </description>
     </item>
     
     <item>
@@ -244,7 +249,7 @@ https://github.com/mlch911/one-key-hidpi
       
       <guid>https://kouler.com/posts/%E5%85%B3%E9%97%AD-macos-catalina-read-only-volume/</guid>
       <description>运行以下命令即可关闭 Read-only Volume，系统重启后命令会失效
-1$ sudo mount -uw / 2 3# killall Finder 参考  macOS Catalina Read-only file system with SIP disabled  </description>
+1$ sudo mount -uw / 2 3# killall Finder 参考 macOS Catalina Read-only file system with SIP disabled </description>
     </item>
     
     <item>
@@ -254,7 +259,7 @@ https://github.com/mlch911/one-key-hidpi
       
       <guid>https://kouler.com/posts/tmux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
       <description>Tmux 命令 # 开启一个 Tmux Session $ tmux new -s name # 使会话在后台运行，等同于 `Ctrl + B` + `D` $ tmux detach # 查看当前 Tmux 中有哪些 Session $ tmux ls # 回到 Tmux Session 中 $ tmux a -t name（or at，or attach） # 关闭demo会话 tmux kill-session -t demo # 关闭服务器，所有的会话都将关闭 tmux kill-server Tmux 快捷键 Tmux Session 中的命令需要先按下 Tmux 前缀键（默认是 Ctrl + B）
-# 会话（Session） 指令 ? # 快捷键帮助列表 d # detach，退出 Tmux Session，回到父级 Shell r # 强制重载当前会话 : # 进入命令行模式，此时可直接输入ls等命令 s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换 $ # 为当前 Session 命名 # 窗口（window）指令 c # 新建 Window &amp;amp; # 关闭当前窗口 p # 切换到上一窗口 n # 切换到下一窗口 0~9 # 切换到指定窗口 &#39; # 切换到指定索引的窗口，比如索引号大于 9 的窗口 w # 打开窗口列表，用于且切换窗口 , # 为当前窗口命名 .</description>
+# 会话（Session） 指令 ? # 快捷键帮助列表 d # detach，退出 Tmux Session，回到父级 Shell r # 强制重载当前会话 : # 进入命令行模式，此时可直接输入ls等命令 s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换 $ # 为当前 Session 命名 # 窗口（window）指令 c # 新建 Window &amp;amp; # 关闭当前窗口 p # 切换到上一窗口 n # 切换到下一窗口 0~9 # 切换到指定窗口 &amp;#39; # 切换到指定索引的窗口，比如索引号大于 9 的窗口 w # 打开窗口列表，用于且切换窗口 , # 为当前窗口命名 .</description>
     </item>
     
     <item>
@@ -265,7 +270,7 @@ https://github.com/mlch911/one-key-hidpi
       <guid>https://kouler.com/posts/centos7%E6%9E%B6%E8%AE%BEftp%E6%9C%8D%E5%8A%A1/</guid>
       <description>大概操作流程 之前已经安装了 vsftpd 服务，并修改了配置
 目前的状况是浏览器端可以登录，但无法显示文件列表
- 开机并启动 vsfptd # 启动服务 service vsftpd start # 停止服务 service vsftpd stop # 重启服务 service vsftpd restart # 查看状态 service vsftpd status  Docker 中安装了 ftp 命令行工具，登录时提示错误 vsftpd: refusing to run with writable root inside chroot() 更改挂载目录的拥有者，仍然提示错误 挂载硬盘出错 mount /dev/sdb is write-protected mounting read-only mount: unknown filesystem type &#39;(null)&#39; 硬盘格式为 ntfs，格式化为linux支持的格式可以解决该问题，但硬盘中有数据，放弃了该方法 安装 ntfs-3g，使用该工具挂载硬盘 命令行登录ftp，提示错误 500 Illegal PORT command 将 vsftpd 设置为被动模式，增加 vsftpd 配置项 # 开启被动模式 pasv_enable=YES # 被动模式最低端口 pasv_min_port=30000 # 被动模式最高端口 pasv_max_port=31000  仍然看不到文件列表 下载 ftp 客户端，使用 filezilla 登录 ftp 发现将 ntfs 挂载之后目录权限均为 root，使用 chown 更改所属用户没有效果，后来通过 ntfs-3g 挂载时设置用户和用户组为 vsftpd 用户 SELinux 在访问 ftp 时收到警告 设置 SELinux 对 ftp 的控制，允许访问目录 # 查看 SELinux 中 ftp 权限 getsebool -a | grep ftp # 允许 ftp 访问目录 setsebool -P tftp_home_dir 1 setsebool -P allow_ftpd_full_access 1  解决错误 vsftpd: refusing to run with writable root inside chroot()，在 vsftpd 配置文件中添加 allow_writeable_chroot=YES ftp 仍然无法显示挂载硬盘的目录列表，原因是设置 ftp 为被动模式，防火墙阻止了之前设置的用于传输数据的被动模式端口 30000-31000 批量开放防火墙端口 firewall-cmd --permanent --zone=public --add-port=30000-31000/tcp firewall-cmd --reload  设置开机启动 vsftpd 服务 chkconfig vsftpd on 设置开机自动挂载 NTFS 硬盘 # 编辑 /etc/fstab 文件 UUID=831df52d-baad-4902-bcce-6128cec95411 /home/vsftpd/ftp ntfs-3g defaults 0 0   参考  vsftpd：500 OOPS: vsftpd: refusing to run with  如何更改linux文件的拥有者及用户组(chown和chgrp) vsftpd 服务器报错：500 OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd配置文件详解 Centos/Linux 挂载移动ntfs硬盘 Centos 7 挂载 NTFS 分区 500 Illegal PORT command的问题（FTP主被动模式） CentOS下vsftp设置、匿名用户&amp;amp;本地用户设置、PORT、PASV模式设置 CentOS 6和CentOS 7防火墙的关闭 linux中ftp查看不到文件列表的问题 如何更改linux文件的拥有者及用户组(chown和chgrp) Linux查看用户所属的组 Linux 系统的 NTFS-3G 权限 查看 SELinux状态及关闭SELinux CentOS7 搭建vsftpd详细教程 vsftpd设置后无法登陆，解决OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd不能显示文件目录的解决方法 Centos防火墙设置与端口开放的方法 CentOS 7 开放防火墙端口命令 CentOS7下firewall批量开放端口 CentOs 设置开机启动vsftpd服务 CentOS设置设备开机自动挂载 centos7.</description>
+开机并启动 vsfptd # 启动服务 service vsftpd start # 停止服务 service vsftpd stop # 重启服务 service vsftpd restart # 查看状态 service vsftpd status Docker 中安装了 ftp 命令行工具，登录时提示错误 vsftpd: refusing to run with writable root inside chroot() 更改挂载目录的拥有者，仍然提示错误 挂载硬盘出错 mount /dev/sdb is write-protected mounting read-only mount: unknown filesystem type &#39;(null)&#39; 硬盘格式为 ntfs，格式化为linux支持的格式可以解决该问题，但硬盘中有数据，放弃了该方法 安装 ntfs-3g，使用该工具挂载硬盘 命令行登录ftp，提示错误 500 Illegal PORT command 将 vsftpd 设置为被动模式，增加 vsftpd 配置项 # 开启被动模式 pasv_enable=YES # 被动模式最低端口 pasv_min_port=30000 # 被动模式最高端口 pasv_max_port=31000 仍然看不到文件列表 下载 ftp 客户端，使用 filezilla 登录 ftp 发现将 ntfs 挂载之后目录权限均为 root，使用 chown 更改所属用户没有效果，后来通过 ntfs-3g 挂载时设置用户和用户组为 vsftpd 用户 SELinux 在访问 ftp 时收到警告 设置 SELinux 对 ftp 的控制，允许访问目录 # 查看 SELinux 中 ftp 权限 getsebool -a | grep ftp # 允许 ftp 访问目录 setsebool -P tftp_home_dir 1 setsebool -P allow_ftpd_full_access 1 解决错误 vsftpd: refusing to run with writable root inside chroot()，在 vsftpd 配置文件中添加 allow_writeable_chroot=YES ftp 仍然无法显示挂载硬盘的目录列表，原因是设置 ftp 为被动模式，防火墙阻止了之前设置的用于传输数据的被动模式端口 30000-31000 批量开放防火墙端口 firewall-cmd --permanent --zone=public --add-port=30000-31000/tcp firewall-cmd --reload 设置开机启动 vsftpd 服务 chkconfig vsftpd on 设置开机自动挂载 NTFS 硬盘 # 编辑 /etc/fstab 文件 UUID=831df52d-baad-4902-bcce-6128cec95411 /home/vsftpd/ftp ntfs-3g defaults 0 0 参考 vsftpd：500 OOPS: vsftpd: refusing to run with 如何更改linux文件的拥有者及用户组(chown和chgrp) vsftpd 服务器报错：500 OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd配置文件详解 Centos/Linux 挂载移动ntfs硬盘 Centos 7 挂载 NTFS 分区 500 Illegal PORT command的问题（FTP主被动模式） CentOS下vsftp设置、匿名用户&amp;amp;本地用户设置、PORT、PASV模式设置 CentOS 6和CentOS 7防火墙的关闭 linux中ftp查看不到文件列表的问题 如何更改linux文件的拥有者及用户组(chown和chgrp) Linux查看用户所属的组 Linux 系统的 NTFS-3G 权限 查看 SELinux状态及关闭SELinux CentOS7 搭建vsftpd详细教程 vsftpd设置后无法登陆，解决OOPS: vsftpd: refusing to run with writable root inside chroot() vsftpd不能显示文件目录的解决方法 Centos防火墙设置与端口开放的方法 CentOS 7 开放防火墙端口命令 CentOS7下firewall批量开放端口 CentOs 设置开机启动vsftpd服务 CentOS设置设备开机自动挂载 centos7.</description>
     </item>
     
     <item>
@@ -274,9 +279,9 @@ https://github.com/mlch911/one-key-hidpi
       <pubDate>Thu, 11 Jul 2019 12:14:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/centos7%E7%AC%94%E8%AE%B0%E6%9C%AC%E5%85%B3%E9%97%AD%E5%90%88%E7%9B%96%E7%9D%A1%E7%9C%A0/</guid>
-      <description>具体流程  修改配置文件/etc/systemd/logind.conf，去掉HandleLidSwitch行的注释，并将其值由suspend改为ignore 执行systemctl restart systemd-logind命令，使刚才的修改生效  修改后的文件内容如下：
+      <description>具体流程 修改配置文件/etc/systemd/logind.conf，去掉HandleLidSwitch行的注释，并将其值由suspend改为ignore 执行systemctl restart systemd-logind命令，使刚才的修改生效 修改后的文件内容如下：
 [Login] #NAutoVTs=6 #ReserveVT=6 #KillUserProcesses=no #KillOnlyUsers= #KillExcludeUsers=root #InhibitDelayMaxSec=5 #HandlePowerKey=poweroff #HandleSuspendKey=suspend #HandleHibernateKey=hibernate HandleLidSwitch=ignore #HandleLidSwitchDocked=ignore #PowerKeyIgnoreInhibited=no #SuspendKeyIgnoreInhibited=no #HibernateKeyIgnoreInhibited=no #LidSwitchIgnoreInhibited=yes #IdleAction=ignore #IdleActionSec=30min #RuntimeDirectorySize=10% #RemoveIPC=no #UserTasksMax= 如需再次进入待机状态，可执行systemctl suspend命令。
-通过修改配置文件自定义电源管理 # /etc/systemd 动作: HandlePowerKey # 按下电源键后的动作 HandleSleepKey # 按下挂起键后的动作 HandleHibernateKey # 按下休眠键后的动作 HandleLidSwitch # 合上笔记本盖后待机 动作允许的值: ignore # 不执行任何操作 poweroff # 关机 reboot # 重新启动 halt # 关机 suspend # 待机挂起 hibernate # 休眠 参考  CentOS 7.0 笔记本关闭合盖睡眠  </description>
+通过修改配置文件自定义电源管理 # /etc/systemd 动作: HandlePowerKey # 按下电源键后的动作 HandleSleepKey # 按下挂起键后的动作 HandleHibernateKey # 按下休眠键后的动作 HandleLidSwitch # 合上笔记本盖后待机 动作允许的值: ignore # 不执行任何操作 poweroff # 关机 reboot # 重新启动 halt # 关机 suspend # 待机挂起 hibernate # 休眠 参考 CentOS 7.0 笔记本关闭合盖睡眠 </description>
     </item>
     
     <item>
@@ -286,7 +291,7 @@ https://github.com/mlch911/one-key-hidpi
       
       <guid>https://kouler.com/posts/screen%E5%91%BD%E4%BB%A4%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
       <description>配置文件 该配置在screen底部状态栏显示窗口列表的名称，更易于管理会话和窗口
-## ~/.screenrc ## 屏幕缓冲区4096行 defscrollback 4096 ## 下标签设置 hardstatus on hardstatus alwayslastline hardstatus string &amp;quot;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&amp;quot; termcapinfo rxvt &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39; termcapinfo xterm ti@:te@ termcapinfo xterm &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39; 常用操作 1screen -S name # 创建名称为 name 的会话 2screen -t name # 创建名称为 name 的窗口 3screen -ls # 显示存在的会话 4screen -r name # 唤起一个被放入后台的会话 Ctrl + a, ? # 显示所有按键绑定信息 Ctrl + a, w # 显示所有窗口列表 Ctrl + a, Ctrl + a # 切换到之前的窗口 Ctrl + a, d # 暂离当前会话，将当前会话放入后台 Ctrl + a, c # 在当前会话中创建一个新窗口 Ctrl + a, A # 为当前窗口设置名称 Ctrl + a, p # 上一个窗口 Ctrl + a, n # 下一个窗口 Ctrl + a, 0-9 # 切换到 0-9 窗口 Ctrl + a, k # 杀掉当前窗口 Ctrl + a, [ # 拷贝模式 </description>
+## ~/.screenrc ## 屏幕缓冲区4096行 defscrollback 4096 ## 下标签设置 hardstatus on hardstatus alwayslastline hardstatus string &amp;#34;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&amp;#34; termcapinfo rxvt &amp;#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&amp;#39; termcapinfo xterm ti@:te@ termcapinfo xterm &amp;#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&amp;#39; 常用操作 1screen -S name # 创建名称为 name 的会话 2screen -t name # 创建名称为 name 的窗口 3screen -ls # 显示存在的会话 4screen -r name # 唤起一个被放入后台的会话 Ctrl + a, ? # 显示所有按键绑定信息 Ctrl + a, w # 显示所有窗口列表 Ctrl + a, Ctrl + a # 切换到之前的窗口 Ctrl + a, d # 暂离当前会话，将当前会话放入后台 Ctrl + a, c # 在当前会话中创建一个新窗口 Ctrl + a, A # 为当前窗口设置名称 Ctrl + a, p # 上一个窗口 Ctrl + a, n # 下一个窗口 Ctrl + a, 0-9 # 切换到 0-9 窗口 Ctrl + a, k # 杀掉当前窗口 Ctrl + a, [ # 拷贝模式 </description>
     </item>
     
     <item>
@@ -296,7 +301,7 @@ https://github.com/mlch911/one-key-hidpi
       
       <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3composer%E6%97%A0%E6%B3%95%E4%B8%8B%E8%BD%BD%E4%BB%A3%E7%A0%81%E5%BA%93%E9%97%AE%E9%A2%98/</guid>
       <description>可以尝试为 composer 设置国内镜像，代码如下
-1$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/ 参考&amp;amp;扩展  Composer 中文镜像  </description>
+1$ composer config repo.packagist composer https://mirrors.aliyun.com/composer/ 参考&amp;amp;扩展 Composer 中文镜像 </description>
     </item>
     
     <item>
@@ -320,7 +325,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
       <pubDate>Wed, 07 Nov 2018 09:27:42 +0800</pubDate>
       
       <guid>https://kouler.com/posts/mac-%E5%9C%A8%E7%99%BB%E5%BD%95%E5%B1%8F%E9%9A%90%E8%97%8F%E8%B4%A6%E6%88%B7/</guid>
-      <description>1# 在登录屏隐藏 PostgreSQL 账户 2$ sudo dscl . create /Users/postgres IsHidden 1 3 4# 在登录屏隐藏 hiddenuser 账户 5$ sudo dscl . create /Users/hiddenuser IsHidden 1 6 7# 在登录屏隐藏通过 other... 登录 8$ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE 9 参考 &amp;amp; 扩展  Hide PostgreSQL user in OSX Yosemite Hide a user account in macOS Remove “Other…” from Login screen  </description>
+      <description>1# 在登录屏隐藏 PostgreSQL 账户 2$ sudo dscl . create /Users/postgres IsHidden 1 3 4# 在登录屏隐藏 hiddenuser 账户 5$ sudo dscl . create /Users/hiddenuser IsHidden 1 6 7# 在登录屏隐藏通过 other... 登录 8$ sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWOTHERUSERS_MANAGED -bool FALSE 参考 &amp;amp; 扩展 Hide PostgreSQL user in OSX Yosemite Hide a user account in macOS Remove “Other…” from Login screen </description>
     </item>
     
     <item>
@@ -339,7 +344,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
       
       <guid>https://kouler.com/posts/lumen%E5%8A%A0%E8%BD%BD%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
       <description>Lumen 版本: 5.3
- 在根目录创建 config 目录 在 config 目录中新建配置文件 在 bootstrap/app.php 中加载配置文件  1&amp;lt;?php 2 3// bootstrap/app.php 4$app-&amp;gt;configure(&amp;#39;fileName&amp;#39;); 5 6// Example: $app-&amp;gt;configure(&amp;#39;mail&amp;#39;); 参考&amp;amp;扩展  Lumen 加载根目录配置文件  </description>
+在根目录创建 config 目录 在 config 目录中新建配置文件 在 bootstrap/app.php 中加载配置文件 1&amp;lt;?php 2 3// bootstrap/app.php 4$app-&amp;gt;configure(&amp;#39;fileName&amp;#39;); 5 6// Example: $app-&amp;gt;configure(&amp;#39;mail&amp;#39;); 参考&amp;amp;扩展 Lumen 加载根目录配置文件 </description>
     </item>
     
     <item>
@@ -370,20 +375,26 @@ Person 这个接口该不该定义，关键看具体应用中的使用情况。�
       <description>子系统的设计 在软件设计的过程中，往往需要对系统的结构层次进行分析，从中抽取出系统的设计框架，通过框架来指导整个软件设计的流程。而一个良好的系统框架也是决定整个系统的稳定性、封闭性、可维护性的重要条件之一。
 复杂的系统，最好先按业务领域横向拆分成可独立部署的子系统，每个子系统内部再按技术和业务纵向拆分成不同的模块。
 举例来说，按照一般的模块化或者功能拆分方法，我们可以将一个完善的电商系统分解为商品、库管、订单、支付、财务、结算、配送、搜索、CRM、虚拟货币、优惠票券、短信、邮件、活动等子系统。而子系统可以再次按照模块或者功能细分，比如订单系统可以按商品品类或者活动类型或者线上线下等维度拆分。支付系统可以按照内外部支付方式、支付和风控策略、支付模式（如跳转或直连等）等不同维度进行划分。
-子系统设计准则   分而治之，划分模块 子系统还可以拆分子系统，服务还可以拆分子服务，这里涉及到一个粒度的问题，非常考验设计者的水平和经验，需要准确把握，否则很容易过度设计
-  分层
+子系统设计准则 分而治之，划分模块 子系统还可以拆分子系统，服务还可以拆分子服务，这里涉及到一个粒度的问题，非常考验设计者的水平和经验，需要准确把握，否则很容易过度设计
+分层
 如果真正理解分层的含义，在很多情况下，多层不如经典三层
-  保证隔离，划清界限 不要过多假设，不要拖泥带水，任何模块或服务只做它该做的事情。实现隔离的最佳方法，就是面向接口编程，而不是针对具体实现编程 Programming to an Interface, not an Implementation
-  多态
+保证隔离，划清界限 不要过多假设，不要拖泥带水，任何模块或服务只做它该做的事情。实现隔离的最佳方法，就是面向接口编程，而不是针对具体实现编程 Programming to an Interface, not an Implementation
+多态
 如果一定要复用类，请优先使用对象的组合而非继承
-  提取变化剧烈的点，定期重构，核心业务逻辑必须单元测试
+提取变化剧烈的点，定期重构，核心业务逻辑必须单元测试
 UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响后端业务逻辑，所以，接口设计要向 UI 和业务逻辑倾斜，基础框架和服务相对稳定，无需过度设计
-  模块的设计 系统模块划分过程中，要充分遵照当前系统的框架结构。模块的划分要和系统的结构层次相结合，根据系统层次对各个模块也进行层次划分。如果系统的模块划分和框架结构相违背的话，则会导致数据混乱，接口复杂，模块耦合性过高等问题出现。
+模块的设计 系统模块划分过程中，要充分遵照当前系统的框架结构。模块的划分要和系统的结构层次相结合，根据系统层次对各个模块也进行层次划分。如果系统的模块划分和框架结构相违背的话，则会导致数据混乱，接口复杂，模块耦合性过高等问题出现。
 进行模块划分时，很多情况下不能清晰的把握每个模块的具体内容。往往会从需求归类或数据统一的角度上来设计模块。这种设计理念是对的，但如果只是单纯从这几个方面进行模块设计，会导致在模块划分上出现一些问题。
 比如设计的某一个模块，虽然数据接口统一，但内部实现的功能非常多，单一模块的规模过大，包含的内容过多，会导致程序实现难度增加，数据处理流程变得复杂，程序维护性降低，出错范围不易确定等问题出现。同时，由于模块实现的功能丰富，则必然会导致接口也变得繁多，那么与其他模块之间的独立性就得不到保证，严重影响对程序的理解。
 在设计模块的时候，需要遵循每个模块功能单一、接口简单、结构精简的原则。确保每个模块的规模不要太大，接口尽量单一简化。这样可能会导致模块数量比较多，但能够确保模块的独立性，且不会影响系统的整体框架结构。
-模块划分的意义：  功能完整独立，数据接口简单 程序易于实现，提高软件开发速度的同时能兼顾软件质量 程序实现逻辑更加清晰，可读性强，易于理解和维护 多人合作开发分工更明确，容易控制 系统运行可方便地选择不同的流程 易于测试和维护 有利于限制错误范围 抽象出可公用的模块，可维护性强，以避免同一处修改在多个地方出现 能充分利用可以重用的代码 基于模块化设计优秀的系统，方便的组装开发新的相似系统，甚至一个全新系统  模块划分准则  高内聚低耦合 规模适中 大模块分解不充分；小模块使用开销大，接口复杂。 功能单一明确 最好做到模块与目标的一一对应。方便单个模块的调试。 接口简单一致 设计应该使得信息传递简单并且与模块的功能一致。 尽量保证单入口单出口 避免内容耦合，易于理解和维护。 功能可预测
-相同的输入应该有相同的输出，否则难以理解、测试和维护。 联系尽可能少 对于必须的联系都应该有明确的说明，  模块化的实现 抽象： 抽出事物的本质特性而暂时不考虑它们的细节</description>
+模块划分的意义： 功能完整独立，数据接口简单 程序易于实现，提高软件开发速度的同时能兼顾软件质量 程序实现逻辑更加清晰，可读性强，易于理解和维护 多人合作开发分工更明确，容易控制 系统运行可方便地选择不同的流程 易于测试和维护 有利于限制错误范围 抽象出可公用的模块，可维护性强，以避免同一处修改在多个地方出现 能充分利用可以重用的代码 基于模块化设计优秀的系统，方便的组装开发新的相似系统，甚至一个全新系统 模块划分准则 高内聚低耦合 规模适中 大模块分解不充分；小模块使用开销大，接口复杂。 功能单一明确 最好做到模块与目标的一一对应。方便单个模块的调试。 接口简单一致 设计应该使得信息传递简单并且与模块的功能一致。 尽量保证单入口单出口 避免内容耦合，易于理解和维护。 功能可预测
+相同的输入应该有相同的输出，否则难以理解、测试和维护。 联系尽可能少 对于必须的联系都应该有明确的说明， 模块化的实现 抽象： 抽出事物的本质特性而暂时不考虑它们的细节
+信息隐蔽： 一个模块内包含的信息（过程和数据）对于不需要这些信息的模块来说，是隐蔽不可访问的。
+按照功能划分 在模块设计过程中大多基于功能来划分。这样做可以让相似的功能需求得到明确划分，同时有利于功能分解，任务分配等。
+按照任务需求划分 按照任务需求进行模块划分是一种基于面向过程的划分方法，这样做能够清晰的了解系统的开发流程。对于任务的分工、管理，系统功能接口的制定都有良好体现。
+按任务需求进行模块划分，可以先将任务需求根据系统框架分出系统等级。通过任务需求的等级划分对模块划分起到引导作用，同时，依照系统结构层次再来进行模块划分。
+按任务需求进行模块划分的主要步骤如下：
+分析系统需求，得出需求列表 对需求进行归类，并划分出优先级 根据需求对系统进行模块分析，抽取出核心模块 将核心模块进行细化扩展，逐层得到各个子模块，完成模块划分 很多情况下，在划分任务需求时，有些需求和多个模块均有联系，此时，通过需求来确定模块的划分就不能够降低模块间的耦合。而且有些模块划分出来后，里面涉及的数据类型多种多样，显然这个时候根据系统所抽象出来的数据模型来进行模块划分更加有利。</description>
     </item>
     
     <item>
@@ -393,7 +404,7 @@ UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响�
       
       <guid>https://kouler.com/posts/golang-wasm-demo/</guid>
       <description>Golang 1.11 加入了对 WebAssembly 的支持，以下会测试并运行一个简单的 Demo。
- MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit)   编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码  编译测试代码 1// 测试代码 main.go 2package main 3 4import &amp;#34;fmt&amp;#34; 5 6func main() { 7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;) 8} 1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载 2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go 编写 WebServer 代码 1// server.</description>
+MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit) 编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码 编译测试代码 1// 测试代码 main.go 2package main 3 4import &amp;#34;fmt&amp;#34; 5 6func main() { 7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;) 8} 1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载 2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go 编写 WebServer 代码 1// server.go 2package main 3 4import ( 5 &amp;#34;flag&amp;#34; 6 &amp;#34;log&amp;#34; 7 &amp;#34;net/http&amp;#34; 8) 9 10func main() { 11 port := flag.</description>
     </item>
     
     <item>
@@ -407,9 +418,9 @@ UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响�
 1* * * * * echo 111 &amp;gt;&amp;gt; /path/test 安装 Rsyslog 后查看 Cron 日志，并没有发现任何异常，日志正常输出每一次的调度命令
 然后尝试将 Laravel 任务调度命令执行结果输出到文件，修改 Cron 文件后并没有在输出文件中发现任何内容
 1* * * * * php /path/artisan schedule:run &amp;gt;&amp;gt; /path/log 查看关于 Linux 中重定向相关内容后怀疑可能于此有关
- &amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
+&amp;gt;&amp;gt; 输出重定向到一个文件或设备 追加原来的文件
 2&amp;gt;&amp;gt; 将一个标准错误输出重定向到一个文件或设备 追加到原来的文件
- 随即修改 Cron 文件，将标准错误重定向到文件
+随即修改 Cron 文件，将标准错误重定向到文件
 1* * * * * php /path/artisan schedule:run 2&amp;gt;&amp;gt; /path/log 文件中打印出了错误信息</description>
     </item>
     
@@ -420,11 +431,11 @@ UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响�
       
       <guid>https://kouler.com/posts/debian-ubuntu%E6%9B%B4%E6%96%B0%E5%86%85%E6%A0%B8%E5%B9%B6%E5%BC%80%E5%90%AFtcp-bbr%E5%8A%9F%E8%83%BD/</guid>
       <description>BBR (Bottleneck Bandwidth and RTT) 是 Google 提供的 TCP 拥塞控制算法，适用于复杂网络环境下的 TCP 加速。
- Debian 8.x 或者 Debian 9.x 系统，当然以下教程也适合 Ubuntu 14.04 或 Ubuntu 16.04 如果是虚拟机，那么得使用 KVM 或 Xen 等可以修改内核的平台，OpenVZ 方法我们不做介绍  升级内核 BBR 只支持 4.9.x 以上的内核，所以我们需要更新升级以下
+Debian 8.x 或者 Debian 9.x 系统，当然以下教程也适合 Ubuntu 14.04 或 Ubuntu 16.04 如果是虚拟机，那么得使用 KVM 或 Xen 等可以修改内核的平台，OpenVZ 方法我们不做介绍 升级内核 BBR 只支持 4.9.x 以上的内核，所以我们需要更新升级以下
 如果你使用的是 Debian 9.x，那么这一步可以直接跳过，其他三个内核版本较旧的系统，我们可以使用 Ubuntu 打包好的内核安装包
 首先，找到 4.9.x 以上版本的稳定内核，这里我们推荐使用 LTS 版本，目前最新的是 4.9.40 下载安装即可
 1mkdir kernel-tmp &amp;amp;&amp;amp; cd kernel-tmp 2wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988_4.9.88-040988.201803181131_all.deb 3wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-headers-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb 4wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.9.88/linux-image-4.9.88-040988-generic_4.9.88-040988.201803181131_amd64.deb 5sudo dpkg -i *.deb 安装完以后直接 reboot 重启，一切顺利的话请检查以下当前的内核版本
-1root@debian ~ # uname -r 24.</description>
+1root@debian ~ # uname -r 24.9.0-3-amd64 配置 BBR 直接修改 /etc/sysctl.</description>
     </item>
     
     <item>
@@ -433,7 +444,7 @@ UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响�
       <pubDate>Mon, 09 Apr 2018 21:41:39 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E6%97%A9%E6%9C%9Fios%E8%AE%BE%E5%A4%87%E5%BC%BA%E5%88%B6%E6%81%A2%E5%A4%8D%E7%B3%BB%E7%BB%9F%E6%96%B9%E6%B3%95/</guid>
-      <description>关机后按住返回键 与电脑连接数据线 打开 iTunes 后自动弹出恢复,期间必须按住返回键  有误的官方做法</description>
+      <description>关机后按住返回键 与电脑连接数据线 打开 iTunes 后自动弹出恢复,期间必须按住返回键 有误的官方做法</description>
     </item>
     
     <item>
@@ -442,7 +453,7 @@ UI 变化最大，其次是业务逻辑，很多时候 UI 变化会直接影响�
       <pubDate>Fri, 23 Mar 2018 01:39:15 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E6%97%A0%E7%BA%BF%E8%B7%AF%E7%94%B1%E5%99%A8%E4%B9%8B%E9%97%B4%E8%AE%BE%E7%BD%AE%E6%9C%89%E7%BA%BF%E4%B8%AD%E7%BB%A7/</guid>
-      <description> 第二个路由器关闭 DHCP 服务 WAN 口自动获取 IP 或者手动配制成第一个路由器的局域网 设置第二个路由器的密码，加密方式，ssid 和第一个一样，信道不能和第一个一样 第一个路由的 LAN 口进第二个路由的 LAN 口  </description>
+      <description> 第二个路由器关闭 DHCP 服务 WAN 口自动获取 IP 或者手动配制成第一个路由器的局域网 设置第二个路由器的密码，加密方式，ssid 和第一个一样，信道不能和第一个一样 第一个路由的 LAN 口进第二个路由的 LAN 口 </description>
     </item>
     
     <item>
@@ -461,7 +472,7 @@ Release 版： 此版本意味着最终版本、上线版本，在前面版本�
 修订号： 一般是 Bug 修复或是一些小的变动，要经常发布修订版，时间间隔不限，修复一个严重的bug即可发布一个修订版。此版本号由项目经理决定是否修改。
 先行版本号： 被标上先行版本号则表示这个版本并非稳定而且可能无法达到兼容的需求。
 版本编译信息： 可以记录修改项目的当前日期或编译信息，每天对项目的修改都需要更改日期版本号。版本编译信息不标识版本优先级，因此当两个版本只有在版本编译信息有差别时，属于相同的优先层级。
-参考 &amp;amp; 扩展  语义化版本 2.0.0 APP版本号命名规范及原则  </description>
+参考 &amp;amp; 扩展 语义化版本 2.0.0 APP版本号命名规范及原则 </description>
     </item>
     
     <item>
@@ -471,7 +482,7 @@ Release 版： 此版本意味着最终版本、上线版本，在前面版本�
       
       <guid>https://kouler.com/posts/%E7%BB%88%E7%AB%AF%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86/</guid>
       <description>设置和取消临时代理 临时代理在退出当前终端后失效
-1# 设置临时 HTTP 代理 2export http_proxy=http://proxyAddress:port 3 4# 设置临时 SOCKS5 代理 5export ALL_PROXY=socks5://proxyAddress:port 6 7# SS 下的 HTTP 代理 8export http_proxy=http://127.0.0.1:1087 9 10# 取消临时代理 11unset http_proxy 12unset ALL_PROXY 参考 &amp;amp; 扩展  让终端走代理的几种方法  </description>
+1# 设置临时 HTTP 代理 2export http_proxy=http://proxyAddress:port 3 4# 设置临时 SOCKS5 代理 5export ALL_PROXY=socks5://proxyAddress:port 6 7# SS 下的 HTTP 代理 8export http_proxy=http://127.0.0.1:1087 9 10# 取消临时代理 11unset http_proxy 12unset ALL_PROXY 参考 &amp;amp; 扩展 让终端走代理的几种方法 </description>
     </item>
     
     <item>
@@ -488,7 +499,7 @@ Release 版： 此版本意味着最终版本、上线版本，在前面版本�
 交叉编译工具链是一个由编译器、连接器和解释器组成的综合开发环境，交叉编译工具链主要由 binutils、gcc 和 glibc 3个部分组成。
 有时出于减小 libc 库大小的考虑，也可以用别的 c 库来代替 glibc，例如 uClibc、dietlibc 和 newlib。
 Golang 的跨平台交叉编译 Go 语言是编译型语言，可以将程序编译后在将其拿到其它操作系统中运行，此过程只需要在编译时增加对其它系统的支持。
-交叉编译依赖下面几个环境变量  $GOARCH 目标平台（编译后的目标平台）的处理器架构（386、amd64、arm） $GOOS 目标平台（编译后的目标平台）的操作系统（darwin、freebsd、linux、windows）  各平台的 GOOS 和 GOARCH 参考    OS ARCH OS version     linux 386 / amd64 / arm &amp;gt;= Linux 2.</description>
+交叉编译依赖下面几个环境变量 $GOARCH 目标平台（编译后的目标平台）的处理器架构（386、amd64、arm） $GOOS 目标平台（编译后的目标平台）的操作系统（darwin、freebsd、linux、windows） 各平台的 GOOS 和 GOARCH 参考 OS ARCH OS version linux 386 / amd64 / arm &amp;gt;= Linux 2.6 darwin 386 / amd64 OS X (Snow Leopard + Lion) freebsd 386 / amd64 &amp;gt;= FreeBSD 7 windows 386 / amd64 &amp;gt;= Windows 2000 执行编译 1# 如果你想在Windows 32位系统下运行 2$ GOOS=windows GOARCH=386 go build test.</description>
     </item>
     
     <item>
@@ -515,8 +526,8 @@ SSH 隧道的搭建 首先需要有一台支持 SSH 的墙外服务器，此服�
       <description>简单请求遇到跨域问题时，只需要在服务器端设置响应头中加入允许跨域的头部信息即可。
 当遇到复杂请求时，浏览器为了防止跨域请求无端对服务器数据造成损坏会先发送一个 Options 的预检请求。服务器应该对其进行处理，决定是否允许当前客户端进一步发起跨域请求。随后浏览器会根据 Options 请求的响应信息来决定是否进行下一步真实的请求。
 服务器在此次 Options 请求的返回内容中还可以指示浏览器，是否在下次请求携带相关的 Cookie 或者 Http Authentication 数据过来。
-什么是简单请求  仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。  什么是复杂请求 不满足简单请求条件的都属于复杂请求。
-解决复杂请求下的跨域问题 1&amp;lt;?php 2 3class CORSMiddleware 4{ 5 public function handle($request, Closure $next) 6 { 7 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 8 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 9 10 $allow_origin = array( 11 &amp;#39;http://localhost:8888&amp;#39;, 12 &amp;#39;http://test.com&amp;#39;, 13 &amp;#39;https://test.</description>
+什么是简单请求 仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。 什么是复杂请求 不满足简单请求条件的都属于复杂请求。
+解决复杂请求下的跨域问题 1&amp;lt;?php 2 3class CORSMiddleware 4{ 5 public function handle($request, Closure $next) 6 { 7 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 8 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 9 10 $allow_origin = array( 11 &amp;#39;http://localhost:8888&amp;#39;, 12 &amp;#39;http://test.com&amp;#39;, 13 &amp;#39;https://test.com&amp;#39;, 14 ); 15 16 // 如果请求方法为 options, 加入允许跨域响应头并直接发送响应信息 17 if ($request-&amp;gt;isMethod(&amp;#39;options&amp;#39;) &amp;amp;&amp;amp; in_array($origin, $allow_origin)) { 18 header(&amp;#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&amp;#34;); 19 header(&amp;#34;Access-Control-Allow-Origin:&amp;#34;.</description>
     </item>
     
     <item>
@@ -525,7 +536,7 @@ SSH 隧道的搭建 首先需要有一台支持 SSH 的墙外服务器，此服�
       <pubDate>Sat, 17 Dec 2016 18:06:02 +0800</pubDate>
       
       <guid>https://kouler.com/posts/laravel%E5%AD%97%E6%AE%B5%E9%AA%8C%E8%AF%81/</guid>
-      <description>手动创建验证程序示例 1&amp;lt;?php 2 3$data = [ 4 &amp;#39;email&amp;#39; = &amp;#39;aaa@gmail.com&amp;#39;, 5 &amp;#39;name&amp;#39;=&amp;#39;aaa&amp;#39;, 6 &amp;#39;password&amp;#39;=&amp;#39;aaa&amp;#39; 7]; 8 9$rules = array( 10 &amp;#39;email&amp;#39; =&amp;gt; &amp;#39;required|email&amp;#39;, 11 &amp;#39;name&amp;#39; =&amp;gt; &amp;#39;required|between:1,20&amp;#39;, 12 &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;required|min:8&amp;#39;, 13); 14 15$message = array( 16 &amp;#39;required&amp;#39; =&amp;gt; &amp;#39;:attribute 不能为空&amp;#39;, 17 &amp;#39;between&amp;#39; =&amp;gt; &amp;#39;:attribute 长度必须在 :min 和 :max 之间&amp;#34; 18); 1920$attributes = array( 21&amp;#39;email&amp;#39; =&amp;gt; &amp;#39;电子邮件&amp;#39;, 22&amp;#39;name&amp;#39; =&amp;gt; &amp;#39;用户名&amp;#39;, 23&amp;#39;password&amp;#39; =&amp;gt; &amp;#39;用户密码&amp;#39;, 24); 25 26$validate = Validator::make($data,$rules,$message,$attributes); 27 28var_dump($validate-&amp;gt;fails()); 29var_dump($validate-&amp;gt;messages()); 30var_dump($validate-&amp;gt;messages()-&amp;gt;first()) Validator 的验证扩展 1&amp;lt;?</description>
+      <description>手动创建验证程序示例 1&amp;lt;?php 2 3$data = [ 4 &amp;#39;email&amp;#39; = &amp;#39;aaa@gmail.com&amp;#39;, 5 &amp;#39;name&amp;#39;=&amp;#39;aaa&amp;#39;, 6 &amp;#39;password&amp;#39;=&amp;#39;aaa&amp;#39; 7]; 8 9$rules = array( 10 &amp;#39;email&amp;#39; =&amp;gt; &amp;#39;required|email&amp;#39;, 11 &amp;#39;name&amp;#39; =&amp;gt; &amp;#39;required|between:1,20&amp;#39;, 12 &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;required|min:8&amp;#39;, 13); 14 15$message = array( 16 &amp;#39;required&amp;#39; =&amp;gt; &amp;#39;:attribute 不能为空&amp;#39;, 17 &amp;#39;between&amp;#39; =&amp;gt; &amp;#39;:attribute 长度必须在 :min 和 :max 之间&amp;#34; 18); 19 20$attributes = array( 21 &amp;#39;email&amp;#39; =&amp;gt; &amp;#39;电子邮件&amp;#39;, 22 &amp;#39;name&amp;#39; =&amp;gt; &amp;#39;用户名&amp;#39;, 23 &amp;#39;password&amp;#39; =&amp;gt; &amp;#39;用户密码&amp;#39;, 24); 25 26$validate = Validator::make($data,$rules,$message,$attributes); 27 28var_dump($validate-&amp;gt;fails()); 29var_dump($validate-&amp;gt;messages()); 30var_dump($validate-&amp;gt;messages()-&amp;gt;first()) Validator 的验证扩展 1&amp;lt;?</description>
     </item>
     
     <item>
@@ -544,7 +555,7 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
 在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的 16 进制小写
 以上步骤可使用脚本 patch-edid.rb 自动生成。
 生成步骤：
- 下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）  编辑新建的文件 &amp;lt;?</description>
+下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果） 编辑新建的文件 &amp;lt;?xml version=&amp;#34;1.</description>
     </item>
     
     <item>
@@ -556,7 +567,7 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
       <description>通常情况下，在命令行中使用 sudo 命令便可以以 Root 用户执行命令
 在 MacOS 中，某些系统文件夹下，即使使用 sudo 命令也无法获得 Root 权限，这被称为 System Integrity Protection（SIP）
 要想关闭 SIP，需要进入 Recover 模式下设置，具体方法如下：
- 重启电脑，开机时按住 Command + r 键进入 Recover 模式 在工具中找到 Terminal 命令行终端 在命令行中输入命令 csrutil disable 重新启动后 SIP 就被关闭了  如需重新打开 SIP 保护，操作步骤一样，执行命令为 csrutil enable</description>
+重启电脑，开机时按住 Command + r 键进入 Recover 模式 在工具中找到 Terminal 命令行终端 在命令行中输入命令 csrutil disable 重新启动后 SIP 就被关闭了 如需重新打开 SIP 保护，操作步骤一样，执行命令为 csrutil enable</description>
     </item>
     
     <item>
@@ -567,8 +578,8 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
       <guid>https://kouler.com/posts/lumen%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
       <description>lumen 安装在子目录下时访问首页出现404错误 public/index.php 中的
 1&amp;lt;?php 2 3$app-&amp;gt;run(); 改为
-1&amp;lt;?php 2 3$app-&amp;gt;run($app[&amp;#39;request&amp;#39;]); lumen 配置数据库  在根目录添加 .env 配置文件并修改数据库信息 app.php 文件中去掉 Dotenv::load(__DIR__ . &#39;/../&#39;);行的注释，只有去掉才可以使用env配置文件 控制器文件中通过 app 函数来调用数据库，例： $result = app(&#39;db&#39;)-&amp;gt;select(&amp;quot;select * from xay_waiter&amp;quot;);  详细信息
-使用 Session  开启Facades，开启方式是去掉 bootstrap/app.php 中 $app-&amp;gt;withFacades(); 的注释。 开启 Session，开启方式：去掉 bootstrap/app.php 中 $app-&amp;gt;middleware(); 的 StartSession 中间件的注释。 使用时发生错误：Class &amp;lsquo;Memcached&amp;rsquo; not found ，因为在 .env 文件中，Session 的默认驱动是：memcached。修改即可。 目前支持的驱动有：file、cookie、database、memcached、redis、array。   Session::put(&#39;key&#39;, &#39;value&#39;); // 保存对象到 Session 中 $value = Session::get(&#39;key&#39;); // 从 Session 取回对象 $value = Session::pull(&#39;key&#39;, &#39;default&#39;); // 从 Session 取回对象并删除 $data = Session::all(); // 从 Session 取出所有对象 Session::has(&#39;users&#39;); // 判断对象在 Session 中是否存在 Session::forget(&#39;key&#39;); // 从 Session 中移除对象 Session::flush(); // 清空所有 Session    lumen 发送邮件  在 composer.</description>
+1&amp;lt;?php 2 3$app-&amp;gt;run($app[&amp;#39;request&amp;#39;]); lumen 配置数据库 在根目录添加 .env 配置文件并修改数据库信息 app.php 文件中去掉 Dotenv::load(__DIR__ . &#39;/../&#39;);行的注释，只有去掉才可以使用env配置文件 控制器文件中通过 app 函数来调用数据库，例： $result = app(&#39;db&#39;)-&amp;gt;select(&amp;quot;select * from xay_waiter&amp;quot;); 详细信息
+使用 Session 开启Facades，开启方式是去掉 bootstrap/app.php 中 $app-&amp;gt;withFacades(); 的注释。 开启 Session，开启方式：去掉 bootstrap/app.php 中 $app-&amp;gt;middleware(); 的 StartSession 中间件的注释。 使用时发生错误：Class &amp;lsquo;Memcached&amp;rsquo; not found ，因为在 .env 文件中，Session 的默认驱动是：memcached。修改即可。 目前支持的驱动有：file、cookie、database、memcached、redis、array。 Session::put(&#39;key&#39;, &#39;value&#39;); // 保存对象到 Session 中 $value = Session::get(&#39;key&#39;); // 从 Session 取回对象 $value = Session::pull(&#39;key&#39;, &#39;default&#39;); // 从 Session 取回对象并删除 $data = Session::all(); // 从 Session 取出所有对象 Session::has(&#39;users&#39;); // 判断对象在 Session 中是否存在 Session::forget(&#39;key&#39;); // 从 Session 中移除对象 Session::flush(); // 清空所有 Session lumen 发送邮件 在 composer.</description>
     </item>
     
     <item>
@@ -577,7 +588,7 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
       <pubDate>Wed, 19 Oct 2016 11:35:15 +0800</pubDate>
       
       <guid>https://kouler.com/posts/restful%E8%AE%BE%E8%AE%A1%E9%A3%8E%E6%A0%BC%E4%B8%AD%E7%9A%84http%E7%8A%B6%E6%80%81%E7%A0%81%E5%90%AB%E4%B9%89/</guid>
-      <description>状态码 类型 含义     100 ~ 消息 代表请求已被接受，需要继续处理   200 ~ 成功 代表请求已成功被服务器接收、理解、并接受   300 ~ 重定向 代表需要客户端采取进一步的操作才能完成请求   400 ~ 请求错误 代表了客户端看起来可能发生了错误，妨碍了服务器的处理   500 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理   600 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理        状态代码 状态信息 含义 适用情况 对应懒喵项目错误号     100 Continue 初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新）     101 Switching Protocols 服务器将遵从客户的请求转换到另外一种协议（HTTP 1.</description>
+      <description>状态码 类型 含义 100 ~ 消息 代表请求已被接受，需要继续处理 200 ~ 成功 代表请求已成功被服务器接收、理解、并接受 300 ~ 重定向 代表需要客户端采取进一步的操作才能完成请求 400 ~ 请求错误 代表了客户端看起来可能发生了错误，妨碍了服务器的处理 500 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理 600 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理 状态代码 状态信息 含义 适用情况 对应懒喵项目错误号 100 Continue 初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新） 101 Switching Protocols 服务器将遵从客户的请求转换到另外一种协议（HTTP 1.1新） 102 Processing 由WebDAV（RFC 2518）扩展的状态码，代表处理将被继续执行 200 OK 请求已成功，请求所希望的响应头或数据体将随此响应返回 GET:表示已在响应中发出 DELETE:资源已被删除 PUT:如果已存在资源被更改 POST:如果现有资源已被更改 10000 10008 201 Created 请求已经被实现，而且有一个新的资源已经依据请求的需要而建立，且其 URI 已经随Location 头信息返回 PUT:如果新资源被创建 POST:如果新资源被创建 202 Accepted 服务器已接受请求，但尚未处理 POST:已接受处理请求但尚未完成（异步处理） 203 Non-Authoritative Information 服务器已成功处理了请求，但返回的实体头部元信息不是在原始服务器上有效的确定集合，而是来自本地或者第三方的拷贝。当前的信息可能是原始版本的子集或者超集 204 No Content 服务器成功处理了请求，但不需要返回任何实体内容，并且希望返回更新了的元信息。如果客户端是浏览器的话，那么用户浏览器应保留发送了该请求的页面，而不产生任何文档视图上的变化。由于204响应被禁止包含任何消息体，因此它始终以消息头后的第一个空行结尾 GET:资源有空表示 205 Reset Content 服务器成功处理了请求，且没有返回任何内容。但是与204响应不同，返回此状态码的响应要求请求者重置文档视图。该响应主要是被用于接受用户输入后，立即重置表单，以便用户能够轻松地开始另一次输入。与204响应一样，该响应也被禁止包含任何消息体，且以消息头后的第一个空行结束 206 Partial Content 服务器已经成功处理了部分 GET 请求 300 Multiple Choices 被请求的资源有一系列可供选择的回馈信息，每个都有自己特定的地址和浏览器驱动的商议信息。用户或浏览器能够自行选择一个首选的地址进行重定向。 301 Moved Permanently 被请求的资源已永久移动到新位置，并且将来任何对此资源的引用都应该使用本响应返回的若干个 URI 之一 GET:资源的URI已被更新 DELETE:资源的URI已更改 PUT:资源的URI已更改 POST:资源的URI被更新 302 Move temporarily 请求的资源临时从不同的 URI响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求 303 See Other 对应当前请求的响应可以在另一个 URI 上被找到，而且客户端应当采用 GET 的方式访问那个资源。 GET:其他（如，负载均衡） DELETE:其他，如负载均衡 PUT:其他（如，负载均衡） POST:其他（如，负载均衡） 304 Not Modified 如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个状态码。304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾 GET:资源未更改（缓存） 305 Use Proxy 被请求的资源必须通过指定的代理才能被访问。 306 Switch Proxy 在最新版的规范中，306状态码已经不再被使用。 307 Temporary Redirect 请求的资源临时从不同的URI 响应请求。 400 Bad Request 语义有误，当前请求无法被服务器理解。请求参数有误。 GET:指代坏请求（如，参数错误） DELETE:指代坏请求 PUT:指代坏请求 POST:指代坏请求 10002 11001 401 Unauthorized 当前请求需要用户验证。 表示用户没有权限（令牌、用户名、密码错误、用户未登录） 10005 403 Forbidden 服务器已经理解请求，但是拒绝执行它。与401响应不同的是，身份验证并不能提供任何帮助，而且这个请求也不应该被重复提交。 示用户得到授权（与401错误相对），但是访问是被禁止的。比如付费的增值服务到期\权限不够 404 Not Found 请求失败，请求所希望得到的资源未被在服务器上发现。 GET:资源不存在 DELETE:资源不存在 PUT:资源不存在 POST:资源不存在 405 Method Not Allowed 请求行中指定的请求方法不能被用于请求相应的资源。 表示服务端不允许客户端这么做 406 Not Acceptable 请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体。 GET:服务端不支持所需表示 PUT:服务端不支持所需表示 POST:服务端不支持所需表示 用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。 407 Proxy Authentication Required 与401响应类似，只不过客户端必须在代理服务器上进行身份验证。 408 Request Timeout 请求超时。 409 Conflict 由于和被请求的资源的当前状态之间存在冲突，请求无法完成。 DELETE:通用冲突 PUT:通用冲突 POST:通用冲突 410 Gone 被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址。 411 Length Required 服务器拒绝在没有定义 Content-Length 头的情况下接受请求。 412 Precondition Failed 服务器在验证在请求的头字段中给出先决条件时，没能满足其中的一个或多个。 PUT:前置条件失败（如执行条件更新时的冲突） POST:前置条件失败（如执行条件更新时的冲突） 413 Request Entity Too Large 服务器拒绝处理当前请求，因为该请求提交的实体数据大小超过了服务器愿意或者能够处理的范围。 414 Request-URI Too Long 请求的URI 长度超过了服务器能够解释的长度，因此服务器拒绝对该请求提供服务。 415 Unsupported Media Type 对于当前请求的方法和所请求的资源，请求中提交的实体并不是服务器中所支持的格式，因此请求被拒绝。 PUT:接受到的表示不受支持 POST:接受到的表示不受支持 416 Requested Range Not Satisfiable 如果请求中包含了 Range 请求头，并且 Range 中指定的任何数据范围都与当前资源的可用范围不重合，同时请求中又没有定义 If-Range 请求头，那么服务器就应当返回416状态码。 417 Expectation Failed 在请求头 Expect 中指定的预期内容无法被服务器满足，或者这个服务器是一个代理服务器，它有明显的证据证明在当前路由的下一个节点上，Expect 的内容无法被满足。 421 There are too many connections from your internet address 从当前客户端所在的IP地址到服务器的连接数超过了服务器许可的最大范围。 422 Unprocessable Entity 请求格式正确，但是由于含有语义错误，无法响应。 发送了非法的资源 423 Locked 当前资源被锁定。 424 Failed Dependency 由于之前的某个请求发生的错误，导致当前请求失败 425 Unordered Collection 在WebDav Advanced Collections 草案中定义，但是未出现在《WebDAV 顺序集协议》 426 Upgrade Required 客户端应当切换到TLS/1.</description>
     </item>
     
     <item>
@@ -589,7 +600,7 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
       <description>问题 会有 ERR_CERT_DATABASE_CHANGED 与 NETWORK CHANGED 的提示。有时候会自动立刻刷新重载。 大部分 HTTPS 内的 AJAX 请求很多都发送失败，导致页面无法正常使用。
 解决方法 和 com.alipay.DispatcherService 支付宝插件有关 命令行中使用命令
 1$ sudo launchctl remove com.alipay.DispatcherService 停掉支付宝服务就没有这个问题了
-参考 &amp;amp; 扩展阅读  MacOS Sierra 升级 CHROME 用 HTTPS 访问间歇性失败  </description>
+参考 &amp;amp; 扩展阅读 MacOS Sierra 升级 CHROME 用 HTTPS 访问间歇性失败 </description>
     </item>
     
     <item>
@@ -605,7 +616,7 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
 前两种方法有各自的限制，如果无法解决问题，则需要考虑更复杂的解决方法。
 方法三: Safari 会在第三方域下完全没有 Cookies 时阻止第三方 Cookies，而第三方域下只要有过任意一个 Cookie，即可顺利读写。 据此，我们可以考虑当第三方域下没有 Cookies 时，首先将页面先跳到这个域，写入任意 Cookies，再跳回来。或者弹出一个新窗口，写入 Cookies，再关闭弹窗。
 方法四: Safari 只阻止了第三方 Cookies，并没有阻止第三方 LocalStorage，于是，我们便可以使用更为激进的方案，即放弃第三方 Cookies，使用 LocalStorage 来代替。
-参考 &amp;amp; 扩展阅读  当浏览器默认禁用第三方cookie  </description>
+参考 &amp;amp; 扩展阅读 当浏览器默认禁用第三方cookie </description>
     </item>
     
     <item>
@@ -614,12 +625,14 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
       <pubDate>Tue, 13 Sep 2016 18:42:34 +0800</pubDate>
       
       <guid>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</guid>
-      <description>form-data x-www-form-urlencoded raw     $_POST 推荐 推荐 无效   $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效   php://input 无效 有效 推荐    $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
+      <description> form-data x-www-form-urlencoded raw $_POST 推荐 推荐 无效 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效 php://input 无效 有效 推荐 $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
 Coentent-Type 仅在取值为 application/x-www-data-urlencoded 或 multipart/form-data 两种情况下，PHP才会将 HTTP 请求数据包中相应的数据填入全局变量 $_POST。
 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 方式 此变量仅在碰到未识别 MIME 类型的数据时产生。
 PHP 默认识别的数据类型是 application/x-www.form-urlencoded 标准的数据类型。如果 POST 过来的数据不是 PHP 能够识别的，比如 text/xml 或者 soap 等可以用 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;]方式来接收。
 不过，访问原始 POST 数据的更好方法是 php://input。
-php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.</description>
+php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。
+php://input 不能用于 enctype=&amp;ldquo;multipart/form-data&amp;rdquo;。
+参考 &amp;amp; 扩展阅读 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 和$_POST的区别 深入剖析PHP输入流 php://input 与 POST/GET 的区别 </description>
     </item>
     
     <item>
@@ -628,7 +641,7 @@ php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW
       <pubDate>Tue, 21 Jun 2016 00:38:50 +0800</pubDate>
       
       <guid>https://kouler.com/posts/phpstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>文本编辑    快捷键 描述     Command + Alt + I 对当前文件进行格式化排版   Control + G 顺序选中相同的文本   Shift + Enter 在当前行下方插入新行   Command + Alt + Enter 在当前行上方插入新行   Command + / 单行注释   Command + Shift + / 块代码注释   Command + D 复制当前行   Command + P 查看当前函数参数   Command + Shift + Enter 补全代码（if）   Alt + / 自动完成   Alt + Click 插入多个光标（鼠标单击）   Alt Alt + Up 向上插入多个光标（双击 Alt 并按住）   Alt Alt + Down 向下插入多个光标（双击 Alt 并按住）   Alt + Double Click 选中多个文本（鼠标双击）   Alt + Mouse 选中多个文本（鼠标拖动）   Ctrl + Mouse 复制选中文本（鼠标拖动）   Command + Mouse 移动选中文本（鼠标拖动）   Command + J 活动代码提示   Command + Alt + T 插入环绕代码   Command + .</description>
+      <description>文本编辑 快捷键 描述 Command + Alt + I 对当前文件进行格式化排版 Control + G 顺序选中相同的文本 Shift + Enter 在当前行下方插入新行 Command + Alt + Enter 在当前行上方插入新行 Command + / 单行注释 Command + Shift + / 块代码注释 Command + D 复制当前行 Command + P 查看当前函数参数 Command + Shift + Enter 补全代码（if） Alt + / 自动完成 Alt + Click 插入多个光标（鼠标单击） Alt Alt + Up 向上插入多个光标（双击 Alt 并按住） Alt Alt + Down 向下插入多个光标（双击 Alt 并按住） Alt + Double Click 选中多个文本（鼠标双击） Alt + Mouse 选中多个文本（鼠标拖动） Ctrl + Mouse 复制选中文本（鼠标拖动） Command + Mouse 移动选中文本（鼠标拖动） Command + J 活动代码提示 Command + Alt + T 插入环绕代码 Command + .</description>
     </item>
     
     <item>
@@ -646,7 +659,7 @@ CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入
 操作系统提供了许多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。
 Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程序传递一些重要的参数。
 下面是一些常用的 CGI 环境变量：
-   变量名 描述     CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型   CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用   HTTP_COOKIE 客户机内的 COOKIE 内容   HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息   PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现   QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔   REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机   REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量   REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
+变量名 描述 CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型 CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用 HTTP_COOKIE 客户机内的 COOKIE 内容 HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息 PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现 QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔 REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机 REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量 REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
     </item>
     
     <item>
@@ -659,9 +672,9 @@ Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程
 引导启动过程中会用到的内核文件说明 boot / bootsect.s : 该程序是磁盘引导块程序，编译后会驻留在磁盘的第一个扇区中（即引导扇区中，0 磁道（柱面），0 磁头，第一个扇区）。计算机机加电 ROM BIOS 自检后，将被 BIOS 加载到内存 0x7C00 处执行。
 boot / setup.s : 该程序主要用于读取机器的硬件配置参数，并把内核模块 system 移动到适当的内存位置处。
 boot / head.s : 该程序会被编译连接在 system 模块的最前部分，主要进行硬件设备的探测设置和内存管理页面的初始化设置工作。
-引导启动过程中文件运行顺序图 BIOS 程序执行流程  计算机加电，80x86 结构的 CPU 自动进入实模式，并从地址 0xFFFF0 开始自动执行代码。这个地址也就是 ROM-BIOS 中的地址。 BIOS 执行系统检测，并在物理地址 0 处初始化中断向量。 BIOS 将可启动设备的第一个扇区（磁盘引导扇区，512字节）读入内存绝对地址 0x7C00 处并跳转到这个地方。  接下来将由操作系统文件接管启动流程。
+引导启动过程中文件运行顺序图 BIOS 程序执行流程 计算机加电，80x86 结构的 CPU 自动进入实模式，并从地址 0xFFFF0 开始自动执行代码。这个地址也就是 ROM-BIOS 中的地址。 BIOS 执行系统检测，并在物理地址 0 处初始化中断向量。 BIOS 将可启动设备的第一个扇区（磁盘引导扇区，512字节）读入内存绝对地址 0x7C00 处并跳转到这个地方。 接下来将由操作系统文件接管启动流程。
 操作系统程序执行流程 Linux 的最最前面部分是用 8086 汇编语言编写的（bootsect.s）。它由 BIOS 读入到内存绝对地址 0x7C00（31KB）处。
- bootsect.s 执行时会把自己移动到内存绝对地址 0x90000（576KB）处。 bootsect.s 将启动设备中后 2KB 字节代码（setup.</description>
+bootsect.s 执行时会把自己移动到内存绝对地址 0x90000（576KB）处。 bootsect.s 将启动设备中后 2KB 字节代码（setup.s）读入内存 0x90200 处，将内核代码的其他部分（system 模块）读入从内存地址 0x10000（64KB）开始处。 setup.</description>
     </item>
     
     <item>
@@ -670,7 +683,7 @@ boot / head.s : 该程序会被编译连接在 system 模块的最前部分，�
       <pubDate>Mon, 23 May 2016 22:45:49 +0800</pubDate>
       
       <guid>https://kouler.com/posts/bash%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>编辑命令 Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符 Bang (!) 命令 !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !*： 上一条命令的所有参数 !*:p： 打印输出 !* 的内容 ^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo 参考 &amp;amp; 扩展阅读  让你提升命令行效率的 Bash 快捷键  </description>
+      <description>编辑命令 Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符 Bang (!) 命令 !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !*： 上一条命令的所有参数 !*:p： 打印输出 !* 的内容 ^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo 参考 &amp;amp; 扩展阅读 让你提升命令行效率的 Bash 快捷键 </description>
     </item>
     
     <item>
@@ -680,7 +693,7 @@ boot / head.s : 该程序会被编译连接在 system 模块的最前部分，�
       
       <guid>https://kouler.com/posts/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
       <description>本文通过设置 Access-Control-Allow-Origin 来实现跨域。 例如：客户端的域名是 client.com，而请求的域名是 server.com。 如果直接使用 ajax 访问，会有以下错误：
-XMLHttpRequest cannot load http://server.com/server.php. No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. Origin &#39;http://client.com&#39; is therefore not allowed access. 允许单个域名访问 指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
+XMLHttpRequest cannot load http://server.com/server.php. No &amp;#39;Access-Control-Allow-Origin&amp;#39; header is present on the requested resource. Origin &amp;#39;http://client.com&amp;#39; is therefore not allowed access. 允许单个域名访问 指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
 1&amp;lt;?php 2 3header(&amp;#39;Access-Control-Allow-Origin: http://client.com&amp;#39;); 允许多个域名访问 指定多个域名（ http://client1.com, http://client2.com 等 ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
 1&amp;lt;?php 2 3$origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;])? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 4 5$allow_origin = array( 6 &amp;#39;http://client1.com&amp;#39;, 7 &amp;#39;http://client2.com&amp;#39; 8); 9 10if(in_array($origin, $allow_origin)){ 11 header(&amp;#39;Access-Control-Allow-Origin: &amp;#39;.$origin); 12} 允许所有域名访问 允许所有域名访问则只需在 http://server.</description>
     </item>
@@ -694,8 +707,8 @@ XMLHttpRequest cannot load http://server.com/server.php. No &#39;Access-Control-
       <description>二进制安全是什么 先看一段代码：
 1&amp;lt;?php 2 3$string1 = &amp;#34;Hello&amp;#34;; 4$string2 = &amp;#34;Hello\0Hello&amp;#34;; 5 6// 返回0, 由于是非二进制安全，误判为相等 7echo strcoll($string1, $string2); 8 9// 返回&amp;lt;0,不相等 10echo strcmp($string1, $string2); 这是为什么呢？PHP 是基于 C 实现的，PHP 代码都会被 Zend引擎编译成 opcode，最终作为 C语言去执行。而对于 C语言中 &amp;ldquo;\0&amp;rdquo; 是字符串的结束符，它读到 &amp;ldquo;\0&amp;rdquo; 就会默认字符读取已经结束，从而抛掉后面的字符串。
 1main(){ 2 char ab[] = &amp;#34;Hello&amp;#34;; 3 char ac[] = &amp;#34;Hello\0Hello&amp;#34;; 4 5 // 返回0, 由于是非二进制安全，误判为相等 6 strcmp(ab, ac); 7} 有一个二进制安全的定义:
- 程序不会对其中的数据做任何限制、过滤、或者假设 —— 数据在写入时是什么样的，它被读取时就是什么样。
- PHP是如何实现二进制安全的 既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的</description>
+程序不会对其中的数据做任何限制、过滤、或者假设 —— 数据在写入时是什么样的，它被读取时就是什么样。
+PHP是如何实现二进制安全的 既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的</description>
     </item>
     
     <item>
@@ -733,9 +746,12 @@ CPU对其的响应完全是被动的，但是可以屏蔽掉。
 同步中断 同步中断(内部中断/软件中断)通常被称为异常(exception)
 在Intel的手册中，同步中断被称之为异常。
 异常可分为故障(fault)、陷阱(trap)、**终止(abort)**三类。
-   类型 原因 异步/同步 返回行为 例子     陷阱 有意的异常 同步 总是返回到下一条指令 系统调用、信号机制 ( 通过软中断实现 )   故障 潜在可恢复的错误 同步 返回到当前指令 缺页异常、除 0 错误、段错误   终止 不可恢复的错误 同步 不会返回 硬件错误    软中断和硬中断 软中断是通信进程之间用来模拟硬中断的一种信号通信方式。是属于一种编程手段，也有称之为软中断通信机制。
+类型 原因 异步/同步 返回行为 例子 陷阱 有意的异常 同步 总是返回到下一条指令 系统调用、信号机制 ( 通过软中断实现 ) 故障 潜在可恢复的错误 同步 返回到当前指令 缺页异常、除 0 错误、段错误 终止 不可恢复的错误 同步 不会返回 硬件错误 软中断和硬中断 软中断是通信进程之间用来模拟硬中断的一种信号通信方式。是属于一种编程手段，也有称之为软中断通信机制。
 硬中断一般就是指的硬件中断，也就是常说的中断，由硬件触发。
-区别    类型 产生的位置 发生的时刻 时序     中断 CPU外部 随机 异步   异常 CPU内部 一条指令终止后 同步    信号机制 信号是异步的进程间的通讯机制，是在软件层次上对中断机制的一种模拟，在原理上，一个进程收到一个信号与处理器收到一个中断请求可以说是一样的。</description>
+区别 类型 产生的位置 发生的时刻 时序 中断 CPU外部 随机 异步 异常 CPU内部 一条指令终止后 同步 信号机制 信号是异步的进程间的通讯机制，是在软件层次上对中断机制的一种模拟，在原理上，一个进程收到一个信号与处理器收到一个中断请求可以说是一样的。
+信号是异步的，一个进程不必通过任何操作来等待信号的到达，事实上，进程也不知道信号到底什么时候到达。
+信号是进程间通信机制中唯一的异步通信机制，可以看作是异步通知，通知接收信号的进程有哪些事情发生了。内核也可以因为内部事件而给进程发送信号，通知进程发生了某个事件。注意，信号只是用来通知某进程发生了什么事件，并不给该进程传递任何数据。
+产生信号的条件主要有:</description>
     </item>
     
     <item>
@@ -747,7 +763,7 @@ CPU对其的响应完全是被动的，但是可以屏蔽掉。
       <description>使用 brew 安装 php 和 xdebug
 PHP xdebug 配置信息
 1[xdebug] 2; xdebug.remote_autostart=1 3zend_extension=&amp;#34;/usr/local/Cellar/php71-xdebug/2.5.5/xdebug.so&amp;#34; 4xdebug.remote_enable=1 5xdebug.remote_handler=&amp;#34;dbgp&amp;#34; 6xdebug.remote_host=localhost 7xdebug.remote_port=9001 8xdebug.idekey=&amp;#34;PHPSTORM&amp;#34; 9xdebug.profiler_enable_trigger=1 10xdebug.profiler_output_dir=&amp;#34;/Users/kouler/Codes/php/xdebug_profiler&amp;#34; 需要注意 xdebug 和 phpfpm 的默认端口都是 9000，端口冲突
-参考 &amp;amp; 扩展  在Mac上的PHPSTORM配置XDebug来调试PHP程序 PHP:使用xdebug profiler 做性能分析  </description>
+参考 &amp;amp; 扩展 在Mac上的PHPSTORM配置XDebug来调试PHP程序 PHP:使用xdebug profiler 做性能分析 </description>
     </item>
     
     <item>
@@ -774,7 +790,7 @@ jsonb 支持索引特性，这是一个明显的优点。
 jsonb 不会保留任何无关的空白，不会保留对象键的排列顺序，也不会保留任何重复的对象键。如果输入里面指定了重复的键，那么只有最后一个值会被保留。
 jsonb 类型可以检测一个 jsonb 值是否包含了另一个 jsonb 值，而 json 类型并不具备这样的特性。
 jsonb 会拒绝那些超出 PostgreSQL 数字类型范围的数字，而 json 则不会这样做。
-参考 &amp;amp; 扩展  JSON 类型 JSON Functions and Operators PostgreSQL 9.</description>
+参考 &amp;amp; 扩展 JSON 类型 JSON Functions and Operators PostgreSQL 9.</description>
     </item>
     
     <item>
@@ -783,7 +799,7 @@ jsonb 会拒绝那些超出 PostgreSQL 数字类型范围的数字，而 json �
       <pubDate>Fri, 01 Apr 2016 10:11:57 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E5%AE%89%E8%A3%85hexo/</guid>
-      <description> 安装 Node.js 安装 Hexo  1$ sudo npm install -g hexo-cli 初始化 Hexo  1$ hexo init &amp;lt;folder&amp;gt; 2$ cd &amp;lt;folder&amp;gt; 3$ npm install 生成静态页面  1$ hexo generate 在 Github 新建项目 填写网站及Git配置信息 _config.yml  1deploy: 2 type: git 3 repo: https://github.com/koulerz/kouler.git 安装 hexo-deployer-git  1$ npm install hexo-deployer-git --save 部署项目到 Github  1$ hexo deploy </description>
+      <description> 安装 Node.js 安装 Hexo 1$ sudo npm install -g hexo-cli 初始化 Hexo 1$ hexo init &amp;lt;folder&amp;gt; 2$ cd &amp;lt;folder&amp;gt; 3$ npm install 生成静态页面 1$ hexo generate 在 Github 新建项目 填写网站及Git配置信息 _config.yml 1deploy: 2 type: git 3 repo: https://github.com/koulerz/kouler.git 安装 hexo-deployer-git 1$ npm install hexo-deployer-git --save 部署项目到 Github 1$ hexo deploy </description>
     </item>
     
   </channel>

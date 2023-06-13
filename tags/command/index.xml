@@ -22,13 +22,14 @@
       <pubDate>Wed, 29 Jul 2020 20:21:02 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E5%B8%B8%E7%94%A8%E7%9A%84%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4/</guid>
-      <description>查看和检索进程   使用 ps 命令列出所有进程信息
-1ps aux   使用 ps 命令检索进程
-1ps aux|grep keyword   使用 pidof 命令根据进程名称查找进程 ID
-1pidof nginx   使用 pgrep 命令检索进程，该命令将打印出所有检索到的进程 ID
-1pgrep keyword   使用 lsof 命令根据端口号检索进程
-1lsof -i:22   使用 ps 命令检索进程
-1# sed &amp;#39;1d&amp;#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除 2# awk &amp;#39;{print $2}&amp;#39; 打印每一行中的 PID 列 3ps -ef| grep &amp;#34;go&amp;#34; | sed &amp;#39;1d&amp;#39; | awk &amp;#39;{print $2}&amp;#39;   中断进程   使用 kill 命令中断进程。kill 命令向指定进程发送信号，默认信号为 15（TERM 信号），表示终止进程</description>
+      <description>查看和检索进程 使用 ps 命令列出所有进程信息
+1ps aux 使用 ps 命令检索进程
+1ps aux|grep keyword 使用 pidof 命令根据进程名称查找进程 ID
+1pidof nginx 使用 pgrep 命令检索进程，该命令将打印出所有检索到的进程 ID
+1pgrep keyword 使用 lsof 命令根据端口号检索进程
+1lsof -i:22 使用 ps 命令检索进程
+1# sed &amp;#39;1d&amp;#39; 删除第一行的内容，当输出结果中第一行为标题或其他非有效内容时可以删除 2# awk &amp;#39;{print $2}&amp;#39; 打印每一行中的 PID 列 3ps -ef| grep &amp;#34;go&amp;#34; | sed &amp;#39;1d&amp;#39; | awk &amp;#39;{print $2}&amp;#39; 中断进程 使用 kill 命令中断进程。kill 命令向指定进程发送信号，默认信号为 15（TERM 信号），表示终止进程
+1# 向 PID 为 123 的进程发送信号 15 2kill 123 3 4# 向 PID 为 123 的进程发送信号 9，强制终止进程 5kill -9 123 常用信号：</description>
     </item>
     
     <item>
@@ -37,9 +38,9 @@
       <pubDate>Mon, 27 Jul 2020 00:22:31 +0800</pubDate>
       
       <guid>https://kouler.com/posts/docker-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>查看 Docker 信息   常看 docker 版本：
-1$ docker version   查看 docker 系统信息：
-1$ docker info   镜像操作  根据 Dockerfile 创建 Docker 镜像 1# 1. 首先创建一个新的目录 docker 2# 2. 在目录下新建 Dockerfile 文件 3# 3. 完善 Dockerfile 文件内容 4# 4. 在新创建的目录下使用 docker build 命令构建新的镜像 5#  6# 示例：[docker build -t go1.16.0:alpine .] 7 8$ docker build -t &amp;lt;新的镜像名&amp;gt;:&amp;lt;新镜像的tag&amp;gt; &amp;lt;Dockerfile文件所在路径&amp;gt;  从 DockerHub 检索镜像 1$ docker search &amp;lt;image_name&amp;gt;  拉取镜像 1$ docker pull &amp;lt;image_name&amp;gt;  删除镜像 1$ docker rmi &amp;lt;image_name&amp;gt;  列出镜像 1$ docker images  显示镜像历史 1$ docker history &amp;lt;image_name&amp;gt;  上传镜像到 Docker Hub 1# 为镜像添加附带作者信息的标签 2$ docker tag &amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 3 4# 上传附带作者信息标签的镜像到 Docker Hub 5$ docker push &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt;  清理镜像 1$ docker image prune   容器启动   启动容器并启动 bash：</description>
+      <description>查看 Docker 信息 常看 docker 版本：
+1$ docker version 查看 docker 系统信息：
+1$ docker info 镜像操作 根据 Dockerfile 创建 Docker 镜像 1# 1. 首先创建一个新的目录 docker 2# 2. 在目录下新建 Dockerfile 文件 3# 3. 完善 Dockerfile 文件内容 4# 4. 在新创建的目录下使用 docker build 命令构建新的镜像 5# 6# 示例：[docker build -t go1.16.0:alpine .] 7 8$ docker build -t &amp;lt;新的镜像名&amp;gt;:&amp;lt;新镜像的tag&amp;gt; &amp;lt;Dockerfile文件所在路径&amp;gt; 从 DockerHub 检索镜像 1$ docker search &amp;lt;image_name&amp;gt; 拉取镜像 1$ docker pull &amp;lt;image_name&amp;gt; 删除镜像 1$ docker rmi &amp;lt;image_name&amp;gt; 列出镜像 1$ docker images 显示镜像历史 1$ docker history &amp;lt;image_name&amp;gt; 上传镜像到 Docker Hub 1# 为镜像添加附带作者信息的标签 2$ docker tag &amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 3 4# 上传附带作者信息标签的镜像到 Docker Hub 5$ docker push &amp;lt;author_name&amp;gt;/&amp;lt;image_name&amp;gt;:&amp;lt;label&amp;gt; 清理镜像 1$ docker image prune 容器启动 启动容器并启动 bash：</description>
     </item>
     
     <item>
@@ -48,7 +49,7 @@
       <pubDate>Fri, 17 Jan 2020 22:42:14 +0800</pubDate>
       
       <guid>https://kouler.com/posts/use-hugo/</guid>
-      <description>Hugo 安装和配置  Hugo Documentation minimal-bootstrap-hugo-theme  Hugo 常用命令 1$ hugo help // 帮助命令 2$ hugo version // 打印版本号 3$ hugo new site sitename // 创建新站点 4$ hugo new posts/new-post.md // 创建新文章 5$ hugo // 生成静态页面 6$ hugo server // 启动 Hugo Web Server 在 Github 托管 Hugo  Host on GitHub  Github Pages site 配置个人域名  在发布项目根目录添加 CNAME 文件，内容为个人域名 配置个人域名 DNS，添加 CNAME 记录，将 www 子域指向个人 Github Pages site 地址，yourname.</description>
+      <description>Hugo 安装和配置 Hugo Documentation minimal-bootstrap-hugo-theme Hugo 常用命令 1$ hugo help // 帮助命令 2$ hugo version // 打印版本号 3$ hugo new site sitename // 创建新站点 4$ hugo new posts/new-post.md // 创建新文章 5$ hugo // 生成静态页面 6$ hugo server // 启动 Hugo Web Server 在 Github 托管 Hugo Host on GitHub Github Pages site 配置个人域名 在发布项目根目录添加 CNAME 文件，内容为个人域名 配置个人域名 DNS，添加 CNAME 记录，将 www 子域指向个人 Github Pages site 地址，yourname.github.io 配置个人域名 DNS，添加 A 记录，将域名指向 Github Pages 提供的 IP 地址 在 Github Pages site 仓库设置中添加配置好的域名，开启 Enforce HTTPS Host on GitHub CNAME errors Managing a custom domain for your GitHub Pages site </description>
     </item>
     
     <item>
@@ -58,7 +59,7 @@
       
       <guid>https://kouler.com/posts/tmux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
       <description>Tmux 命令 # 开启一个 Tmux Session $ tmux new -s name # 使会话在后台运行，等同于 `Ctrl + B` + `D` $ tmux detach # 查看当前 Tmux 中有哪些 Session $ tmux ls # 回到 Tmux Session 中 $ tmux a -t name（or at，or attach） # 关闭demo会话 tmux kill-session -t demo # 关闭服务器，所有的会话都将关闭 tmux kill-server Tmux 快捷键 Tmux Session 中的命令需要先按下 Tmux 前缀键（默认是 Ctrl + B）
-# 会话（Session） 指令 ? # 快捷键帮助列表 d # detach，退出 Tmux Session，回到父级 Shell r # 强制重载当前会话 : # 进入命令行模式，此时可直接输入ls等命令 s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换 $ # 为当前 Session 命名 # 窗口（window）指令 c # 新建 Window &amp;amp; # 关闭当前窗口 p # 切换到上一窗口 n # 切换到下一窗口 0~9 # 切换到指定窗口 &#39; # 切换到指定索引的窗口，比如索引号大于 9 的窗口 w # 打开窗口列表，用于且切换窗口 , # 为当前窗口命名 .</description>
+# 会话（Session） 指令 ? # 快捷键帮助列表 d # detach，退出 Tmux Session，回到父级 Shell r # 强制重载当前会话 : # 进入命令行模式，此时可直接输入ls等命令 s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换 $ # 为当前 Session 命名 # 窗口（window）指令 c # 新建 Window &amp;amp; # 关闭当前窗口 p # 切换到上一窗口 n # 切换到下一窗口 0~9 # 切换到指定窗口 &amp;#39; # 切换到指定索引的窗口，比如索引号大于 9 的窗口 w # 打开窗口列表，用于且切换窗口 , # 为当前窗口命名 .</description>
     </item>
     
     <item>
@@ -68,7 +69,7 @@
       
       <guid>https://kouler.com/posts/screen%E5%91%BD%E4%BB%A4%E9%85%8D%E7%BD%AE%E5%92%8C%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</guid>
       <description>配置文件 该配置在screen底部状态栏显示窗口列表的名称，更易于管理会话和窗口
-## ~/.screenrc ## 屏幕缓冲区4096行 defscrollback 4096 ## 下标签设置 hardstatus on hardstatus alwayslastline hardstatus string &amp;quot;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&amp;quot; termcapinfo rxvt &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39; termcapinfo xterm ti@:te@ termcapinfo xterm &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39; 常用操作 1screen -S name # 创建名称为 name 的会话 2screen -t name # 创建名称为 name 的窗口 3screen -ls # 显示存在的会话 4screen -r name # 唤起一个被放入后台的会话 Ctrl + a, ? # 显示所有按键绑定信息 Ctrl + a, w # 显示所有窗口列表 Ctrl + a, Ctrl + a # 切换到之前的窗口 Ctrl + a, d # 暂离当前会话，将当前会话放入后台 Ctrl + a, c # 在当前会话中创建一个新窗口 Ctrl + a, A # 为当前窗口设置名称 Ctrl + a, p # 上一个窗口 Ctrl + a, n # 下一个窗口 Ctrl + a, 0-9 # 切换到 0-9 窗口 Ctrl + a, k # 杀掉当前窗口 Ctrl + a, [ # 拷贝模式 </description>
+## ~/.screenrc ## 屏幕缓冲区4096行 defscrollback 4096 ## 下标签设置 hardstatus on hardstatus alwayslastline hardstatus string &amp;#34;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&amp;#34; termcapinfo rxvt &amp;#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&amp;#39; termcapinfo xterm ti@:te@ termcapinfo xterm &amp;#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&amp;#39; 常用操作 1screen -S name # 创建名称为 name 的会话 2screen -t name # 创建名称为 name 的窗口 3screen -ls # 显示存在的会话 4screen -r name # 唤起一个被放入后台的会话 Ctrl + a, ? # 显示所有按键绑定信息 Ctrl + a, w # 显示所有窗口列表 Ctrl + a, Ctrl + a # 切换到之前的窗口 Ctrl + a, d # 暂离当前会话，将当前会话放入后台 Ctrl + a, c # 在当前会话中创建一个新窗口 Ctrl + a, A # 为当前窗口设置名称 Ctrl + a, p # 上一个窗口 Ctrl + a, n # 下一个窗口 Ctrl + a, 0-9 # 切换到 0-9 窗口 Ctrl + a, k # 杀掉当前窗口 Ctrl + a, [ # 拷贝模式 </description>
     </item>
     
     <item>
@@ -77,7 +78,7 @@
       <pubDate>Tue, 21 Jun 2016 00:38:50 +0800</pubDate>
       
       <guid>https://kouler.com/posts/phpstorm%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>文本编辑    快捷键 描述     Command + Alt + I 对当前文件进行格式化排版   Control + G 顺序选中相同的文本   Shift + Enter 在当前行下方插入新行   Command + Alt + Enter 在当前行上方插入新行   Command + / 单行注释   Command + Shift + / 块代码注释   Command + D 复制当前行   Command + P 查看当前函数参数   Command + Shift + Enter 补全代码（if）   Alt + / 自动完成   Alt + Click 插入多个光标（鼠标单击）   Alt Alt + Up 向上插入多个光标（双击 Alt 并按住）   Alt Alt + Down 向下插入多个光标（双击 Alt 并按住）   Alt + Double Click 选中多个文本（鼠标双击）   Alt + Mouse 选中多个文本（鼠标拖动）   Ctrl + Mouse 复制选中文本（鼠标拖动）   Command + Mouse 移动选中文本（鼠标拖动）   Command + J 活动代码提示   Command + Alt + T 插入环绕代码   Command + .</description>
+      <description>文本编辑 快捷键 描述 Command + Alt + I 对当前文件进行格式化排版 Control + G 顺序选中相同的文本 Shift + Enter 在当前行下方插入新行 Command + Alt + Enter 在当前行上方插入新行 Command + / 单行注释 Command + Shift + / 块代码注释 Command + D 复制当前行 Command + P 查看当前函数参数 Command + Shift + Enter 补全代码（if） Alt + / 自动完成 Alt + Click 插入多个光标（鼠标单击） Alt Alt + Up 向上插入多个光标（双击 Alt 并按住） Alt Alt + Down 向下插入多个光标（双击 Alt 并按住） Alt + Double Click 选中多个文本（鼠标双击） Alt + Mouse 选中多个文本（鼠标拖动） Ctrl + Mouse 复制选中文本（鼠标拖动） Command + Mouse 移动选中文本（鼠标拖动） Command + J 活动代码提示 Command + Alt + T 插入环绕代码 Command + .</description>
     </item>
     
     <item>
@@ -86,7 +87,7 @@
       <pubDate>Mon, 23 May 2016 22:45:49 +0800</pubDate>
       
       <guid>https://kouler.com/posts/bash%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
-      <description>编辑命令 Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符 Bang (!) 命令 !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !*： 上一条命令的所有参数 !*:p： 打印输出 !* 的内容 ^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo 参考 &amp;amp; 扩展阅读  让你提升命令行效率的 Bash 快捷键  </description>
+      <description>编辑命令 Ctrl + a ：移到命令行首 Ctrl + e ：移到命令行尾 Ctrl + f ：按字符前移（右向） Ctrl + b ：按字符后移（左向） Ctrl + xx：在命令行首和光标之间移动 Ctrl + u ：从光标处删除至命令行首 Ctrl + k ：从光标处删除至命令行尾 Ctrl + d ：删除光标后的字符 Ctrl + h ：删除光标前的字符 Bang (!) 命令 !!： 执行上一条命令 !blah： 执行最近的以 blah 开头的命令，如 !ls !blah:p：仅打印输出，而不执行 !$： 上一条命令的最后一个参数，与 Alt + . 相同 !$:p： 打印输出 !$ 的内容 !*： 上一条命令的所有参数 !*:p： 打印输出 !* 的内容 ^blah： 删除上一条命令中的 blah ^blah^foo： 将上一条命令中的 blah 替换为 foo ^blah^foo^： 将上一条命令中所有的 blah 都替换为 foo 参考 &amp;amp; 扩展阅读 让你提升命令行效率的 Bash 快捷键 </description>
     </item>
     
     <item>

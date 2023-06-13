@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,18 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">Linux 中常见的进程中止信号</h1>
-    
-    
-    <small class="text-secondary">2021-08-28</small>
-    
-
-<small><code><a href="https://kouler.com/tags/linux">#linux</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/signal">#signal</a></code></small>
-
-    <br><br>
+      <h1>Linux 中常见的进程中止信号</h1>
 <h2 id="sigint">SIGINT</h2>
 <ul>
 <li><code>Ctrl + C</code> 会发送 SIGINT 信号</li>

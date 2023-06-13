@@ -14,7 +14,7 @@
       
       <guid>https://kouler.com/posts/tmux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E5%92%8C%E5%BF%AB%E6%8D%B7%E9%94%AE/</guid>
       <description>Tmux 命令 # 开启一个 Tmux Session $ tmux new -s name # 使会话在后台运行，等同于 `Ctrl + B` + `D` $ tmux detach # 查看当前 Tmux 中有哪些 Session $ tmux ls # 回到 Tmux Session 中 $ tmux a -t name（or at，or attach） # 关闭demo会话 tmux kill-session -t demo # 关闭服务器，所有的会话都将关闭 tmux kill-server Tmux 快捷键 Tmux Session 中的命令需要先按下 Tmux 前缀键（默认是 Ctrl + B）
-# 会话（Session） 指令 ? # 快捷键帮助列表 d # detach，退出 Tmux Session，回到父级 Shell r # 强制重载当前会话 : # 进入命令行模式，此时可直接输入ls等命令 s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换 $ # 为当前 Session 命名 # 窗口（window）指令 c # 新建 Window &amp;amp; # 关闭当前窗口 p # 切换到上一窗口 n # 切换到下一窗口 0~9 # 切换到指定窗口 &#39; # 切换到指定索引的窗口，比如索引号大于 9 的窗口 w # 打开窗口列表，用于且切换窗口 , # 为当前窗口命名 .</description>
+# 会话（Session） 指令 ? # 快捷键帮助列表 d # detach，退出 Tmux Session，回到父级 Shell r # 强制重载当前会话 : # 进入命令行模式，此时可直接输入ls等命令 s # 列出所有 Session，可通过 j, k, 方向键选择，回车切换 $ # 为当前 Session 命名 # 窗口（window）指令 c # 新建 Window &amp;amp; # 关闭当前窗口 p # 切换到上一窗口 n # 切换到下一窗口 0~9 # 切换到指定窗口 &amp;#39; # 切换到指定索引的窗口，比如索引号大于 9 的窗口 w # 打开窗口列表，用于且切换窗口 , # 为当前窗口命名 .</description>
     </item>
     
   </channel>

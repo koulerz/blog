@@ -16,8 +16,8 @@
       <description>简单请求遇到跨域问题时，只需要在服务器端设置响应头中加入允许跨域的头部信息即可。
 当遇到复杂请求时，浏览器为了防止跨域请求无端对服务器数据造成损坏会先发送一个 Options 的预检请求。服务器应该对其进行处理，决定是否允许当前客户端进一步发起跨域请求。随后浏览器会根据 Options 请求的响应信息来决定是否进行下一步真实的请求。
 服务器在此次 Options 请求的返回内容中还可以指示浏览器，是否在下次请求携带相关的 Cookie 或者 Http Authentication 数据过来。
-什么是简单请求  仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。  什么是复杂请求 不满足简单请求条件的都属于复杂请求。
-解决复杂请求下的跨域问题 1&amp;lt;?php 2 3class CORSMiddleware 4{ 5 public function handle($request, Closure $next) 6 { 7 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 8 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 9 10 $allow_origin = array( 11 &amp;#39;http://localhost:8888&amp;#39;, 12 &amp;#39;http://test.com&amp;#39;, 13 &amp;#39;https://test.</description>
+什么是简单请求 仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。 什么是复杂请求 不满足简单请求条件的都属于复杂请求。
+解决复杂请求下的跨域问题 1&amp;lt;?php 2 3class CORSMiddleware 4{ 5 public function handle($request, Closure $next) 6 { 7 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 8 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 9 10 $allow_origin = array( 11 &amp;#39;http://localhost:8888&amp;#39;, 12 &amp;#39;http://test.com&amp;#39;, 13 &amp;#39;https://test.com&amp;#39;, 14 ); 15 16 // 如果请求方法为 options, 加入允许跨域响应头并直接发送响应信息 17 if ($request-&amp;gt;isMethod(&amp;#39;options&amp;#39;) &amp;amp;&amp;amp; in_array($origin, $allow_origin)) { 18 header(&amp;#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&amp;#34;); 19 header(&amp;#34;Access-Control-Allow-Origin:&amp;#34;.</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@
       
       <guid>https://kouler.com/posts/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
       <description>本文通过设置 Access-Control-Allow-Origin 来实现跨域。 例如：客户端的域名是 client.com，而请求的域名是 server.com。 如果直接使用 ajax 访问，会有以下错误：
-XMLHttpRequest cannot load http://server.com/server.php. No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. Origin &#39;http://client.com&#39; is therefore not allowed access. 允许单个域名访问 指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
+XMLHttpRequest cannot load http://server.com/server.php. No &amp;#39;Access-Control-Allow-Origin&amp;#39; header is present on the requested resource. Origin &amp;#39;http://client.com&amp;#39; is therefore not allowed access. 允许单个域名访问 指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
 1&amp;lt;?php 2 3header(&amp;#39;Access-Control-Allow-Origin: http://client.com&amp;#39;); 允许多个域名访问 指定多个域名（ http://client1.com, http://client2.com 等 ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
 1&amp;lt;?php 2 3$origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;])? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 4 5$allow_origin = array( 6 &amp;#39;http://client1.com&amp;#39;, 7 &amp;#39;http://client2.com&amp;#39; 8); 9 10if(in_array($origin, $allow_origin)){ 11 header(&amp;#39;Access-Control-Allow-Origin: &amp;#39;.$origin); 12} 允许所有域名访问 允许所有域名访问则只需在 http://server.</description>
     </item>

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,21 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">WebServer 和 CGI 以及 PHPFPM 之间的关系</h1>
-    
-    
-    <small class="text-secondary">2016-06-15</small>
-    
-
-<small><code><a href="https://kouler.com/tags/webserver">#webserver</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/web">#web</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/php">#php</a></code></small>
-
-    <br><br>
+      <h1>WebServer 和 CGI 以及 PHPFPM 之间的关系</h1>
 <h2 id="webserver">WebServer</h2>
 <p>最早的 Web服务器简单地响应浏览器发来的 HTTP 请求，并将存储在服务器上的 HTML 文件返回给浏览器，也就是静态HTML。</p>
 <p>但事物总是不断发展的，网站也逐渐变得复杂，所以出现动态技术。但是 Web服务器并不能直接运行 php，asp 这样的文件，当浏览器请求 index.php?a=1&amp;b=2 时，Web服务器就不知道该如何处理了，它不能理解 “php”、“?”、“&amp;”、“a”、“b” 各是什么意思，这时它就需要调用相应的脚本解释程序（如PHP-CGI）来处理这样的请求。</p>

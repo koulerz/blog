@@ -29,7 +29,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
       
       <guid>https://kouler.com/posts/golang-wasm-demo/</guid>
       <description>Golang 1.11 加入了对 WebAssembly 的支持，以下会测试并运行一个简单的 Demo。
- MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit)   编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码  编译测试代码 1// 测试代码 main.go 2package main 3 4import &amp;#34;fmt&amp;#34; 5 6func main() { 7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;) 8} 1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载 2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go 编写 WebServer 代码 1// server.</description>
+MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit) 编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码 编译测试代码 1// 测试代码 main.go 2package main 3 4import &amp;#34;fmt&amp;#34; 5 6func main() { 7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;) 8} 1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载 2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go 编写 WebServer 代码 1// server.go 2package main 3 4import ( 5 &amp;#34;flag&amp;#34; 6 &amp;#34;log&amp;#34; 7 &amp;#34;net/http&amp;#34; 8) 9 10func main() { 11 port := flag.</description>
     </item>
     
     <item>
@@ -46,7 +46,7 @@ Go module replace 方法 在 go.mod 文件中将无法安装的包路径替换�
 交叉编译工具链是一个由编译器、连接器和解释器组成的综合开发环境，交叉编译工具链主要由 binutils、gcc 和 glibc 3个部分组成。
 有时出于减小 libc 库大小的考虑，也可以用别的 c 库来代替 glibc，例如 uClibc、dietlibc 和 newlib。
 Golang 的跨平台交叉编译 Go 语言是编译型语言，可以将程序编译后在将其拿到其它操作系统中运行，此过程只需要在编译时增加对其它系统的支持。
-交叉编译依赖下面几个环境变量  $GOARCH 目标平台（编译后的目标平台）的处理器架构（386、amd64、arm） $GOOS 目标平台（编译后的目标平台）的操作系统（darwin、freebsd、linux、windows）  各平台的 GOOS 和 GOARCH 参考    OS ARCH OS version     linux 386 / amd64 / arm &amp;gt;= Linux 2.</description>
+交叉编译依赖下面几个环境变量 $GOARCH 目标平台（编译后的目标平台）的处理器架构（386、amd64、arm） $GOOS 目标平台（编译后的目标平台）的操作系统（darwin、freebsd、linux、windows） 各平台的 GOOS 和 GOARCH 参考 OS ARCH OS version linux 386 / amd64 / arm &amp;gt;= Linux 2.6 darwin 386 / amd64 OS X (Snow Leopard + Lion) freebsd 386 / amd64 &amp;gt;= FreeBSD 7 windows 386 / amd64 &amp;gt;= Windows 2000 执行编译 1# 如果你想在Windows 32位系统下运行 2$ GOOS=windows GOARCH=386 go build test.</description>
     </item>
     
   </channel>

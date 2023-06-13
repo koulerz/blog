@@ -16,7 +16,7 @@
       <description>新创建的 php 容器配置好后，访问首页显示 File not found。
 nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unknown&amp;quot; while reading response header from upstream
 于是在本地搭建了简化版的环境：
- 创建了 php Docker 容器，增加了 index.php 测试文件并启动 php-fpm 宿主机增加 nginx 配置并重新启动  尝试解决 根据错误提示，可以了解到错误原因大概率是 nginx 没有找到 php 文件。
+创建了 php Docker 容器，增加了 index.php 测试文件并启动 php-fpm 宿主机增加 nginx 配置并重新启动 尝试解决 根据错误提示，可以了解到错误原因大概率是 nginx 没有找到 php 文件。
 这一错误出现的原因大致分为两类，一是文件权限错误，二是文件路径错误。
 权限错误很容易就能够排查，所以怀疑大概率是 nginx 配置中的路径错误导致没有找到 index.php 文件。
 根据 nginx 文档修改 nginx 配置多次后仍然无法解决。
@@ -31,14 +31,14 @@ nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unk
       <pubDate>Fri, 27 Aug 2021 19:41:07 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E8%A7%A3%E5%86%B3kinsing%E6%8C%96%E7%9F%BF%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E6%94%BB%E5%87%BB/</guid>
-      <description>环境  基于 php7.4.12 的容器 使用 Lumen 框架  发现异常状况 最开始察觉到异常是在错误邮件中
+      <description>环境 基于 php7.4.12 的容器 使用 Lumen 框架 发现异常状况 最开始察觉到异常是在错误邮件中
 错误信息是 Cannot modify header information - headers already sent by (output started at php://input:1)
 几天后，发现页面中出现大量跨域错误
 查看 git 提交日志，发现最近并没有大的变动，怀疑是运维问题
 再次检查邮箱，发现最近几日有大量 Cannot modify header information - headers already sent by (output started at php://input:1) 错误，错误文件指向了跨域处理文件，错误函数为 header()。与错误信息吻合，应该是在这之前有输出，此时可以确认导致错误的根本原因并非跨域问题。
 通过测试 API，发现其中一些 POST API 在正确的响应内容前会先将 POST 请求中的请求体输出。而 GET 参数则一切正常。
 寻找问题根源 多次测试 API 后发现一些规律。
- 使用 x-www-form-urlencoded 和 json 方式时，PHP 直接返回了 POST 请求 body 信息。而使用 multipart/form-data 方式时却没有返回 GET 方法中，如果有 x-www-form-urlencoded 和 json body 时，会出现一样的错误 不通过 Lumen 框架，直接请求 php 文件，如果请求中有 x-www-form-urlencoded 和 json body 信息时，同样会出现错误  这里基本可以确认和框架没有关系。而且引出了 php://input 数据流。</description>
+使用 x-www-form-urlencoded 和 json 方式时，PHP 直接返回了 POST 请求 body 信息。而使用 multipart/form-data 方式时却没有返回 GET 方法中，如果有 x-www-form-urlencoded 和 json body 时，会出现一样的错误 不通过 Lumen 框架，直接请求 php 文件，如果请求中有 x-www-form-urlencoded 和 json body 信息时，同样会出现错误 这里基本可以确认和框架没有关系。而且引出了 php://input 数据流。</description>
     </item>
     
     <item>
@@ -56,12 +56,14 @@ nginx 错误日志中显示 FastCGI sent in stderr: &amp;quot;Primary script unk
       <pubDate>Tue, 13 Sep 2016 18:42:34 +0800</pubDate>
       
       <guid>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</guid>
-      <description>form-data x-www-form-urlencoded raw     $_POST 推荐 推荐 无效   $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效   php://input 无效 有效 推荐    $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
+      <description> form-data x-www-form-urlencoded raw $_POST 推荐 推荐 无效 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效 php://input 无效 有效 推荐 $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
 Coentent-Type 仅在取值为 application/x-www-data-urlencoded 或 multipart/form-data 两种情况下，PHP才会将 HTTP 请求数据包中相应的数据填入全局变量 $_POST。
 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 方式 此变量仅在碰到未识别 MIME 类型的数据时产生。
 PHP 默认识别的数据类型是 application/x-www.form-urlencoded 标准的数据类型。如果 POST 过来的数据不是 PHP 能够识别的，比如 text/xml 或者 soap 等可以用 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;]方式来接收。
 不过，访问原始 POST 数据的更好方法是 php://input。
-php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.</description>
+php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。
+php://input 不能用于 enctype=&amp;ldquo;multipart/form-data&amp;rdquo;。
+参考 &amp;amp; 扩展阅读 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 和$_POST的区别 深入剖析PHP输入流 php://input 与 POST/GET 的区别 </description>
     </item>
     
     <item>
@@ -79,7 +81,7 @@ CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入
 操作系统提供了许多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。
 Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程序传递一些重要的参数。
 下面是一些常用的 CGI 环境变量：
-   变量名 描述     CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型   CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用   HTTP_COOKIE 客户机内的 COOKIE 内容   HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息   PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现   QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔   REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机   REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量   REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
+变量名 描述 CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型 CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用 HTTP_COOKIE 客户机内的 COOKIE 内容 HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息 PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现 QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔 REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机 REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量 REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
     </item>
     
     <item>
@@ -91,8 +93,8 @@ Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程
       <description>二进制安全是什么 先看一段代码：
 1&amp;lt;?php 2 3$string1 = &amp;#34;Hello&amp;#34;; 4$string2 = &amp;#34;Hello\0Hello&amp;#34;; 5 6// 返回0, 由于是非二进制安全，误判为相等 7echo strcoll($string1, $string2); 8 9// 返回&amp;lt;0,不相等 10echo strcmp($string1, $string2); 这是为什么呢？PHP 是基于 C 实现的，PHP 代码都会被 Zend引擎编译成 opcode，最终作为 C语言去执行。而对于 C语言中 &amp;ldquo;\0&amp;rdquo; 是字符串的结束符，它读到 &amp;ldquo;\0&amp;rdquo; 就会默认字符读取已经结束，从而抛掉后面的字符串。
 1main(){ 2 char ab[] = &amp;#34;Hello&amp;#34;; 3 char ac[] = &amp;#34;Hello\0Hello&amp;#34;; 4 5 // 返回0, 由于是非二进制安全，误判为相等 6 strcmp(ab, ac); 7} 有一个二进制安全的定义:
- 程序不会对其中的数据做任何限制、过滤、或者假设 —— 数据在写入时是什么样的，它被读取时就是什么样。
- PHP是如何实现二进制安全的 既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的</description>
+程序不会对其中的数据做任何限制、过滤、或者假设 —— 数据在写入时是什么样的，它被读取时就是什么样。
+PHP是如何实现二进制安全的 既然 PHP 是基于 C 实现的，C 字符串类型不是二进制安全的，PHP 又是如何实现的呢？这就是数据结构的功劳了。 PHP 的内核中，是如此定义字符串类型的</description>
     </item>
     
     <item>
@@ -120,7 +122,7 @@ Catch 语句 定义处理发生异常时执行的代码块。使用多个 catch 
       <description>使用 brew 安装 php 和 xdebug
 PHP xdebug 配置信息
 1[xdebug] 2; xdebug.remote_autostart=1 3zend_extension=&amp;#34;/usr/local/Cellar/php71-xdebug/2.5.5/xdebug.so&amp;#34; 4xdebug.remote_enable=1 5xdebug.remote_handler=&amp;#34;dbgp&amp;#34; 6xdebug.remote_host=localhost 7xdebug.remote_port=9001 8xdebug.idekey=&amp;#34;PHPSTORM&amp;#34; 9xdebug.profiler_enable_trigger=1 10xdebug.profiler_output_dir=&amp;#34;/Users/kouler/Codes/php/xdebug_profiler&amp;#34; 需要注意 xdebug 和 phpfpm 的默认端口都是 9000，端口冲突
-参考 &amp;amp; 扩展  在Mac上的PHPSTORM配置XDebug来调试PHP程序 PHP:使用xdebug profiler 做性能分析  </description>
+参考 &amp;amp; 扩展 在Mac上的PHPSTORM配置XDebug来调试PHP程序 PHP:使用xdebug profiler 做性能分析 </description>
     </item>
     
   </channel>

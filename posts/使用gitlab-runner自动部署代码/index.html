@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,18 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">使用 gitlab runner 自动部署代码</h1>
-    
-    
-    <small class="text-secondary">2021-08-28</small>
-    
-
-<small><code><a href="https://kouler.com/tags/gitlab">#gitlab</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/cicd">#cicd</a></code></small>
-
-    <br><br>
+      <h1>使用 gitlab runner 自动部署代码</h1>
 <h2 id="下载-gitlab-runner-错误">下载 gitlab-runner 错误</h2>
 <p>下载链接：<code>sudo wget -O /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64</code></p>
 <p>错误信息</p>
@@ -249,7 +237,7 @@ Jun 11 17:34:46 desktop gitlab-runner[31473]: Running in system-mode.           
 Jun 11 17:34:46 desktop gitlab-runner[31473]:                                                   #033[0;m
 Jun 11 17:34:46 desktop gitlab-runner[31473]: #033[31;1mFATAL: Service run failed                         #033[0;m  #033[31;1merror#033[0;m=chdir /home/gitlab-runner: no such file or directory
 Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Main process exited, code=exited, status=1/FAILURE
-Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Failed with result 'exit-code'.
+Jun 11 17:34:46 desktop systemd[1]: gitlab-runner.service: Failed with result &#39;exit-code&#39;.
 </code></pre><h3 id="解决方法">解决方法</h3>
 <p>完全删除后，重新下载并安装解决了该问题</p>
 <ul>

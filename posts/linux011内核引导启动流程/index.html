@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,18 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">Linux0.11 内核引导启动流程</h1>
-    
-    
-    <small class="text-secondary">2016-06-10</small>
-    
-
-<small><code><a href="https://kouler.com/tags/linux">#linux</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/os">#os</a></code></small>
-
-    <br><br>
+      <h1>Linux0.11 内核引导启动流程</h1>
 <p>计算机加电后，最开始 BIOS 中的程序会先开始执行，BIOS 程序执行结束后，将由操作系统接管。</p>
 <h2 id="引导启动过程中会用到的内核文件说明">引导启动过程中会用到的内核文件说明</h2>
 <p><strong>boot / bootsect.s</strong> : 该程序是磁盘引导块程序，编译后会驻留在磁盘的第一个扇区中（即引导扇区中，0 磁道（柱面），0 磁头，第一个扇区）。计算机机加电 ROM BIOS 自检后，将被 BIOS 加载到内存 0x7C00 处执行。</p>

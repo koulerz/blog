@@ -22,7 +22,7 @@ CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入
 操作系统提供了许多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。
 Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程序传递一些重要的参数。
 下面是一些常用的 CGI 环境变量：
-   变量名 描述     CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型   CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用   HTTP_COOKIE 客户机内的 COOKIE 内容   HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息   PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现   QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔   REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机   REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量   REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
+变量名 描述 CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型 CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用 HTTP_COOKIE 客户机内的 COOKIE 内容 HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息 PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现 QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔 REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机 REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量 REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
     </item>
     
   </channel>

@@ -13,7 +13,7 @@
       <pubDate>Wed, 19 Oct 2016 11:35:15 +0800</pubDate>
       
       <guid>https://kouler.com/posts/restful%E8%AE%BE%E8%AE%A1%E9%A3%8E%E6%A0%BC%E4%B8%AD%E7%9A%84http%E7%8A%B6%E6%80%81%E7%A0%81%E5%90%AB%E4%B9%89/</guid>
-      <description>状态码 类型 含义     100 ~ 消息 代表请求已被接受，需要继续处理   200 ~ 成功 代表请求已成功被服务器接收、理解、并接受   300 ~ 重定向 代表需要客户端采取进一步的操作才能完成请求   400 ~ 请求错误 代表了客户端看起来可能发生了错误，妨碍了服务器的处理   500 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理   600 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理        状态代码 状态信息 含义 适用情况 对应懒喵项目错误号     100 Continue 初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新）     101 Switching Protocols 服务器将遵从客户的请求转换到另外一种协议（HTTP 1.</description>
+      <description>状态码 类型 含义 100 ~ 消息 代表请求已被接受，需要继续处理 200 ~ 成功 代表请求已成功被服务器接收、理解、并接受 300 ~ 重定向 代表需要客户端采取进一步的操作才能完成请求 400 ~ 请求错误 代表了客户端看起来可能发生了错误，妨碍了服务器的处理 500 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理 600 ~ 服务器错误 代表了服务器在处理请求的过程中有错误或者异常状态发生，也有可能是服务器意识到以当前的软硬件资源无法完成对请求的处理 状态代码 状态信息 含义 适用情况 对应懒喵项目错误号 100 Continue 初始的请求已经接受，客户应当继续发送请求的其余部分。（HTTP 1.1新） 101 Switching Protocols 服务器将遵从客户的请求转换到另外一种协议（HTTP 1.1新） 102 Processing 由WebDAV（RFC 2518）扩展的状态码，代表处理将被继续执行 200 OK 请求已成功，请求所希望的响应头或数据体将随此响应返回 GET:表示已在响应中发出 DELETE:资源已被删除 PUT:如果已存在资源被更改 POST:如果现有资源已被更改 10000 10008 201 Created 请求已经被实现，而且有一个新的资源已经依据请求的需要而建立，且其 URI 已经随Location 头信息返回 PUT:如果新资源被创建 POST:如果新资源被创建 202 Accepted 服务器已接受请求，但尚未处理 POST:已接受处理请求但尚未完成（异步处理） 203 Non-Authoritative Information 服务器已成功处理了请求，但返回的实体头部元信息不是在原始服务器上有效的确定集合，而是来自本地或者第三方的拷贝。当前的信息可能是原始版本的子集或者超集 204 No Content 服务器成功处理了请求，但不需要返回任何实体内容，并且希望返回更新了的元信息。如果客户端是浏览器的话，那么用户浏览器应保留发送了该请求的页面，而不产生任何文档视图上的变化。由于204响应被禁止包含任何消息体，因此它始终以消息头后的第一个空行结尾 GET:资源有空表示 205 Reset Content 服务器成功处理了请求，且没有返回任何内容。但是与204响应不同，返回此状态码的响应要求请求者重置文档视图。该响应主要是被用于接受用户输入后，立即重置表单，以便用户能够轻松地开始另一次输入。与204响应一样，该响应也被禁止包含任何消息体，且以消息头后的第一个空行结束 206 Partial Content 服务器已经成功处理了部分 GET 请求 300 Multiple Choices 被请求的资源有一系列可供选择的回馈信息，每个都有自己特定的地址和浏览器驱动的商议信息。用户或浏览器能够自行选择一个首选的地址进行重定向。 301 Moved Permanently 被请求的资源已永久移动到新位置，并且将来任何对此资源的引用都应该使用本响应返回的若干个 URI 之一 GET:资源的URI已被更新 DELETE:资源的URI已更改 PUT:资源的URI已更改 POST:资源的URI被更新 302 Move temporarily 请求的资源临时从不同的 URI响应请求。由于这样的重定向是临时的，客户端应当继续向原有地址发送以后的请求 303 See Other 对应当前请求的响应可以在另一个 URI 上被找到，而且客户端应当采用 GET 的方式访问那个资源。 GET:其他（如，负载均衡） DELETE:其他，如负载均衡 PUT:其他（如，负载均衡） POST:其他（如，负载均衡） 304 Not Modified 如果客户端发送了一个带条件的 GET 请求且该请求已被允许，而文档的内容（自上次访问以来或者根据请求的条件）并没有改变，则服务器应当返回这个状态码。304响应禁止包含消息体，因此始终以消息头后的第一个空行结尾 GET:资源未更改（缓存） 305 Use Proxy 被请求的资源必须通过指定的代理才能被访问。 306 Switch Proxy 在最新版的规范中，306状态码已经不再被使用。 307 Temporary Redirect 请求的资源临时从不同的URI 响应请求。 400 Bad Request 语义有误，当前请求无法被服务器理解。请求参数有误。 GET:指代坏请求（如，参数错误） DELETE:指代坏请求 PUT:指代坏请求 POST:指代坏请求 10002 11001 401 Unauthorized 当前请求需要用户验证。 表示用户没有权限（令牌、用户名、密码错误、用户未登录） 10005 403 Forbidden 服务器已经理解请求，但是拒绝执行它。与401响应不同的是，身份验证并不能提供任何帮助，而且这个请求也不应该被重复提交。 示用户得到授权（与401错误相对），但是访问是被禁止的。比如付费的增值服务到期\权限不够 404 Not Found 请求失败，请求所希望得到的资源未被在服务器上发现。 GET:资源不存在 DELETE:资源不存在 PUT:资源不存在 POST:资源不存在 405 Method Not Allowed 请求行中指定的请求方法不能被用于请求相应的资源。 表示服务端不允许客户端这么做 406 Not Acceptable 请求的资源的内容特性无法满足请求头中的条件，因而无法生成响应实体。 GET:服务端不支持所需表示 PUT:服务端不支持所需表示 POST:服务端不支持所需表示 用户请求的格式不可得（比如用户请求JSON格式，但是只有XML格式）。 407 Proxy Authentication Required 与401响应类似，只不过客户端必须在代理服务器上进行身份验证。 408 Request Timeout 请求超时。 409 Conflict 由于和被请求的资源的当前状态之间存在冲突，请求无法完成。 DELETE:通用冲突 PUT:通用冲突 POST:通用冲突 410 Gone 被请求的资源在服务器上已经不再可用，而且没有任何已知的转发地址。 411 Length Required 服务器拒绝在没有定义 Content-Length 头的情况下接受请求。 412 Precondition Failed 服务器在验证在请求的头字段中给出先决条件时，没能满足其中的一个或多个。 PUT:前置条件失败（如执行条件更新时的冲突） POST:前置条件失败（如执行条件更新时的冲突） 413 Request Entity Too Large 服务器拒绝处理当前请求，因为该请求提交的实体数据大小超过了服务器愿意或者能够处理的范围。 414 Request-URI Too Long 请求的URI 长度超过了服务器能够解释的长度，因此服务器拒绝对该请求提供服务。 415 Unsupported Media Type 对于当前请求的方法和所请求的资源，请求中提交的实体并不是服务器中所支持的格式，因此请求被拒绝。 PUT:接受到的表示不受支持 POST:接受到的表示不受支持 416 Requested Range Not Satisfiable 如果请求中包含了 Range 请求头，并且 Range 中指定的任何数据范围都与当前资源的可用范围不重合，同时请求中又没有定义 If-Range 请求头，那么服务器就应当返回416状态码。 417 Expectation Failed 在请求头 Expect 中指定的预期内容无法被服务器满足，或者这个服务器是一个代理服务器，它有明显的证据证明在当前路由的下一个节点上，Expect 的内容无法被满足。 421 There are too many connections from your internet address 从当前客户端所在的IP地址到服务器的连接数超过了服务器许可的最大范围。 422 Unprocessable Entity 请求格式正确，但是由于含有语义错误，无法响应。 发送了非法的资源 423 Locked 当前资源被锁定。 424 Failed Dependency 由于之前的某个请求发生的错误，导致当前请求失败 425 Unordered Collection 在WebDav Advanced Collections 草案中定义，但是未出现在《WebDAV 顺序集协议》 426 Upgrade Required 客户端应当切换到TLS/1.</description>
     </item>
     
     <item>
@@ -29,7 +29,7 @@
 前两种方法有各自的限制，如果无法解决问题，则需要考虑更复杂的解决方法。
 方法三: Safari 会在第三方域下完全没有 Cookies 时阻止第三方 Cookies，而第三方域下只要有过任意一个 Cookie，即可顺利读写。 据此，我们可以考虑当第三方域下没有 Cookies 时，首先将页面先跳到这个域，写入任意 Cookies，再跳回来。或者弹出一个新窗口，写入 Cookies，再关闭弹窗。
 方法四: Safari 只阻止了第三方 Cookies，并没有阻止第三方 LocalStorage，于是，我们便可以使用更为激进的方案，即放弃第三方 Cookies，使用 LocalStorage 来代替。
-参考 &amp;amp; 扩展阅读  当浏览器默认禁用第三方cookie  </description>
+参考 &amp;amp; 扩展阅读 当浏览器默认禁用第三方cookie </description>
     </item>
     
     <item>
@@ -38,12 +38,14 @@
       <pubDate>Tue, 13 Sep 2016 18:42:34 +0800</pubDate>
       
       <guid>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</guid>
-      <description>form-data x-www-form-urlencoded raw     $_POST 推荐 推荐 无效   $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效   php://input 无效 有效 推荐    $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
+      <description> form-data x-www-form-urlencoded raw $_POST 推荐 推荐 无效 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效 php://input 无效 有效 推荐 $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
 Coentent-Type 仅在取值为 application/x-www-data-urlencoded 或 multipart/form-data 两种情况下，PHP才会将 HTTP 请求数据包中相应的数据填入全局变量 $_POST。
 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 方式 此变量仅在碰到未识别 MIME 类型的数据时产生。
 PHP 默认识别的数据类型是 application/x-www.form-urlencoded 标准的数据类型。如果 POST 过来的数据不是 PHP 能够识别的，比如 text/xml 或者 soap 等可以用 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;]方式来接收。
 不过，访问原始 POST 数据的更好方法是 php://input。
-php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.</description>
+php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。
+php://input 不能用于 enctype=&amp;ldquo;multipart/form-data&amp;rdquo;。
+参考 &amp;amp; 扩展阅读 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 和$_POST的区别 深入剖析PHP输入流 php://input 与 POST/GET 的区别 </description>
     </item>
     
   </channel>

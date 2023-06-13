@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,21 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">Screen 命令配置和常用操作</h1>
-    
-    
-    <small class="text-secondary">2019-07-10</small>
-    
-
-<small><code><a href="https://kouler.com/tags/command">#command</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/screen">#screen</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/terminal">#terminal</a></code></small>
-
-    <br><br>
+      <h1>Screen 命令配置和常用操作</h1>
 <h2 id="配置文件">配置文件</h2>
 <p>该配置在screen底部状态栏显示窗口列表的名称，更易于管理会话和窗口</p>
 <pre tabindex="0"><code>## ~/.screenrc
@@ -205,16 +190,16 @@ defscrollback 4096
 ## 下标签设置
 hardstatus on
 hardstatus alwayslastline
-hardstatus string &quot;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&quot;
-termcapinfo rxvt 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+hardstatus string &#34;%{= kw}%-w%{= kG}%{+b}[%n %t]%{-b}%{= kw}%+w %=%d %M %0c %{g}%H%{-}&#34;
+termcapinfo rxvt &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39;
 termcapinfo xterm ti@:te@
-termcapinfo xterm 'hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007'
+termcapinfo xterm &#39;hs:ts=\E]2;:fs=\007:ds=\E]2;screen\007&#39;
 </code></pre><h2 id="常用操作">常用操作</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span>screen -S name  <span style="color:#f00;font-style:italic"># 创建名称为 name 的会话</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span>screen -t name  <span style="color:#f00;font-style:italic"># 创建名称为 name 的窗口</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span>screen -ls      <span style="color:#f00;font-style:italic"># 显示存在的会话</span>
-<span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span>screen -r name  <span style="color:#f00;font-style:italic"># 唤起一个被放入后台的会话</span>
-</code></pre></div><pre tabindex="0"><code>Ctrl + a, ?        # 显示所有按键绑定信息
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span>screen -S name  <span style="color:#f00;font-style:italic"># 创建名称为 name 的会话</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>screen -t name  <span style="color:#f00;font-style:italic"># 创建名称为 name 的窗口</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>screen -ls      <span style="color:#f00;font-style:italic"># 显示存在的会话</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>screen -r name  <span style="color:#f00;font-style:italic"># 唤起一个被放入后台的会话</span>
+</span></span></code></pre></div><pre tabindex="0"><code>Ctrl + a, ?        # 显示所有按键绑定信息
 Ctrl + a, w        # 显示所有窗口列表
 Ctrl + a, Ctrl + a # 切换到之前的窗口
 Ctrl + a, d        # 暂离当前会话，将当前会话放入后台

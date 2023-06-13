@@ -13,7 +13,7 @@
       <pubDate>Fri, 01 Apr 2016 10:11:57 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E5%AE%89%E8%A3%85hexo/</guid>
-      <description> 安装 Node.js 安装 Hexo  1$ sudo npm install -g hexo-cli 初始化 Hexo  1$ hexo init &amp;lt;folder&amp;gt; 2$ cd &amp;lt;folder&amp;gt; 3$ npm install 生成静态页面  1$ hexo generate 在 Github 新建项目 填写网站及Git配置信息 _config.yml  1deploy: 2 type: git 3 repo: https://github.com/koulerz/kouler.git 安装 hexo-deployer-git  1$ npm install hexo-deployer-git --save 部署项目到 Github  1$ hexo deploy </description>
+      <description> 安装 Node.js 安装 Hexo 1$ sudo npm install -g hexo-cli 初始化 Hexo 1$ hexo init &amp;lt;folder&amp;gt; 2$ cd &amp;lt;folder&amp;gt; 3$ npm install 生成静态页面 1$ hexo generate 在 Github 新建项目 填写网站及Git配置信息 _config.yml 1deploy: 2 type: git 3 repo: https://github.com/koulerz/kouler.git 安装 hexo-deployer-git 1$ npm install hexo-deployer-git --save 部署项目到 Github 1$ hexo deploy </description>
     </item>
     
   </channel>

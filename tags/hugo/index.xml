@@ -13,7 +13,7 @@
       <pubDate>Fri, 17 Jan 2020 22:42:14 +0800</pubDate>
       
       <guid>https://kouler.com/posts/use-hugo/</guid>
-      <description>Hugo 安装和配置  Hugo Documentation minimal-bootstrap-hugo-theme  Hugo 常用命令 1$ hugo help // 帮助命令 2$ hugo version // 打印版本号 3$ hugo new site sitename // 创建新站点 4$ hugo new posts/new-post.md // 创建新文章 5$ hugo // 生成静态页面 6$ hugo server // 启动 Hugo Web Server 在 Github 托管 Hugo  Host on GitHub  Github Pages site 配置个人域名  在发布项目根目录添加 CNAME 文件，内容为个人域名 配置个人域名 DNS，添加 CNAME 记录，将 www 子域指向个人 Github Pages site 地址，yourname.</description>
+      <description>Hugo 安装和配置 Hugo Documentation minimal-bootstrap-hugo-theme Hugo 常用命令 1$ hugo help // 帮助命令 2$ hugo version // 打印版本号 3$ hugo new site sitename // 创建新站点 4$ hugo new posts/new-post.md // 创建新文章 5$ hugo // 生成静态页面 6$ hugo server // 启动 Hugo Web Server 在 Github 托管 Hugo Host on GitHub Github Pages site 配置个人域名 在发布项目根目录添加 CNAME 文件，内容为个人域名 配置个人域名 DNS，添加 CNAME 记录，将 www 子域指向个人 Github Pages site 地址，yourname.github.io 配置个人域名 DNS，添加 A 记录，将域名指向 Github Pages 提供的 IP 地址 在 Github Pages site 仓库设置中添加配置好的域名，开启 Enforce HTTPS Host on GitHub CNAME errors Managing a custom domain for your GitHub Pages site </description>
     </item>
     
   </channel>

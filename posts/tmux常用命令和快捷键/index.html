@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,21 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">Tmux 常用命令和快捷键</h1>
-    
-    
-    <small class="text-secondary">2019-08-07</small>
-    
-
-<small><code><a href="https://kouler.com/tags/command">#command</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/tmux">#tmux</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/terminal">#terminal</a></code></small>
-
-    <br><br>
+      <h1>Tmux 常用命令和快捷键</h1>
 <h2 id="tmux-命令">Tmux 命令</h2>
 <pre tabindex="0"><code># 开启一个 Tmux Session
 $ tmux new -s name 
@@ -230,7 +215,7 @@ c        # 新建 Window
 p        # 切换到上一窗口
 n        # 切换到下一窗口
 0~9      # 切换到指定窗口
-'        # 切换到指定索引的窗口，比如索引号大于 9 的窗口
+&#39;        # 切换到指定索引的窗口，比如索引号大于 9 的窗口
 w        # 打开窗口列表，用于且切换窗口
 ,        # 为当前窗口命名
 .        # 修改当前窗口编号（适用于窗口重新排序）
@@ -238,7 +223,7 @@ f        # 快速定位到窗口（输入关键字匹配窗口名称）
 </code></pre><pre tabindex="0"><code># 面板（pane）指令
 
 %        # 垂直切分面板
-&quot;        # 水平切分面板
+&#34;        # 水平切分面板
 x        # 关闭当前面板
 空格键	  # 切换面板布局
 方向键    # 移动光标切换面板

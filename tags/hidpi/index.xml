@@ -18,7 +18,7 @@
 解决方法是将需要的文件写入 /Library/Displays/Contents/Resources/Overrides 目录中。写入该目录中同样有效。
 使用脚本自动修改 发现一个自动适配 HiDPI 的脚本，但目前还未测试使用。
 https://github.com/mlch911/one-key-hidpi
-参考 &amp;amp; 扩展  macOS 下开启显示器 HiDPI 方法 macOS 无法获得权限问题 One key HiDPI  </description>
+参考 &amp;amp; 扩展 macOS 下开启显示器 HiDPI 方法 macOS 无法获得权限问题 One key HiDPI </description>
     </item>
     
     <item>
@@ -37,7 +37,7 @@ MacOS 系统获取系统权限方法 MacOS 系统下，某些系统文件夹只�
 在刚创建的文件夹中新建空白文件，名称格式为 DisplayProductID-xxxx，其中 xxxx 为显示器 DisplayProductID 的 16 进制小写
 以上步骤可使用脚本 patch-edid.rb 自动生成。
 生成步骤：
- 下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果）  编辑新建的文件 &amp;lt;?</description>
+下载或手动创建文件 patch-edid.rb 到桌面目录 打开终端进入桌面目录 执行命令 ruby patch-edid.rb 脚本会在桌面目录创建好文件夹和文件（文件内容也有，但可能没有效果） 编辑新建的文件 &amp;lt;?xml version=&amp;#34;1.</description>
     </item>
     
   </channel>

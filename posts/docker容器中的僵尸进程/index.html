@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   
-  <meta name="generator" content="Hugo 0.89.4" />
+  <meta name="generator" content="Hugo 0.113.0">
 
   
   <meta name="description" content="this is description">
@@ -145,13 +145,12 @@ pre code {
 }
 
 code {
-  padding: 0 0 0 3px;
+  padding: 2px 4px;
+  color: inherit; 
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   font-size: .9em;
-}
-
-code a,
-code a:hover {
-  color: #999999;
 }
 
 
@@ -180,18 +179,7 @@ blockquote,
   
   <div class="container">
     <article>
-      <h1 style="margin:0 0 5px 0">Docker 容器中的僵尸进程</h1>
-    
-    
-    <small class="text-secondary">2021-08-28</small>
-    
-
-<small><code><a href="https://kouler.com/tags/docker">#docker</a></code></small>
-
-
-<small><code><a href="https://kouler.com/tags/process">#process</a></code></small>
-
-    <br><br>
+      <h1>Docker 容器中的僵尸进程</h1>
 <p>之前并非通过 <code>docker stop</code> 来停止程序和容器，而是通过容器中的 shell 脚本，在不停止容器的情况下，通过运行 shell 脚本来杀死程序。</p>
 <p>这种方式导致每次停止程序后，被停止的进程都会变成一个僵尸进程。即被标记为 <code>defunct</code> 的进程。僵尸进程只能通过重启容器的方式消除。</p>
 <p>尝试在容器内直接运行二进制程序，使其保持在前台运行，并通过 <code>Ctrl + C</code> 退出，不会产生僵尸进程。</p>

@@ -13,7 +13,7 @@
       <pubDate>Thu, 12 Mar 2020 00:41:43 +0800</pubDate>
       
       <guid>https://kouler.com/posts/%E4%BD%BF%E7%94%A8fiddler%E6%8D%95%E8%8E%B7%E6%89%8B%E6%9C%BA%E6%B5%81%E9%87%8F/</guid>
-      <description>Fiddler 设置  打开 Fiddler 连接设置，Tools-&amp;gt;Fiddler Options-&amp;gt;Connections 设置允许远程计算机连接，Allow remote computers to connect 可以自定义端口，默认端口为 8888，Fiddler listens on port 确认设置，OK 重启 Fiddler  手机端设置  确保手机和电脑在同一局域网内 在当前无线网络高级设置中手动配置 HTTP 代理  IP 地址为电脑 IP 地址。鼠标移至 Fiddler 主界面右上 Online 字样处可查看当前 IP 地址 端口为 Fiddler 监听端口。默认为 8888   禁用移动数据并关闭 VPN，使得数据通过无线网络代理传输 打开手机浏览器，访问代理地址。例如: http://192.168.1.111:8888。正常情况下会打开 Fiddler Echo Service 页面 点击页面中的 FiddlerRoot certificate 链接下载证书 安装证书  </description>
+      <description>Fiddler 设置 打开 Fiddler 连接设置，Tools-&amp;gt;Fiddler Options-&amp;gt;Connections 设置允许远程计算机连接，Allow remote computers to connect 可以自定义端口，默认端口为 8888，Fiddler listens on port 确认设置，OK 重启 Fiddler 手机端设置 确保手机和电脑在同一局域网内 在当前无线网络高级设置中手动配置 HTTP 代理 IP 地址为电脑 IP 地址。鼠标移至 Fiddler 主界面右上 Online 字样处可查看当前 IP 地址 端口为 Fiddler 监听端口。默认为 8888 禁用移动数据并关闭 VPN，使得数据通过无线网络代理传输 打开手机浏览器，访问代理地址。例如: http://192.168.1.111:8888。正常情况下会打开 Fiddler Echo Service 页面 点击页面中的 FiddlerRoot certificate 链接下载证书 安装证书 </description>
     </item>
     
     <item>
@@ -24,7 +24,7 @@
       <guid>https://kouler.com/posts/%E9%80%9A%E8%BF%87%E5%90%AF%E5%8A%A8%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AEchrome%E7%A6%81%E6%AD%A2%E5%8A%A0%E8%BD%BD%E5%9B%BE%E7%89%87/</guid>
       <description>试用 chromedp 时，希望启动的浏览器能够实现禁止加载图片的功能，以节省资源消耗。
 在 chromedp Github 仓库 Issues 中找到了相关提问和答案。启动浏览器时通过设置启动参数 blink-settings 的值为 imagesEnabled=false 得以实现。
-参考 &amp;amp; 扩展  chromedp how to disable images load Chrome 命令行可配置参数 Chrome 命令行参数 blink-settings 的所有配置项  </description>
+参考 &amp;amp; 扩展 chromedp how to disable images load Chrome 命令行可配置参数 Chrome 命令行参数 blink-settings 的所有配置项 </description>
     </item>
     
     <item>
@@ -34,7 +34,7 @@
       
       <guid>https://kouler.com/posts/lumen%E5%8A%A0%E8%BD%BD%E6%A0%B9%E7%9B%AE%E5%BD%95%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/</guid>
       <description>Lumen 版本: 5.3
- 在根目录创建 config 目录 在 config 目录中新建配置文件 在 bootstrap/app.php 中加载配置文件  1&amp;lt;?php 2 3// bootstrap/app.php 4$app-&amp;gt;configure(&amp;#39;fileName&amp;#39;); 5 6// Example: $app-&amp;gt;configure(&amp;#39;mail&amp;#39;); 参考&amp;amp;扩展  Lumen 加载根目录配置文件  </description>
+在根目录创建 config 目录 在 config 目录中新建配置文件 在 bootstrap/app.php 中加载配置文件 1&amp;lt;?php 2 3// bootstrap/app.php 4$app-&amp;gt;configure(&amp;#39;fileName&amp;#39;); 5 6// Example: $app-&amp;gt;configure(&amp;#39;mail&amp;#39;); 参考&amp;amp;扩展 Lumen 加载根目录配置文件 </description>
     </item>
     
     <item>
@@ -44,7 +44,7 @@
       
       <guid>https://kouler.com/posts/golang-wasm-demo/</guid>
       <description>Golang 1.11 加入了对 WebAssembly 的支持，以下会测试并运行一个简单的 Demo。
- MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit)   编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码  编译测试代码 1// 测试代码 main.go 2package main 3 4import &amp;#34;fmt&amp;#34; 5 6func main() { 7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;) 8} 1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载 2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go 编写 WebServer 代码 1// server.</description>
+MacOS 10.13.6 Golang 1.11 Chrome 68 (64-bit) 编写测试代码并编译为 WASM 二进制代码 编写 WebServer 代码用于正确加载本地 WASM 文件 使用 Golang 编写好的 HTML 和 JavaScript 加载 WASM 使用浏览器测试代码 编译测试代码 1// 测试代码 main.go 2package main 3 4import &amp;#34;fmt&amp;#34; 5 6func main() { 7 fmt.Println(&amp;#34;hello, Go/WASM!&amp;#34;) 8} 1# 编译命令 修改编译好的文件名称为 test.wasm 以便被自带的 HTML 文件正确加载 2$ GOOS=js GOARCH=wasm go build -o test.wasm main.go 编写 WebServer 代码 1// server.go 2package main 3 4import ( 5 &amp;#34;flag&amp;#34; 6 &amp;#34;log&amp;#34; 7 &amp;#34;net/http&amp;#34; 8) 9 10func main() { 11 port := flag.</description>
     </item>
     
     <item>
@@ -56,8 +56,8 @@
       <description>简单请求遇到跨域问题时，只需要在服务器端设置响应头中加入允许跨域的头部信息即可。
 当遇到复杂请求时，浏览器为了防止跨域请求无端对服务器数据造成损坏会先发送一个 Options 的预检请求。服务器应该对其进行处理，决定是否允许当前客户端进一步发起跨域请求。随后浏览器会根据 Options 请求的响应信息来决定是否进行下一步真实的请求。
 服务器在此次 Options 请求的返回内容中还可以指示浏览器，是否在下次请求携带相关的 Cookie 或者 Http Authentication 数据过来。
-什么是简单请求  仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。  什么是复杂请求 不满足简单请求条件的都属于复杂请求。
-解决复杂请求下的跨域问题 1&amp;lt;?php 2 3class CORSMiddleware 4{ 5 public function handle($request, Closure $next) 6 { 7 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 8 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 9 10 $allow_origin = array( 11 &amp;#39;http://localhost:8888&amp;#39;, 12 &amp;#39;http://test.com&amp;#39;, 13 &amp;#39;https://test.</description>
+什么是简单请求 仅使用 Get 方法的请求。 仅使用 Head 方法的请求。 仅使用 Content-Type 为 application/x-www-form-urlencoded、multipart/form-data 或 text/plain 发起的 Post 请求。 什么是复杂请求 不满足简单请求条件的都属于复杂请求。
+解决复杂请求下的跨域问题 1&amp;lt;?php 2 3class CORSMiddleware 4{ 5 public function handle($request, Closure $next) 6 { 7 // 跨域请求时浏览器会先使用 options 方法判断是否允许当前域名发送跨域请求 8 $origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;]) ? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 9 10 $allow_origin = array( 11 &amp;#39;http://localhost:8888&amp;#39;, 12 &amp;#39;http://test.com&amp;#39;, 13 &amp;#39;https://test.com&amp;#39;, 14 ); 15 16 // 如果请求方法为 options, 加入允许跨域响应头并直接发送响应信息 17 if ($request-&amp;gt;isMethod(&amp;#39;options&amp;#39;) &amp;amp;&amp;amp; in_array($origin, $allow_origin)) { 18 header(&amp;#34;Access-Control-Allow-Methods: POST, GET, PATCH, PUT, DELETE&amp;#34;); 19 header(&amp;#34;Access-Control-Allow-Origin:&amp;#34;.</description>
     </item>
     
     <item>
@@ -68,8 +68,8 @@
       <guid>https://kouler.com/posts/lumen%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/</guid>
       <description>lumen 安装在子目录下时访问首页出现404错误 public/index.php 中的
 1&amp;lt;?php 2 3$app-&amp;gt;run(); 改为
-1&amp;lt;?php 2 3$app-&amp;gt;run($app[&amp;#39;request&amp;#39;]); lumen 配置数据库  在根目录添加 .env 配置文件并修改数据库信息 app.php 文件中去掉 Dotenv::load(__DIR__ . &#39;/../&#39;);行的注释，只有去掉才可以使用env配置文件 控制器文件中通过 app 函数来调用数据库，例： $result = app(&#39;db&#39;)-&amp;gt;select(&amp;quot;select * from xay_waiter&amp;quot;);  详细信息
-使用 Session  开启Facades，开启方式是去掉 bootstrap/app.php 中 $app-&amp;gt;withFacades(); 的注释。 开启 Session，开启方式：去掉 bootstrap/app.php 中 $app-&amp;gt;middleware(); 的 StartSession 中间件的注释。 使用时发生错误：Class &amp;lsquo;Memcached&amp;rsquo; not found ，因为在 .env 文件中，Session 的默认驱动是：memcached。修改即可。 目前支持的驱动有：file、cookie、database、memcached、redis、array。   Session::put(&#39;key&#39;, &#39;value&#39;); // 保存对象到 Session 中 $value = Session::get(&#39;key&#39;); // 从 Session 取回对象 $value = Session::pull(&#39;key&#39;, &#39;default&#39;); // 从 Session 取回对象并删除 $data = Session::all(); // 从 Session 取出所有对象 Session::has(&#39;users&#39;); // 判断对象在 Session 中是否存在 Session::forget(&#39;key&#39;); // 从 Session 中移除对象 Session::flush(); // 清空所有 Session    lumen 发送邮件  在 composer.</description>
+1&amp;lt;?php 2 3$app-&amp;gt;run($app[&amp;#39;request&amp;#39;]); lumen 配置数据库 在根目录添加 .env 配置文件并修改数据库信息 app.php 文件中去掉 Dotenv::load(__DIR__ . &#39;/../&#39;);行的注释，只有去掉才可以使用env配置文件 控制器文件中通过 app 函数来调用数据库，例： $result = app(&#39;db&#39;)-&amp;gt;select(&amp;quot;select * from xay_waiter&amp;quot;); 详细信息
+使用 Session 开启Facades，开启方式是去掉 bootstrap/app.php 中 $app-&amp;gt;withFacades(); 的注释。 开启 Session，开启方式：去掉 bootstrap/app.php 中 $app-&amp;gt;middleware(); 的 StartSession 中间件的注释。 使用时发生错误：Class &amp;lsquo;Memcached&amp;rsquo; not found ，因为在 .env 文件中，Session 的默认驱动是：memcached。修改即可。 目前支持的驱动有：file、cookie、database、memcached、redis、array。 Session::put(&#39;key&#39;, &#39;value&#39;); // 保存对象到 Session 中 $value = Session::get(&#39;key&#39;); // 从 Session 取回对象 $value = Session::pull(&#39;key&#39;, &#39;default&#39;); // 从 Session 取回对象并删除 $data = Session::all(); // 从 Session 取出所有对象 Session::has(&#39;users&#39;); // 判断对象在 Session 中是否存在 Session::forget(&#39;key&#39;); // 从 Session 中移除对象 Session::flush(); // 清空所有 Session lumen 发送邮件 在 composer.</description>
     </item>
     
     <item>
@@ -81,7 +81,7 @@
       <description>问题 会有 ERR_CERT_DATABASE_CHANGED 与 NETWORK CHANGED 的提示。有时候会自动立刻刷新重载。 大部分 HTTPS 内的 AJAX 请求很多都发送失败，导致页面无法正常使用。
 解决方法 和 com.alipay.DispatcherService 支付宝插件有关 命令行中使用命令
 1$ sudo launchctl remove com.alipay.DispatcherService 停掉支付宝服务就没有这个问题了
-参考 &amp;amp; 扩展阅读  MacOS Sierra 升级 CHROME 用 HTTPS 访问间歇性失败  </description>
+参考 &amp;amp; 扩展阅读 MacOS Sierra 升级 CHROME 用 HTTPS 访问间歇性失败 </description>
     </item>
     
     <item>
@@ -97,7 +97,7 @@
 前两种方法有各自的限制，如果无法解决问题，则需要考虑更复杂的解决方法。
 方法三: Safari 会在第三方域下完全没有 Cookies 时阻止第三方 Cookies，而第三方域下只要有过任意一个 Cookie，即可顺利读写。 据此，我们可以考虑当第三方域下没有 Cookies 时，首先将页面先跳到这个域，写入任意 Cookies，再跳回来。或者弹出一个新窗口，写入 Cookies，再关闭弹窗。
 方法四: Safari 只阻止了第三方 Cookies，并没有阻止第三方 LocalStorage，于是，我们便可以使用更为激进的方案，即放弃第三方 Cookies，使用 LocalStorage 来代替。
-参考 &amp;amp; 扩展阅读  当浏览器默认禁用第三方cookie  </description>
+参考 &amp;amp; 扩展阅读 当浏览器默认禁用第三方cookie </description>
     </item>
     
     <item>
@@ -106,12 +106,14 @@
       <pubDate>Tue, 13 Sep 2016 18:42:34 +0800</pubDate>
       
       <guid>https://kouler.com/posts/php%E4%B8%AD%E8%8E%B7%E5%8F%96post%E6%95%B0%E6%8D%AE%E7%9A%84%E6%96%B9%E5%BC%8F/</guid>
-      <description>form-data x-www-form-urlencoded raw     $_POST 推荐 推荐 无效   $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效   php://input 无效 有效 推荐    $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
+      <description> form-data x-www-form-urlencoded raw $_POST 推荐 推荐 无效 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 无效 无效 有效 php://input 无效 有效 推荐 $_POST 方式 通过 HTTP POST 方法传递的变量组成的数组。是自动全局变量。
 Coentent-Type 仅在取值为 application/x-www-data-urlencoded 或 multipart/form-data 两种情况下，PHP才会将 HTTP 请求数据包中相应的数据填入全局变量 $_POST。
 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 方式 此变量仅在碰到未识别 MIME 类型的数据时产生。
 PHP 默认识别的数据类型是 application/x-www.form-urlencoded 标准的数据类型。如果 POST 过来的数据不是 PHP 能够识别的，比如 text/xml 或者 soap 等可以用 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;]方式来接收。
 不过，访问原始 POST 数据的更好方法是 php://input。
-php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.</description>
+php://input 方式 php://input 允许读取 POST 的原始数据。和 $HTTP_RAW_POST_DATA 比起来，它给内存带来的压力较小，并且不需要任何特殊的 php.ini 设置。
+php://input 不能用于 enctype=&amp;ldquo;multipart/form-data&amp;rdquo;。
+参考 &amp;amp; 扩展阅读 $GLOBALS[&amp;lsquo;HTTP_RAW_POST_DATA&amp;rsquo;] 和$_POST的区别 深入剖析PHP输入流 php://input 与 POST/GET 的区别 </description>
     </item>
     
     <item>
@@ -129,7 +131,7 @@ CGI程序通过标准输入（STDIN）和标准输出（STDOUT）来进行输入
 操作系统提供了许多环境变量，它们定义了程序的执行环境，应用程序可以存取它们。
 Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程序传递一些重要的参数。
 下面是一些常用的 CGI 环境变量：
-   变量名 描述     CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型   CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用   HTTP_COOKIE 客户机内的 COOKIE 内容   HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息   PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现   QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔   REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机   REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量   REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
+变量名 描述 CONTENT_TYPE 这个环境变量的值指示所传递来的信息的MIME类型 CONTENT_LENGTH 如果服务器与 CGI 程序信息的传递方式是 POST，这个环境变量即是从标准输入 STDIN中可以读到的有效数据的字节数。这个环境变量在读取所输入的数据时必须使用 HTTP_COOKIE 客户机内的 COOKIE 内容 HTTP_USER_AGENT 提供包含了版本数或其他专有数据的客户浏览器信息 PATH_INFO 这个环境变量的值表示紧接在 CGI 程序名之后的其他路径信息。它常常作为 CGI 程序的参数出现 QUERY_STRING 如果服务器与 CGI 程序信息的传递方式是 GET，这个环境变量的值即使所传递的信息。这个信息经跟在CGI程序名的后面，两者中间用一个问号分隔 REMOTE_ADDR 这个环境变量的值是发送请求的客户机的 IP 地址，它是 WEB客户机需要提供给 WEB服务器的唯一标识，可以在 CGI 程序中用它来区分不同的 Web客户机 REMOTE_HOST 这个环境变量的值包含发送 CGI 请求的客户机的主机名。如果不支持你想查询，则无需定义此环境变量 REQUEST_METHOD 提供脚本被调用的方法。对于使用 HTTP/1.</description>
     </item>
     
     <item>
@@ -139,7 +141,7 @@ Web服务器和 CGI接口又另外设置了一些环境变量，用来向 CGI程
       
       <guid>https://kouler.com/posts/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</guid>
       <description>本文通过设置 Access-Control-Allow-Origin 来实现跨域。 例如：客户端的域名是 client.com，而请求的域名是 server.com。 如果直接使用 ajax 访问，会有以下错误：
-XMLHttpRequest cannot load http://server.com/server.php. No &#39;Access-Control-Allow-Origin&#39; header is present on the requested resource. Origin &#39;http://client.com&#39; is therefore not allowed access. 允许单个域名访问 指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
+XMLHttpRequest cannot load http://server.com/server.php. No &amp;#39;Access-Control-Allow-Origin&amp;#39; header is present on the requested resource. Origin &amp;#39;http://client.com&amp;#39; is therefore not allowed access. 允许单个域名访问 指定某域名（ http://client.com ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
 1&amp;lt;?php 2 3header(&amp;#39;Access-Control-Allow-Origin: http://client.com&amp;#39;); 允许多个域名访问 指定多个域名（ http://client1.com, http://client2.com 等 ）跨域访问，则只需在 http://server.com/server.php 文件头部添加如下代码：
 1&amp;lt;?php 2 3$origin = isset($_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;])? $_SERVER[&amp;#39;HTTP_ORIGIN&amp;#39;] : &amp;#39;&amp;#39;; 4 5$allow_origin = array( 6 &amp;#39;http://client1.com&amp;#39;, 7 &amp;#39;http://client2.com&amp;#39; 8); 9 10if(in_array($origin, $allow_origin)){ 11 header(&amp;#39;Access-Control-Allow-Origin: &amp;#39;.$origin); 12} 允许所有域名访问 允许所有域名访问则只需在 http://server.</description>
     </item>
